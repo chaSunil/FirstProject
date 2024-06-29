@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+#box {
+	padding-left: 0px;
+	width: 100vw;
+}
+
+#box img {
+	width: 100%;
+}
+
+.box {
+
+    position: absolute;
+
+    left: 30%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 35vw;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid #AACDFF;
+    box-shadow: 7px 7px 39px rgba(0, 104, 255, 0.25);
+    border-radius: 20px;
+
+    margin: 0px;
+    padding: 100px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    
+
+}
+
+.sub-box {
+	/* flex 속성 벗어나서 배치하기 위해서 */
+    position: relative;
+}
+
+h2 {
+    width: 23vw;
+    height: 4.7vw;
+    left: 35vw;
+    top: 6vw;
+
+    font-family: 'Noto Sans CJK KR';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.6vw;
+    line-height: 2vw;
+
+    color: #0068FF;
+    justify-content: space-evenly;
+
+
+}
+
+.btn {
+    width: 10vw;
+    height: 2vw;
+    left: 35vw;
+    top: 6vw;
+    background-color: #FFFFFF;
+    color: royalblue;
+    border-radius: 8px;
+    border: #0068FF solid 1px;
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+    text-align: center;
+}
+
+label input {
+    padding: 0px;
+    border: none;
+    border-bottom: 1px solid #CFCFCF;
+    width: 17vw;
+    height: 1.5vw;
+    
+    
+    font-family: 'Noto Sans CJK KR';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1vw;
+    line-height: 2vw;
+    color: #0068FF;
+}
+
+#mem_addr {
+	font-size: 0.7vw;
+}
+
+label {
+    color: lightgrey;
+}
+
+/* 주소검색버튼 start */
+
+.btn2 {
+	background-color: #0068FF;
+	font-size: 1vw;
+	color: white;
+}
+
+.btn2:hover {
+	opacity: 0.8; 
+}
+
+/* 알림메세지 */
+
+#id_msg, #nickname_msg {
+	display: inline-block;
+	font-size: 13px;
+	width: 15vw;
+	height: 1vw;
+	margin-left: 10px;
+	margin-bottom: 30px;
+}
+
+/* 홈페이지로 돌아가기 버튼 */
+.img-button2 {
+    position: absolute; /* 절대 위치로 설정 */
+    top: 80px; /* 원하는 위치에 배치 */
+    right: 6vw; /* 원하는 위치에 배치 */
+    
+    max-width: 9vw;
+	/* max-height: 3.8vw; */
+    
+   	border: none;
+	outline: none;
+	background-color: inherit ;
+	cursor: pointer; /* 버튼모양지우기 */
+}
+.img-button2 img {
+	max-width: 9vw;
+	max-height: 3.8vw;
+}
+/* 회원가입 버튼 */
+.img-button {
+    position: absolute; /* 절대 위치로 설정 */
+    bottom: 120px; /* 원하는 위치에 배치 */
+    right: 3vw; /* 원하는 위치에 배치 */
+    
+    max-width: 6.5vw;
+	max-height: 3.8vw;
+    
+	border: none;
+	outline: none;
+	background-color: inherit ;
+	cursor: pointer; /* 버튼모양지우기 */
+}
+.img-button img {
+	max-width: 6.5vw;
+	/* max-height: 3.8vw; */
+}
+
+.img-button img:hover {
+	opacity: 0.8; 
+	/* max-height: 3.8vw; */
+}
