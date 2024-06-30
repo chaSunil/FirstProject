@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 @font-face {
     font-family: 'TTTogether';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/TTTogetherA.woff') format('woff');
@@ -30,7 +29,6 @@
     margin: 0px;
     padding: 0px;
 }
-
 ul, li {
     padding: 0px;
     margin: 0px;
@@ -121,19 +119,18 @@ ul, li {
 }
 
 #login-btn a:hover {
-    color: #B8E9FF;
+	color: #B8E9FF;
 }
+
 .login-icon img {
-    width: 20px;
+	width: 20px;
 }
+
 .login-icon {
-    display: inline-block;
+	display: inline-block;
 }
 
-
-
-
-/* 회원 정보 슬라이드 css 선일작업 */
+/* 사이드바 설정하기 선일작업 */
 #side_menu {
 	height: 100%;
 	width: 400px;
@@ -163,30 +160,26 @@ ul, li {
     display: none;
 }
 
-
 #side_menu_1 {
-	height: 135px;
+	height: 150px;
 	width: 100%;
+	background: skyblue;
 }
 
-
 #side_menu_1 img{
-	height: 250px;
 	width: 400px;
-	opacity: 0.7;
 }
 
 /* 회원 프로필 사진 */
 #member_icon {
-	margin-top: -20px;
+	margin-top: -50px;
 	margin: auto;
+	margin-bottom: 20px;
 	
 	width: 120px;
 	height: 120px;
 	border-radius: 50%;
 	background: white;
-	
-	cursor:pointer;
 	
 	position: relative;
 }
@@ -201,40 +194,6 @@ ul, li {
 	width: 120px;
 }
 
-#best_game {
-	width: 270px;
-	margin-top: 5px;
-}
-
-#best_game_img {
-	width: 270px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#best_game_img2 {
-	width: 300px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#member_ment {
-	font-size: 16px;
-	font-weight: bold;
-	position: absolute;
-	bottom: 225px;
-	left: 85px;
-}
-
-
-
-#member_name {
-	display: inline-block;
-	font-size: 40px;
-	font-weight: bold;
-}
-
-
 #main-head {
     position: sticky;
     
@@ -244,14 +203,42 @@ ul, li {
     z-index: 2;
 }
 
+#member_name {
+	display: inline-block;
+	font-size: 40px;
+	font-weight: bold;
+	margin-bottom: 50px;
+}
 
-/* 회원 정보 슬라이드 css 종료 선일작업 */
+#mem_introduce {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	width: 300px;
+	height: 80px;
+	
+	vertical-align: middle;
+	
+	font-size: 15px;
+	
+	margin-left: auto;
+	margin-right: auto;
+}
 
+#best_game {
+	width: 300px;
+}
+
+#best_game_img {
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 
 /* 헤더 탭 코드 */
 #header-tap {
 	height: 57px;	
+	border-bottom: 1px solid #cccccc;
 }
 
 #header-tap-list {
@@ -273,9 +260,9 @@ ul, li {
 
 #header-tap-list li a {
 	text-decoration: none;
-	color: black;
-	font-size: 20px;
-	
+	color: #595959;
+	font-size: 19px;
+	font-weight: bold;
 }
 
 #header-tap-list li a:hover {
@@ -350,8 +337,6 @@ ul, li {
 	left: 30px;
 }
 
-
-
 #tab-img {
 	width: 24px;
 	height: 100%;
@@ -360,7 +345,6 @@ ul, li {
 	text-decoration: none;
 	color: black;
 } 
-
 /* 상단메인배너 end */
 /* header css !! end */
 /* 배너아래 카테고리 아이콘 선일 작업내역 */

@@ -1,6 +1,7 @@
-package action;
+package action.profile;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,14 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.MemberDao;
-import db.vo.MemberVo;
+import dao.ProfileDao;
+import db.vo.ProfileVo;
 
 /**
- * Servlet implementation class MemberModifyFormAction
+ * Servlet implementation class ProfileListAction
  */
-@WebServlet("/member/modify_form.do")
-public class MemberModifyFormAction extends HttpServlet {
+@WebServlet("/profile/list.do")
+public class ProfileListAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -25,13 +26,10 @@ public class MemberModifyFormAction extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		// /member/modify_form?mem_idx=10
-		int mem_idx = Integer.parseInt(request.getParameter("mem_idx"));
-		MemberVo vo = MemberDao.getInstance().selectOne(mem_idx);
-		request.setAttribute("vo", vo);
+		List<ProfileVo> list = ProfileDao.getInstance().selectList();
 
 		// Dispatcher형식으로 호출
-		String forward_page = "member_modify_form.jsp";
+		String forward_page = "../main/main.jsp";
 		RequestDispatcher disp = request.getRequestDispatcher(forward_page);
 		disp.forward(request, response);
 

@@ -9,17 +9,20 @@
 <link rel="icon" href="image/favicon.ico" type="image/x-icon">
 <title>우리들의 보드게임 세상 보드밍</title>
 
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
 <!-- Bootstrap -->
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
  
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
  
 <!-- CSS -->
 <link rel="stylesheet" href="../css/main.css">
-
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 <!-- slick  -->
 <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
@@ -29,7 +32,6 @@
 <!-- SweetAlert2 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
-
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -54,25 +56,36 @@ $(document).ready(function() {
 	       $("ul",this).show(0);
 	   }, function(){
 	       $("ul",this).hide(0);
-	   });
+	   }); 
 	    
-		// 회원 전용 사이드바 작업 선일 //
-	   	// overlay는 웹페이지 아무곳이나 누르면 사이드바 사라지게 하는 설정 //
-	   	$("#love-icon").click(function() {
-	   	    $("#side_menu").show(500);
-	   	    $(".overlay").fadeIn();
-	   	});
-	   	
-	   	$(".overlay").click(function() {
-	   	    $("#side_menu").hide(500);
-	   	    $(".overlay").fadeOut();
-	   	});
-	   	
-	   	
-	  
-	   	
+	    
+	// 회원 전용 사이드바 작업 선일 //
+   	// overlay는 웹페이지 아무곳이나 누르면 사이드바 사라지게 하는 설정 //
+   	$("#love-icon").click(function() {
+   	    $("#side_menu").show(500);
+   	    $(".overlay").fadeIn();
+   	});
+   	
+   	$(".overlay").click(function() {
+   	    $("#side_menu").hide(500);
+   	    $(".overlay").fadeOut();
+   	});
+  
+	    
+	    
 	});
-
+	// 상단 메인 배너 함수
+	/* function moveImage() {
+	    $("#box2").animate(
+	        {"left" : "-=1200"}, 1200, 
+	        function() {
+	            var left = parseInt($("#box2").css("left"));
+	            // box2의 left 좌표가 -805보다 작아진다면, 0px로 돌아온다.
+	            if (left < -2401) {
+	                $("#box2").css("left", "0px");
+	        }
+	    });
+	} */
 	
 	/* 이미지 슬라이드 */
 	$(function() {
@@ -98,111 +111,55 @@ $(document).ready(function() {
 	});
 	</script>
 	
-<!-- 로그아웃시 실행되는 함수 작업 선일 -->
-<script type="text/javascript">
-	// 로그아웃시 실행될 함수
+	<script type="text/javascript">
+		// 로그아웃시 실행될 함수
+		
+		// sweetalert2
+		$(document).on('click', '#logout', function(e) {
+		    swal({
+		    title: "로그아웃 하시겠습니까?", 
+		    text: "확인을 누르면 저희가 안전하게 로그아웃 해드릴게요.", 
+		    type: "question",
+		    confirmButtonText: "확인",
+		    showCancelButton: true,
+		    cancelButtonText: '취소'
+		    })
+		      .then((result) => {
+		      if (result.value) {
+		    	  window.location.href = "../member/logout.do";
+		      } else if (result.dismiss === 'cancel') {
+		          swal(
+		            '로그아웃이 취소되었습니다.',
+		            '저희와 함께 해주셔서 고마워요.',
+		            'info'
+		          )
+		      }
+		    })
+		});
 	
-	// sweetalert2
-	$(document).on('click', '#logout', function(e) {
-	    swal({
-	    title: "로그아웃 하시겠습니까?", 
-	    text: "확인을 누르면 저희가 안전하게 로그아웃 해드릴게요.", 
-	    type: "question",
-	    confirmButtonText: "확인",
-	    showCancelButton: true,
-	    cancelButtonText: '취소'
-	    })
-	      .then((result) => {
-	      if (result.value) {
-	    	  window.location.href = "../member/logout.do";
-	      } else if (result.dismiss === 'cancel') {
-	          swal(
-	            '로그아웃이 취소되었습니다.',
-	            '저희와 함께 해주셔서 고마워요.',
-	            'info'
-	          )
-	      }
-	    })
-	});
-	
-/* 	let hasRun = false;
-	
-	// 실행되자마자 실행되는 함수 body onload 선일 작업
-   	function redirect_insert() {
-   		if (!hasRun) {
-   			window.location.href = "../profile/list.do";
-   			hasRun = true;
-   	  	}
-   	} */
-	
-	
-
-</script>
-<!-- 로그아웃시 실행되는 함수 작업 선일 end -->
-
-<!-- 프로필 사진 누르면 수정 뜨게하는 작업 선일 -->
-<script type="text/javascript">
-
-function photo_insert() {
-	
-	// 로그인 체크(로그인이 안된 경우)
-	if("${ empty user }" == "true") {
-		if (confirm("프로필 수정은 로그인 하신 후 이용이 가능합니다.\n로그인 창으로 이동시켜 드려도 될까요?")==false){
-			return;
-		} /* else {
-			location.href="../member/login_form.do";
-			return;
-		} */
-	}
-
-}
-
-function bookmarksite(title,url) {    
-	  // Internet Explorer   
-	    if(document.all) {       
-	    	window.external.AddFavorite(url, title);    
-		}   
-	  	// Google Chrome   
-	    else if(window.chrome) {      
-	    	alert("Ctrl+D키를 누르시면 즐겨찾기에 추가하실 수 있습니다.");   
-	    }   
-	  	// Firefox   
-	  	else if (window.sidebar) {       
-	      	window.sidebar.addPanel(title, url, "");    
-	    }   
-	  	// Opera   
-	  	else if(window.opera && window.print) {      
-			var elem = document.createElement('a');
-	      	elem.setAttribute('href',url);       
-			elem.setAttribute('title',title);
-			elem.setAttribute('rel','sidebar');       
-			elem.click();    
-		}
-	}
-	
-	
-	
-function setStartPage(Obj){
-    strUrl = "http://empas.com/"; // 시작페이지 url
-    if (document.all){
-   if (window.external){
-    Obj.style.behavior='url(#default#homepage)';
-       Obj.setHomePage(strUrl); //시작페이지로 설정
-   }
-    } else {
-       
-    }
-}
-
-
-
-</script>
-<!-- 프로필 사진 누르면 수정 모달 팝업 뜨게하는 작업 선일 end -->
-	
+	</script>
 	
 	</head>
 	<body>
-	
+
+<!-- 로그아웃에 대한 parameter를 받아주는 함수 -->
+<%-- <% 
+    String logout = request.getParameter("logout");
+	System.out.println("Logout parameter: " + logout);
+    if ("true".equals(logout)) {
+%>
+<!-- 알림처리 -->
+    <script>
+    console.log("SweetAlert2 script loaded");
+        Swal.fire({
+            title: '로그아웃되었습니다.',
+            text: '성공적으로 로그아웃되었습니다.',
+            icon: 'success'
+        });
+    </script>
+<% 
+    } 
+%> --%>
 	<div id="main-head">
 	    <!-- 상단 헤더 선일 작업 start 06.28 로그인, 회원가입 기능, session -->
 	    <div id="head">
@@ -211,9 +168,11 @@ function setStartPage(Obj){
 	            </a>
 	           <div id="search">
             <input class="form-control search" placeholder="검색창"/>
-        </div>
-        
-        
+        </div>  
+<!--         <div id="search-btn">
+        	<input type="button" value="검색"/>
+			<img src="../image/search-btn.png">
+        </div> -->
 	        <div id="login-main">
 	            <div id="login-btn">
 	            <!-- 로그인 화면 전환 -->
@@ -233,8 +192,7 @@ function setStartPage(Obj){
 	                <a href="../member/list.do">회원관리</a>
 	            </c:if>
 	            <c:if test="${ user.mem_grade eq '일반' }">
-	            	<a onclick="location.href='../member/modify_form.do?mem_idx=${user.mem_idx}'"
-	            	 style="cursor:pointer;">내정보</a>
+	            	<a onclick="location.href='../member/modify_form.do?mem_idx=${user.mem_idx}'">내정보</a>
 	            </c:if>
 	            
 	            <div class="login-icon">
@@ -304,62 +262,35 @@ function setStartPage(Obj){
 	
 	
 	
-	
-
-	
-	
-	
-	
- 		<!-- 사이드 메뉴 프로필 화면 선일 작업 -->
-		
+	<!-- 회원전용 슬라이드 화면 선일 작업 -->
 	<div id="side_menu">
-		<c:if test="${ not empty sessionScope.user }">
-			<div id="side_menu_1"><img src="image/member_background.jpg"></div>
-		</c:if>
-		<c:if test="${ empty sessionScope.user }">
-			<div id="side_menu_1"><img src="image/member_background.jpg"></div>
-		</c:if>
+		<div id="side_menu_1"><img src="image/member_background.jpg"></div>
 		<ul>
 		
-			<!-- 프로필 사진올리기 수정기능 작업-->
-			<li>
-			<c:if test="${ not empty sessionScope.user }">
-				<div id="member_icon" onclick="photo_insert();" style="cursor:pointer;">
-				<img src="image/member_icon.png"></div>
-			</c:if>
-			<c:if test="${ empty sessionScope.user }">
-				<div id="member_icon" onclick="photo_insert();" style="cursor:pointer;">
-				<img src="image/member_icon.png"></div>
-			</c:if>
-			</li>
+			<!-- 프로필 사진올리기 수정버튼까-->
+			<li><div id="member_icon" onclick="photo_insert();" style="cursor:pointer;">
+			<img src="image/member_icon.png"></div></li>
 			
 			
 			<c:if test="${ sessionScope.user.mem_grade eq '관리자' }">
-			<li><span style="font-size: 15px; font-weight: bold; display: inline-block; margin-top: 15px;">관리자 계정</span></li>
+			<li><span style="font-size: 15px; font-weight: bold; display: inline-block;">관리자 계정</span></li>
 			<li><span id="member_name">${ sessionScope.user.mem_nickname }</span></li>
 			</c:if>
 			<!-- 유저가 로그인 안되어있을때 -->
 			<c:if test="${ empty sessionScope.user }">
-			<li><span style="font-size: 15px; font-weight: bold; display: inline-block; margin-top: 15px;">보드게임 뉴비</span></li>
+			<li><span style="font-size: 15px; font-weight: bold; display: inline-block;">보드게임 뉴비</span></li>
 			<li><span id="member_name">비로그인 계정</span></li>
 			</c:if>
 			<!-- 유저가 로그인 되어있을때 -->
 			<c:if test="${ not empty sessionScope.user && user.mem_grade eq '일반' }">
-			<li><span style="font-size: 15px; font-weight: bold; display: inline-block; margin-top: 15px;">보드게임 유저</span></li>
+			<li><span style="font-size: 15px; font-weight: bold; display: inline-block;">보드게임 유저</span></li>
 			<li><span id="member_name">${ sessionScope.user.mem_nickname }</span></li>
 			</c:if>
-			<li><a href="javascript:bookmarksite('보드밍', 'main.jsp')"><img src="image/gudok.png" id="best_game"></a></li>
-			<li><a href="javascript:setStartPage(this);"><img src="image/start.png" id="best_game_img"></a></li>
-			<c:if test="${ not empty sessionScope.user }">
-			<li><span id="member_ment">
-			${ sessionScope.user.mem_nickname }님<br> 
-			오늘은 무슨 보드게임으로 찾으세요?? </span></li>
-			</c:if>
-			<c:if test="${ empty sessionScope.user }">
-			<li><span id="member_ment">
-			로그인을 하셔서 저희와 함께 해보는건 어떨까요?</span></li>
-			</c:if>
-			<li><img src="image/다오2.png" id="best_game_img2"></li>
+			
+			<li style="font-size: 25px; font-weight: bold;">나만의 한줄소개</li>
+			<li><div id="mem_introduce">안녕하세요? 보드게임 일반 회원 박정환입니다.</div></li>
+			<li><img src="image/best_game.png" id="best_game"></li>
+			<li><img src="image/f-game4.png" id="best_game_img"></li>
 		</ul>
 	</div>
 	<div class="overlay"></div>
@@ -377,8 +308,11 @@ function setStartPage(Obj){
 	
 	
 	
+	
+	
+	
 <!-- 헤더 메인 메뉴 end -->
-    <!-- 상단 슬라이딩 배너 선일 작업-->
+    <!-- 상단 슬라이딩 배너 -->
     <div id="demo" class="carousel slide" data-bs-ride="carousel">
         <!-- Indicators/dots -->
         <div class="carousel-indicators">
@@ -417,10 +351,10 @@ function setStartPage(Obj){
             <span class="carousel-control-next-icon"></span>
         </button>
     </div>
-    <!-- 상단 슬라이딩 배너 선일 작업 end -->
+    <!-- 상단 슬라이딩 배너 end -->
     
     
-    <!-- 배너 아래 카테고리 아이콘 선일 작업 -->
+    <!-- 배너 아래 카테고리 아이콘 -->
     <section class="category-icon">
         <ul>
             <li>

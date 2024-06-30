@@ -22,9 +22,18 @@
 * {
 	font-family: "MabinogiClassicR";
 }
+
+#main_image {
+	position: absolute;
+	top: 1.5vw;
+	right: 20vw;
+}
+#main_image > img {
+	width: 200px;
+}
 #title {
 	text-align: center;
-	margin: 50px;
+	font-size: 32px;
 }
 #box {
 	width: 60vw;
@@ -110,9 +119,11 @@ th {
    	<!-- <div id="title"><h4>보드게임 정보 모두 여기에!!</h4></div> -->
 <form class="form-inline">
 	<input type="hidden" name="mem_idx" value="${vo.mem_idx}">
+		<div id="main_image"><img alt="" src="../image/다오.png"></div>
+		<div id="title"><img alt="" src="../image/modify_logo.png"></div>
 	<div id="box">
 	<div class="panel panel-primary">
-   		<div class="panel-heading"><h4>회원가입</h4></div>
+   		<div class="panel-heading"><h4>회원정보수정</h4></div>
    		<div class="panel-body">
    			<table class="table">
    				<tr>
