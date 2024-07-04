@@ -163,7 +163,7 @@ function modify_form(f) {
 	    })
 	      .then((result) => {
 	      if (result.value) {
-	    	  window.location.href = "../member/logout.do";
+	    	  window.location.href = "../member/detaillogout.do?a_cate=f-9";
 	      } else if (result.dismiss === 'cancel') {
 	          swal(
 	            '로그아웃이 취소되었습니다.',
@@ -279,7 +279,7 @@ function send(f) {
 	            <!-- 로그인 화면 전환 -->
 	            <!-- 로그인 안되었을 때 session ~~ -->
 	            <c:if test="${ empty sessionScope.user }">
-	                <a href="../member/login_form.do">로그인</a>
+	                <a href="../member/detaillogin_form.do?a_cate=f-9">로그인</a>
 	                <a href="../member/insert_form.do">회원가입</a>
 	            </c:if>
 	            <!-- 로그인 되었을 때 session 살리기~~ -->

@@ -197,7 +197,7 @@
 
 </head>
 <body>
-	<button class="img-button2" onclick="location.href='list.do'">
+	<button class="img-button2" onclick="location.href='../main/list.do'">
 		<img alt="" src="../image/logo.png">
 	</button>
 <form>

@@ -184,7 +184,7 @@ $(document).ready(function() {
 	<div id="main-head">
 	    <!-- 상단 헤더 선일 작업 start 06.28 로그인, 회원가입 기능, session -->
 	    <div id="head">
-	            <a href="list.do">
+	            <a href="../main/list.do">
 	                <img id="logo" src="image/logo.png">
 	            </a>
 	    <div id="search">

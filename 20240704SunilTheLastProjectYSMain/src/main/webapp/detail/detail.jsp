@@ -589,6 +589,7 @@ function send(f) {
         <div class="small-image-box">
                 <div></div>
                 <div class="small-image">
+                	<!-- onmouseover 마우스가 위에 올라갔을시에 imgChange 함수 실행 (this) -->
                     <img id="game1" src="../image/gamefull.png" onmouseover="imgChange(this)">
                 </div>
                 <div class="small-image">
@@ -604,7 +605,7 @@ function send(f) {
                     <img id="game5" src="../image/play4.jpg" onmouseover="imgChange(this)">
                 </div>
                 <div></div>
-            </div>
+		</div>
         
     </div>
   
