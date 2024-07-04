@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'PyeongChangPeace-Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MabinogiClassicR';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/MabinogiClassicR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+	font-family: 'MabinogiClassicR';
+}
+
+#title {
+	font-family: 'PyeongChangPeace-Bold';
+	text-align: center;
+	z-index: 10;
+	left: 50%;
+    transform: translate(-50%, 0);
+	top: 0;
+	position: fixed;
+	margin-top: 150px;
+	font-size: 80px;
+	color: skyblue;
+	text-shadow: -2px 0px white, 0px 2px white, 2px 0px white, 0px -2px white;
+}
+
+#title img {
+	width: 500px;
+}
+
+.header {
+	background-color: #0068FF !important;
+}
+
+.btn {
+	background-color: #0068FF !important;
+}
+
+#box {
+	width: 500px;
+	margin: auto;
+	height: 260px;
+	top: 0;
+	left: 50%;
+    transform: translate(-50%, 0);
+    margin-top: 300px;
+    
+	z-index: 5;
+	position: fixed;
+	
+	box-shadow: 7px 7px 39px rgba(0, 104, 255, 0.25);
+}
+
+.form-control {
+	height: 45px;
+}
+
+input[type="button"] {
+	width: 100px;
+	border: 0px;
+}
+
+input[type="button"]:hover {
+	opacity: 0.8;
+}
+
+.video_bg {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    
+}
+.video_bg iframe {
+    position: absolute;
+    top: -60px;
+    bottom: -60px;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 120px);
+    border: none;
+    z-index: 3;
+    opacity: 0.7;
+}
+.video_bg::after {
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+}

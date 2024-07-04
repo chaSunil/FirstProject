@@ -1,0 +1,789 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: 'TTTogether';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/TTTogetherA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MangoDdobak-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/MangoDdobak-B.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MangoByeolbyeol';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/MangoByeolbyeol.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    font-family: "Pretendard-Regular";
+    margin: 0px;
+    padding: 0px;
+}
+
+ul, li {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+/* header css !! */
+/* 헤드라인 */
+/* 반응형으로 변경 06.28 선일 header 작업 */
+#logo {
+	width: 200px;
+	position: absolute;
+	left: 5%;
+	top : 10px;
+}
+
+#head {
+/* 	display: grid;
+	grid-template-columns: 5fr 5fr 3.5fr; */
+	height: 90px;
+	background-color: white;
+	border-bottom: 1px solid #cccccc !important;
+}
+
+
+#search {
+	position: absolute;
+	top : 25px;
+	left : 35%;
+}
+
+.ui-autocomplete {
+	width: 300px; /* 원하는 너비로 설정 */
+	overflow-y: auto;
+	/* prevent horizontal scrollbar */
+	overflow-x: hidden;
+	height: 500px;
+}
+
+.ui-menu-item div.ui-state-hover,
+.ui-menu-item div.ui-state-active {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: skyblue;
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  background-image: none;
+  border:none;
+}
+
+.search {
+	background: white;
+	border-radius: 20px;
+/* 	border-color: #B8E9FF;
+	border-width: 2px; */
+	
+	font-weight: bold;
+	padding-left: 25px;
+	
+	height: 50px;
+	min-width: 18vw;
+}
+
+#search-btn {
+	position : absolute;
+	top : 25px;
+	left : 53%; 
+}
+
+#search-btn > input {
+	background: #f7feff;
+	border-radius: 10px;
+	width : 65px;
+	border: 2px solid skyblue;
+	color : skyblue;
+	
+	height: 45px;
+}
+
+/* #search-btn > img {
+	width: 20px;
+	display: inline;
+} */
+
+#search-btn > input:hover {
+	box-shadow: 1px 1px 2px gray;
+}
+
+
+#login-main {
+	position: absolute;
+	top : 35px;
+	right : 3%;
+}
+
+#login-btn a {
+	text-decoration: none;
+	color: black;
+	padding-right: 30px;
+	font-size: max(1vw);
+	
+	display: inline;
+}
+/* 유저 로그인시 나오는 문구 */
+#user_ment {
+	font-size: max(1vw);
+	font-weight: bold;
+	padding-right: 30px;
+}
+
+#login-btn a:hover {
+    color: #B8E9FF;
+}
+.login-icon img {
+    width: 20px;
+}
+.login-icon {
+    display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 회원 정보 슬라이드 css 선일작업 */
+#side_menu {
+	height: 100%;
+	width: 400px;
+	background-color: white;
+	
+	/* 절대 좌표로 고정되게 움직임 */
+	position: fixed;
+	top: 0;
+	right: 0px;
+	display: none;
+	/* overlay보다 인덱스 앞으로 */
+	z-index: 30;
+	
+	box-shadow: 7px 7px 39px rgba(0, 104, 255, 0.25);
+}
+
+/* overlay는 웹페이지 아무곳이나 누르면 사이드바 사라지게 하는 설정 */
+.overlay {
+	position: fixed;
+    width: 100%;
+    height: 100%;
+    
+    /* 백그라운드 어둡게 지정해주기 on / off */
+    /* background: rgba(0, 0, 0, 0.7); */
+    /* overlay보다 인덱스 앞으로 */
+    z-index: 29;
+    display: none;
+}
+
+#search_chang {
+	display: none;
+}
+
+
+#side_menu_1 {
+	height: 6.75vw;
+	width: 100%;
+}
+
+
+#side_menu_1 img{
+	height: 12.5vw;
+	width: 100%;
+	opacity: 0.7;
+	object-fit: cover;
+}
+
+/* 회원 프로필 사진 */
+#member_icon {
+	margin-top: -20px;
+	margin: auto;
+	
+	overflow: hidden;
+	
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	background: white;
+	
+	cursor:pointer;
+	
+	position: relative;
+}
+
+#side_menu > ul {
+	text-align: center;
+}
+
+#member_icon > img {
+	position: absolute;
+	left: 0px;
+	width: 120px;
+}
+
+#best_game {
+	width: 270px;
+	margin-top: 5px;
+}
+
+#best_game1_img {
+	width: 380px;
+	height: 70px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	
+	border: 2px solid #e8e8e8;
+	border-radius: 10px;
+	padding-top: 15px;
+	
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	-ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	-o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-ms-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+	
+}
+#best_game1_img:hover {
+	-webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	-moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	-ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	-o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	
+}
+#best_game2_img {
+	width: 380px;
+	height: 90px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px solid #e8e8e8;
+	border-radius: 10px;
+	padding-top: 10px;
+	
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	-ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	-o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-ms-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+
+#best_game2_img:hover {
+	width: 380px;
+	height: 90px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px solid #e8e8e8;
+	border-radius: 10px;
+	padding-top: 10px;
+	
+	-webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	-moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	-ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	-o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+#best_game_img {
+	
+	
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#best_game_img3 {
+	width: 160px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 2vw;
+}
+
+#best_game_img2 {
+	position: absolute;
+	bottom: 0px;
+	left: 20%;
+	
+	max-width: 270px;
+}
+
+#member_ment {
+	font-size: 16px;
+	font-weight: bold;
+	position: absolute;
+	bottom: 225px;
+	left: 85px;
+}
+
+
+
+#member_name {
+	display: inline-block;
+	font-size: 40px;
+	font-weight: bold;
+	margin-bottom: 2vw;
+}
+
+
+#main-head {
+    position: sticky;
+    
+    top: 0px;
+    height: auto;
+    background: white !important;
+    z-index: 2;
+}
+
+
+/* 회원 정보 슬라이드 css 종료 선일작업 */
+
+
+
+
+
+
+
+
+
+
+
+/* 헤더 탭 코드 */
+#header-tap {
+	/* 06.26 수정 */
+	width: 100%;
+	border-bottom: 1px solid #E9E9E9 !important;
+	
+	height: 56px;	
+}
+
+#header-tap-list {
+ 	display: flex;
+/*	-webkit-box-align: center; */
+	align-items: center;
+	justify-content: flex-start;
+	column-gap: 80px;
+	height: 56px;
+	padding: 0 100px; 
+}
+
+#header-tap-list li {
+	list-style: none;	
+	position: relative;
+}
+
+/*font-family: 'TTTogether';*/
+
+#header-tap-list li a {
+	text-decoration: none;
+	color: black;
+	font-size: 20px;
+	
+}
+
+#header-tap-list li a:hover {
+	color: skyblue !important;	
+	font-weight: bold;
+}
+
+#header-tap-list li ul {	
+	top: 26px;
+	left: -60px;
+	position: absolute;	
+
+}
+
+.side-menu li:hover{
+    background: #f2f2f2;
+} 
+
+/* 06.23 추가 */
+.cate-box {
+	width : 190px;
+	background: white; 
+	height: 56px;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	
+	font-size: 20px;
+}
+
+.cate-box:not(.cate-box8) {
+	border-bottom: 0.5px solid #cccccc !important;	
+}
+
+.cate-box0{
+	border-top: 1px solid black;	
+}
+
+.cate-box8 {
+	border-bottom: 1px solid black;		
+}
+
+.cate2{
+	width : 190px;
+	background: white;
+	height: 56px;
+	border-right: 1px solid black;
+	left: 249px;
+		
+}
+.cate2 a{
+	font-size: 15px !important;
+}		
+.f-2 {	
+	top: -82px;
+	display: none;
+}
+.k-2 {	
+	top: -138px;
+	display: none;
+}
+.w-2 {
+	top: -194px;	
+	display: none;
+}
+.s-2 {
+	top: -250px;
+	display: none;	
+}
+.a-4 {
+	top: -306px;
+	display: none;
+}
+.c-2 {
+	top: -362px;
+	display: none;
+}
+.t-2 {
+	top: -418px;
+	display: none;
+}
+.p-2 {
+	top: -474px;
+	display: none;
+}
+
+.f-1:hover .f-2{
+	display: block;
+}
+.k-1:hover .k-2{
+	display: block;
+}
+.w-1:hover .w-2{
+	display: block;
+}
+.s-1:hover .s-2{
+	display: block;
+}
+.a-3:hover .a-4{
+	display: block;
+}
+.c-1:hover .c-2{
+	display: block;
+}
+.t-1:hover .t-2{
+	display: block;
+}
+.p-1:hover .p-2{
+	display: block;
+}
+
+.cate2:not(.c2-box10) {
+	border-bottom: 0.5px solid #cccccc !important;	
+}
+
+.c2-box1{	
+	border-top: 1px solid black;	
+}
+.c2-box10{	
+	border-left: 1px solid black;		
+	border-bottom: 1px solid black;		
+}
+
+/* 06.23 추가 */
+.cate-box a {
+	position: absolute;
+	top: 16px;
+	left: 30px;	
+}
+
+#tab-img {
+	width: 24px;
+} 
+
+/* 상단메인배너 end */
+/* header css !! end */
+
+
+
+
+/* 배너아래 카테고리 아이콘 선일 작업내역 */
+.a-1 img {
+    max-width: 100%;
+    border-radius: 40%;
+}
+.a-1 {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+.a1-b {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: none;
+}
+.a-1:hover .a1-b {
+    display: block;
+}
+.category-icon {
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 70px; /* 수정 */
+}
+.category-icon ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.category-icon ul li {
+    float: left;
+    text-decoration: none;
+    list-style-type: none;
+}
+.category-icon ul li p {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 17px;
+}
+a {
+    font-size: 100%;
+    color: inherit;
+    line-height: 1.2;
+    text-decoration: none;
+}
+/* 배너아래 카테고리 아이콘 선일 작업내역 end */
+
+
+
+
+
+
+
+
+
+
+/* 예송, 찬종 작업내역 */
+.mainbox {
+    width: 1300px;
+    height: 3250px;
+    margin: auto;
+}
+.maincontent {
+    text-align: center;
+    margin: 50px auto;
+    margin-bottom: 170px;
+}
+.contenttitle {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+.contenttitle a {
+    text-decoration: none;
+    color: black;
+}
+/* 이미지 슬라이드 */
+.image_arrow_wrap {
+    position: relative; /* 기준이 되는 부모 */
+    overflow: hidden; 
+}
+.prevArrow, .prevArrow2 {
+    display: inline-block !important;
+    position: absolute; /* 부모를 기준으로 값 지정 */
+    top: 40%;           
+    transform: translateY(-50%);
+    z-index: 1;         /* 이미지보다 화살표가 위에 위치 */
+    cursor: pointer;    /* 화살표에 마우스 올릭 시 커서 모양 바뀜 */
+    left: 0px;
+    font-size: 40px;
+    font-family: "MangoByeolbyeol";
+    color: #2E2E2E;
+}
+.nextArrow, .nextArrow2 {
+    display: inline-block !important;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+    right: 0px;
+    font-size: 40px;
+    font-family: "MangoByeolbyeol";
+    color: #2E2E2E;
+}
+.img-container1 {           /* 이미지 바깥 박스 */
+    display: inline-block;
+    overflow: hidden;
+    width: 500px;
+    text-align: center;
+    position: relative;
+    margin: 20px;
+}
+.img-container1 img {       /* 보드게임 이미지 */
+    width: 500px;
+    height: 300px;
+    transition: transform 0.2s linear;
+    object-fit: cover;
+    display: block;
+}
+.img-container1 span {
+    display: block;
+    margin-top: 10px;  /* 이미지 아래에 여백 추가 */
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center; /* 텍스트 가운데 정렬 */
+    color: black;  /* 글씨 색상 추가 */
+}
+.game_name {
+    display: inline-block;  /* span태그 margin-top값 주기 위해 */
+    margin-top: 20px;
+    font-size: 25px !important;
+}
+.img-wrapper {
+    overflow: hidden;
+    height: 300px;
+}
+.img-container2 {
+    display: inline-block;
+    margin: 20px;
+    overflow: hidden;
+    width: 280px;
+    text-align: center;
+    position: relative;
+    vertical-align: top; /* 이미지 아래 텍스트가 올바르게 표시되도록 설정 */
+}
+.img-container2 img {
+    width: 280px;
+    height: 300px;
+    transition: transform 0.2s linear;
+    object-fit: cover;
+    display: block;
+}
+.img-container {
+    display: inline-block;
+    margin: 10px;
+    overflow: hidden;
+    width: 215px; 
+    height: 215px;
+    box-sizing: border-box;
+    padding: 7.5px; /* 이미지를 가운데 배치하기 위해 사용 */
+    text-align: center; 
+}
+.img-container img {
+    width: auto;
+    height: 200px; /* 모든 이미지의 높이를 200px로 설정 */
+    transition: all 0.2s linear;
+}
+.img-container img:hover {
+    transform: scale(1.05);
+}
+.img-in-container {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: 200px; /* 모든 이미지의 높이를 200px로 설정 */
+    transition: all 0.2s linear;
+}
+.img-in-container:hover {
+    transform: scale(1.05);
+}
+.img-container1 span {
+    font-size: 20px;
+    font-weight: bold;
+}
+.img-container2 span {
+    display: block;
+    margin-top: 10px; 
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+}
+#center {
+    text-align: center;
+    padding: 20px;
+}
+#center-sub {
+    margin: 20px;
+}
+.more2 {
+    font-size: 20px;
+    float: right;
+    margin-right: 30px;
+    color: #424242;
+    text-decoration: none;
+}
+.more2:hover {
+    color: #808080;
+}
+.more1 {
+    width: 30px;
+    height: 30px; 
+    vertical-align: middle; 
+    margin: 0; 
+}
+.more1:hover {
+    transform: scale(1.2);
+}
+#footer {
+    width: 100%;
+    height: 200px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: #cccccc;
+    position: absolute;
+}
+#footerlogo {
+    width: 100px;
+    height: 50px;
+}
+.footer1 {
+    display: inline-block;
+    width: 1300px;
+}
+.footer2 {
+    display: inline-block;
+    width: 200px;
+    float: right;
+}
+
+/* 예송, 찬종 작업내역 end */
