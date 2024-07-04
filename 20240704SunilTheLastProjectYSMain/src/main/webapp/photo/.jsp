@@ -128,7 +128,7 @@ $(document).ready(function() {
 	    })
 	      .then((result) => {
 	      if (result.value) {
-	    	  window.location.href = "../member/sublogout.do?sub_p_category=가족게임&sub_p_page=family";
+	    	  window.location.href = "../member/subAllLogout.do";
 	      } else if (result.dismiss === 'cancel') {
 	          swal(
 	            '로그아웃이 취소되었습니다.',
@@ -214,10 +214,9 @@ function bookmarksite(title,url) {
 		
     
 </script>
-
 <style type="text/css">
 #box{
-	width: 1200px;
+	width: 1200px;	
 	margin: auto;
 	margin-top: 30px;
 }
@@ -234,16 +233,16 @@ function bookmarksite(title,url) {
 }
 #photo-box{
 	margin-top:20px;
-	/* height: 2200px; */
+	height: 2700px;
 	/* border: 2px solid blue; */
 	/* 상하 스크롤*/
-	/* overflow-y: scroll; */
+	overflow-y: scroll; /* 전체보기에서만 */
 }
 .photo{
 	width: 300px;
     height: 600px;
 	/* border: 1px solid orange; */
-	margin: 49px;
+	margin: 45px;
 	padding: 10px;
 	float: left;
 	/* box-shadow: 1px 1px 1px black; */
@@ -269,6 +268,10 @@ function bookmarksite(title,url) {
 	text-overflow: ellipsis;
    	overflow: hidden;
    	white-space: nowrap;
+}
+.img_content{
+	display: inline-block;
+	float: right;
 }
 </style>
 
@@ -382,7 +385,7 @@ $(function() {
 	function allGame() {
 		location.href = "allGame.do";
 	}
-
+	
 	function bestGame() {
 		
 		location.href = "category.do?sub_p_category=베스트게임&sub_p_page=best";
@@ -427,7 +430,7 @@ $(function() {
 	function onlyParty() {
 		location.href = "category.do?sub_p_category=파티게임&sub_p_page=party";
 	}
-
+	
 	/* 클릭 후에도 호버 유지 */
 	function loadClickedButton() {
         // 로컬 스토리지에서 클릭된 버튼의 텍스트를 가져옴
@@ -515,22 +518,22 @@ $(function() {
 	
 	function sortByName() {
 		
-		location.href = "sort.do?sub_p_category=가족게임&sub_p_page=family&sub_p_sort=sub_p_title";
+		location.href = "sortAll.do?sub_p_sort=sub_p_title";
 	}
 	
 	function sortByPlaytime() {
 		
-		location.href = "sort.do?sub_p_category=가족게임&sub_p_page=family&sub_p_sort=sub_p_playtime";
+		location.href = "sortAll.do?sub_p_sort=sub_p_playtime"; 
 	}
 	
 	function sortByPeople() {
 		
-		location.href = "sort.do?sub_p_category=가족게임&sub_p_page=family&sub_p_sort=sub_p_max_player";
+		location.href = "sortAll.do?sub_p_sort=sub_p_max_player"; 
 	}
 	
 	function sortByAge() {
 		
-		location.href = "sort.do?sub_p_category=가족게임&sub_p_page=family&sub_p_sort=sub_p_age";
+		location.href = "sortAll.do?sub_p_sort=sub_p_age";
 	}
 
 </script>
@@ -557,7 +560,7 @@ $(function() {
 	            <!-- 로그인 화면 전환 -->
 	            <!-- 로그인 안되었을 때 session ~~ -->
 	            <c:if test="${ empty sessionScope.user }">
-	                <a href="../member/sublogin_form.do?sub_p_category=가족게임&sub_p_page=family">로그인</a>
+	                <a href="../member/login_form.do">로그인</a>
 	                <a href="../member/insert_form.do">회원가입</a>
 	            </c:if>
 	            <!-- 로그인 되었을 때 session 살리기~~ -->
@@ -826,7 +829,7 @@ $(function() {
 			<div class="banner_name">
 				<ul class="banner_name1">
         			<c:forEach var="item" items="${list}" begin="0" end="0">
-            			<li><h1>${item.sub_p_category}</h1></li>
+            			<li><h1>모든게임</h1></li>
         			</c:forEach>
    				 </ul>
 			</div>
@@ -876,14 +879,14 @@ $(function() {
 			<div class="line"></div>
 			<a href="#" onclick="sortByAge();">연령</a>
 		</div>	   
-	   <!-- 드롭다운 -->		   
-	   <div class="sort2">
+	   <!-- 드롭다운 전체 게임은 X -->		   
+	  <!--  <div class="sort2">
 		    <select title="" onchange="window.open(value,'_self');">
 		    	<option value="" disabled selected>보기</option>
-        		<option value="category.do?sub_p_category=가족게임&sub_p_page=family">3개씩 보기</option>
-        		<option value="category.do?sub_p_category=가족게임&sub_p_page=family1">1개씩 보기</option>
+        		<option value="category.do?sub_p_category=어린이게임&sub_p_page=kid">3개씩 보기</option>
+        		<option value="category.do?sub_p_category=가족게임&sub_p_page=family">1개씩 보기</option>
     		</select>
-	    </div>
+	    </div> -->
 		<!-- <div class="sort-button">
 			<input class="buttongroup2" type="button" value="3개씩 보기" onclick="clickButton2(this)">
 			<input class="buttongroup2" type="button" value="2개씩 보기" onclick="clickButton2(this)">
@@ -896,7 +899,7 @@ $(function() {
 		<div id="box">
 			<ul class="banner_name1">
        			<c:forEach var="item" items="${list}" begin="0" end="0">
-           			<li>${item.sub_p_category}</li>
+           			<li>모든게임</li>
        			</c:forEach>
 	 		</ul>
 		
@@ -930,8 +933,6 @@ $(function() {
 			</c:if>
 			
 		</div>
-			
-		</div>
 	
 		<div id="photo-box">
 			<c:forEach var="vo" items="${ list }">
@@ -939,9 +940,7 @@ $(function() {
 					<input type="hidden" name = "sub_p_idx" value=${ vo.sub_p_idx }>
 					<div class="img-container2">
 						<div class="img-wrapper">
-							<%-- <a href="../photo/sub_To_Detail.do?sub_p_category=가족게임&sub_p_page=family1&sub_p_detail_loc=" + ${ vo.sub_p_detail_loc }> --%>
-							<img src="../images/${ vo.sub_p_filename }" class="img-in-container"
-							onclick = "location.href='../photo/sub_To_Detail.do?sub_p_detail_loc=${ vo.sub_p_detail_loc }'" />
+							<img src="../images/${ vo.sub_p_filename }" class="img-in-container" />
 						</div>
 					</div>
 					
@@ -952,7 +951,6 @@ $(function() {
 						<div class="title" style="font-size: 23px; text-align: center;">플레이타임 : ${ vo.sub_p_playtime }분</div>
 						<div class="title" style="font-size: 23px; text-align: center; margin-bottom:15px;">연령 : ${ vo.sub_p_age }세 이상</div>
 					</div>
-					
 					<c:if test="${ sessionScope.user.mem_grade eq '관리자' }">
 					<div class="col text-center">
 						<input class="btn btn-warning" type="button" value="수정" 
@@ -961,11 +959,9 @@ $(function() {
 								onclick="photo_delete('${ vo.sub_p_idx }');">
 					</div>
 					</c:if>
-				
 				</div>
 			</c:forEach>
 		</div>	
-			
 	</div>
 		</div>
 	</div>

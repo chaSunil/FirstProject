@@ -73,7 +73,8 @@ public class subPhotoInsertAction extends HttpServlet {
         String sub_p_age_str 		= mr.getParameter("sub_p_age");
         String sub_p_year_str 		= mr.getParameter("sub_p_year");
         String sub_p_publisher		= mr.getParameter("sub_p_publisher");
-
+        String sub_p_detail_loc		= mr.getParameter("sub_p_detail_loc");
+        
         // String을 int로 변환 시키기
         int sub_p_min_player = 0;
         int sub_p_max_player = 0;
@@ -123,7 +124,7 @@ public class subPhotoInsertAction extends HttpServlet {
 
         // PhotoVo포장
         subPhotoVo vo = new subPhotoVo(sub_p_title, sub_p_category, sub_p_min_player, sub_p_max_player, sub_p_playtime,
-                sub_p_age, sub_p_year, sub_p_publisher, sub_p_filename);
+                sub_p_age, sub_p_year, sub_p_publisher, sub_p_filename, sub_p_detail_loc);
 
         // DB Insert
         int res = subPhotoDao.getInstance().insert(vo);

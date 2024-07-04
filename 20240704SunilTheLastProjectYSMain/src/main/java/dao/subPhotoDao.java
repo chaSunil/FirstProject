@@ -67,6 +67,7 @@ public class subPhotoDao {
 				vo.setSub_p_age(rs.getInt("sub_p_age"));
 				vo.setSub_p_year(rs.getInt("sub_p_year"));
 				vo.setSub_p_publisher(rs.getString("sub_p_publisher"));
+				vo.setSub_p_detail_loc(rs.getString("sub_p_detail_loc"));
 
 				//ArrayList에 추가
 				list.add(vo);
@@ -132,6 +133,7 @@ public class subPhotoDao {
 				vo.setSub_p_age(rs.getInt("sub_p_age"));
 				vo.setSub_p_year(rs.getInt("sub_p_year"));
 				vo.setSub_p_publisher(rs.getString("sub_p_publisher"));
+				vo.setSub_p_detail_loc(rs.getString("sub_p_detail_loc"));
 
 			} //end:if
 
@@ -161,7 +163,7 @@ public class subPhotoDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
-		String sql = "insert into sub_photo values(seq_sub_photo_idx.nextVal, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into sub_photo values(seq_sub_photo_idx.nextVal, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			//1.Connection 얻어오기
@@ -180,6 +182,7 @@ public class subPhotoDao {
 			pstmt.setInt(7, vo.getSub_p_year());
 			pstmt.setString(8, vo.getSub_p_publisher());
 			pstmt.setString(9, vo.getSub_p_filename());
+			pstmt.setString(10, vo.getSub_p_detail_loc());
 
 			//4.DB insert
 			res = pstmt.executeUpdate(); //select문 이외는 무조건 update 성공시 1 증가
@@ -241,6 +244,7 @@ public class subPhotoDao {
 				vo.setSub_p_age(rs.getInt("sub_p_age"));
 				vo.setSub_p_year(rs.getInt("sub_p_year"));
 				vo.setSub_p_publisher(rs.getString("sub_p_publisher"));
+				vo.setSub_p_detail_loc(rs.getString("sub_p_detail_loc"));
 
 				//ArrayList에 추가
 				list.add(vo);
@@ -429,6 +433,7 @@ public class subPhotoDao {
 				vo.setSub_p_age(rs.getInt("sub_p_age"));
 				vo.setSub_p_year(rs.getInt("sub_p_year"));
 				vo.setSub_p_publisher(rs.getString("sub_p_publisher"));
+				vo.setSub_p_detail_loc(rs.getString("sub_p_detail_loc"));
 
 				//ArrayList에 추가
 				list.add(vo);
@@ -491,6 +496,7 @@ public class subPhotoDao {
 				vo.setSub_p_age(rs.getInt("sub_p_age"));
 				vo.setSub_p_year(rs.getInt("sub_p_year"));
 				vo.setSub_p_publisher(rs.getString("sub_p_publisher"));
+				vo.setSub_p_detail_loc(rs.getString("sub_p_detail_loc"));
 
 				//ArrayList에 추가
 				list.add(vo);

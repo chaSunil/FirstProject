@@ -238,10 +238,10 @@ $(document).ready(function() {
 			<img id="tab-img" src="../image/sidemenu.png">
 			<ul>
 				<li class="cate-box cate-box0">
-					<a href="#">전체게임</a>
+					<a href="../photo/allGame.do">전체게임</a>
 				</li>
 				<li class="cate-box cate-box1 f-1">
-					<a href="#">가족게임</a>
+					<a href="../photo/category.do?sub_p_category=가족게임&sub_p_page=family">가족게임</a>
 					<ul>
 						<li class="cate2 c2-box1 f-2"><a href="../assessment/list.do?a_cate=f-1">스플렌더</a></li>
 						<li class="cate2 c2-box2 f-2"><a href="../assessment/list.do?a_cate=f-2">스컬킹</a></li>
@@ -256,7 +256,7 @@ $(document).ready(function() {
 					</ul>
 				</li>
 				<li class="cate-box cate-box2 k-1">
-					<a href="#">어린이게임</a>
+					<a href="../photo/category.do?sub_p_category=어린이게임&sub_p_page=kid">어린이게임</a>
 						<ul>
 						<li class="cate2 c2-box1 k-2"><a href="../assessment/list.do?a_cate=k-1">마헤</a></li>
 						<li class="cate2 c2-box2 k-2"><a href="../assessment/list.do?a_cate=k-2">코코너츠</a></li>
@@ -271,7 +271,7 @@ $(document).ready(function() {
 					</ul> 
 				</li>
 				<li class="cate-box cate-box3 w-1">
-					<a href="#">워게임</a>
+					<a href="../photo/category.do?sub_p_category=워게임&sub_p_page=war">워게임</a>
 						<ul>
 						<li class="cate2 c2-box1 w-2"><a href="../assessment/list.do?a_cate=w-1">황혼의 투쟁</a></li>
 						<li class="cate2 c2-box2 w-2"><a href="../assessment/list.do?a_cate=w-2">반지 전쟁(2판)</a></li>
@@ -286,7 +286,7 @@ $(document).ready(function() {
 					</ul> 
 				</li>
 				<li class="cate-box cate-box4 s-1">
-					<a href="#">전략게임</a>
+					<a href="../photo/category.do?sub_p_category=전략게임&sub_p_page=strategy">전략게임</a>
 						<ul>
 						<li class="cate2 c2-box1 s-2"><a href="../assessment/list.do?a_cate=s-1">글룸헤이븐</a></li>
 						<li class="cate2 c2-box2 s-2"><a href="../assessment/list.do?a_cate=s-2">테라포밍 마스</a></li>
@@ -301,7 +301,7 @@ $(document).ready(function() {
 					</ul> 
 				</li>
 				<li class="cate-box cate-box5 a-3">
-					<a href="#">추상 게임</a>
+					<a href="../photo/category.do?sub_p_category=추상게임&sub_p_page=abstract">추상 게임</a>
 						<ul>
 						<li class="cate2 c2-box1 a-4"><a href="../assessment/list.do?a_cate=a-1">마작</a></li>
 						<li class="cate2 c2-box2 a-4"><a href="../assessment/list.do?a_cate=a-2">워 체스트</a></li>
@@ -316,7 +316,7 @@ $(document).ready(function() {
 					</ul>
 				</li>
 				<li class="cate-box cate-box6 c-1">
-					<a href="#">컬렉터블 게임</a>
+					<a href="../photo/category.do?sub_p_category=컬렉터블 게임&sub_p_page=collectable">컬렉터블 게임</a>
 						<ul>
 						<li class="cate2 c2-box1 c-2"><a href="../assessment/list.do?a_cate=c-1">아컴 호러 : 카드게임</a></li>
 						<li class="cate2 c2-box2 c-2"><a href="../assessment/list.do?a_cate=c-2">안드로이드 : 넷러너</a></li>
@@ -331,7 +331,7 @@ $(document).ready(function() {
 					</ul>
 				</li>
 				<li class="cate-box cate-box7 t-1">
-					<a href="#">테마게임</a>
+					<a href="../photo/category.do?sub_p_category=테마게임&sub_p_page=theme">테마게임</a>
 					<ul>
 						<li class="cate2 c2-box1 t-2"><a href="../assessment/list.do?a_cate=t-1">네메시스</a></li>
 						<li class="cate2 c2-box2 t-2"><a href="../assessment/list.do?a_cate=t-2">팬데믹 레거시 : 시즌 2</a></li>
@@ -346,7 +346,7 @@ $(document).ready(function() {
 					</ul>
 				</li>
 				<li class="cate-box cate-box8 p-1">
-					<a href="#">파티게임</a>
+					<a href="../photo/category.do?sub_p_category=파티게임&sub_p_page=party">파티게임</a>
 					<ul>
 						<li class="cate2 c2-box1 p-2"><a href="../assessment/list.do?a_cate=p-1">레지스탕스</a></li>
 						<li class="cate2 c2-box2 p-2"><a href="../assessment/list.do?a_cate=p-2">라스베가스</a></li>
@@ -376,7 +376,7 @@ $(document).ready(function() {
 			<a href="https://boardlife.co.kr/bbs_list.php?tb=board_used" target='_blank'>중고장터</a>
 		</li>
 		<li>
-			<a href="https://www.boardgamemall.co.kr/">자유게시판</a>
+			<a href="../boardming/sublist.do">자유게시판</a>
 		</li>
 		
 	</ul>

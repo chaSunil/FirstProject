@@ -128,7 +128,7 @@ $(document).ready(function() {
 	    })
 	      .then((result) => {
 	      if (result.value) {
-	    	  window.location.href = "../member/logout.do";
+	    	  window.location.href = "../member/sublogout.do?sub_p_category=베스트게임&sub_p_page=best1";
 	      } else if (result.dismiss === 'cancel') {
 	          swal(
 	            '로그아웃이 취소되었습니다.',
@@ -522,22 +522,22 @@ $(function() {
 	
 	function sortByName() {
 		
-		location.href = "sort.do?sub_p_category=베스트게임&sub_p_page=bset1&sub_p_sort=sub_p_title";
+		location.href = "sort.do?sub_p_category=베스트게임&sub_p_page=best1&sub_p_sort=sub_p_title";
 	}
 	
 	function sortByPlaytime() {
 		
-		location.href = "sort.do?sub_p_category=베스트게임&sub_p_page=bset1&sub_p_sort=sub_p_playtime";
+		location.href = "sort.do?sub_p_category=베스트게임&sub_p_page=best1&sub_p_sort=sub_p_playtime";
 	}
 	
 	function sortByPeople() {
 		
-		location.href = "sort.do?sub_p_category=베스트게임&sub_p_page=bset1&sub_p_sort=sub_p_max_player";
+		location.href = "sort.do?sub_p_category=베스트게임&sub_p_page=best1&sub_p_sort=sub_p_max_player";
 	}
 	
 	function sortByAge() {
 		
-		location.href = "sort.do?sub_p_category=베스트게임&sub_p_page=bset1&sub_p_sort=sub_p_age";
+		location.href = "sort.do?sub_p_category=베스트게임&sub_p_page=best1&sub_p_sort=sub_p_age";
 	}
 
 </script>
@@ -564,7 +564,7 @@ $(function() {
 	            <!-- 로그인 화면 전환 -->
 	            <!-- 로그인 안되었을 때 session ~~ -->
 	            <c:if test="${ empty sessionScope.user }">
-	                <a href="../member/login_form.do">로그인</a>
+	                <a href="../member/sublogin_form.do?sub_p_category=베스트게임&sub_p_page=best">로그인</a>
 	                <a href="../member/insert_form.do">회원가입</a>
 	            </c:if>
 	            <!-- 로그인 되었을 때 session 살리기~~ -->
@@ -942,7 +942,8 @@ $(function() {
 						<div class="row">
 							<div class="col-sm-6 img-container2"  >
 								<div class="img-wrapper">
-									<img src="../images/${ vo.sub_p_filename }" class="img-in-container" />
+									<img src="../images/${ vo.sub_p_filename }" class="img-in-container" 
+									onclick = "location.href='../photo/sub_To_Detail.do?sub_p_detail_loc=${ vo.sub_p_detail_loc }'" />
 								</div>
 							</div>
 							

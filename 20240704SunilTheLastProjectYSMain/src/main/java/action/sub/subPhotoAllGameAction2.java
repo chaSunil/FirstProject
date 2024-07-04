@@ -14,10 +14,10 @@ import dao.subPhotoDao;
 import db.vo.subPhotoVo;
 
 /**
- * Servlet implementation class subPhotoSortAction
+ * Servlet implementation class subPhotoOnlyPartyAction
  */
-@WebServlet("/member/sort.do")
-public class subPhotoSortAction extends HttpServlet {
+@WebServlet("/member/allGame.do")
+public class subPhotoAllGameAction2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -27,17 +27,12 @@ public class subPhotoSortAction extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String sub_p_category = request.getParameter("sub_p_category");
-		String sub_p_page = request.getParameter("sub_p_page");
-		String sub_p_sort = request.getParameter("sub_p_sort");
+		List<subPhotoVo> list = subPhotoDao.getInstance().selectList();
 		
-
-		List<subPhotoVo> list = subPhotoDao.getInstance().selectSort(sub_p_category, sub_p_sort);
-				
 		request.setAttribute("list", list);
 
 		//Dispatcher형식으로 호출
-		String forward_page = "../photo/sub" + sub_p_page + ".jsp";
+		String forward_page = "allGame.jsp";
 		RequestDispatcher disp = request.getRequestDispatcher(forward_page);
 		disp.forward(request, response);
 

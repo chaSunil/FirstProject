@@ -16,8 +16,8 @@ import db.vo.subPhotoVo;
 /**
  * Servlet implementation class subPhotoSortAction
  */
-@WebServlet("/member/sort.do")
-public class subPhotoSortAction extends HttpServlet {
+@WebServlet("/photo/sort.do")
+public class subPhotoSortAction2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -37,7 +37,7 @@ public class subPhotoSortAction extends HttpServlet {
 		request.setAttribute("list", list);
 
 		//Dispatcher형식으로 호출
-		String forward_page = "../photo/sub" + sub_p_page + ".jsp";
+		String forward_page = "sub" + sub_p_page + ".jsp";
 		RequestDispatcher disp = request.getRequestDispatcher(forward_page);
 		disp.forward(request, response);
 

@@ -122,7 +122,7 @@ $(document).ready(function() {
 	    })
 	      .then((result) => {
 	      if (result.value) {
-	    	  window.location.href = "../member/logout.do";
+	    	  window.location.href = "../member/sublogout.do?sub_p_category=추상게임&sub_p_page=abstract";
 	      } else if (result.dismiss === 'cancel') {
 	          swal(
 	            '로그아웃이 취소되었습니다.',
@@ -492,7 +492,7 @@ $(function() {
 	            <!-- 로그인 화면 전환 -->
 	            <!-- 로그인 안되었을 때 session ~~ -->
 	            <c:if test="${ empty sessionScope.user }">
-	                <a href="../member/login_form.do">로그인</a>
+	                <a href="../member/sublogin_form.do?sub_p_category=추상게임&sub_p_page=abstract">로그인</a>
 	                <a href="../member/insert_form.do">회원가입</a>
 	            </c:if>
 	            <!-- 로그인 되었을 때 session 살리기~~ -->
@@ -801,6 +801,7 @@ $(function() {
 	</div>
 	
 	
+		<!--                             카테고리 별로 정렬 되게 만들기                       --> 
 	<div class="sub-sort">
     	<div class=sort1>
 			<a href="#" onclick="sortByName();">게임이름&nbsp;</a>
@@ -810,7 +811,12 @@ $(function() {
 			<a href="#" onclick="sortByPeople();">인원수&nbsp;</a>
 			<div class="line"></div>
 			<a href="#" onclick="sortByAge();">연령</a>
-		</div>	   
+		</div>	  
+		<!--                             카테고리 별로 정렬 되게 만들기                       --> 
+		
+		
+		
+		<!--                             2개씩보기 3개씩보기                       --> 
 	   <!-- 드롭다운 -->		   
 	   <div class="sort2">
 		    <select title="" onchange="window.open(value,'_self');">
@@ -819,11 +825,8 @@ $(function() {
         		<option value="category.do?sub_p_category=추상게임&sub_p_page=abstract1">1개씩 보기</option>
     		</select>
 	    </div>
-		<!-- <div class="sort-button">
-			<input class="buttongroup2" type="button" value="3개씩 보기" onclick="clickButton2(this)">
-			<input class="buttongroup2" type="button" value="2개씩 보기" onclick="clickButton2(this)">
-		</div> -->
 	</div>
+		<!--                             2개씩보기 3개씩보기                       --> 
 	
 	<hr>
 	
@@ -835,6 +838,9 @@ $(function() {
        			</c:forEach>
 	 		</ul>
 		
+		
+		
+		<!--                             사진올리기 버튼과 로그아웃 버튼 생성                       -->
 		<!-- 메뉴 -->
 		<div>
 		<c:if test="${ sessionScope.user.mem_grade eq '관리자' }">
@@ -845,17 +851,7 @@ $(function() {
 							onclick="photo_insert();">
 				</div>
 				<div class="col-sm-6" style="text-align: right;">
-					
-					<!-- 로그인이 안 된 경우 -->
-					<!-- <c:if test="${ empty user }">
-						<input class="btn btn-primary" type="button" value="로그인"
-								onclick="location.href='../member/login_form.do'">
-						<input class="btn btn-warning" type="button" value="회원가입"
-								onclick="location.href='../member/insert_form.do'">
-					</c:if> -->
-					
-					<!-- 로그인이  된 경우 -->
-					<!-- <c:if test="${ not empty user }"> -->
+
 						<b>${ user.mem_name }</b>님 환영합니다
 						<input class="btn btn-primary" type="button" value="로그아웃"
 								onclick="location.href='../member/logout.do'">
@@ -865,14 +861,21 @@ $(function() {
 			</c:if>
 			
 		</div>
+		<!--                             사진올리기 버튼과 로그아웃 버튼 생성                       -->
 	
+	
+	
+	
+		<!--                             photo list를 읽어오는 로직                       -->
 		<div id="photo-box">
 			<c:forEach var="vo" items="${ list }">
 				<div class="photo" onclick="showPhoto('${ vo.sub_p_idx }');">
 					<input type="hidden" name = "sub_p_idx" value=${ vo.sub_p_idx }>
 					<div class="img-container2">
 						<div class="img-wrapper">
-							<img src="../images/${ vo.sub_p_filename }" class="img-in-container" />
+							<img src="../images/${ vo.sub_p_filename }" class="img-in-container" 
+							onclick = "location.href='../photo/sub_To_Detail.do?sub_p_detail_loc=${ vo.sub_p_detail_loc }'" />
+							<!-- photo 누르면 location.do로 파라미터를 가지고 간다. -->
 						</div>
 					</div>
 					
@@ -895,18 +898,14 @@ $(function() {
 				
 				</div>
 			</c:forEach>
-		</div>	
+		</div>
+		<!--                             photo list를 읽어오는 로직                       -->
+		
+		
 
 	</div>
 		</div>
 	</div>
-<!-- 	<div class="quickmenu_rigth">
-	  <ul>
-	    <li><a href="#">최근 본 상품</a></li>
-	    <li><a href="#">좋아요</a></li>
-	    <li><a href="#">1:1 문의</a></li>
-	  </ul>
-	</div> -->
 	
 	<!--탑 버튼(이미지)-->
 	<img id="topBtn" src="../images/up_arrow2.png" href="#">
