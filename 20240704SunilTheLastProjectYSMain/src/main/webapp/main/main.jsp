@@ -677,74 +677,76 @@ function downArrow() {
     <section class="category-icon">
         <ul>
             <li>
-                <a href="header2.html"></a>
-                <div class="a-1">
-                     <img src="image/003.png" alt="" class="a1-a">
-                     <img src="image/004.png" alt="" class="a1-b">
-                </div>
-                <p>테마게임</p>
-                
+                <a href="../photo/category.do?sub_p_category=가족게임&sub_p_page=family">
+                    <div class="a-1">
+                        <img src="image/001.png" alt="" class="a1-a">
+                        <img src="image/002.png" alt="" class="a1-b">
+                    </div>
+                    <p>가족게임</p>
+                </a>
             </li>
             <li>
-                <a href="header2.html"></a>
-                 <div class="a-1">
-                     <img src="image/001.png" alt="" class="a1-a">
-                     <img src="image/002.png" alt="" class="a1-b">
-                 </div>
-                 <p>가족게임</p>
+                <a href="../photo/category.do?sub_p_category=어린이게임&sub_p_page=kid">
+                    <div class="a-1">
+                        <img src="image/005.png" alt="" class="a1-a">
+                        <img src="image/006.png" alt="" class="a1-b">
+                    </div>
+                    <p>어린이게임</p>
+                </a>
             </li>
             <li>
-                <a href="header2.html"></a>
-                 <div class="a-1">
-                     <img src="image/005.png" alt="" class="a1-a">
-                     <img src="image/006.png" alt="" class="a1-b">
-                 </div>
-                 <p>어린이게임</p>
-                
+                <a href="../photo/category.do?sub_p_category=워게임&sub_p_page=war">
+                    <div class="a-1">
+                        <img src="image/011.png" alt="" class="a1-a">
+                        <img src="image/012.png" alt="" class="a1-b">
+                    </div>
+                    <p>워게임</p>
+                </a>
             </li>
             <li>
-                <a href="header2.html"></a>
-                 <div class="a-1">
-                     <img src="image/007.png" alt="" class="a1-a">
-                     <img src="image/008.png" alt="" class="a1-b">
-                 </div>
-                 <p>전략게임</p>
-                
+                <a href="../photo/category.do?sub_p_category=전략게임&sub_p_page=strategy">
+                    <div class="a-1">
+                        <img src="image/007.png" alt="" class="a1-a">
+                        <img src="image/008.png" alt="" class="a1-b">
+                    </div>
+                    <p>전략게임</p>
+                </a>
             </li>
             <li>
-                <a href="header2.html"></a>
-                 <div class="a-1">
-                     <img src="image/009.png" alt="" class="a1-a">
-                     <img src="image/010.png" alt="" class="a1-b">
-                 </div>
-                 <p>추상게임</p>
-                
+                <a href="../photo/category.do?sub_p_category=추상게임&sub_p_page=abstract">
+                    <div class="a-1">
+                        <img src="image/009.png" alt="" class="a1-a">
+                        <img src="image/010.png" alt="" class="a1-b">
+                    </div>
+                    <p>추상게임</p>
+                </a>
             </li>
             <li>
-                <a href="header2.html"></a>
-                 <div class="a-1">
-                     <img src="image/011.png" alt="" class="a1-a">
-                     <img src="image/012.png" alt="" class="a1-b">
-                 </div>
-                 <p>워게임</p>
-                
+                <a href="../photo/category.do?sub_p_category=컬렉터블 게임&sub_p_page=collectable">
+                    <div class="a-1">
+                        <img src="image/015.png" alt="" class="a1-a">
+                        <img src="image/016.png" alt="" class="a1-b">
+                    </div>
+                    <p>컬렉터블게임</p>
+                </a>
             </li>
             <li>
-                <a href="header2.html"></a>
-                 <div class="a-1">
-                     <img src="image/013.png" alt="" class="a1-a">
-                     <img src="image/014.png" alt="" class="a1-b">
-                 </div>
-                 <p>파티게임</p>
-                
+                <a href="../photo/category.do?sub_p_category=테마게임&sub_p_page=theme">
+                    <div class="a-1">
+                        <img src="image/003.png" alt="" class="a1-a">
+                        <img src="image/004.png" alt="" class="a1-b">
+                    </div>
+                    <p>테마게임</p>
+                </a>
             </li>
             <li>
-                <a href="header2.html"></a>
-                <div class="a-1">
-                    <img src="image/015.png" alt="" class="a1-a">
-                    <img src="image/016.png" alt="" class="a1-b">
-                </div>
-                <p>컬렉터블게임</p>
+                <a href="../photo/category.do?sub_p_category=파티게임&sub_p_page=party">
+                    <div class="a-1">
+                        <img src="image/013.png" alt="" class="a1-a">
+                        <img src="image/014.png" alt="" class="a1-b">
+                    </div>
+                    <p>파티게임</p>
+                </a>
             </li>
         </ul>
     </section>

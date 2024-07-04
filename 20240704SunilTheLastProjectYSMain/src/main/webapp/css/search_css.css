@@ -291,7 +291,11 @@ ul, li {
 
 /* 헤더 탭 코드 */
 #header-tap {
-	height: 57px;	
+	/* 06.26 수정 */
+	width: 100%;
+	border-bottom: 1px solid #E9E9E9 !important;
+	
+	height: 56px;	
 }
 
 #header-tap-list {
@@ -323,19 +327,134 @@ ul, li {
 	font-weight: bold;
 }
 
- #header-tap-list li ul {
-	
-/* 	padding-top: 20px;
-	padding-left: 40px; */
-/*  	width:150px;
-	height: auto; */ 
+#header-tap-list li ul {	
 	top: 26px;
 	left: -60px;
 	position: absolute;	
-/* 	background: white; */
-/*  border: 1px solid gray; 
- 	border-radius: 3px; */
+
 }
+
+.side-menu li:hover{
+    background: #f2f2f2;
+} 
+
+/* 06.23 추가 */
+.cate-box {
+	width : 190px;
+	background: white; 
+	height: 56px;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	
+	font-size: 20px;
+}
+
+.cate-box:not(.cate-box8) {
+	border-bottom: 0.5px solid #cccccc !important;	
+}
+
+.cate-box0{
+	border-top: 1px solid black;	
+}
+
+.cate-box8 {
+	border-bottom: 1px solid black;		
+}
+
+.cate2{
+	width : 190px;
+	background: white;
+	height: 56px;
+	border-right: 1px solid black;
+	left: 249px;
+		
+}
+.cate2 a{
+	font-size: 15px !important;
+}		
+.f-2 {	
+	top: -82px;
+	display: none;
+}
+.k-2 {	
+	top: -138px;
+	display: none;
+}
+.w-2 {
+	top: -194px;	
+	display: none;
+}
+.s-2 {
+	top: -250px;
+	display: none;	
+}
+.a-4 {
+	top: -306px;
+	display: none;
+}
+.c-2 {
+	top: -362px;
+	display: none;
+}
+.t-2 {
+	top: -418px;
+	display: none;
+}
+.p-2 {
+	top: -474px;
+	display: none;
+}
+
+.f-1:hover .f-2{
+	display: block;
+}
+.k-1:hover .k-2{
+	display: block;
+}
+.w-1:hover .w-2{
+	display: block;
+}
+.s-1:hover .s-2{
+	display: block;
+}
+.a-3:hover .a-4{
+	display: block;
+}
+.c-1:hover .c-2{
+	display: block;
+}
+.t-1:hover .t-2{
+	display: block;
+}
+.p-1:hover .p-2{
+	display: block;
+}
+
+.cate2:not(.c2-box10) {
+	border-bottom: 0.5px solid #cccccc !important;	
+}
+
+.c2-box1{	
+	border-top: 1px solid black;	
+}
+.c2-box10{	
+	border-left: 1px solid black;		
+	border-bottom: 1px solid black;		
+}
+
+/* 06.23 추가 */
+.cate-box a {
+	position: absolute;
+	top: 16px;
+	left: 30px;	
+}
+
+#tab-img {
+	width: 24px;
+} 
+
+/* 상단메인배너 end */
+/* header css !! end */
 
 
 
