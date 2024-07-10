@@ -20,6 +20,9 @@
 		
 		const deptno = $("#deptno").val();
 		
+		// 직급전체
+		$("#sajob").val("all");
+		
 		// Ajax로 요청
 		$.ajax({
 			url			:		"sawon/list.do",
@@ -35,11 +38,14 @@
 	
 	function search_sajob(){
 		
-		const deptno = $("#sajob").val();
+		const sajob = $("#sajob").val();
+		
+		// 부서전체
+		$("#deptno").val(0);
 		
 		// Ajax로 요청
 		$.ajax({
-			url			:		"sawon/list.do",
+			url			:		"sawon/list_job.do", // SawonListJobAction
 			data		:		{"sajob":sajob}, // sawon/list.do?sajob=대리
 			success		:		function(res_data){
 									$("#disp").html(res_data);
@@ -48,7 +54,7 @@
 									alert(err.responseText);
 								}
 		});
-	}
+	}// end:search_sajob
 
 </script>
 </head>

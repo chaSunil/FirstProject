@@ -58,6 +58,22 @@ public class SawonDao {
 
 		return list;
 	}
+
+	public List<SawonVo> selectListFromSajob(String sajob) {
+		
+		List<SawonVo> list = null;
+		
+		// 1. SqlSession 얻어오기(Mybatis 수행객체)
+		SqlSession sqlSession = factory.openSession();
+		
+		// 2. 작업수행                namespace.mapperId        parameter
+		list = sqlSession.selectList("sawon.sawon_list_sajob", sajob);
+		
+		// 3. 작업완료 후 닫기작업
+		sqlSession.close();
+
+		return list;
+	}
 	
 	
 	
