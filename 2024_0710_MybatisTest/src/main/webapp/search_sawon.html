@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+#box {
+	width: 1000px;
+	margin: auto;
+	margin-top: 50px;
+}
+
+</style>
+<script type="text/javascript">
+
+	function search(){
+		
+		const deptno = $("#deptno").val();
+		
+		// Ajax로 요청
+		$.ajax({
+			url			:		"sawon/list.do",
+			data		:		{"deptno":deptno}, // sawon/list.do?deptno=10
+			success		:		function(res_data){
+									$("#disp").html(res_data);
+								},
+			error		:		function(err){
+									alert(err.responseText);
+								}
+		});
+	}
+
+</script>
+</head>
+
+<body>
+<div id="box">
+<form class="form-inline">
+
+	부서번호:<select class="form-control" id="deptno">
+			 	<option value="0">전체보기</option>
+			 	<option value="10">10번부서</option>
+			 	<option value="20">20번부서</option>
+			 	<option value="30">30번부서</option>
+			 	<option value="40">40번부서</option>
+			 </select>
+			 <input class="btn btn-primary" type="button" value="검색" onclick="search();">
+			 
+	<hr>
+	<div id="disp">
+		
+	</div>
+</form>
+</div>
+</body>
+</html>
