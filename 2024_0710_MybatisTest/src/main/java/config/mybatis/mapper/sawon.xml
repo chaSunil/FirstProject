@@ -9,9 +9,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from sawon
 	</select>
 	
-	<!-- 부서별 조회 -->
+	<!-- 부서별 조회 --><!-- parameterType : 전달인자타입
+							 resultType    : select결과에 대한 포장타입(객체에 대한) -->
 	<select id="sawon_list_deptno" parameterType="int" resultType="vo.SawonVo">
 		select * from sawon where deptno = #{ deptno }
+	</select>
+	
+	<!-- 직급별 조회 -->
+	<select id="sawon_list_sajob" parameterType="String" resultType="vo.SawonVo">
+		select * from sawon where sajob = #{ sajob }
 	</select>
 
 </mapper>
