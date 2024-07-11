@@ -96,7 +96,39 @@
 			}
 		});
 		
+	}// end:modify_form
+	
+	function find(){
+		let search = $("#search").val();
+		let search_text = $("#search_text").val().trim();
+		// search value 값이 전체검색이 아니고, 빈칸으로 되어있으면,
+		if(search != "all" && search_text==""){
+			alert("검색어를 입력하세요.");
+			$("#search_text").val("");
+			$("#search_text").focus();
+			return;
+		}
+		
+		// 자바스크립트 이용해서, 호출
+		location.href="list.do?search=" + search + "&search_text=" + 
+										  encodeURIComponent(search_text,"utf-8");
 	}
+</script>
+<script type="text/javascript">
+	/* 초기화 */
+	/* 이렇게 설정해주면, 새로고침을 하면, 값이 들어가있다. */
+	$(document).ready(function(){
+		
+		if("${ not empty param.search }" == "true"){
+			$("#search").val("${ param.search }");
+		}
+		
+		// 전체보기면 입력창 지우기
+		if("${ param.search eq 'all' }" == "true"){
+			$("#search_text").val("");
+		}
+				
+	});
 </script>
 </head>
 <body>
@@ -110,6 +142,24 @@
 			<input class="btn btn-primary" type="button" value="글쓰기"
 			onclick="location.href='insert_form.do'">
 		</div>
+		
+		
+		<!-- 검색메뉴 -->
+		<div style="text-align: right; margin-bottom: 5px;">
+			<form class="form-inline"><!-- class="form-inline"을 사용하면 한 줄로 배치가 가능하다. -->
+				<select id="search" class="form-control">
+					<option value="all">전체보기</option>
+					<option value="name">이름</option>
+					<option value="content">내용</option>
+					<option value="name_content">이름+내용</option>
+				</select>
+				<!-- "${ param.search_text }" 설정은 파라미터를 넣어주면, 새로고침이 되어도 기존값으로 고정이 되어있기 때문에 설정 -->
+				<!-- 위에 $(document).ready에서 함수 설정으로 val()값에 parameter 값이 기본적으로 들어가있다. -->
+				<input id="search_text" class="form-control" value="${ param.search_text }">
+				<input type="button" class="btn btn-primary" value="검색" onclick="find();">
+			</form>
+		</div>
+		
 			<!-- url로 요청하기 -->
 
 		<!-- 내용이 없을 경우 -->
@@ -134,7 +184,7 @@
 				<div class="panel-body">
 					<div class="mycommon content">${ vo.content }</div>
 					<div class="mycommon regdate"><b>작성일자 : </b>${ fn:substring(vo.regdate,0,16) }</div>
-					<div class="mycommon pwd">비밀번호${ vo.pwd } : 
+					<div class="mycommon pwd">비밀번호${ vo.pwd } :
 						<!-- c_pwd 수정 -->		
 						<input class="form-control" type = "password" id="c_pwd">
 						<input class="btn btn-info" type = "button" value="수정" onclick="modify_form(this.form)">

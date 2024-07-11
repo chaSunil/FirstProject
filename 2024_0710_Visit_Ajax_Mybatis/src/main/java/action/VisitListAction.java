@@ -25,6 +25,13 @@ public class VisitListAction extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		// /visit/list.do
+		// /visit/list.do??search=all&search_text=
+		// /visit/list.do??search=name&search_text=길동
+		// /visit/list.do??search=content&search_text=내용
+		// /visit/list.do??search=name_content&search_text=길동(이름이나 내용이 길동)
+		
+		
 		// 방명록 데이터 가져오기
 		List<VisitVo> list = VisitDao.getInstance().selectList();
 		
