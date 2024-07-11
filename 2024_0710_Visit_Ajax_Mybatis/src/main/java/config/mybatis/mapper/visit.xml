@@ -11,6 +11,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			(select * from visit order by idx desc) v
 	</select>
 	
+	<!-- 검색 조회 type="db.vo.VisitVo" => alias="visit" -->
+	<select id="visit_list_condition" parameterType="Map" resultType="visit">
+		select * from visit_view
+		<!-- Dynamic Query: 조건별 Query -->
+		<!-- 유사검색 길동이라는 단어가 있는 데이터를 검색 -->
+		<!-- where name like '%길동%' -->
+		<!-- 만약 where prefix 다음에 or가 나오게 되면 trim 해라. -->
+		<trim prefix="where" prefixOverrides="or">
+			<if test="name!=null">
+				name like '%' || #{ name } || '%'
+			</if>
+			<if test="content!=null">
+				or content like '%' || #{ content } || '%'
+			</if>
+		</trim>
+	</select>
+	
 	<!-- 추가 
 		 parameter가 객체(VisitVo)로 전달되면 mybatis parameter 변수는
 		 VO내의 속성명을 이용할 수 있다.

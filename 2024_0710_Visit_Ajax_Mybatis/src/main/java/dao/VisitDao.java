@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -37,6 +38,22 @@ public class VisitDao {
 		
 		// 2. 작업수행                namespace
 		list = sqlSession.selectList("visit.visit_list");
+		
+		// 3. 닫기 : conn.close()과정 포함
+		sqlSession.close();
+
+		return list;
+	}
+	
+	public List<VisitVo> selectList(Map<String, String> map) {
+		
+		List<VisitVo> list = null;
+		
+		// 1. SqlSession 얻어오기
+		SqlSession sqlSession = factory.openSession(); // Connection 획득
+		
+		// 2. 작업수행                namespace
+		list = sqlSession.selectList("visit.visit_list_condition", map);
 		
 		// 3. 닫기 : conn.close()과정 포함
 		sqlSession.close();
