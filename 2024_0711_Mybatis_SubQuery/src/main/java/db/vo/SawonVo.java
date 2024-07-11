@@ -1,5 +1,7 @@
 package db.vo;
 
+import java.util.List;
+
 public class SawonVo {
 
 	int sabun;
@@ -11,6 +13,15 @@ public class SawonVo {
 	int samgr;
 	int sapay;
 	
+	List<GogekVo> go_list;
+	
+	public List<GogekVo> getGo_list() {
+		return go_list;
+	}
+	
+	public void setGo_list(List<GogekVo> go_list) {
+		this.go_list = go_list;
+	}
 	public int getSabun() {
 		return sabun;
 	}

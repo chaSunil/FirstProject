@@ -12,13 +12,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="deptno" column="deptno"/>
 		<collection property="sa_list"
 					column="no=deptno"
-					select="sawon_list_deptno"
+					select="dept.sawon_list_deptno"
 		/>
 	</resultMap>
+	
+	
+	<resultMap type="db.vo.SawonVo" id="sawonMap">
+		<result property="sabun" column="sabun"/>
+		<collection property="go_list"
+					column="{sabun=sabun}"
+					select="gogek_list_godam"
+		/>
+	</resultMap>
+	
+	
+	
+	<select id="gogek_list_godam" resultType="db.vo.GogekVo">
+		select * from gogek where godam = #{ sabun }
+	</select>
+	
+	
+	
 	<!-- parameterType을 안쓰는이유는 외부에서 가져오지 않고 xml 위에서 호출되었기에 사용안함 -->
-	<select id="sawon_list_deptno" resultType="db.vo.SawonVo">
+ 	<select id="sawon_list_deptno" resultMap="sawonMap">
 		select * from sawon where deptno = #{ no }
 	</select>
+	
 	
 	<select id="dept_list" resultMap="deptMap">
 		select * from dept

@@ -10,7 +10,7 @@
 <body>
 
 <hr>
-	부서별 사원목록
+	부서별 사원목록=>사원별 고객목록
 <hr>
 <ul>
 	<!-- for(DeptVo dept : list) -->
@@ -20,7 +20,12 @@
 			<ul>
 				<!-- for(SawonVo sawon : dept.sa_list) -->
 				<c:forEach var="sawon" items="${ dept.sa_list }">
-					<li>${ sawon.sabun } : ${ sawon.deptno } : ${ sawon.saname }</li>
+					<li>${ sawon.sabun } : ${ sawon.saname }</li>
+					<ul>
+						<c:forEach var="gogek" items="${ sawon.go_list }">
+							<li>${ gogek.gobun } : ${ gogek.goname }</li>
+						</c:forEach>
+					</ul>
 				</c:forEach>
 			</ul>
 		</li>
