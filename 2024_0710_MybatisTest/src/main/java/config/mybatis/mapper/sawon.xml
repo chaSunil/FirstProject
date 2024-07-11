@@ -19,6 +19,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="sawon_list_sajob" parameterType="String" resultType="vo.SawonVo">
 		select * from sawon where sajob = #{ sajob }
 	</select>
+	
+	<!-- 부서와 직급별로 조회 Dynamic Query -->
+	<select id="sawon_list_condition" parameterType="Map" resultType="vo.SawonVo">
+		select * from sawon
+		<!-- 검색조건 추가 -->
+		<trim prefix="where" prefixOverrides="and">
+			<!-- 부서검색 -->
+			<if test="deptno!=null">
+				deptno = #{ deptno }
+			</if>
+			<if test="sajob!=null">
+				and sajob = #{ sajob }
+			</if>
+			<if test="sasex!=null">
+				and sasex = #{ sasex }
+			</if>
+		</trim>
+	</select>
 
 </mapper>
 

@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -68,6 +69,22 @@ public class SawonDao {
 		
 		// 2. 작업수행                namespace.mapperId        parameter
 		list = sqlSession.selectList("sawon.sawon_list_sajob", sajob);
+		
+		// 3. 작업완료 후 닫기작업
+		sqlSession.close();
+
+		return list;
+	}
+
+	public List<SawonVo> selectList(Map<String, Object> map) {
+		
+		List<SawonVo> list = null;
+		
+		// 1. SqlSession 얻어오기(Mybatis 수행객체)
+		SqlSession sqlSession = factory.openSession();
+		
+		// 2. 작업수행                namespace.mapperId        parameter
+		list = sqlSession.selectList("sawon.sawon_list_condition", map);
 		
 		// 3. 작업완료 후 닫기작업
 		sqlSession.close();

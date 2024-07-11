@@ -55,6 +55,31 @@
 								}
 		});
 	}// end:search_sajob
+	
+	function search_all(){
+		
+		const deptno = $("#deptno").val();
+		const sajob = $("#sajob").val();
+		const sasex = $("#sasex").val();
+		
+		// Ajax로 요청
+		$.ajax({
+			url			:		"sawon/list_condition.do", // SawonListConditionAction
+			data		:		{
+								"deptno":deptno,
+								"sajob":sajob, // sawon/list.do?deptno=10&sajob=대리
+								"sasex":sasex
+								},
+			success		:		function(res_data){
+									$("#disp").html(res_data);
+								},
+			error		:		function(err){
+									alert(err.responseText);
+								}
+		});
+	}// end:search_all
+	
+	
 
 </script>
 </head>
@@ -81,7 +106,18 @@
 			 	<option value="알바">알바</option>
 			 </select>
 			 <input class="btn btn-primary" type="button" value="직급별 검색" onclick="search_sajob();">
-			 
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	
+	성별:<select class="form-control" id="sasex">
+			<option value="all">전체</option>
+			<option value="여자">여자</option>
+			<option value="남자">남자</option>
+		 </select>
+	
+	
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	
+	<input type="button" class="btn btn-info" value="전체조건검색" onclick="search_all();">	 
 	<hr>
 	<div id="disp">
 		
