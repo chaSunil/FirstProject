@@ -35,6 +35,8 @@ public class SawonListConditionAction extends HttpServlet {
 		// 0. 수신인코딩
 		request.setCharacterEncoding("utf-8");
 		
+		
+		// 여기서부터 지정해주는것은 list_condition.do로 parameter 값을 안치고 그대로 쳤을경우에 조건식 지정
 		int deptno = 0;
 		
 		try {
@@ -53,6 +55,11 @@ public class SawonListConditionAction extends HttpServlet {
 			sasex = "all";
 		}
 		
+		String hire_year_10 = request.getParameter("hire_year_10");
+		if(hire_year_10==null) {
+			hire_year_10 = "0";
+		}
+		
 		// 검색할 조건을 전달할 Map
 		Map<String, Object> map = new HashMap<String, Object>();
 		
@@ -66,6 +73,10 @@ public class SawonListConditionAction extends HttpServlet {
 		
 		if(!sasex.equals("all")) { // 전체가 아니면
 			map.put("sasex",sasex);
+		}
+		
+		if(!hire_year_10.equals("0")) {
+			map.put("hire_year_10",hire_year_10);
 		}
 		
 		// list 가져오기 (사원목록)

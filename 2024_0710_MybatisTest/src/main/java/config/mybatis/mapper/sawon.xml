@@ -35,6 +35,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="sasex!=null">
 				and sasex = #{ sasex }
 			</if>
+			<if test="hire_year_10!=null">
+				and floor(to_number(to_char(sahire,'YYYY'))/10)*10 = #{ hire_year_10 }
+			</if>
 		</trim>
 	</select>
 

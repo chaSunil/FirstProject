@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dept">
+	<!-- 레코드 1개 포장시 적용 -->
+	<resultMap type="db.vo.DeptVo" id="deptMap">
+	<!-- 데이터베이스 컬럼명 deptno를 no라는 변수명으로 지정해준다. -->
+	<!-- 이 과정은 컬럼명과 변수가 동일하지 않을경우에 지정해준다. -->
+	<!-- vo는 vo 대로 받아오고, map은 레이블 한 줄을 고대로 가져온다. -->
+	<!-- 	<result property="no" column="deptno"/> -->
+		<result property="deptno" column="deptno"/>
+		<collection property="sa_list"
+					column="no=deptno"
+					select="sawon_list_deptno"
+		/>
+	</resultMap>
+	<!-- parameterType을 안쓰는이유는 외부에서 가져오지 않고 xml 위에서 호출되었기에 사용안함 -->
+	<select id="sawon_list_deptno" resultType="db.vo.SawonVo">
+		select * from sawon where deptno = #{ no }
+	</select>
+	
+	<select id="dept_list" resultMap="deptMap">
+		select * from dept
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

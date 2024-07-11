@@ -8,7 +8,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style type="text/css">
 #box {
-	width: 1000px;
+	width: 1200px;
 	margin: auto;
 	margin-top: 50px;
 }
@@ -61,14 +61,16 @@
 		const deptno = $("#deptno").val();
 		const sajob = $("#sajob").val();
 		const sasex = $("#sasex").val();
+		const hire_year_10 = $("#hire_year_10").val();
 		
 		// Ajax로 요청
 		$.ajax({
 			url			:		"sawon/list_condition.do", // SawonListConditionAction
 			data		:		{
 								"deptno":deptno,
-								"sajob":sajob, // sawon/list.do?deptno=10&sajob=대리
-								"sasex":sasex
+								"sajob":sajob, // sawon/list.do?deptno=10&sajob=대리&sasex=남자&hire_year_10=1990
+								"sasex":sasex,
+								"hire_year_10":hire_year_10
 								},
 			success		:		function(res_data){
 									$("#disp").html(res_data);
@@ -117,6 +119,14 @@
 	
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	
+	입사년대:<select class="form-control" id="hire_year_10">
+			 	<option value="0">전체</option>
+			 	<option value="1980">1980년대</option>
+			 	<option value="1990">1990년대</option>
+			 	<option value="2000">2000년대</option>
+			 </select>
+	
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<input type="button" class="btn btn-info" value="전체조건검색" onclick="search_all();">	 
 	<hr>
 	<div id="disp">
