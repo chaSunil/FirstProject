@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 	<result property="no" column="deptno"/> -->
 	
 	<!-- 레코드 1개 포장시 적용 -->
+	<!-- 2번 -->
 	<resultMap type="db.vo.DeptVo" id="deptMap">
 		<!-- property는 vo에서 지정한 변수명 -->
 		<result property="deptno" column="deptno"/>
@@ -18,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		/>
 	</resultMap>
 	
-	
+	<!-- 4번 -->
 	<resultMap type="db.vo.SawonVo" id="sawonMap">
 		<result property="sabun" column="sabun"/>
 		<collection property="go_list"
@@ -28,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	
 	
-	
+	<!-- 5번 -->
 	<select id="gogek_list_godam" resultType="db.vo.GogekVo">
 		select * from gogek where godam = #{ sabun }
 	</select>
@@ -36,26 +37,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<!-- parameterType을 안쓰는이유는 외부에서 가져오지 않고 xml 위에서 호출되었기에 사용안함 -->
+	<!-- 3번 -->
  	<select id="sawon_list_deptno" resultMap="sawonMap">
 		select * from sawon where deptno = #{ no }
 	</select>
-	
-	
+	 
+	<!-- 1번 -->
 	<select id="dept_list" resultMap="deptMap">
 		select * from dept
 	</select>
 
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
