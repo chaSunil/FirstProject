@@ -138,7 +138,7 @@ public class VisitDao {
 
 	}// end:update()
 	
-	public int selectRowTotal() {
+	public int selectRowTotal(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		int total = 0;
 		
@@ -146,7 +146,7 @@ public class VisitDao {
 		SqlSession sqlSession = factory.openSession();
 
 		// 2. 작업수행
-		total = sqlSession.selectOne("visit.visit_row_total");
+		total = sqlSession.selectOne("visit.visit_row_total", map);
 
 		// 3. 닫기 : conn.close() 과정 포함
 		sqlSession.close();

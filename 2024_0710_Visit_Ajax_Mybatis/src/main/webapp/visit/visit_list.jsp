@@ -10,6 +10,13 @@
 <meta charset="UTF-8">
 <title>박정환 Story</title>
 <%-- 현재 컨텍스트 경로 : ${ pageContext.request.contextPath } --%>
+<style type="text/css">
+
+	img {
+		width: 200px;
+	}
+	
+</style>
 <link rel="stylesheet" href="../css/visit.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -89,7 +96,9 @@
 					return;
 				}
 				
-				location.href=`modify_form.do?idx=\${ idx }&no=\${ no }`;
+				// 수정폼 띄우기
+				// JSP 내에서 back-tic 사용시 자바스크립트 변수표현 : \${자바스크립트 변수}
+				location.href=`modify_form.do?idx=\${ idx }&page=${ empty param.page ? 1 : param.page }&search=${ empty param.search ? 'all' : param.search }&search_text=${ param.search_text }`;
 			},
 			error	: function(err) {
 				alert(err.responseText);
@@ -137,7 +146,7 @@
 		<h1 id="title">여러분의 방문을 환영합니다. <br>
 		디아블로2 레저렉션 대표 커뮤니티
 		</h1>
-		<!-- <img alt="" src="https://i.ibb.co/wJ9PrpD/i14735195771.jpg" width="1000px"> -->
+		<!-- <img alt="" src="https://i.ibb.co/wJ9PrpD/i14735195771.jpg" style="width= 1000px !important;"> -->
 		<!-- <img alt="" src="https://i.ibb.co/9yk6xxb/images-1.jpg" width="600px"> -->
 		
 
@@ -164,12 +173,13 @@
 		</div>
 		
 			<!-- url로 요청하기 -->
+			
+			<!-- 페이지 메뉴 -->
+			<div style="text-align:center; margin-top:20px;">
+				${ pageMenu }
+			</div>
 
 	
-		<!-- 페이지 메뉴 -->
-		<div style="text-align:center; margin-top:20px;">
-			${ pageMenu }
-		</div>
 <!-- 		<div>
 			<ul class="pagination">
 			  <li><a href="list.do?page=1">1</a></li>
@@ -219,5 +229,6 @@
 	
 
 </div>
+
 </body>
 </html>

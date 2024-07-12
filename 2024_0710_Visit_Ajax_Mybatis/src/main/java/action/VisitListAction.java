@@ -61,14 +61,14 @@ public class VisitListAction extends HttpServlet {
 		int start = (nowPage-1) * BLOCK_LIST + 1;
 		int end = start + BLOCK_LIST - 1;
 		
-		
-		
-		
 		// 검색조건을 담을 맵
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("start",start);
 		map.put("end",end);
+		
+		
+		
 		
 		// 이름 + 내용
 		if(search.equals("name_content")) {
@@ -86,10 +86,14 @@ public class VisitListAction extends HttpServlet {
 		List<VisitVo> list = VisitDao.getInstance().selectList(map);
 		
 		// 전체 게시물수
-		int rowTotal = VisitDao.getInstance().selectRowTotal();
+		int rowTotal = VisitDao.getInstance().selectRowTotal(map);
+		
+		// 검색정보 filter : search_filter = "search=name&search_text=길동"
+		String search_filter = String.format("search=%s&search_text=%s", search, search_text);
 		
 		// pageMenu 만들기
 		String pageMenu = Paging.getPaging("list.do",   // pageURL
+											search_filter,
 											nowPage,    // 현재페이지
 											rowTotal,   // 전체페이지
 											MyCommon.Visit.BLOCK_LIST,  // 한화면에 보여질 게시물 수
