@@ -137,6 +137,9 @@
 		<h1 id="title">여러분의 방문을 환영합니다. <br>
 		디아블로2 레저렉션 대표 커뮤니티
 		</h1>
+		<!-- <img alt="" src="https://i.ibb.co/wJ9PrpD/i14735195771.jpg" width="1000px"> -->
+		<!-- <img alt="" src="https://i.ibb.co/9yk6xxb/images-1.jpg" width="600px"> -->
+		
 
 		<div style="margin-bottom: 10px">
 			<input class="btn btn-primary" type="button" value="글쓰기"
@@ -161,6 +164,23 @@
 		</div>
 		
 			<!-- url로 요청하기 -->
+
+	
+		<!-- 페이지 메뉴 -->
+		<div style="text-align:center; margin-top:20px;">
+			${ pageMenu }
+		</div>
+<!-- 		<div>
+			<ul class="pagination">
+			  <li><a href="list.do?page=1">1</a></li>
+			  <li><a href="list.do?page=2">2</a></li>
+			  <li><a href="list.do?page=3">3</a></li>
+			  <li><a href="list.do?page=4">4</a></li>
+			  <li><a href="list.do?page=5">5</a></li>
+			</ul> -->
+
+
+		
 
 		<!-- 내용이 없을 경우 -->
 		<c:if test="${ empty requestScope.list }">
@@ -192,7 +212,6 @@
 						<input class="btn btn-danger" type = "button" value="삭제" onclick="del(this.form);">
 					</div>
 				</div>
-				
 			</div>
 		</form>
 		</c:forEach>

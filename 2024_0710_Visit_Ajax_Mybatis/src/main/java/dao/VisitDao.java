@@ -45,7 +45,7 @@ public class VisitDao {
 		return list;
 	}
 	
-	public List<VisitVo> selectList(Map<String, String> map) {
+	public List<VisitVo> selectList(Map<String, Object> map) {
 		
 		List<VisitVo> list = null;
 		
@@ -137,5 +137,21 @@ public class VisitDao {
 		return res;
 
 	}// end:update()
+	
+	public int selectRowTotal() {
+		// TODO Auto-generated method stub
+		int total = 0;
+		
+		// 1. SqlSession 얻어오기
+		SqlSession sqlSession = factory.openSession();
+
+		// 2. 작업수행
+		total = sqlSession.selectOne("visit.visit_row_total");
+
+		// 3. 닫기 : conn.close() 과정 포함
+		sqlSession.close();
+		
+		return total;
+	}
 	
 }

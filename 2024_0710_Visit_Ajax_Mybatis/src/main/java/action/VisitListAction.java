@@ -1,18 +1,20 @@
 package action;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import action.util.MyCommon;
+import action.util.Paging;
+import dao.VisitDao;
+import db.vo.VisitVo;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import dao.VisitDao;
-import db.vo.VisitVo;
 
 /**
  * Servlet implementation class VisitListAction
@@ -45,8 +47,28 @@ public class VisitListAction extends HttpServlet {
 			search="all";
 		}
 		
+		
+		
+		int nowPage = 1;
+		try {
+			nowPage = Integer.parseInt(request.getParameter("page"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		// start/end
+		int BLOCK_LIST = 2;
+		int start = (nowPage-1) * BLOCK_LIST + 1;
+		int end = start + BLOCK_LIST - 1;
+		
+		
+		
+		
 		// 검색조건을 담을 맵
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("start",start);
+		map.put("end",end);
 		
 		// 이름 + 내용
 		if(search.equals("name_content")) {
@@ -63,8 +85,19 @@ public class VisitListAction extends HttpServlet {
 		// 방명록 데이터 가져오기
 		List<VisitVo> list = VisitDao.getInstance().selectList(map);
 		
+		// 전체 게시물수
+		int rowTotal = VisitDao.getInstance().selectRowTotal();
+		
+		// pageMenu 만들기
+		String pageMenu = Paging.getPaging("list.do",   // pageURL
+											nowPage,    // 현재페이지
+											rowTotal,   // 전체페이지
+											MyCommon.Visit.BLOCK_LIST,  // 한화면에 보여질 게시물 수
+											MyCommon.Visit.BLOCK_PAGE); // 한화면에 보여질 페이지 수
+		
 		// request binding
 		request.setAttribute("list", list);
+		request.setAttribute("pageMenu", pageMenu);
 		
 		// Dispatcher형식으로 호출
 		String forward_page = "visit_list.jsp";
