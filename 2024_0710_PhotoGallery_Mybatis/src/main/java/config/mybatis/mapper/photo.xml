@@ -8,6 +8,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from photo order by p_idx desc
 	</select>
 	
+	<!-- Paging별 조회 -->
+	<select id="photo_list_page" parameterType="Map" resultType="photo">
+		select * from
+		(
+			select
+				rank() over(order by p_idx desc) as no,
+				p.*
+			from
+				(select * from photo) p
+		)
+		where no between #{ start } and #{ end }
+	</select>
+	
+	<!-- 전체레코드수 구하기 -->
+	<select id="photo_row_total" resultType="int">
+		select nvl(count(*),0) from photo
+	</select>
+	
 	<select id="photo_one" resultType="photo" parameterType="int">
 		select * from photo where p_idx = #{ p_idx }
 	</select>

@@ -12,64 +12,69 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-#box {
-	width: 750px;
-	margin: auto;
-	margin-top: 30px;
-}
-
-#title {
-	text-align: center;
-	font-size: 32px;
-	font-weight: bold;
-	color: purple;
-	text-shadow: 1px 1px 1px black;
-	margin-bottom: 50px;
-}
-
-#photo-box {
-	height: 500px;
-	border: 2px solid blue;
-	margin-top: 20px;
-	/* 상하방향(y축) 넘치는 부분은 스크롤로 보기 */
-	overflow-y: scroll;
-}
-
-.photo {
-	width: 140px;
-	height: 200px;
-	border: 1px solid green;
-	margin: 20px;
-	padding: 10px;
-	box-shadow: 2px 2px 2px black;
-	/* 블록요소를 한줄로 정렬 */
-	float: left;
-}
-
-/* 공백 시 하위 요소들에 적용 (주의!!) */
-.photo:hover {
-	border-color: red;
-}
-
-.photo>img {
-	width: 120px; 
-	height 150px;
-	border: 1px solid gray;
-	outline: 1px solid black;
-}
-
-.title {
-	border: 1px solid gray;
-	outline: 1px solid black;
-	margin-top: 10px;
-	text-align: center;
-	
-	/* css elilpsis  <- 말 줄임*/ 
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	word-break: break-all;
-}
+  #box{
+      width: 770px;
+      margin: auto;
+      margin-top: 30px;
+  }
+  
+  #title{
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      color: green;
+      text-shadow: 1px 1px 1px black;
+      margin-bottom: 50px;
+  }
+  
+  #photo-box{
+     
+     height: 470px;
+     border: 2px solid  blue;
+     margin-top: 10px;
+     
+     /* 상하스크롤 */
+     /* overflow-y: scroll; */
+  }
+  
+  .photo{
+     width: 140px;
+     height: 180px;
+     border: 1px solid green;
+     margin: 25px;
+     padding: 10px;
+     
+     box-shadow: 2px 2px 2px black;
+     
+     float:left;
+  }
+  
+  .photo:hover{
+     border-color: red;
+  }
+  
+  .photo > img{
+     width: 120px;
+     height: 120px;
+     border: 1px solid gray;
+     outline: 1px solid black;
+  }
+  
+  .title{
+     width: 120px;
+     border: 1px solid gray;
+     outline: 1px solid black;
+     padding: 5px;
+     margin-top: 5px;
+     
+     /* ellipsis */
+     overflow: hidden;
+	 white-space: nowrap;
+	 text-overflow: ellipsis;
+	 word-break: break-all;
+     
+     
+  }
 </style>
 
 <script type="text/javascript">
@@ -185,10 +190,38 @@
 		<c:forEach var="vo" items="${ list }">
 			<div class="photo" onclick="showPhoto('${ vo.p_idx }')">
 				<img src="../images/${ vo.p_filename }">
-				<div class="title">${ vo.p_title }</div>
+				<div class="title">${vo.no}.${ vo.p_title }</div>
 			</div>
 		</c:forEach>		
 		</div>
+		
+		<!-- Page Menu -->
+		<div style="text-align:center; margin-top:20px;">
+			${ pageMenu }
+			
+<!-- 			<br>
+			<ul class='pagination'>
+			  <li class='active'><a href='list.do?page=1'>🐈</a></li>
+			  <li><a href='list.do?page=1'>1</a></li>
+			  <li><a href="?page=3">2</a></li>
+			  <li><a href="?page=3">3</a></li>
+			  <li><a href="?page=4">4</a></li>
+			  <li><a href="?page=5">5</a></li>
+			  <li><a href="list.do?page=1">🐑</a></li>
+			</ul> -->
+			
+			<!-- ◀|&nbsp;<b><font color='#91b72f'>1</font></b>&nbsp;
+			<a href='list.do?page=2'>2</a>&nbsp;
+			<a href='list.do?page=3'>3</a>&nbsp;
+			<a href='list.do?page=4'>4</a>&nbsp;|▶ -->
+			<!-- <a href="list.do?page=1">1</a>&nbsp&nbsp&nbsp&nbsp
+			<a href="list.do?page=2">2</a>&nbsp&nbsp&nbsp&nbsp
+			<a href="list.do?page=3">3</a>&nbsp&nbsp&nbsp&nbsp
+			<a href="list.do?page=4">4</a>&nbsp&nbsp&nbsp&nbsp
+			<a href="list.do?page=5">5</a>&nbsp&nbsp&nbsp&nbsp -->
+		</div>
+		
+		<!-- <img alt="" src="https://cdn.gamemeca.com/gmdata/0000/822/852/%EB%8D%B0%EC%8A%A4%EB%85%B8%ED%8A%B8%EB%A5%98%ED%81%AC.jpg" width=2000px> -->
 		
 	</div>
 	

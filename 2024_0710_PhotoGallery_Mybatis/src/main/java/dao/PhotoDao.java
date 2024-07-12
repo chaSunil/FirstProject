@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -52,6 +53,23 @@ public class PhotoDao {
 
 		return list;
 	}
+	
+	public List<PhotoVo> selectList(Map<String, Object> map) {
+		
+		List<PhotoVo> list = new ArrayList<PhotoVo>();
+
+		// 1. SqlSession 얻어오기
+		SqlSession sqlSession = factory.openSession(); // Connection 획득
+		
+		// 2. 작업수행                namespace
+		list = sqlSession.selectList("photo.photo_list_page", map);
+		
+		// 3. 닫기 : conn.close()과정 포함
+		sqlSession.close();
+
+		return list;
+	}
+	
 	
 	// p_idx에 대한 1건의 정보
 	// 일부만 조회
@@ -153,4 +171,21 @@ public class PhotoDao {
 		return res;
 
 	}//end:update()
+
+	public int selectRowTotal() {
+
+		int total = 0;
+		
+		// 1. SqlSession 얻어오기
+		SqlSession sqlSession = factory.openSession();
+
+		// 2. 작업수행
+		total = sqlSession.selectOne("photo.photo_row_total");
+
+		// 3. 닫기 : conn.close() 과정 포함
+		sqlSession.close();
+
+		return total;
+	}
+
 }

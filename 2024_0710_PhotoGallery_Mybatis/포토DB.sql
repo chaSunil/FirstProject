@@ -27,11 +27,29 @@ alter table photo
 	add constraint fk_photo_mem_idx	 foreign key(mem_idx) 
 									 references member(mem_idx) 
 									 on delete cascade -- 회원을 삭제할 때, 올린 게시물까지 삭제하는 방법(부모키를 죽이면 자식 키들도 다 죽임)
-									 
-									 
+									
+									
+select * from photo order by p_idx desc
 
+
+select p.* , 'p_ip=' || p_ip from (select * from photo) p
 									 
-	
+-- Paging 처리를 위한 SQL
+
+
+select * from
+(
+	select
+		rank() over(order by p_idx desc) as no,
+		p.*
+	from
+		(select * from photo) p
+)
+where no between 1 and 5
+
+-- 전체게시물수 구하기
+-- null value : null 값이면 0으로 지정한다
+select nvl(count(*),0) from photo
 	
 
 
