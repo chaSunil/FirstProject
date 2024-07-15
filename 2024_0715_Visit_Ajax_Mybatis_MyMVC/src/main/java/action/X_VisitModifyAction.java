@@ -14,8 +14,8 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class VisitModifyAction
  */
-@WebServlet("/visit/modify.do")
-public class VisitModifyAction extends HttpServlet {
+// @WebServlet("/visit/modify.do")
+public class X_VisitModifyAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**

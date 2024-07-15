@@ -14,8 +14,8 @@ import db.vo.VisitVo;
 /**
  * Servlet implementation class VisitModifyFormAction
  */
-@WebServlet("/visit/modify_form.do")
-public class VisitModifyFormAction extends HttpServlet {
+// @WebServlet("/visit/modify_form.do")
+public class X_VisitModifyFormAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**

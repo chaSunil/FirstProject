@@ -148,6 +148,67 @@ public class VisitController {
 		String json = String.format("{\"result\":%b}", bResult);
 		
 		return json; // 이렇게 사용할시 forward 되어버린다 jsp가 아니기 때문에 505 error
-	}
+	}// end:check_pwd
+	
+	// 삭제하기
+	@RequestMapping("/visit/delete.do")
+	public String delete(HttpServletRequest request, HttpServletResponse response) {
+		
+		int idx = Integer.parseInt(request.getParameter("idx"));
+		String no = request.getParameter("no"); // 삭제할 글의 순서
+		
+		// DB 삭제
+		int res = VisitDao.getInstance().delete(idx);
+		
+		return "redirect:list.do";
+	}// end:delete
+	
+	// 수정폼으로 연결
+	@RequestMapping("/visit/modify_form.do")
+	public String modify_form(HttpServletRequest request, HttpServletResponse response) {
+		
+		int idx = Integer.parseInt(request.getParameter("idx"));
+		
+		// idx에 해당되는 게시물 1건 얻어오기
+		VisitVo vo = VisitDao.getInstance().selectOne(idx);
+		
+		// textarer \n기능처리 : content <br> -> \n 변환
+		String content = vo.getContent().replaceAll("<br>", "\n");
+		vo.setContent(content);
+
+		// request binding(JSP에게 vo의 데이터를 넘겨줘야 하기 때문에 setAttribute 한다)
+		request.setAttribute("vo", vo);
+		
+		return "visit_modify_form.do";
+	}// end:modify_form
+	
+	// 수정하기
+	@RequestMapping("/visit/modify.do")
+	public String modify(HttpServletRequest request, HttpServletResponse response) {
+		
+		// parameter 받기
+		int idx = Integer.parseInt(request.getParameter("idx"));
+		// String no = request.getParameter("no");
+		String name = request.getParameter("name");
+		String content = request.getParameter("content").replaceAll("\n", "<br>");
+		String pwd = request.getParameter("pwd");
+		
+		
+		String page = request.getParameter("page");
+		String search = request.getParameter("search");
+		String search_text = request.getParameter("search_text");
+		
+		// ip주소 얻어온다
+		String ip = request.getRemoteAddr();
+		
+		// VisitVo 포장
+		VisitVo vo = new VisitVo(idx, name, content, pwd, ip);
+		
+		// DB 수정하기
+		int res = VisitDao.getInstance().update(vo);
+		
+		return "redirect:list.do";
+	}// end:modify
+	
 	
 }

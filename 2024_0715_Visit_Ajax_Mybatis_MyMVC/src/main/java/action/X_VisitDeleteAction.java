@@ -12,8 +12,8 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class VisitDeleteAction
  */
-@WebServlet("/visit/delete.do")
-public class VisitDeleteAction extends HttpServlet {
+// @WebServlet("/visit/delete.do")
+public class X_VisitDeleteAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
