@@ -68,8 +68,6 @@ public class VisitListAction extends HttpServlet {
 		map.put("end",end);
 		
 		
-		
-		
 		// 이름 + 내용
 		if(search.equals("name_content")) {
 			map.put("name", search_text); // 데이터를 찾아오는 값에 이름에다가두 넣구우
