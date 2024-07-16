@@ -29,15 +29,8 @@
 <hr>
 <ul>
 	<c:forEach var="word" items="${ wordMap }">
-		<li>${ word }</li>
-	</c:forEach>
-</ul>
-
-<hr>
-	Properties 클래스
-<hr>
-<ul>
-	<c:forEach var="prop" items="${ dbProp }">
-		<li>${ prop }</li>
+		<dt><b>${ word.key }</b></dt>
+		<dd>${ word.value }</dd>
+		<dd>${ word }</dd>
 	</c:forEach>
 </ul>
