@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,6 +17,23 @@ public class VisitDao {
 	// 테이블 목록 조회
 	public List<VisitVo> selectList() {
 		// 값을 바로 넘겨주기 떄문에, 저장장소가 필요없다 list 같이
+		
+		// sqlSession.selectList("visit.visit_list");
+		// sqlSessionTemplate 내부에 재정의된 selectList 동작한다
+		// 1. openSession()->2.작업수행->3.close()
+		
+		/* 
+		   class SqlSessionTemplate implements SqlSession{
+		   
+			   public List selectList(){
+			   
+				 List<VisitVo> list = null;
+				 Sqlsession sqlSession = factory.openSession();
+				 list = sqlSession.selectList("visit.visit_list");
+				 sqlSession.close();
+				}
+		   }
+		*/
 
 		return sqlSession.selectList("visit.visit_list");
 	}

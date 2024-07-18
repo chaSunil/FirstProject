@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<!-- 검색조건별 조회 -->
-	<select id="visit_list_condition" parameterType="Map" resultType="visit">
+	<select id="visit_list_condition" parameterType="Map" resultType="vo.VisitVo">
 		<!-- 페이징 처리를 위해 no를 명시함 -->
 		select * from
 		(
@@ -59,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 parameter가 객체(VisitVo)로 전달되면 mybatis parameter 변수는
 		 VO내의 속성명을 이용할 수 있다.
 	-->
-	<insert id="visit_insert" parameterType="db.vo.VisitVo">
+	<insert id="visit_insert" parameterType="vo.VisitVo">
 		insert into visit values(
 		                         seq_visit_idx.nextVal,
 		                         #{ name },
@@ -76,12 +76,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<!-- 한개 조회 -->
-	<select id="visit_one" resultType="db.vo.VisitVo" parameterType="int">
+	<select id="visit_one" resultType="vo.VisitVo" parameterType="int">
 		select * from visit_view where idx = #{ idx }
 	</select>
 	
 	<!-- 수정하기 -->
-	<update id="visit_update" parameterType="db.vo.VisitVo">
+	<update id="visit_update" parameterType="vo.VisitVo">
 		update visit set name = #{ name },
 		                 content = #{ content },
 		                 pwd = #{ pwd },
