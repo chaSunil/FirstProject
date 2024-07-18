@@ -15,15 +15,11 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 			value="classpath:config/mybatis/mybatis-config.xml" />
 	</bean>
 
-
-
-
 	<!-- SqlSession sqlSession 생성 SqlSessionTemplate template; 
 		 new SqlSessionTemplate(factoryBean) 수동으로 코딩했을 경우 -->
 	<bean id="sqlSession"
 		class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="factoryBean" />
 	</bean>
-
 
 </beans>
