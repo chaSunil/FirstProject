@@ -1,33 +1,80 @@
 package controller;
 
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.ItemsDao;
 import vo.ItemsVo;
 
-
 @Controller
 public class ItemsController {
-	
+	// @RequestMapping에 의해서 Method 호출시 DS가 자동으로 Injection(주입) 시켜준다.
+	@Autowired
+	HttpServletRequest request;
+
+	@Autowired
 	ItemsDao items_dao;
-	
+
 	public ItemsController(ItemsDao items_dao) {
 		super();
 		this.items_dao = items_dao;
 	}
-	
+
 	@RequestMapping("/items/list.do")
 	public String list(Model model) {
-		
+
 		List<ItemsVo> list = items_dao.selectList();
-		
-		model.addAttribute("list",list);
-		
+
+		model.addAttribute("list", list);
+
 		return "items/items_list"; // /WEB-INF/views/ + items/items_list + .jsp
+	}
+
+	
+	 @RequestMapping(value="/items/getlist.do",produces = "application/json;charset=utf-8")
+	 @ResponseBody 
+	 public String search_list() {
+		 
+	 List<ItemsVo> list = items_dao.selectListOption();
+	 
+	 StringBuilder sb = new StringBuilder("[");
+	 
+	 for(ItemsVo vo : list) {
+		 sb.append("\""); sb.append(vo.getOption_name1()); sb.append("\",");
+	 }
+	 
+	 int index = sb.lastIndexOf(",");
+	 
+	 String result = sb.toString().substring(0,index)+ "]";
+	 
+	 //{"result": "%s"}
+	 String json = String.format("{\"result\": %s }", result);
+	 System.out.println(json);
+	  
+	 return json;
+	 
+	 }
+	 
+
+	// /items/category.do?category=방어력
+	@RequestMapping("/items/category.do")
+	public String category(@RequestParam Map<String, Object> map, Model model) {
+		
+		// Category에 해당하는 아이템을 가져온다. 
+		List<ItemsVo> list = items_dao.selectList2(map);
+		 
+		model.addAttribute("list",list);
+		 
+		return "items/items_list";
 	}
 
 }

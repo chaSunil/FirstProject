@@ -589,6 +589,15 @@
 		from (select * from trade_view)t
 	)
 	
+	select * from trade_order_by_view
+		where option_name1 like '방어력'
+		or    option_name2 like '방어력'
+		or    option_name3 like '방어력'
+		or    option_name4 like '방어력'
+		or    option_name5 like '방어력'
+		or    option_name6 like '방어력'
+		or    option_name7 like '방어력'
+	
 	
 	
 	select * from trade_order_by_view
@@ -632,33 +641,6 @@
 		or    옵션명5 like '방어력' and item_o5_val>20
 		or    옵션명6 like '방어력' and item_o6_val>20
 		or    옵션명7 like '방어력' and item_o7_val>20
-	
-	select * from trade_view
-		where 옵션명1 like '언데드에게 주는 피해'
-		or    옵션명2 like '언데드에게 주는 피해'
-		or    옵션명3 like '언데드에게 주는 피해'
-		or    옵션명4 like '언데드에게 주는 피해'
-		or    옵션명5 like '언데드에게 주는 피해'
-		or    옵션명6 like '언데드에게 주는 피해'
-		or    옵션명7 like '언데드에게 주는 피해'
-		
-	select * from trade_view
-		where 옵션명1 like '독 저항' and item_o1_val>20
-		or    옵션명2 like '독 저항' and item_o2_val>20
-		or    옵션명3 like '독 저항' and item_o3_val>20
-		or    옵션명4 like '독 저항' and item_o4_val>20
-		or    옵션명5 like '독 저항' and item_o5_val>20
-		or    옵션명6 like '독 저항' and item_o6_val>20
-		or    옵션명7 like '독 저항' and item_o7_val>20
-		
-	select * from trade_view
-		where 옵션명1 like '독 저항' and item_o1_val>20
-		or    옵션명2 like '독 저항' and item_o2_val>20
-		or    옵션명3 like '독 저항' and item_o3_val>20
-		or    옵션명4 like '독 저항' and item_o4_val>20
-		or    옵션명5 like '독 저항' and item_o5_val>20
-		or    옵션명6 like '독 저항' and item_o6_val>20
-		or    옵션명7 like '독 저항' and item_o7_val>20
 		
 	select * from trade_view
 		where item_shot<4
@@ -752,7 +734,7 @@
 	
 	drop table options
 	drop table options2
-	select * from options
+	select item_o1 as option_name1 from options
 	select * from options6
 	
 	
