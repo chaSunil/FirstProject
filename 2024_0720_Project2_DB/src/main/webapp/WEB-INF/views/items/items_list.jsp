@@ -48,6 +48,12 @@
 		f.action = "../items/category.do";
 		f.submit();
 	}
+	
+	
+	function send(f) {
+		
+		
+	}
 		
 </script>
 <link rel="stylesheet" href="../css/item.css">
@@ -104,6 +110,26 @@
 	box-shadow: 1px 1px 2px gray;
 }
 
+.ui-autocomplete {
+	width: 300px; /* 원하는 너비로 설정 */
+	overflow-y: auto;
+	/* prevent horizontal scrollbar */
+	overflow-x: hidden;
+	height: 500px;
+}
+
+.ui-menu-item div.ui-state-hover,
+.ui-menu-item div.ui-state-active {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: skyblue;
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  background-image: none;
+  border:none;
+}
+
 #item-box-head {
 	width : 900px;
 	margin: auto;
@@ -147,7 +173,7 @@
 }
 
 #item_name_gongback {
-	margin-bottom: 10px;
+	margin-bottom: 0px;
 }
 
 #item_name {
@@ -277,6 +303,10 @@ function downArrow() {
 			  <input type="submit" onclick="send(this.form)" value="검색" id="search_chang">
 			</form>
         </div>
+        
+        <input type="hidden" >
+        
+        
         <form>
         	<input name="item_name" placeholder="옵션명">
         	<input name="item_name_val" placeholder="옵션수치">

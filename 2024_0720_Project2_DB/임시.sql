@@ -598,17 +598,72 @@
 		or    option_name6 like '방어력'
 		or    option_name7 like '방어력'
 	
-	
-	
 	select * from trade_order_by_view
-		where option_name1 like '방어력' and item_o1_val>20
-		or    option_name2 like '방어력' and item_o2_val>20
-		or    option_name3 like '방어력' and item_o3_val>20
-		or    option_name4 like '방어력' and item_o4_val>20
-		or    option_name5 like '방어력' and item_o5_val>20
-		or    option_name6 like '방어력' and item_o6_val>20
-		or    option_name7 like '방어력' and item_o7_val>20
+		where option_name1 = '방어력'
+		or    option_name2 = '방어력'
+		or    option_name3 = '방어력'
+		or    option_name4 = '방어력'
+		or    option_name5 = '방어력'
+		or    option_name6 = '방어력'
+		or    option_name7 = '방어력'
+
+	-- option name + option val
+	create or replace view trade_order_by_view2
+	as
+	select s.*, option_name1 || item_o1_val as option1, 
+	option_name2 || item_o2_val as option2, 
+	option_name3 || item_o3_val as option3, 
+	option_name4 || item_o4_val as option4, 
+	option_name5 || item_o5_val as option5, 
+	option_name6 || item_o6_val as option6, 
+	option_name7 || item_o7_val as option7 
+	from
+	(select * from trade_order_by_view)s
 	
+	select * from trade_order_by_view2
+	where option5 substring
+	
+	
+	
+	select s2.* from
+	(select s.* from
+	(select * from trade_order_by_view
+		where option_name1 = '방어력' and item_o1_val>=10
+		or    option_name2 = '방어력' and item_o2_val>=10		
+		or    option_name3 = '방어력' and item_o3_val>=10		
+		or    option_name4 = '방어력' and item_o4_val>=10		
+		or    option_name5 = '방어력' and item_o5_val>=10		
+		or    option_name6 = '방어력' and item_o6_val>=10		
+		or    option_name7 = '방어력' and item_o7_val>=10)
+		s
+		where option_name1 like '파괴불가'
+		or	  option_name2 like '파괴불가'
+		or	  option_name3 like '파괴불가'
+		or	  option_name4 like '파괴불가'
+		or	  option_name5 like '파괴불가'
+		or	  option_name6 like '파괴불가'
+		or	  option_name7 like '파괴불가')s2
+		where option_name1 like 'zx'
+		
+		
+		or	  option_name1 = '방어력 증가' and item_o1_val>40
+		or	  option_name2 = '방어력 증가' and item_o2_val>40
+		or	  option_name3 = '방어력 증가' and item_o3_val>40
+		or	  option_name4 = '방어력 증가' and item_o4_val>40
+		or	  option_name5 = '방어력 증가' and item_o5_val>40
+		or	  option_name6 = '방어력 증가' and item_o6_val>40
+		or	  option_name7 = '방어력 증가' and item_o7_val>40
+		or	  option_name1 like '파괴불가'
+		or	  option_name2 like '파괴불가'
+		or	  option_name3 like '파괴불가'
+		or	  option_name4 like '파괴불가'
+		or	  option_name5 like '파괴불가'
+		or	  option_name6 like '파괴불가'
+		or	  option_name7 like '파괴불가'
+		
+		
+	select * from trade_order_by_view
+		where option_name6 = '방어력' and item_o6_val>=10 and option_name1 like '파괴불가'
 	
 	
 	select * from trade_order_by_view
