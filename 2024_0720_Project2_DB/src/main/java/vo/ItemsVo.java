@@ -41,6 +41,8 @@ public class ItemsVo {
 	int item_o6_val;
 	int option7_idx;
 	int item_o7_val;
+	int option8_idx;
+	int item_o8_val;
 	
 	
 	String gibon_option1_name;
@@ -59,8 +61,27 @@ public class ItemsVo {
 	String option_name5;
 	String option_name6;
 	String option_name7;
+	String option_name8;
 	
 	
+	public String getOption_name8() {
+		return option_name8;
+	}
+	public void setOption_name8(String option_name8) {
+		this.option_name8 = option_name8;
+	}
+	public int getOption8_idx() {
+		return option8_idx;
+	}
+	public void setOption8_idx(int option8_idx) {
+		this.option8_idx = option8_idx;
+	}
+	public int getItem_o8_val() {
+		return item_o8_val;
+	}
+	public void setItem_o8_val(int item_o8_val) {
+		this.item_o8_val = item_o8_val;
+	}
 	public int getItem_idx() {
 		return item_idx;
 	}

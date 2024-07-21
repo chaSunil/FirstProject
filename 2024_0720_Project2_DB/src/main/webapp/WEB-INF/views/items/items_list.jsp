@@ -429,6 +429,9 @@ function downArrow() {
 				<c:if test="${ items.item_o7_val != 0 || items.option_name7 != null }">
 				<span>${ items.option_name7 } ${ items.item_o7_val }</span><br>
 				</c:if>
+				<c:if test="${ items.item_o8_val != 0 || items.option_name8 != null }">
+				<span>${ items.option_name8 } ${ items.item_o8_val }</span><br>
+				</c:if>
 				</div>
 				</div>
 			</div>
