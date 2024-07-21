@@ -198,7 +198,7 @@ hr {
 }
 
 #item-box3 {
-	width: 400px;
+	width: 300px;
 	height : 350px;
 	display: inline-block;
 	float: left;
@@ -264,10 +264,164 @@ hr {
 	cursor: default;
 }
 
+.btn-3 {
+	font-size: 13px;
+	text-decoration: none;
+	width: 70px;
+	height: 25px;
+	padding: 3px;
+	padding-left: 5px;
+	
+	display: inline-block;
+	
+	background-color: #353944;
+	color: #949492;
+	margin-left: 80px;
+	
+	text-decoration: none;
+	pointer-events: none;
+	cursor: default;
+}
+
+.btn-4 {
+	font-size: 13px;
+	text-decoration: none;
+	width: 60px;
+	height: 25px;
+	padding: 3px;
+	
+	display: inline-block;
+	
+	border: 1px solid #CB9D41;
+	color: #CB9D41;
+	
+	text-decoration: none;
+	pointer-events: none;
+	cursor: default;
+}
+
 #item_sell {
+	width: 400px;
+	height: 300px;
 	margin-top: 25px;
 	margin-left: 100px;
+	
+	float: left;
+	
+	border: 0.5px solid #2C2F36;
+	background-color: #1C1F26;
+	
+	color: #A5A2A5;
 }
+
+#item_sell1 {
+	margin: 30px;
+}
+
+#item_sell2 {
+
+}
+
+#usercard-text {
+	width: 115px;
+	
+	color: #CB9D41;
+	
+	margin-top: -10px;
+	margin-left: 12px;
+	
+	background-color: #1B1D23;
+}
+
+.usercard-text {
+	font-size: 12px;
+}
+
+.usercard-text > span {
+	color: #AE906A;
+}
+
+.usercard-image {
+    width: 22px;
+    height: 22px;
+    object-fit: cover;
+    border-radius: 50%;
+    
+    margin-right: 5px;
+}
+
+.usercard-grade {
+    width: 15px;
+    height: 15px;
+    object-fit: cover;
+    
+    margin-right: 5px;
+}
+
+.usercard-name {
+	display: inline-flex;
+}
+
+#item_sell3 > span {
+	font-size: 13px;
+}
+
+.item_clock {
+	margin-left: 15px;
+	margin-bottom: 8px;
+}
+
+.item_clock2 {
+	margin-left: 50px;
+	margin-bottom: 8px;
+}
+
+#usercard-text2 {
+	width: 50px;
+	
+	color: #CB9D41;
+	
+	margin-top: -30px;
+	margin-left: 12px;
+	
+	background-color: #1B1D23;
+}
+
+#usercard-cp {
+	margin: auto;
+	margin-top: 10px;
+	background-color: #15171E;
+	width: 350px;
+	height: 30px;
+	
+	border-radius: 5px;
+}
+
+#usercard-cp > img {
+	width: 15px;
+	height: 15px;
+}
+
+#usercard-cp2 {
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+#usercard-btn {
+	text-align: center;
+	margin-top: 5px;
+}
+
+#usercard-btn > button {
+	width: 350px;
+	height: 40px;
+	border-radius: 7px;
+	box-shadow: 0px;
+	background-color: #252830;
+}
+
+
+
 </style>
 
 
@@ -438,7 +592,43 @@ function downArrow() {
 			
 			<!-- 거래회원 정보 기입란 -->
 			<div id="item_sell">
-				<img src="https://i.ibb.co/Sfsqy2k/55.jpg">
+				<div id="usercard-text">
+				<span class="usercard-text"><span>기본정보</span> 💡 ONLINE</span>
+				</div>
+				<div id="item_sell1">
+				<img class="usercard-image" src="https://image.chaoscube.co.kr/new/user/367949/profile/b6478d67-9a45-46da-8910-f9f74efcaa18.jpg"> 
+				<img class="usercard-grade" src="https://i.ibb.co/BNKG8b4/image.jpg">
+				<span class="usercard-name"><b>블랙마린</b></span>
+				<a class="btn-3">&ensp;일반판매&ensp;</a>
+				<!-- 판매진행 여부 -->
+				<a class="btn-4">&ensp;판매 중&ensp;</a>
+				</div>
+				<hr>
+				<div id="item_sell2">
+				<!-- 판매양식 -->
+				</div>
+				<div id="item_sell3">
+				<span class="item_clock">등록</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span class="item_clock2">2024.07.20 15:35</span><br>
+				<span class="item_clock">종료예정</span>
+				<span class="item_clock2">2024.07.27 15:35</span><br>
+				<span class="item_clock">판매수량</span>
+				<span class="item_clock2">10EA</span><br>
+				</div>
+				<hr>
+				<div id="usercard-text2">
+				<span class="usercard-text"><span>판매정보</span></span>
+				</div>
+				<div id="usercard-cp">
+				<div id="usercard-cp2">
+				<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
+				<span>&nbsp;&nbsp;판매가 800cp</span>
+				</div>
+				</div>
+				<div id="usercard-btn">
+				<button>자세히보기 →</button>
+				</div>
 			</div>
 </div>
 		</form>
