@@ -44,6 +44,15 @@
 		let item_name_val = f.item_name_val.value.trim();
 		let item_name2 = f.item_name2.value.trim();
 		let item_name_val2 = f.item_name_val2.value.trim();
+		let item_name3 = f.item_name3.value.trim();
+		let item_name_val3 = f.item_name_val3.value.trim();
+		let item_name4 = f.item_name4.value.trim();
+		let item_name_val4 = f.item_name_val4.value.trim();
+		const item_shot = $("#item_shot").val();
+		const item_type = $("#item_type").val();
+		const item_grade = $("#item_grade").val();
+		const item_im = $("#item_im").val();
+		
 		
 		f.action = "../items/category.do";
 		f.submit();
@@ -311,8 +320,37 @@ function downArrow() {
         	<input name="item_name" placeholder="옵션명">
         	<input name="item_name_val" placeholder="옵션수치">
         	<input name="item_name2" placeholder="옵션명2">
-        	<input name="item_name_val2" placeholder="옵션수치2">
-        	<input type="button" value="검색" onclick="search(this.form);">        
+        	<input name="item_name_val2" placeholder="옵션수치2"><br>
+        	<input name="item_name3" placeholder="옵션명3">
+        	<input name="item_name_val3" placeholder="옵션수치3">
+        	<input name="item_name4" placeholder="옵션명4">
+        	<input name="item_name_val4" placeholder="옵션수치4"><br>
+        	<input type="button" value="검색" onclick="search(this.form);">     
+        	<select id="item_type" name="item_type">
+        		<option value="양손검">양손검</option>
+        		<option value="투구">투구</option>
+        		<option value="갑옷">갑옷</option>
+        		<option value="방패">방패</option>
+        		<option value="장갑">장갑</option>
+        		<option value="허리띠">허리띠</option>
+        		<option value="신발">신발</option>
+        	</select>  
+        	<select id="item_grade" name="item_grade">
+        		<option value="익셉셔널">익셉셔널</option>
+        		<option value="노멀">노멀</option>
+        		<option value="엘리트">엘리트</option>
+        	</select>   
+        	<select id="item_shot" name="item_shot">
+        		<option value="0">0</option>
+        		<option value="1">1</option>
+        		<option value="2">2</option>
+        		<option value="3">3</option>
+        		<option value="4">4</option>
+        	</select>   
+        	<select id="item_im" name="item_im">
+        		<option value="수리불가">수리불가</option>
+        		<option value="수리가능">수리가능</option>
+        	</select>   
         </form>
         	
 		<div id="item-box-head">

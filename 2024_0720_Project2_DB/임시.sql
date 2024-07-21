@@ -624,8 +624,8 @@
 	where option5 substring
 	
 	
-	
-	select s2.* from
+	select s3.* from
+	(select s2.* from
 	(select s.* from
 	(select * from trade_order_by_view
 		where option_name1 = '방어력' and item_o1_val>=10
@@ -643,7 +643,21 @@
 		or	  option_name5 like '파괴불가'
 		or	  option_name6 like '파괴불가'
 		or	  option_name7 like '파괴불가')s2
-		where option_name1 like 'zx'
+		where option_name1 like '모든 저항' and item_o1_val>=10
+		or option_name2 = '모든 저항' and item_o2_val>=10
+		or option_name3 = '모든 저항' and item_o3_val>=10
+		or option_name4 = '모든 저항' and item_o4_val>=10
+		or option_name5 = '모든 저항' and item_o5_val>=10
+		or option_name6 = '모든 저항' and item_o6_val>=10
+		or option_name7 = '모든 저항' and item_o7_val>=10)s3
+		where option_name1 = '방어력 증가' and item_o1_val>=10
+		or option_name2 = '방어력 증가' and item_o2_val>=10
+		or option_name3 = '방어력 증가' and item_o3_val>=10
+		or option_name4 = '방어력 증가' and item_o4_val>=10
+		or option_name5 = '방어력 증가' and item_o5_val>=10
+		or option_name6 = '방어력 증가' and item_o6_val>=10
+		or option_name7 = '방어력 증가' and item_o7_val>=10
+		where item_type = '투구'
 		
 		
 		or	  option_name1 = '방어력 증가' and item_o1_val>40

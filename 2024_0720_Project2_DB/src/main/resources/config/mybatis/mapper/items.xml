@@ -10,7 +10,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<select id="items_list2" resultType="items" parameterType="Map">
-			select s2.* from
+		<choose>
+			<when test="item_name!='' and item_name2!='' and item_name3!='' and item_name4!=''">
+			select s4.* from
+			(select s3.* from
+			(select s2.* from
 			(select s.* from
 			(select * from trade_order_by_view
 				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
@@ -29,7 +33,99 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				or option_name6 = #{ item_name2 } and item_o6_val>=#{ item_name_val2 }
 				or option_name7 = #{ item_name2 } and item_o7_val>=#{ item_name_val2 }
 				)s2
+				where option_name1 = #{ item_name3 } and item_o1_val>=#{ item_name_val3 }
+				or option_name2 = #{ item_name3 } and item_o2_val>=#{ item_name_val3 }
+				or option_name3 = #{ item_name3 } and item_o3_val>=#{ item_name_val3 }
+				or option_name4 = #{ item_name3 } and item_o4_val>=#{ item_name_val3 }
+				or option_name5 = #{ item_name3 } and item_o5_val>=#{ item_name_val3 }
+				or option_name6 = #{ item_name3 } and item_o6_val>=#{ item_name_val3 }
+				or option_name7 = #{ item_name3 } and item_o7_val>=#{ item_name_val3 })s3
+				where option_name1 = #{ item_name4 } and item_o1_val>=#{ item_name_val4 }
+				or option_name2 = #{ item_name4 } and item_o2_val>=#{ item_name_val4 }
+				or option_name3 = #{ item_name4 } and item_o3_val>=#{ item_name_val4 }
+				or option_name4 = #{ item_name4 } and item_o4_val>=#{ item_name_val4 }
+				or option_name5 = #{ item_name4 } and item_o5_val>=#{ item_name_val4 }
+				or option_name6 = #{ item_name4 } and item_o6_val>=#{ item_name_val4 }
+				or option_name7 = #{ item_name4 } and item_o7_val>=#{ item_name_val4 })s4
+			</when>
+			<when test="item_name!='' and item_name2!='' and item_name3!=''">
+			select s3.* from
+			(select s2.* from
+			(select s.* from
+			(select * from trade_order_by_view
+				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
+				or option_name2 = #{ item_name } and item_o2_val>=#{ item_name_val }
+				or option_name3 = #{ item_name } and item_o3_val>=#{ item_name_val }
+				or option_name4 = #{ item_name } and item_o4_val>=#{ item_name_val }
+				or option_name5 = #{ item_name } and item_o5_val>=#{ item_name_val }
+				or option_name6 = #{ item_name } and item_o6_val>=#{ item_name_val }
+				or option_name7 = #{ item_name } and item_o7_val>=#{ item_name_val })
+				s
+				where option_name1 = #{ item_name2 } and item_o1_val>=#{ item_name_val2 }
+				or option_name2 = #{ item_name2 } and item_o2_val>=#{ item_name_val2 }
+				or option_name3 = #{ item_name2 } and item_o3_val>=#{ item_name_val2 }
+				or option_name4 = #{ item_name2 } and item_o4_val>=#{ item_name_val2 }
+				or option_name5 = #{ item_name2 } and item_o5_val>=#{ item_name_val2 }
+				or option_name6 = #{ item_name2 } and item_o6_val>=#{ item_name_val2 }
+				or option_name7 = #{ item_name2 } and item_o7_val>=#{ item_name_val2 }
+				)s2
+				where option_name1 = #{ item_name3 } and item_o1_val>=#{ item_name_val3 }
+				or option_name2 = #{ item_name3 } and item_o2_val>=#{ item_name_val3 }
+				or option_name3 = #{ item_name3 } and item_o3_val>=#{ item_name_val3 }
+				or option_name4 = #{ item_name3 } and item_o4_val>=#{ item_name_val3 }
+				or option_name5 = #{ item_name3 } and item_o5_val>=#{ item_name_val3 }
+				or option_name6 = #{ item_name3 } and item_o6_val>=#{ item_name_val3 }
+				or option_name7 = #{ item_name3 } and item_o7_val>=#{ item_name_val3 })s3
+			</when>
+			<when test="item_name!='' and item_name2!=''">
+			select s2.* from
+			(select s.* from
+			(select * from trade_order_by_view
+				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
+				or option_name2 = #{ item_name } and item_o2_val>=#{ item_name_val }
+				or option_name3 = #{ item_name } and item_o3_val>=#{ item_name_val }
+				or option_name4 = #{ item_name } and item_o4_val>=#{ item_name_val }
+				or option_name5 = #{ item_name } and item_o5_val>=#{ item_name_val }
+				or option_name6 = #{ item_name } and item_o6_val>=#{ item_name_val }
+				or option_name7 = #{ item_name } and item_o7_val>=#{ item_name_val })
+				s
+				where option_name1 = #{ item_name2 } and item_o1_val>=#{ item_name_val2 }
+				or option_name2 = #{ item_name2 } and item_o2_val>=#{ item_name_val2 }
+				or option_name3 = #{ item_name2 } and item_o3_val>=#{ item_name_val2 }
+				or option_name4 = #{ item_name2 } and item_o4_val>=#{ item_name_val2 }
+				or option_name5 = #{ item_name2 } and item_o5_val>=#{ item_name_val2 }
+				or option_name6 = #{ item_name2 } and item_o6_val>=#{ item_name_val2 }
+				or option_name7 = #{ item_name2 } and item_o7_val>=#{ item_name_val2 })s2
+			</when>
+			<when test="item_name!=''">
+			select s.* from
+			(select * from trade_order_by_view
+				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
+				or option_name2 = #{ item_name } and item_o2_val>=#{ item_name_val }
+				or option_name3 = #{ item_name } and item_o3_val>=#{ item_name_val }
+				or option_name4 = #{ item_name } and item_o4_val>=#{ item_name_val }
+				or option_name5 = #{ item_name } and item_o5_val>=#{ item_name_val }
+				or option_name6 = #{ item_name } and item_o6_val>=#{ item_name_val }
+				or option_name7 = #{ item_name } and item_o7_val>=#{ item_name_val })s
+			</when>
+		</choose>
+ 			<trim prefix="where" prefixOverrides="and">
+			<if test="item_type!=''">
+				item_type = #{ item_type }
+			</if>
+			<if test="item_grade!=''">
+				and item_grade = #{ item_grade }
+			</if>
+			<if test="item_shot!=''">
+				and item_shot = #{ item_shot }
+			</if>
+			<if test="item_im!=''">
+				and item_im = #{ item_im }
+			</if>
+			</trim>
 	</select>
+	
+
 	
 	
 	<!-- search list가 나올 수 있도록 출력한다 -->
