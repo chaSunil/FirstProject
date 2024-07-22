@@ -4,6 +4,153 @@
 	drop sequence seq_items_item_idx
 	
 	
+	
+		-------------------------------- 시작 ------------------------------------------------------------------------------
+		-------------------------------- 시작 ------------------------------------------------------------------------------
+		-------------------------------- 시작 ------------------------------------------------------------------------------
+		-------------------------------- 시작 ------------------------------------------------------------------------------
+		-------------------------------- 시작 ------------------------------------------------------------------------------
+		-------------------------------- 시작 ------------------------------------------------------------------------------
+		-------------------------------- 시작 ------------------------------------------------------------------------------
+		
+	
+	
+	
+	
+	
+		
+	
+	
+			
+	--------- gibon-option ---------
+		
+		
+		
+	create table gibon_option1(
+		gibon_option1 int,
+		gibon_option1_name varchar2(100)
+	);
+	
+		
+	
+	create table gibon_option2(
+		gibon_option2 int,
+		gibon_option2_name varchar2(100)
+	);
+	
+	
+		
+	create table gibon_option3(
+		gibon_option3 int,
+		gibon_option3_name varchar2(100)
+	);
+	
+		
+	
+	create table gibon_option4(
+		gibon_option4 int,
+		gibon_option4_name varchar2(100)
+	);
+	
+	
+	create table gibon_option5(
+		gibon_option5 int,
+		gibon_option5_name varchar2(100)
+	);
+	
+	
+		
+	create table gibon_option6(
+		gibon_option6 int,
+		gibon_option6_name varchar2(100)
+	);
+	
+	
+	
+
+	create table gibon_option7(
+		gibon_option7 int,
+		gibon_option7_name varchar2(100)
+	);
+	
+	
+	
+	
+	
+		
+	create sequence seq_gibon_option1;
+	create sequence seq_gibon_option2;
+	create sequence seq_gibon_option3;
+	create sequence seq_gibon_option4;
+	create sequence seq_gibon_option5;
+	create sequence seq_gibon_option6;
+	create sequence seq_gibon_option7;
+	
+	
+	
+	
+			
+	
+	--------- options--------- 일동추가
+	
+	create table options(
+		option1_idx int,						 -- 옵션명(부모키)
+		item_o1 varchar2(100)					 -- 아이템 옵션1
+	);
+	
+	create table options2(
+		option2_idx int,						 -- 옵션명(부모키)
+		item_o2 varchar2(100)					 -- 아이템 옵션2
+	);
+	
+	create table options3(
+		option3_idx int,						 -- 옵션명(부모키)
+		item_o3 varchar2(100)					 -- 아이템 옵션3
+	);
+	
+	create table options4(
+		option4_idx int,						 -- 옵션명(부모키)
+		item_o4 varchar2(100)					 -- 아이템 옵션4
+	);
+	
+	create table options5(
+		option5_idx int,						 -- 옵션명(부모키)
+		item_o5 varchar2(100)					 -- 아이템 옵션5
+	);
+	
+	create table options6(
+		option6_idx int,						 -- 옵션명(부모키)
+		item_o6 varchar2(100)					 -- 아이템 옵션6
+	);
+	
+	create table options7(
+		option7_idx int,						 -- 옵션명(부모키)
+		item_o7 varchar2(100)					 -- 아이템 옵션7
+	);
+	
+	create table options8(
+		option8_idx int,						 -- 옵션명(부모키)
+		item_o8 varchar2(100)					 -- 아이템 옵션8
+	);
+	
+	
+	
+	
+	
+	-- options sequence 설정(옵션번호)
+	
+	create sequence seq_options_option_idx;
+	create sequence seq_options_option2_idx;
+	create sequence seq_options_option3_idx;
+	create sequence seq_options_option4_idx;
+	create sequence seq_options_option5_idx;
+	create sequence seq_options_option6_idx;
+	create sequence seq_options_option7_idx;
+	create sequence seq_options_option8_idx;
+	
+	
+	
+	
 	create sequence seq_items_item_idx;
 	
 
@@ -56,7 +203,7 @@
 		item_o7_val int,
 		option8_idx int,					
 		item_o8_val int
-	)
+	);
 	
 	
 	-- 2. items values 넣기
@@ -66,7 +213,7 @@
 	insert into items values(
 							seq_items_item_idx.nextVal,
 							'도둑의 왕관 그랜드 크라운',
-							'https://i.namu.wiki/i/7c6S6NEPEMrCTffIm-ogq7yQRNDhzeW62x0hc2UgMc70Xo_RYZXJYcBV1ZdMXq_2zeeVciNLNwJiXT2wt2IMQg.webp',
+							'시대의 왕관 코로나.jpg',
 							'투구',
 							'익셉셔널',
 							'유니크',
@@ -82,11 +229,9 @@
 							40,33,
 							51,100,
 							0,0
-						)
+						);
 	
-	select * from items
-	drop table items
-	
+
 	
 	
 	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)
@@ -114,9 +259,8 @@
 		left outer join options5 o5 on i.option5_idx = o5.option5_idx
 		left outer join options6 o6 on i.option6_idx = o6.option6_idx
 		left outer join options7 o7 on i.option7_idx = o7.option7_idx
-		left outer join options8 o8 on i.option8_idx = o8.option8_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
 	
-	select * from items1_item_o1_view
 	
 	
 	
@@ -171,17 +315,15 @@
 		item_o7_val int,
 		option8_idx int,					
 		item_o8_val int
-	)
+	);
 	
-					
-	drop table items2
 	
 	-- 2. items values 넣기
 	
 	insert into items2 values(
 								seq_items_item_idx.nextVal,
 								'시대의 왕관 코로나',
-								'https://i.namu.wiki/i/hzgMqpROmuu3oLl49yH-xkYGFDSqDXBjoD8rUrQGKKb_hEPMViWL6LGJkF2TszJeMoERN0F3NGa6attyeI17HA.webp',
+								'시대의 왕관 코로나.jpg',
 								'투구',
 								'익셉셔널',
 								'유니크',
@@ -197,9 +339,7 @@
 								39,30,
 								33,15,
 								0,0
-							)
-	select * from items2
-	
+							);
 	
 	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
 		
@@ -226,13 +366,9 @@
 		left outer join options5 o5 on i.option5_idx = o5.option5_idx
 		left outer join options6 o6 on i.option6_idx = o6.option6_idx
 		left outer join options7 o7 on i.option7_idx = o7.option7_idx
-		left outer join options8 o8 on i.option8_idx = o8.option8_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
 	
 		
-	select * from items2_item_o1_view
-	
-	drop table items3
-	
 	-- 1. items table 넣기
 	
 	-- itmes3
@@ -284,14 +420,14 @@
 		item_o7_val int,
 		option8_idx int,					-- 빙결 지속시간 절반으로 감소
 		item_o8_val int
-	)
+	);
 				
 	-- 2. items values 넣기
 	
 	insert into items3 values(
 								seq_items_item_idx.nextVal,
 								'언데드 왕관 크라운',
-								'https://i.namu.wiki/i/hzgMqpROmuu3oLl49yH-xkYGFDSqDXBjoD8rUrQGKKb_hEPMViWL6LGJkF2TszJeMoERN0F3NGa6attyeI17HA.webp',
+								'섬뜩한 얼굴 마스크.jpg',
 								'투구',
 								'익셉셔널',
 								'유니크',
@@ -307,9 +443,7 @@
 								36,40,
 								44,50,
 								67,0
-							)
-	select * from items3
-	drop table items3
+							);
 	
 		
 	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)		
@@ -337,7 +471,7 @@
 		left outer join options5 o5 on i.option5_idx = o5.option5_idx
 		left outer join options6 o6 on i.option6_idx = o6.option6_idx
 		left outer join options7 o7 on i.option7_idx = o7.option7_idx
-		left outer join options8 o8 on i.option8_idx = o8.option8_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
 	
 	-- 1. items table 넣기
 		
@@ -394,16 +528,15 @@
 		item_o7_val int,
 		option8_idx int,					
 		item_o8_val int
-	)
+	);
 	
-	drop table items4
 	
 	-- 2. items values 넣기
 							
 	insert into items4 values(
 								seq_items_item_idx.nextVal,
 								'키네밀의 송곳 자이언트 소드',
-								'https://i.namu.wiki/i/1-3MlmBds4rLCE2WU6PiwGTYk3UT0xH6w8PTsGACe8R7qRPZ6rTvCiB216HhHuwkFDt5Fo9ARcfQ2NePb5X52g.webp',
+								'키네밀의 송곳.jpg',
 								'양손검',
 								'익셉셔널',
 								'유니크',
@@ -420,7 +553,7 @@
 								0,0, 	 	-- option6_idx
 								0,0,		-- option7_idx
 								0,0
-							)
+							);
 
 							
 
@@ -451,7 +584,7 @@
 		left outer join options5 o5 on i.option5_idx = o5.option5_idx
 		left outer join options6 o6 on i.option6_idx = o6.option6_idx
 		left outer join options7 o7 on i.option7_idx = o7.option7_idx
-		left outer join options8 o8 on i.option8_idx = o8.option8_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
 
 		
 		
@@ -513,16 +646,15 @@
 		item_o7_val int,
 		option8_idx int,					
 		item_o8_val int
-	)
+	);
 	
-	drop table items5
 	
 	-- 2. items values 넣기
 							
 	insert into items5 values(
 								seq_items_item_idx.nextVal,
 								'톱날검 플랑베르쥬',
-								'https://i.namu.wiki/i/WhYozAPLuc0jqxQfAPpz73PStHLNraJw3pDK9f5qyEyNOd5yC--DOGsvzSaxiG3T7wPLey8-__I5DVeUaRBciA.webp',
+								'톱날검 플랑베르쥬.jpg',
 								'양손검',
 								'노멀',
 								'유니크',
@@ -539,7 +671,7 @@
 								0,0, 	 	-- option6_idx
 								0,0,		-- option7_idx
 								0,0
-							)
+							);
 
 		
 		
@@ -568,7 +700,7 @@
 		left outer join options5 o5 on i.option5_idx = o5.option5_idx
 		left outer join options6 o6 on i.option6_idx = o6.option6_idx
 		left outer join options7 o7 on i.option7_idx = o7.option7_idx
-		left outer join options8 o8 on i.option8_idx = o8.option8_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
 
 		
 		
@@ -630,16 +762,15 @@
 		item_o7_val int,
 		option8_idx int,					
 		item_o8_val int
-	)
+	);
 	
-	drop table items6
 	
 	-- 2. items values 넣기
 							
 	insert into items6 values(
 								seq_items_item_idx.nextVal,
-								'공포 구토자 에스펜돈',
-								'https://i.namu.wiki/i/Ua1hK5T8P0wydhKfeccjadHFz2OlbBrUpn0pa4BejcONveCwfYG0hSdO0IRTdQZBkA3oNWrEgq0hUpP7QoICAA.webp',
+								'공포 구토자 에스팬돈',
+								'공포 구토자 에스팬돈.jpg',
 								'양손검',
 								'익셉셔널',
 								'유니크',
@@ -656,7 +787,7 @@
 								33,10, 	 	-- option6_idx
 								0,0,		-- option7_idx
 								0,0
-							)
+							);
 
 		
 		
@@ -685,7 +816,7 @@
 		left outer join options5 o5 on i.option5_idx = o5.option5_idx
 		left outer join options6 o6 on i.option6_idx = o6.option6_idx
 		left outer join options7 o7 on i.option7_idx = o7.option7_idx
-		left outer join options8 o8 on i.option8_idx = o8.option8_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
 
 		
 		
@@ -747,16 +878,15 @@
 		item_o7_val int,
 		option8_idx int,					
 		item_o8_val int
-	)
+	);
 	
-	drop table items7
 	
 	-- 2. items values 넣기
 							
 	insert into items7 values(
 								seq_items_item_idx.nextVal,
 								'회색 형체 퀄티드 아머',
-								'https://i.namu.wiki/i/8TEovgT2eeBfoj5_Kao-4bMY6vEq0VUDlWn0kokIQ0pP16Py9GSprlyTHaMYM_kufSUxf4ny0wUtYdxeSgOXag.webp',
+								'회색 형체.jpg',
 								'갑옷',
 								'노멀',
 								'유니크',
@@ -773,7 +903,7 @@
 								74,3, 	 	-- option6_idx
 								0,0,		-- option7_idx
 								0,0
-							)
+							);
 
 		
 		
@@ -802,7 +932,7 @@
 		left outer join options5 o5 on i.option5_idx = o5.option5_idx
 		left outer join options6 o6 on i.option6_idx = o6.option6_idx
 		left outer join options7 o7 on i.option7_idx = o7.option7_idx
-		left outer join options8 o8 on i.option8_idx = o8.option8_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
 
 		
 		
@@ -864,16 +994,15 @@
 		item_o7_val int,
 		option8_idx int,					
 		item_o8_val int
-	)
+	);
 	
-	drop table items8
 	
 	-- 2. items values 넣기
 							
 	insert into items8 values(
 								seq_items_item_idx.nextVal,
 								'바위털가죽 필드 플레이트',
-								'https://i.namu.wiki/i/2ECS1awHJ1Rz7P1yPjfLfuEJfmvjWCBPBYNfrqyyfr4ZQXRf20uQoOAWxTsdd5-0fSGepgutdZUMB3Gagqo1rA.webp',
+								'바위털가죽.jpg',
 								'갑옷',
 								'노멀',
 								'유니크',
@@ -890,7 +1019,7 @@
 								78,-10, 	 	-- option6_idx
 								0,0,		-- option7_idx
 								0,0
-							)
+							);
 
 		
 		
@@ -919,7 +1048,7 @@
 		left outer join options5 o5 on i.option5_idx = o5.option5_idx
 		left outer join options6 o6 on i.option6_idx = o6.option6_idx
 		left outer join options7 o7 on i.option7_idx = o7.option7_idx
-		left outer join options8 o8 on i.option8_idx = o8.option8_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
 
 		
 		
@@ -981,19 +1110,18 @@
 		item_o7_val int,
 		option8_idx int,					
 		item_o8_val int
-	)
+	);
 	
-	drop table items9
 	
 	-- 2. items values 넣기
 							
 	insert into items9 values(
 								seq_items_item_idx.nextVal,
 								'독사마술사의 가죽 서펀트스킨 아머',
-								'https://i.namu.wiki/i/qiMFxZ8iQjTdhtVMMyYONFi-QK0tsTG7olnihzX14pO10GuMqmjoL2Npw8OyBltlPpBhLy00LQLmA9wjYcNgWg.webp',
+								'독사마술사의 가죽.jpg',
 								'갑옷',
 								'노멀',
-								'익셉셔널',
+								'유니크',
 								'수리가능',0,
 								-- 기본옵션
 							    --g1   g2   g3   g4   g5   g6   g7
@@ -1007,7 +1135,7 @@
 								0,0, 	 	-- option6_idx
 								0,0,		-- option7_idx
 								0,0
-							)
+							);
 
 		
 		
@@ -1036,7 +1164,123 @@
 		left outer join options5 o5 on i.option5_idx = o5.option5_idx
 		left outer join options6 o6 on i.option6_idx = o6.option6_idx
 		left outer join options7 o7 on i.option7_idx = o7.option7_idx
-		left outer join options8 o8 on i.option8_idx = o8.option8_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- itmes9 (갑옷)
+	create table items10(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items10 values(
+								seq_items_item_idx.nextVal,
+								'천상의 의복',
+								'천상의 의복.jpg',
+								'갑옷',
+								'노멀',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								3,279,4,24,5,43,7,29,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								37,1,		-- option1_idx
+								25,30, 	-- option2_idx
+								12,120,		-- option3_idx
+								39,35,		-- option4_idx
+								74,13,  	-- option5_idx
+								0,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items9_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items9 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
 		
 		
 		
@@ -1079,91 +1323,14 @@
 		t.*,
 		rank() over(order by item_idx desc) as rank
 		from (select * from trade_view)t
-	)
+	);
 	
 	
 	
 		
-		
+
 	
-	--------- options--------- 일동추가
-	
-	create table options(
-		option1_idx int,						 -- 옵션명(부모키)
-		item_o1 varchar2(100)					 -- 아이템 옵션1
-	);
-	
-	create table options2(
-		option2_idx int,						 -- 옵션명(부모키)
-		item_o2 varchar2(100)					 -- 아이템 옵션2
-	);
-	
-	create table options3(
-		option3_idx int,						 -- 옵션명(부모키)
-		item_o3 varchar2(100)					 -- 아이템 옵션3
-	);
-	
-	create table options4(
-		option4_idx int,						 -- 옵션명(부모키)
-		item_o4 varchar2(100)					 -- 아이템 옵션4
-	);
-	
-	create table options5(
-		option5_idx int,						 -- 옵션명(부모키)
-		item_o5 varchar2(100)					 -- 아이템 옵션5
-	);
-	
-	create table options6(
-		option6_idx int,						 -- 옵션명(부모키)
-		item_o6 varchar2(100)					 -- 아이템 옵션6
-	);
-	
-	create table options7(
-		option7_idx int,						 -- 옵션명(부모키)
-		item_o7 varchar2(100)					 -- 아이템 옵션7
-	);
-	
-	create table options8(
-		option8_idx int,						 -- 옵션명(부모키)
-		item_o8 varchar2(100)					 -- 아이템 옵션8
-	);
-	
-	
-	
-	
-	
-	-- options sequence 설정(옵션번호)
-	
-	create sequence seq_options_option_idx;
-	create sequence seq_options_option2_idx;
-	create sequence seq_options_option3_idx;
-	create sequence seq_options_option4_idx;
-	create sequence seq_options_option5_idx;
-	create sequence seq_options_option6_idx;
-	create sequence seq_options_option7_idx;
-	create sequence seq_options_option8_idx;
-	
-	
-	drop sequence seq_options_option_idx;
-	drop sequence seq_options2_option2_idx;
-	drop sequence seq_options3_option3_idx;
-	drop sequence seq_options4_option4_idx;
-	drop sequence seq_options5_option5_idx;
-	drop sequence seq_options6_option6_idx;
-	drop sequence seq_options7_option7_idx;
-	drop sequence seq_options8_option8_idx;
-	
-	
-	
-	
-	drop table options;
-	drop table options2;
-	drop table options3;
-	drop table options4;
-	drop table options5;
-	drop table options6;
-	drop table options7;
-	drop table options8;
+
 	
 		
 	
@@ -2157,77 +2324,7 @@
 		
 	
 	
-	
-	
-	
-			
-	--------- gibon-option ---------
-		
-		
-		
-	create table gibon_option1(
-		gibon_option1 int,
-		gibon_option1_name varchar2(100)
-	);
-	
-		
-	
-	create table gibon_option2(
-		gibon_option2 int,
-		gibon_option2_name varchar2(100)
-	);
-	
-	
-		
-	create table gibon_option3(
-		gibon_option3 int,
-		gibon_option3_name varchar2(100)
-	);
-	
-		
-	
-	create table gibon_option4(
-		gibon_option4 int,
-		gibon_option4_name varchar2(100)
-	);
-	
-	
-	create table gibon_option5(
-		gibon_option5 int,
-		gibon_option5_name varchar2(100)
-	);
-	
-	
-		
-	create table gibon_option6(
-		gibon_option6 int,
-		gibon_option6_name varchar2(100)
-	);
-	
-	
-	
 
-	create table gibon_option7(
-		gibon_option7 int,
-		gibon_option7_name varchar2(100)
-	);
-	
-	
-	
-		
-
-	
-	
-	
-	
-		
-	create sequence seq_gibon_option1;
-	create sequence seq_gibon_option2;
-	create sequence seq_gibon_option3;
-	create sequence seq_gibon_option4;
-	create sequence seq_gibon_option5;
-	create sequence seq_gibon_option6;
-	create sequence seq_gibon_option7;
 	
 
 	
@@ -2366,6 +2463,15 @@
 	
 	
 	
+	-------------------------------- 끝 ------------------------------------------------------------------------------
+	-------------------------------- 끝 ------------------------------------------------------------------------------
+	-------------------------------- 끝 ------------------------------------------------------------------------------
+	-------------------------------- 끝 ------------------------------------------------------------------------------
+	-------------------------------- 끝 ------------------------------------------------------------------------------
+	-------------------------------- 끝 ------------------------------------------------------------------------------
+	-------------------------------- 끝 ------------------------------------------------------------------------------
+	-------------------------------- 끝 ------------------------------------------------------------------------------
+	-------------------------------- 끝 ------------------------------------------------------------------------------
 	-------------------------------- 끝 ------------------------------------------------------------------------------
 	
 	
@@ -2697,7 +2803,27 @@
 		
 		
 		
-		
+			
+	drop sequence seq_options_option_idx;
+	drop sequence seq_options2_option2_idx;
+	drop sequence seq_options3_option3_idx;
+	drop sequence seq_options4_option4_idx;
+	drop sequence seq_options5_option5_idx;
+	drop sequence seq_options6_option6_idx;
+	drop sequence seq_options7_option7_idx;
+	drop sequence seq_options8_option8_idx;
+	
+	
+	
+	
+	drop table options;
+	drop table options2;
+	drop table options3;
+	drop table options4;
+	drop table options5;
+	drop table options6;
+	drop table options7;
+	drop table options8;
 		
 		
 		

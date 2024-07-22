@@ -581,7 +581,7 @@ function downArrow() {
         <form>
 <div id="item-box">
 			<div id="item-image-box">
-			<img src="${ items.item_image }">
+			<img src="../resources/images/${ items.item_image }">
 			</div>
 			<div id="item-box2">
 				<div id="gibon_option_font">
