@@ -3765,8 +3765,6 @@
 	insert into options4 values(seq_options_option4_idx.nextVal,'성기사 강타 피해');	-- 119
 	insert into options4 values(seq_options_option4_idx.nextVal,'최대 지구력');	-- 120
 	                                          
-	
-	                                              
 	                                              
 	                                              
 	insert into options5 values(seq_options_option5_idx.nextVal,'한손 피해'); 		-- 1

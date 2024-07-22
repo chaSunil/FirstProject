@@ -281,7 +281,7 @@ body {
 }
 
 #item-box2 {
-	width: 300px;
+	width: 250px;
 	height : 350px;
 	display: inline-block;
 	float: left;
@@ -308,7 +308,7 @@ hr {
 }
 
 #item-box3 {
-	width: 150px;
+	width: 200px;
 	height : 350px;
 	display: inline-block;
 	float: left;
