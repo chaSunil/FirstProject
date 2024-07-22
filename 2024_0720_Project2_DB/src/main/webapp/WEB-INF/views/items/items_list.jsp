@@ -140,12 +140,43 @@
 }
 
 #item-box-head {
-	width : 900px;
-	margin: auto;
+	width : 1300px;
+	height : 100px;
+	background-color : #1C1E24;
+	
+	display: grid;
+    grid-template-columns: 1fr 0.3fr 0.5fr 0.3fr 1fr 0.3fr 1fr 0.3fr 1fr 3fr;
+	margin : auto;
+	
+	position: relative;
+	top: 50%;
+}
+
+#item-box-head2 {
+	width : 150px;
+	height : 100px;
+	
+	float : left;
+	background-color: #9dd9ff;
+	border: 1px solid red;
+	
+	position: absolute;
+	top: 50%;
+}
+
+#item-box-head2 > span {
+	position: absolute;
+	top: 50%;
+}
+
+#item-box-head3 {
+	margin-top: 30px;
+	
+	position: absolute;
 }
 
 #item-box {
-	width : 1500px;
+	width : 1300px;
 	height : 350px;
 	background-color: #1B1D23;
 	margin: auto;
@@ -198,7 +229,7 @@ hr {
 }
 
 #item-box3 {
-	width: 300px;
+	width: 150px;
 	height : 350px;
 	display: inline-block;
 	float: left;
@@ -507,9 +538,45 @@ function downArrow() {
         	</select>   
         </form>
         	
+        <!-- item head -->
 		<div id="item-box-head">
-			<img src="https://i.ibb.co/q52QLZK/66.jpg">
+			<div class="item-box-head2">
+			<span class="item-box-head2-font">Game</span><br>
+			<span class="item-box-head2-font2">레저렉션 (D2R)</span>
+			</div>
+			<div class="item-box-head3">
+			<span class="item-box-head3-font">→</span><br>
+			</div>
+			<div class="item-box-head2">
+			<span class="item-box-head2-font">Platform</span><br>
+			<span class="item-box-head2-font2">PC</span>
+			</div>
+			<div class="item-box-head3">
+			<span class="item-box-head3-font">→</span><br>
+			</div>
+			<div class="item-box-head2">
+			<span class="item-box-head2-font">Server(TimeZone)</span><br>
+			<span class="item-box-head2-font2">아시아(Asia)</span>
+			</div>
+			<div class="item-box-head3">
+			<span class="item-box-head3-font">→</span><br>
+			</div>
+			<div class="item-box-head2">
+			<span class="item-box-head2-font">Game Type(TimeZone)</span><br>
+			<span class="item-box-head2-font2">레더</span>
+			</div>
+			<div class="item-box-head3">
+			<span class="item-box-head3-font">→</span><br>
+			</div>
+			<div class="item-box-head2">
+			<span class="item-box-head2-font">Mode</span><br>
+			<span class="item-box-head2-font2">소프트코어</span>
+			</div>
 		</div>
+		
+		
+		
+		<!-- item_trade_list -->
 		<c:forEach var="items" items="${ requestScope.list }">
         <form>
 <div id="item-box">

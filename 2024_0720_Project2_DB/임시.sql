@@ -1,6 +1,11 @@
 
 	-- 1. items table 넣기
-
+	
+	drop sequence seq_items_item_idx
+	
+	
+	create sequence seq_items_item_idx;
+	
 
 	--------- items---------
 	
@@ -53,12 +58,15 @@
 		item_o8_val int
 	)
 	
+	
 	-- 2. items values 넣기
+	
+
 	
 	insert into items values(
 							seq_items_item_idx.nextVal,
 							'도둑의 왕관 그랜드 크라운',
-							'https://i.namu.wiki/i/VWIqJEY_9plMvxGjwHVmD8_DxstRpWJktK_shcidWWiL08-C6LNmgA65wlAtLpevMOIn4GX8e7-DngstxOJwHA.webp',
+							'https://i.namu.wiki/i/7c6S6NEPEMrCTffIm-ogq7yQRNDhzeW62x0hc2UgMc70Xo_RYZXJYcBV1ZdMXq_2zeeVciNLNwJiXT2wt2IMQg.webp',
 							'투구',
 							'익셉셔널',
 							'유니크',
@@ -79,55 +87,6 @@
 	select * from items
 	drop table items
 	
-	
-	-- 3. items 변동옵션 제약조건 넣기
-	
-	-- ㅁㅁㅁ 변동옵션 제약조건
-	alter table items
-		add constraint ck_item_defense_val check(gibon_option1_val between 296 and 342);
-	alter table items
-		add constraint ck_item_o1_val check(item_o1_val between 9 and 12);
-	alter table items
-		add constraint ck_item_o2_val check(item_o2_val between 160 and 200);
-	alter table items
-		add constraint ck_item_o7_val check(item_o7_val between 80 and 100);
-	
-	-- 아이템 제약조건 설정
-	
-	alter table items
-		add constraint pk_items_item_idx primary key (item_idx);
-	
-	alter table items
-		add constraint unique_items_item unique (item_name);
-	
-	-- item_im 무형 타입 제한
-	alter table items
-		add constraint ck_item_im check(item_im in ('수리가능','수리불가'));
-		
-	-- item_shot 솟개수제한
-	alter table items
-		add constraint ck_item_shot check(item_shot between 0 and 4);
-		
-	-- foreign key(foreign key는 안넣어도됨 만약을 위해서 냅둠)
-	alter table items
-		add constraint fk_items_item_o1 foreign key(option1_idx)
-										references options(option1_idx);
-	alter table items
-		add constraint fk_items_item_o2 foreign key(option2_idx)
-										references options2(option2_idx);									
-										
-	-- foreign key
-	alter table items
-		add constraint fk_gibon_option1 foreign key(gibon_option1)
-										references gibon_option1(gibon_option1);
-	alter table items
-		add constraint fk_gibon_option2 foreign key(gibon_option2)
-										references gibon_option2(gibon_option2);
-	-- foreign key delete
-	alter table items drop constraint fk_gibon_option1;
-	alter table items drop constraint fk_gibon_option2;
-	alter table items drop constraint fk_gibon_option3;
-	alter table items drop constraint fk_gibon_option4;
 	
 	
 	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)
@@ -159,8 +118,6 @@
 	
 	select * from items1_item_o1_view
 	
-		
-	create sequence seq_items_item_idx
 	
 	
 	-- 1. items table 넣기
@@ -216,7 +173,6 @@
 		item_o8_val int
 	)
 	
-	create sequence seq_items2_item_idx
 					
 	drop table items2
 	
@@ -225,7 +181,7 @@
 	insert into items2 values(
 								seq_items_item_idx.nextVal,
 								'시대의 왕관 코로나',
-								'https://i.namu.wiki/i/U4zanxaQMgnVVRbgYWkYN2PU0isNXs1mpOC3s2FeLQhWTpzoadg5A0jgIAnYI6J0neBUCNIlPScec-o9lvnULw.webp',
+								'https://i.namu.wiki/i/hzgMqpROmuu3oLl49yH-xkYGFDSqDXBjoD8rUrQGKKb_hEPMViWL6LGJkF2TszJeMoERN0F3NGa6attyeI17HA.webp',
 								'투구',
 								'익셉셔널',
 								'유니크',
@@ -244,33 +200,6 @@
 							)
 	select * from items2
 	
-	-- 3. items 변동옵션 제약조건 넣기
-	
-	-- ㅁㅁㅁ 변동옵션 제약조건
-	alter table items2
-		add constraint ck_item2_defense_val check(gibon_option1_val between 349 and 399);
-	alter table items2
-		add constraint ck_item2_o5_val check(item_o5_val between 100 and 150);
-	alter table items2
-		add constraint ck_item2_o6_val check(item_o6_val between 20 and 30);
-	alter table items2
-		add constraint ck_item2_o7_val check(item_o7_val between 10 and 15);
-		
-	-- 아이템 제약조건 설정
-	
-	alter table items2
-		add constraint pk_items_item_idx primary key (item_idx);
-	
-	alter table items2
-		add constraint unique_items_item unique (item_name);
-	
-	-- item_im 무형 타입 제한
-	alter table items
-		add constraint ck_item_im check(item_im in ('수리가능','수리불가'));
-		
-	-- item_shot 솟개수제한
-	alter table items
-		add constraint ck_item_shot check(item_shot between 0 and 4);
 	
 	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
 		
@@ -362,7 +291,7 @@
 	insert into items3 values(
 								seq_items_item_idx.nextVal,
 								'언데드 왕관 크라운',
-								'https://i.namu.wiki/i/U4zanxaQMgnVVRbgYWkYN2PU0isNXs1mpOC3s2FeLQhWTpzoadg5A0jgIAnYI6J0neBUCNIlPScec-o9lvnULw.webp',
+								'https://i.namu.wiki/i/hzgMqpROmuu3oLl49yH-xkYGFDSqDXBjoD8rUrQGKKb_hEPMViWL6LGJkF2TszJeMoERN0F3NGa6attyeI17HA.webp',
 								'투구',
 								'익셉셔널',
 								'유니크',
@@ -382,31 +311,6 @@
 	select * from items3
 	drop table items3
 	
-	-- 3. items 변동옵션 제약조건 넣기
-	
-	-- ㅁㅁㅁ 변동옵션 제약조건
-	alter table items3
-		add constraint ck_gibon_option1_val check(gibon_option1_val between 99 and 113);
-	alter table items3
-		add constraint ck_item3_o2_val check(item_o2_val between 50 and 100);
-	alter table items3
-		add constraint ck_item3_o5_val check(item_o5_val between 30 and 60);
-			
-	-- 아이템 제약조건 설정
-	
-	alter table items
-		add constraint pk_items_item_idx primary key (item_idx);
-	
-	alter table items
-		add constraint unique_items_item unique (item_name);
-	
-	-- item_im 무형 타입 제한
-	alter table items
-		add constraint ck_item_im check(item_im in ('수리가능','수리불가'));
-		
-	-- item_shot 솟개수제한
-	alter table items
-		add constraint ck_item_shot check(item_shot between 0 and 4);
 		
 	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)		
 	
@@ -499,7 +403,7 @@
 	insert into items4 values(
 								seq_items_item_idx.nextVal,
 								'키네밀의 송곳 자이언트 소드',
-								'https://i.namu.wiki/i/J3RjOsUmJpKXvQ-vYymj60TT6OY4TSpHvsB2bDDgyoX6NS084xF0Ycq6E0xd0REMW33KBuunLs537-jiIuVoiw.webp',
+								'https://i.namu.wiki/i/1-3MlmBds4rLCE2WU6PiwGTYk3UT0xH6w8PTsGACe8R7qRPZ6rTvCiB216HhHuwkFDt5Fo9ARcfQ2NePb5X52g.webp',
 								'양손검',
 								'익셉셔널',
 								'유니크',
@@ -519,36 +423,7 @@
 							)
 
 							
-	-- 3. items 변동옵션 제약조건 넣기
-	
-	-- ㅁㅁㅁ 변동옵션 제약조건
-	alter table items4
-		add constraint ck_item4_attack_val1 check(gibon_option1_val between 28 and 32);
-	alter table items4
-		add constraint ck_item4_attack_val2 check(gibon_option2_val between 50 and 56);
-	alter table items4
-		add constraint ck_item4_o1_val check(item_o1_val between 80 and 100);
-	alter table items4
-		add constraint ck_item4_o2_val check(item_o2_val between 100 and 150);
-	alter table items4
-		add constraint ck_item4_o3_val check(item_o3_val between 20 and 40);
-		
-	-- 아이템 제약조건 설정
-	
-	alter table items
-		add constraint pk_items_item_idx primary key (item_idx);
-	
-	alter table items
-		add constraint unique_items_item unique (item_name);
-		
-	
-	-- item_im 무형 타입 제한
-	alter table items
-		add constraint ck_item_im check(item_im in ('수리가능','수리불가'));
-		
-	-- item_shot 솟개수제한
-	alter table items
-		add constraint ck_item_shot check(item_shot between 0 and 4);
+
 		
 		
 	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
@@ -647,7 +522,7 @@
 	insert into items5 values(
 								seq_items_item_idx.nextVal,
 								'톱날검 플랑베르쥬',
-								'https://i.namu.wiki/i/SafEnmuVd4gM9MVas0RO0l5sj03wr_qPmxN-5n8tv8YwSDAZO73DOzaTf7oN5nR9Wyho9w4v_MI7laAnzfCIpA.webp',
+								'https://i.namu.wiki/i/WhYozAPLuc0jqxQfAPpz73PStHLNraJw3pDK9f5qyEyNOd5yC--DOGsvzSaxiG3T7wPLey8-__I5DVeUaRBciA.webp',
 								'양손검',
 								'노멀',
 								'유니크',
@@ -764,7 +639,7 @@
 	insert into items6 values(
 								seq_items_item_idx.nextVal,
 								'공포 구토자 에스펜돈',
-								'https://i.namu.wiki/i/ZEtc4YTeXWTx7h8mPScFz3vnCU1HEgNh8Jod9rXHyqX-UWj_mhm8w7ecH7ODsYtAyubu0CdjY1w3_Rt04zg9IQ.webp',
+								'https://i.namu.wiki/i/Ua1hK5T8P0wydhKfeccjadHFz2OlbBrUpn0pa4BejcONveCwfYG0hSdO0IRTdQZBkA3oNWrEgq0hUpP7QoICAA.webp',
 								'양손검',
 								'익셉셔널',
 								'유니크',
@@ -881,7 +756,7 @@
 	insert into items7 values(
 								seq_items_item_idx.nextVal,
 								'회색 형체 퀄티드 아머',
-								'https://i.namu.wiki/i/v_oX2dBobuiPp65zpPBnubReW85NsNgXKXoiMail3n1XNfHn6uzWMZ3B9vdSiVBzp3WwRQH57lNtFVQP1p5gJA.webp',
+								'https://i.namu.wiki/i/8TEovgT2eeBfoj5_Kao-4bMY6vEq0VUDlWn0kokIQ0pP16Py9GSprlyTHaMYM_kufSUxf4ny0wUtYdxeSgOXag.webp',
 								'갑옷',
 								'노멀',
 								'유니크',
@@ -998,7 +873,7 @@
 	insert into items8 values(
 								seq_items_item_idx.nextVal,
 								'바위털가죽 필드 플레이트',
-								'https://i.namu.wiki/i/EL5xw9gSkB0rc9sAOazS7IslXE83mRCoWc9UEt8tVUadLjfwDQyn1LE61I_23o3k5AfCNbYCA-o-RGYnfTThkg.webp',
+								'https://i.namu.wiki/i/2ECS1awHJ1Rz7P1yPjfLfuEJfmvjWCBPBYNfrqyyfr4ZQXRf20uQoOAWxTsdd5-0fSGepgutdZUMB3Gagqo1rA.webp',
 								'갑옷',
 								'노멀',
 								'유니크',
@@ -1115,7 +990,7 @@
 	insert into items9 values(
 								seq_items_item_idx.nextVal,
 								'독사마술사의 가죽 서펀트스킨 아머',
-								'https://i.namu.wiki/i/RPCV9Pe_Tr5ItGcWkEZ2yyzdAcuGWfiShHHj7JC93-oF9K8hi23qYxrkImrJawl71z6UntYYJsxp8fikfTPrgw.webp',
+								'https://i.namu.wiki/i/qiMFxZ8iQjTdhtVMMyYONFi-QK0tsTG7olnihzX14pO10GuMqmjoL2Npw8OyBltlPpBhLy00LQLmA9wjYcNgWg.webp',
 								'갑옷',
 								'노멀',
 								'익셉셔널',
@@ -1164,6 +1039,7 @@
 		left outer join options8 o8 on i.option8_idx = o8.option8_idx
 		
 		
+		
 	
 		
 	
@@ -1205,176 +1081,12 @@
 		from (select * from trade_view)t
 	)
 	
-	select * from trade_order_by_view
-		where option_name1 like '방어력'
-		or    option_name2 like '방어력'
-		or    option_name3 like '방어력'
-		or    option_name4 like '방어력'
-		or    option_name5 like '방어력'
-		or    option_name6 like '방어력'
-		or    option_name7 like '방어력'
-	
-	select * from trade_order_by_view
-		where option_name1 = '방어력'
-		or    option_name2 = '방어력'
-		or    option_name3 = '방어력'
-		or    option_name4 = '방어력'
-		or    option_name5 = '방어력'
-		or    option_name6 = '방어력'
-		or    option_name7 = '방어력'
-
-	-- option name + option val
-	create or replace view trade_order_by_view2
-	as
-	select s.*, option_name1 || item_o1_val as option1, 
-	option_name2 || item_o2_val as option2, 
-	option_name3 || item_o3_val as option3, 
-	option_name4 || item_o4_val as option4, 
-	option_name5 || item_o5_val as option5, 
-	option_name6 || item_o6_val as option6, 
-	option_name7 || item_o7_val as option7 
-	from
-	(select * from trade_order_by_view)s
-	
-	select * from trade_order_by_view2
-	where option5 substring
-	
-	
-	select s3.* from
-	(select s2.* from
-	(select s.* from
-	(select * from trade_order_by_view
-		where option_name1 = '방어력' and item_o1_val>=10
-		or    option_name2 = '방어력' and item_o2_val>=10		
-		or    option_name3 = '방어력' and item_o3_val>=10		
-		or    option_name4 = '방어력' and item_o4_val>=10		
-		or    option_name5 = '방어력' and item_o5_val>=10		
-		or    option_name6 = '방어력' and item_o6_val>=10		
-		or    option_name7 = '방어력' and item_o7_val>=10)
-		s
-		where option_name1 like '파괴불가'
-		or	  option_name2 like '파괴불가'
-		or	  option_name3 like '파괴불가'
-		or	  option_name4 like '파괴불가'
-		or	  option_name5 like '파괴불가'
-		or	  option_name6 like '파괴불가'
-		or	  option_name7 like '파괴불가')s2
-		where option_name1 like '모든 저항' and item_o1_val>=10
-		or option_name2 = '모든 저항' and item_o2_val>=10
-		or option_name3 = '모든 저항' and item_o3_val>=10
-		or option_name4 = '모든 저항' and item_o4_val>=10
-		or option_name5 = '모든 저항' and item_o5_val>=10
-		or option_name6 = '모든 저항' and item_o6_val>=10
-		or option_name7 = '모든 저항' and item_o7_val>=10)s3
-		where option_name1 = '방어력 증가' and item_o1_val>=10
-		or option_name2 = '방어력 증가' and item_o2_val>=10
-		or option_name3 = '방어력 증가' and item_o3_val>=10
-		or option_name4 = '방어력 증가' and item_o4_val>=10
-		or option_name5 = '방어력 증가' and item_o5_val>=10
-		or option_name6 = '방어력 증가' and item_o6_val>=10
-		or option_name7 = '방어력 증가' and item_o7_val>=10
-		where item_type = '투구'
-		
-		
-		or	  option_name1 = '방어력 증가' and item_o1_val>40
-		or	  option_name2 = '방어력 증가' and item_o2_val>40
-		or	  option_name3 = '방어력 증가' and item_o3_val>40
-		or	  option_name4 = '방어력 증가' and item_o4_val>40
-		or	  option_name5 = '방어력 증가' and item_o5_val>40
-		or	  option_name6 = '방어력 증가' and item_o6_val>40
-		or	  option_name7 = '방어력 증가' and item_o7_val>40
-		or	  option_name1 like '파괴불가'
-		or	  option_name2 like '파괴불가'
-		or	  option_name3 like '파괴불가'
-		or	  option_name4 like '파괴불가'
-		or	  option_name5 like '파괴불가'
-		or	  option_name6 like '파괴불가'
-		or	  option_name7 like '파괴불가'
-		
-		
-	select * from trade_order_by_view
-		where option_name6 = '방어력' and item_o6_val>=10 and option_name1 like '파괴불가'
-	
-	
-	select * from trade_order_by_view
-		where 기본옵션명1 like '요구 레벨' and gibon_option1_val>20
-		or    기본옵션명2 like '요구 레벨' and gibon_option2_val>20
-		or    기본옵션명3 like '요구 레벨' and gibon_option3_val>20
-		or    기본옵션명4 like '요구 레벨' and gibon_option4_val>20
-		or    기본옵션명5 like '요구 레벨' and gibon_option5_val>20
-		or    기본옵션명6 like '요구 레벨' and gibon_option6_val>20
-		or    기본옵션명7 like '요구 레벨' and gibon_option7_val>20
-	
-	
-	(SELECT * FROM trade_view)
-	UNION ALL
-	(SELECT * FROM items4_item_o1_view);
-	
-	create or replace view trade_view_add
-	as
-	select
-	
-	form trade_view t outer join items4_item_o1_view i4 on 
-	
-	
-	
-	select * from trade_view
-		where 옵션명1 like '방어력' and item_o1_val>20
-		or    옵션명2 like '방어력' and item_o2_val>20
-		or    옵션명3 like '방어력' and item_o3_val>20
-		or    옵션명4 like '방어력' and item_o4_val>20
-		or    옵션명5 like '방어력' and item_o5_val>20
-		or    옵션명6 like '방어력' and item_o6_val>20
-		or    옵션명7 like '방어력' and item_o7_val>20
-		
-	select * from trade_view
-		where item_shot<4
-		
-	
-		
-	--------- gibon-option ---------
-		
-		
-		
-	create table gibon_option1(
-		gibon_option1 int,
-		gibon_option1_name varchar2(100)
-	)
-	
-	alter table gibon_option1
-		add constraint pk_gibon_option1 primary key (gibon_option1)
-	
-		
-	create sequence seq_gibon_option1
-	
-
-	select * from gibon_option1
-	
-	
-	insert into gibon_option1 values(seq_gibon_option1.nextVal,'한손 피해'); 	-- 1
-	insert into gibon_option1 values(seq_gibon_option1.nextVal,'양손 피해'); 	-- 2
-	insert into gibon_option1 values(seq_gibon_option1.nextVal,'방어력'); 		-- 3
-	insert into gibon_option1 values(seq_gibon_option1.nextVal,'내구도'); 		-- 4
-	insert into gibon_option1 values(seq_gibon_option1.nextVal,'필요 힘'); 		-- 5
-	insert into gibon_option1 values(seq_gibon_option1.nextVal,'필요 민첩');	-- 6
-	insert into gibon_option1 values(seq_gibon_option1.nextVal,'요구 레벨');	-- 7
-	insert into gibon_option1 values(seq_gibon_option1.nextVal,'허리띠 크기');	-- 8
-	insert into gibon_option1 values(seq_gibon_option1.nextVal,'막기 확률');	-- 9
-	insert into gibon_option1 values(seq_gibon_option1.nextVal,'성기사 강타 피해');	-- 10
-	insert into gibon_option1 values(seq_gibon_option1.nextVal,'투척 피해');	-- 11
-	insert into gibon_option1 values(seq_gibon_option1.nextVal,'수량');			-- 12
-	insert into gibon_option1 values(seq_gibon_option1.nextVal,'암살자 전용');	-- 13
-	
-	
-	
-	
-	
 	
 	
 		
 		
 	
-	--------- options---------
+	--------- options--------- 일동추가
 	
 	create table options(
 		option1_idx int,						 -- 옵션명(부모키)
@@ -1417,6 +1129,33 @@
 	);
 	
 	
+	
+	
+	
+	-- options sequence 설정(옵션번호)
+	
+	create sequence seq_options_option_idx;
+	create sequence seq_options_option2_idx;
+	create sequence seq_options_option3_idx;
+	create sequence seq_options_option4_idx;
+	create sequence seq_options_option5_idx;
+	create sequence seq_options_option6_idx;
+	create sequence seq_options_option7_idx;
+	create sequence seq_options_option8_idx;
+	
+	
+	drop sequence seq_options_option_idx;
+	drop sequence seq_options2_option2_idx;
+	drop sequence seq_options3_option3_idx;
+	drop sequence seq_options4_option4_idx;
+	drop sequence seq_options5_option5_idx;
+	drop sequence seq_options6_option6_idx;
+	drop sequence seq_options7_option7_idx;
+	drop sequence seq_options8_option8_idx;
+	
+	
+	
+	
 	drop table options;
 	drop table options2;
 	drop table options3;
@@ -1426,35 +1165,6 @@
 	drop table options7;
 	drop table options8;
 	
-	select * from options
-	select item_o1 as option_name1 from options
-	select * from options6
-	
-	
-	-- option1_idx 부모키 지정
-	alter table options
-		add constraint pk_options_option_idx primary key (option1_idx);
-	-- option2_idx 부모키 지정
-	alter table options2
-		add constraint pk_options_option2_idx primary key (option2_idx);
-	-- option2_idx 부모키 지정
-	alter table options3
-		add constraint pk_options_option3_idx primary key (option3_idx);
-	-- option2_idx 부모키 지정
-	alter table options4
-		add constraint pk_options_option4_idx primary key (option4_idx);
-	-- option2_idx 부모키 지정
-	alter table options5
-		add constraint pk_options_option5_idx primary key (option5_idx);
-	-- option2_idx 부모키 지정
-	alter table options6
-		add constraint pk_options_option6_idx primary key (option6_idx);
-	-- option2_idx 부모키 지정
-	alter table options7
-		add constraint pk_options_option7_idx primary key (option7_idx);
-	-- option8_idx 부모키 지정
-	alter table options8
-		add constraint pk_options_option8_idx primary key (option8_idx);
 		
 	
 	insert into options values(seq_options_option_idx.nextVal,'한손 피해'); 		-- 1
@@ -2446,30 +2156,561 @@
 	
 		
 	
-	-- options sequence 설정(옵션번호)ㅜ
 	
-	create sequence seq_options_option_idx;
-	create sequence seq_options_option2_idx;
-	create sequence seq_options_option3_idx;
-	create sequence seq_options_option4_idx;
-	create sequence seq_options_option5_idx;
-	create sequence seq_options_option6_idx;
-	create sequence seq_options_option7_idx;
-	create sequence seq_options_option8_idx;
-	drop sequence seq_options_option_idx;
-	drop sequence seq_options2_option2_idx;
-	drop sequence seq_options3_option3_idx;
-	drop sequence seq_options4_option4_idx;
-	drop sequence seq_options5_option5_idx;
-	drop sequence seq_options6_option6_idx;
-	drop sequence seq_options7_option7_idx;
-	drop sequence seq_options8_option8_idx;
+	
+	
+	
+			
+	--------- gibon-option ---------
+		
+		
+		
+	create table gibon_option1(
+		gibon_option1 int,
+		gibon_option1_name varchar2(100)
+	);
+	
+		
+	
+	create table gibon_option2(
+		gibon_option2 int,
+		gibon_option2_name varchar2(100)
+	);
+	
+	
+		
+	create table gibon_option3(
+		gibon_option3 int,
+		gibon_option3_name varchar2(100)
+	);
+	
+		
+	
+	create table gibon_option4(
+		gibon_option4 int,
+		gibon_option4_name varchar2(100)
+	);
+	
+	
+	create table gibon_option5(
+		gibon_option5 int,
+		gibon_option5_name varchar2(100)
+	);
+	
+	
+		
+	create table gibon_option6(
+		gibon_option6 int,
+		gibon_option6_name varchar2(100)
+	);
+	
+	
+	
+
+	create table gibon_option7(
+		gibon_option7 int,
+		gibon_option7_name varchar2(100)
+	);
+	
+	
+	
 		
 
 	
 	
 	
-	insert into options2 values(seq_options2_option2_idx.nextVal,'적중당 생명력 훔침');
+	
+		
+	create sequence seq_gibon_option1;
+	create sequence seq_gibon_option2;
+	create sequence seq_gibon_option3;
+	create sequence seq_gibon_option4;
+	create sequence seq_gibon_option5;
+	create sequence seq_gibon_option6;
+	create sequence seq_gibon_option7;
+	
+
+	
+	insert into gibon_option1 values(seq_gibon_option1.nextVal,'한손 피해'); 	-- 1
+	insert into gibon_option1 values(seq_gibon_option1.nextVal,'양손 피해'); 	-- 2
+	insert into gibon_option1 values(seq_gibon_option1.nextVal,'방어력'); 		-- 3
+	insert into gibon_option1 values(seq_gibon_option1.nextVal,'내구도'); 		-- 4
+	insert into gibon_option1 values(seq_gibon_option1.nextVal,'필요 힘'); 		-- 5
+	insert into gibon_option1 values(seq_gibon_option1.nextVal,'필요 민첩');	-- 6
+	insert into gibon_option1 values(seq_gibon_option1.nextVal,'요구 레벨');	-- 7
+	insert into gibon_option1 values(seq_gibon_option1.nextVal,'허리띠 크기');	-- 8
+	insert into gibon_option1 values(seq_gibon_option1.nextVal,'막기 확률');	-- 9
+	insert into gibon_option1 values(seq_gibon_option1.nextVal,'성기사 강타 피해');	-- 10
+	insert into gibon_option1 values(seq_gibon_option1.nextVal,'투척 피해');	-- 11
+	insert into gibon_option1 values(seq_gibon_option1.nextVal,'수량');			-- 12
+	insert into gibon_option1 values(seq_gibon_option1.nextVal,'암살자 전용');	-- 13
+
+	
+	
+
+	
+	
+	
+	insert into gibon_option2 values(seq_gibon_option2.nextVal,'한손 피해'); 	-- 1
+	insert into gibon_option2 values(seq_gibon_option2.nextVal,'양손 피해'); 	-- 2
+	insert into gibon_option2 values(seq_gibon_option2.nextVal,'방어력'); 		-- 3
+	insert into gibon_option2 values(seq_gibon_option2.nextVal,'내구도'); 		-- 4
+	insert into gibon_option2 values(seq_gibon_option2.nextVal,'필요 힘'); 		-- 5
+	insert into gibon_option2 values(seq_gibon_option2.nextVal,'필요 민첩');	-- 6
+	insert into gibon_option2 values(seq_gibon_option2.nextVal,'요구 레벨');	-- 7
+	insert into gibon_option2 values(seq_gibon_option2.nextVal,'허리띠 크기');	-- 8
+	insert into gibon_option2 values(seq_gibon_option2.nextVal,'막기 확률');	-- 9
+	insert into gibon_option2 values(seq_gibon_option2.nextVal,'성기사 강타 피해');	-- 10
+	insert into gibon_option2 values(seq_gibon_option2.nextVal,'투척 피해');	-- 11
+	insert into gibon_option2 values(seq_gibon_option2.nextVal,'수량');			-- 12
+	insert into gibon_option2 values(seq_gibon_option2.nextVal,'암살자 전용');	-- 13
+	
+	
+	
+
+	
+	
+	
+	insert into gibon_option3 values(seq_gibon_option3.nextVal,'한손 피해'); 	-- 1
+	insert into gibon_option3 values(seq_gibon_option3.nextVal,'양손 피해'); 	-- 2
+	insert into gibon_option3 values(seq_gibon_option3.nextVal,'방어력'); 		-- 3
+	insert into gibon_option3 values(seq_gibon_option3.nextVal,'내구도'); 		-- 4
+	insert into gibon_option3 values(seq_gibon_option3.nextVal,'필요 힘'); 		-- 5
+	insert into gibon_option3 values(seq_gibon_option3.nextVal,'필요 민첩');	-- 6
+	insert into gibon_option3 values(seq_gibon_option3.nextVal,'요구 레벨');	-- 7
+	insert into gibon_option3 values(seq_gibon_option3.nextVal,'허리띠 크기');	-- 8
+	insert into gibon_option3 values(seq_gibon_option3.nextVal,'막기 확률');	-- 9
+	insert into gibon_option3 values(seq_gibon_option3.nextVal,'성기사 강타 피해');	-- 10
+	insert into gibon_option3 values(seq_gibon_option3.nextVal,'투척 피해');	-- 11
+	insert into gibon_option3 values(seq_gibon_option3.nextVal,'수량');			-- 12
+	insert into gibon_option3 values(seq_gibon_option3.nextVal,'암살자 전용');	-- 13
+	
+	
+
+	
+	
+	insert into gibon_option4 values(seq_gibon_option4.nextVal,'한손 피해'); 	-- 1
+	insert into gibon_option4 values(seq_gibon_option4.nextVal,'양손 피해'); 	-- 2
+	insert into gibon_option4 values(seq_gibon_option4.nextVal,'방어력'); 		-- 3
+	insert into gibon_option4 values(seq_gibon_option4.nextVal,'내구도'); 		-- 4
+	insert into gibon_option4 values(seq_gibon_option4.nextVal,'필요 힘'); 		-- 5
+	insert into gibon_option4 values(seq_gibon_option4.nextVal,'필요 민첩');	-- 6
+	insert into gibon_option4 values(seq_gibon_option4.nextVal,'요구 레벨');	-- 7
+	insert into gibon_option4 values(seq_gibon_option4.nextVal,'허리띠 크기');	-- 8
+	insert into gibon_option4 values(seq_gibon_option4.nextVal,'막기 확률');	-- 9
+	insert into gibon_option4 values(seq_gibon_option4.nextVal,'성기사 강타 피해');	-- 10
+	insert into gibon_option4 values(seq_gibon_option4.nextVal,'투척 피해');	-- 11
+	insert into gibon_option4 values(seq_gibon_option4.nextVal,'수량');			-- 12
+	insert into gibon_option4 values(seq_gibon_option4.nextVal,'암살자 전용');	-- 13
+	
+	
+	
+	
+	
+	
+	insert into gibon_option5 values(seq_gibon_option5.nextVal,'한손 피해'); 	-- 1
+	insert into gibon_option5 values(seq_gibon_option5.nextVal,'양손 피해'); 	-- 2
+	insert into gibon_option5 values(seq_gibon_option5.nextVal,'방어력'); 		-- 3
+	insert into gibon_option5 values(seq_gibon_option5.nextVal,'내구도'); 		-- 4
+	insert into gibon_option5 values(seq_gibon_option5.nextVal,'필요 힘'); 		-- 5
+	insert into gibon_option5 values(seq_gibon_option5.nextVal,'필요 민첩');	-- 6
+	insert into gibon_option5 values(seq_gibon_option5.nextVal,'요구 레벨');	-- 7
+	insert into gibon_option5 values(seq_gibon_option5.nextVal,'허리띠 크기');	-- 8
+	insert into gibon_option5 values(seq_gibon_option5.nextVal,'막기 확률');	-- 9
+	insert into gibon_option5 values(seq_gibon_option5.nextVal,'성기사 강타 피해');	-- 10
+	insert into gibon_option5 values(seq_gibon_option5.nextVal,'투척 피해');	-- 11
+	insert into gibon_option5 values(seq_gibon_option5.nextVal,'수량');			-- 12
+	insert into gibon_option5 values(seq_gibon_option5.nextVal,'암살자 전용');	-- 13
+	insert into gibon_option5 values(seq_gibon_option5.nextVal,'공격 속도');	-- 14
+	
+	
+	
+
+	
+	
+	insert into gibon_option6 values(seq_gibon_option6.nextVal,'한손 피해'); 	-- 1
+	insert into gibon_option6 values(seq_gibon_option6.nextVal,'양손 피해'); 	-- 2
+	insert into gibon_option6 values(seq_gibon_option6.nextVal,'방어력'); 		-- 3
+	insert into gibon_option6 values(seq_gibon_option6.nextVal,'내구도'); 		-- 4
+	insert into gibon_option6 values(seq_gibon_option6.nextVal,'필요 힘'); 		-- 5
+	insert into gibon_option6 values(seq_gibon_option6.nextVal,'필요 민첩');	-- 6
+	insert into gibon_option6 values(seq_gibon_option6.nextVal,'요구 레벨');	-- 7
+	insert into gibon_option6 values(seq_gibon_option6.nextVal,'허리띠 크기');	-- 8
+	insert into gibon_option6 values(seq_gibon_option6.nextVal,'막기 확률');	-- 9
+	insert into gibon_option6 values(seq_gibon_option6.nextVal,'성기사 강타 피해');	-- 10
+	insert into gibon_option6 values(seq_gibon_option6.nextVal,'투척 피해');	-- 11
+	insert into gibon_option6 values(seq_gibon_option6.nextVal,'수량');			-- 12
+	insert into gibon_option6 values(seq_gibon_option6.nextVal,'암살자 전용');	-- 13
+	insert into gibon_option6 values(seq_gibon_option6.nextVal,'공격 속도');	-- 14
+	
+	
+
+	
+	
+	insert into gibon_option7 values(seq_gibon_option7.nextVal,'한손 피해'); 	-- 1
+	insert into gibon_option7 values(seq_gibon_option7.nextVal,'양손 피해'); 	-- 2
+	insert into gibon_option7 values(seq_gibon_option7.nextVal,'방어력'); 		-- 3
+	insert into gibon_option7 values(seq_gibon_option7.nextVal,'내구도'); 		-- 4
+	insert into gibon_option7 values(seq_gibon_option7.nextVal,'필요 힘'); 		-- 5
+	insert into gibon_option7 values(seq_gibon_option7.nextVal,'필요 민첩');	-- 6
+	insert into gibon_option7 values(seq_gibon_option7.nextVal,'요구 레벨');	-- 7
+	insert into gibon_option7 values(seq_gibon_option7.nextVal,'허리띠 크기');	-- 8
+	insert into gibon_option7 values(seq_gibon_option7.nextVal,'막기 확률');	-- 9
+	insert into gibon_option7 values(seq_gibon_option7.nextVal,'성기사 강타 피해');	-- 10
+	insert into gibon_option7 values(seq_gibon_option7.nextVal,'투척 피해');	-- 11
+	insert into gibon_option7 values(seq_gibon_option7.nextVal,'수량');			-- 12
+	insert into gibon_option7 values(seq_gibon_option7.nextVal,'암살자 전용');	-- 13
+	insert into gibon_option7 values(seq_gibon_option7.nextVal,'공격 속도');	-- 14
+	
+	
+	
+	
+	
+	-------------------------------- 끝 ------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	---------------------------------- 여기서부턴 안봐도 됨
+		-- 3. items 변동옵션 제약조건 넣기
+	
+	-- ㅁㅁㅁ 변동옵션 제약조건
+	alter table items
+		add constraint ck_item_defense_val check(gibon_option1_val between 296 and 342);
+	alter table items
+		add constraint ck_item_o1_val check(item_o1_val between 9 and 12);
+	alter table items
+		add constraint ck_item_o2_val check(item_o2_val between 160 and 200);
+	alter table items
+		add constraint ck_item_o7_val check(item_o7_val between 80 and 100);
+	
+	-- 아이템 제약조건 설정
+	
+	alter table items
+		add constraint pk_items_item_idx primary key (item_idx);
+	
+	alter table items
+		add constraint unique_items_item unique (item_name);
+	
+	-- item_im 무형 타입 제한
+	alter table items
+		add constraint ck_item_im check(item_im in ('수리가능','수리불가'));
+		
+	-- item_shot 솟개수제한
+	alter table items
+		add constraint ck_item_shot check(item_shot between 0 and 4);
+		
+	-- foreign key(foreign key는 안넣어도됨 만약을 위해서 냅둠)
+	alter table items
+		add constraint fk_items_item_o1 foreign key(option1_idx)
+										references options(option1_idx);
+	alter table items
+		add constraint fk_items_item_o2 foreign key(option2_idx)
+										references options2(option2_idx);									
+										
+	-- foreign key
+	alter table items
+		add constraint fk_gibon_option1 foreign key(gibon_option1)
+										references gibon_option1(gibon_option1);
+	alter table items
+		add constraint fk_gibon_option2 foreign key(gibon_option2)
+										references gibon_option2(gibon_option2);
+	-- foreign key delete
+	alter table items drop constraint fk_gibon_option1;
+	alter table items drop constraint fk_gibon_option2;
+	alter table items drop constraint fk_gibon_option3;
+	alter table items drop constraint fk_gibon_option4;
+	
+	
+	
+	
+	-- 3. items 변동옵션 제약조건 넣기
+	
+	-- ㅁㅁㅁ 변동옵션 제약조건
+	alter table items2
+		add constraint ck_item2_defense_val check(gibon_option1_val between 349 and 399);
+	alter table items2
+		add constraint ck_item2_o5_val check(item_o5_val between 100 and 150);
+	alter table items2
+		add constraint ck_item2_o6_val check(item_o6_val between 20 and 30);
+	alter table items2
+		add constraint ck_item2_o7_val check(item_o7_val between 10 and 15);
+		
+	-- 아이템 제약조건 설정
+	
+	alter table items2
+		add constraint pk_items_item_idx primary key (item_idx);
+	
+	alter table items2
+		add constraint unique_items_item unique (item_name);
+	
+	-- item_im 무형 타입 제한
+	alter table items
+		add constraint ck_item_im check(item_im in ('수리가능','수리불가'));
+		
+	-- item_shot 솟개수제한
+	alter table items
+		add constraint ck_item_shot check(item_shot between 0 and 4);
+		
+		
+		
+			-- 3. items 변동옵션 제약조건 넣기
+	
+	-- ㅁㅁㅁ 변동옵션 제약조건
+	alter table items3
+		add constraint ck_gibon_option1_val check(gibon_option1_val between 99 and 113);
+	alter table items3
+		add constraint ck_item3_o2_val check(item_o2_val between 50 and 100);
+	alter table items3
+		add constraint ck_item3_o5_val check(item_o5_val between 30 and 60);
+			
+	-- 아이템 제약조건 설정
+	
+	alter table items
+		add constraint pk_items_item_idx primary key (item_idx);
+	
+	alter table items
+		add constraint unique_items_item unique (item_name);
+	
+	-- item_im 무형 타입 제한
+	alter table items
+		add constraint ck_item_im check(item_im in ('수리가능','수리불가'));
+		
+	-- item_shot 솟개수제한
+	alter table items
+		add constraint ck_item_shot check(item_shot between 0 and 4);
+		
+		
+		
+		
+	-- 3. items 변동옵션 제약조건 넣기
+	
+	-- ㅁㅁㅁ 변동옵션 제약조건
+	alter table items4
+		add constraint ck_item4_attack_val1 check(gibon_option1_val between 28 and 32);
+	alter table items4
+		add constraint ck_item4_attack_val2 check(gibon_option2_val between 50 and 56);
+	alter table items4
+		add constraint ck_item4_o1_val check(item_o1_val between 80 and 100);
+	alter table items4
+		add constraint ck_item4_o2_val check(item_o2_val between 100 and 150);
+	alter table items4
+		add constraint ck_item4_o3_val check(item_o3_val between 20 and 40);
+		
+	-- 아이템 제약조건 설정
+	
+	alter table items
+		add constraint pk_items_item_idx primary key (item_idx);
+	
+	alter table items
+		add constraint unique_items_item unique (item_name);
+		
+	
+	-- item_im 무형 타입 제한
+	alter table items
+		add constraint ck_item_im check(item_im in ('수리가능','수리불가'));
+		
+	-- item_shot 솟개수제한
+	alter table items
+		add constraint ck_item_shot check(item_shot between 0 and 4);
+		
+		
+	
+		
+		
+		
+		
+	-- item option 제작소
+		
+		
+		select * from trade_order_by_view
+		where option_name1 like '방어력'
+		or    option_name2 like '방어력'
+		or    option_name3 like '방어력'
+		or    option_name4 like '방어력'
+		or    option_name5 like '방어력'
+		or    option_name6 like '방어력'
+		or    option_name7 like '방어력'
+	
+	select * from trade_order_by_view
+		where option_name1 = '방어력'
+		or    option_name2 = '방어력'
+		or    option_name3 = '방어력'
+		or    option_name4 = '방어력'
+		or    option_name5 = '방어력'
+		or    option_name6 = '방어력'
+		or    option_name7 = '방어력'
+
+	-- option name + option val
+	create or replace view trade_order_by_view2
+	as
+	select s.*, option_name1 || item_o1_val as option1, 
+	option_name2 || item_o2_val as option2, 
+	option_name3 || item_o3_val as option3, 
+	option_name4 || item_o4_val as option4, 
+	option_name5 || item_o5_val as option5, 
+	option_name6 || item_o6_val as option6, 
+	option_name7 || item_o7_val as option7 
+	from
+	(select * from trade_order_by_view)s
+	
+	select * from trade_order_by_view2
+	where option5 substring
+	
+	
+	select s3.* from
+	(select s2.* from
+	(select s.* from
+	(select * from trade_order_by_view
+		where option_name1 = '방어력' and item_o1_val>=10
+		or    option_name2 = '방어력' and item_o2_val>=10		
+		or    option_name3 = '방어력' and item_o3_val>=10		
+		or    option_name4 = '방어력' and item_o4_val>=10		
+		or    option_name5 = '방어력' and item_o5_val>=10		
+		or    option_name6 = '방어력' and item_o6_val>=10		
+		or    option_name7 = '방어력' and item_o7_val>=10)
+		s
+		where option_name1 like '파괴불가'
+		or	  option_name2 like '파괴불가'
+		or	  option_name3 like '파괴불가'
+		or	  option_name4 like '파괴불가'
+		or	  option_name5 like '파괴불가'
+		or	  option_name6 like '파괴불가'
+		or	  option_name7 like '파괴불가')s2
+		where option_name1 like '모든 저항' and item_o1_val>=10
+		or option_name2 = '모든 저항' and item_o2_val>=10
+		or option_name3 = '모든 저항' and item_o3_val>=10
+		or option_name4 = '모든 저항' and item_o4_val>=10
+		or option_name5 = '모든 저항' and item_o5_val>=10
+		or option_name6 = '모든 저항' and item_o6_val>=10
+		or option_name7 = '모든 저항' and item_o7_val>=10)s3
+		where option_name1 = '방어력 증가' and item_o1_val>=10
+		or option_name2 = '방어력 증가' and item_o2_val>=10
+		or option_name3 = '방어력 증가' and item_o3_val>=10
+		or option_name4 = '방어력 증가' and item_o4_val>=10
+		or option_name5 = '방어력 증가' and item_o5_val>=10
+		or option_name6 = '방어력 증가' and item_o6_val>=10
+		or option_name7 = '방어력 증가' and item_o7_val>=10
+		where item_type = '투구'
+		
+		
+		or	  option_name1 = '방어력 증가' and item_o1_val>40
+		or	  option_name2 = '방어력 증가' and item_o2_val>40
+		or	  option_name3 = '방어력 증가' and item_o3_val>40
+		or	  option_name4 = '방어력 증가' and item_o4_val>40
+		or	  option_name5 = '방어력 증가' and item_o5_val>40
+		or	  option_name6 = '방어력 증가' and item_o6_val>40
+		or	  option_name7 = '방어력 증가' and item_o7_val>40
+		or	  option_name1 like '파괴불가'
+		or	  option_name2 like '파괴불가'
+		or	  option_name3 like '파괴불가'
+		or	  option_name4 like '파괴불가'
+		or	  option_name5 like '파괴불가'
+		or	  option_name6 like '파괴불가'
+		or	  option_name7 like '파괴불가'
+		
+		
+	select * from trade_order_by_view
+		where option_name6 = '방어력' and item_o6_val>=10 and option_name1 like '파괴불가'
+	
+	
+	select * from trade_order_by_view
+		where 기본옵션명1 like '요구 레벨' and gibon_option1_val>20
+		or    기본옵션명2 like '요구 레벨' and gibon_option2_val>20
+		or    기본옵션명3 like '요구 레벨' and gibon_option3_val>20
+		or    기본옵션명4 like '요구 레벨' and gibon_option4_val>20
+		or    기본옵션명5 like '요구 레벨' and gibon_option5_val>20
+		or    기본옵션명6 like '요구 레벨' and gibon_option6_val>20
+		or    기본옵션명7 like '요구 레벨' and gibon_option7_val>20
+	
+	
+	(SELECT * FROM trade_view)
+	UNION ALL
+	(SELECT * FROM items4_item_o1_view);
+	
+	create or replace view trade_view_add
+	as
+	select
+	
+	form trade_view t outer join items4_item_o1_view i4 on 
+	
+	
+	
+	select * from trade_view
+		where 옵션명1 like '방어력' and item_o1_val>20
+		or    옵션명2 like '방어력' and item_o2_val>20
+		or    옵션명3 like '방어력' and item_o3_val>20
+		or    옵션명4 like '방어력' and item_o4_val>20
+		or    옵션명5 like '방어력' and item_o5_val>20
+		or    옵션명6 like '방어력' and item_o6_val>20
+		or    옵션명7 like '방어력' and item_o7_val>20
+		
+	select * from trade_view
+		where item_shot<4
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	-- option1_idx 부모키 지정
+	alter table options
+		add constraint pk_options_option_idx primary key (option1_idx);
+	-- option2_idx 부모키 지정
+	alter table options2
+		add constraint pk_options_option2_idx primary key (option2_idx);
+	-- option2_idx 부모키 지정
+	alter table options3
+		add constraint pk_options_option3_idx primary key (option3_idx);
+	-- option2_idx 부모키 지정
+	alter table options4
+		add constraint pk_options_option4_idx primary key (option4_idx);
+	-- option2_idx 부모키 지정
+	alter table options5
+		add constraint pk_options_option5_idx primary key (option5_idx);
+	-- option2_idx 부모키 지정
+	alter table options6
+		add constraint pk_options_option6_idx primary key (option6_idx);
+	-- option2_idx 부모키 지정
+	alter table options7
+		add constraint pk_options_option7_idx primary key (option7_idx);
+	-- option8_idx 부모키 지정
+	alter table options8
+		add constraint pk_options_option8_idx primary key (option8_idx);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		insert into options2 values(seq_options2_option2_idx.nextVal,'적중당 생명력 훔침');
 	insert into options2 values(seq_options2_option2_idx.nextVal,'방어력 증가');
 	insert into options2 values(seq_options2_option2_idx.nextVal,'민첩');
 	insert into options2 values(seq_options2_option2_idx.nextVal,'생명력');
@@ -2644,199 +2885,3 @@
 	insert into options8 values(seq_options8_option8_idx.nextVal,'신성한 불꽃(성기사 전용)');
 	insert into options8 values(seq_options8_option8_idx.nextVal,'마나');
 	insert into options8 values(seq_options8_option8_idx.nextVal,'빈옵션');
-	
-	
-	
-	
-	
-	create table gibon_option2(
-		gibon_option2 int,
-		gibon_option2_name varchar2(100)
-	)
-	
-	alter table gibon_option2
-		add constraint pk_gibon_option2 primary key (gibon_option2)
-	
-		
-	create sequence seq_gibon_option2
-	
-
-	select * from gibon_option2
-	
-	
-	insert into gibon_option2 values(seq_gibon_option2.nextVal,'한손 피해'); 	-- 1
-	insert into gibon_option2 values(seq_gibon_option2.nextVal,'양손 피해'); 	-- 2
-	insert into gibon_option2 values(seq_gibon_option2.nextVal,'방어력'); 		-- 3
-	insert into gibon_option2 values(seq_gibon_option2.nextVal,'내구도'); 		-- 4
-	insert into gibon_option2 values(seq_gibon_option2.nextVal,'필요 힘'); 		-- 5
-	insert into gibon_option2 values(seq_gibon_option2.nextVal,'필요 민첩');	-- 6
-	insert into gibon_option2 values(seq_gibon_option2.nextVal,'요구 레벨');	-- 7
-	insert into gibon_option2 values(seq_gibon_option2.nextVal,'허리띠 크기');	-- 8
-	insert into gibon_option2 values(seq_gibon_option2.nextVal,'막기 확률');	-- 9
-	insert into gibon_option2 values(seq_gibon_option2.nextVal,'성기사 강타 피해');	-- 10
-	insert into gibon_option2 values(seq_gibon_option2.nextVal,'투척 피해');	-- 11
-	insert into gibon_option2 values(seq_gibon_option2.nextVal,'수량');			-- 12
-	insert into gibon_option2 values(seq_gibon_option2.nextVal,'암살자 전용');	-- 13
-	
-	
-	
-	
-	create table gibon_option3(
-		gibon_option3 int,
-		gibon_option3_name varchar2(100)
-	)
-	
-	alter table gibon_option3
-		add constraint pk_gibon_option3 primary key (gibon_option3)
-	
-		
-	create sequence seq_gibon_option3
-	
-
-	select * from gibon_option3
-	
-	
-	insert into gibon_option3 values(seq_gibon_option3.nextVal,'한손 피해'); 	-- 1
-	insert into gibon_option3 values(seq_gibon_option3.nextVal,'양손 피해'); 	-- 2
-	insert into gibon_option3 values(seq_gibon_option3.nextVal,'방어력'); 		-- 3
-	insert into gibon_option3 values(seq_gibon_option3.nextVal,'내구도'); 		-- 4
-	insert into gibon_option3 values(seq_gibon_option3.nextVal,'필요 힘'); 		-- 5
-	insert into gibon_option3 values(seq_gibon_option3.nextVal,'필요 민첩');	-- 6
-	insert into gibon_option3 values(seq_gibon_option3.nextVal,'요구 레벨');	-- 7
-	insert into gibon_option3 values(seq_gibon_option3.nextVal,'허리띠 크기');	-- 8
-	insert into gibon_option3 values(seq_gibon_option3.nextVal,'막기 확률');	-- 9
-	insert into gibon_option3 values(seq_gibon_option3.nextVal,'성기사 강타 피해');	-- 10
-	insert into gibon_option3 values(seq_gibon_option3.nextVal,'투척 피해');	-- 11
-	insert into gibon_option3 values(seq_gibon_option3.nextVal,'수량');			-- 12
-	insert into gibon_option3 values(seq_gibon_option3.nextVal,'암살자 전용');	-- 13
-	
-	
-	
-	
-	create table gibon_option4(
-		gibon_option4 int,
-		gibon_option4_name varchar2(100)
-	)
-	
-	alter table gibon_option4
-		add constraint pk_gibon_option4 primary key (gibon_option4)
-	
-		
-	create sequence seq_gibon_option4
-	
-
-	select * from gibon_option4
-	
-	
-	insert into gibon_option4 values(seq_gibon_option4.nextVal,'한손 피해'); 	-- 1
-	insert into gibon_option4 values(seq_gibon_option4.nextVal,'양손 피해'); 	-- 2
-	insert into gibon_option4 values(seq_gibon_option4.nextVal,'방어력'); 		-- 3
-	insert into gibon_option4 values(seq_gibon_option4.nextVal,'내구도'); 		-- 4
-	insert into gibon_option4 values(seq_gibon_option4.nextVal,'필요 힘'); 		-- 5
-	insert into gibon_option4 values(seq_gibon_option4.nextVal,'필요 민첩');	-- 6
-	insert into gibon_option4 values(seq_gibon_option4.nextVal,'요구 레벨');	-- 7
-	insert into gibon_option4 values(seq_gibon_option4.nextVal,'허리띠 크기');	-- 8
-	insert into gibon_option4 values(seq_gibon_option4.nextVal,'막기 확률');	-- 9
-	insert into gibon_option4 values(seq_gibon_option4.nextVal,'성기사 강타 피해');	-- 10
-	insert into gibon_option4 values(seq_gibon_option4.nextVal,'투척 피해');	-- 11
-	insert into gibon_option4 values(seq_gibon_option4.nextVal,'수량');			-- 12
-	insert into gibon_option4 values(seq_gibon_option4.nextVal,'암살자 전용');	-- 13
-	
-	
-	
-	
-	create table gibon_option5(
-		gibon_option5 int,
-		gibon_option5_name varchar2(100)
-	)
-	
-	alter table gibon_option5
-		add constraint pk_gibon_option5 primary key (gibon_option5)
-	
-		
-	create sequence seq_gibon_option5
-	
-
-	select * from gibon_option5
-	
-	
-	insert into gibon_option5 values(seq_gibon_option5.nextVal,'한손 피해'); 	-- 1
-	insert into gibon_option5 values(seq_gibon_option5.nextVal,'양손 피해'); 	-- 2
-	insert into gibon_option5 values(seq_gibon_option5.nextVal,'방어력'); 		-- 3
-	insert into gibon_option5 values(seq_gibon_option5.nextVal,'내구도'); 		-- 4
-	insert into gibon_option5 values(seq_gibon_option5.nextVal,'필요 힘'); 		-- 5
-	insert into gibon_option5 values(seq_gibon_option5.nextVal,'필요 민첩');	-- 6
-	insert into gibon_option5 values(seq_gibon_option5.nextVal,'요구 레벨');	-- 7
-	insert into gibon_option5 values(seq_gibon_option5.nextVal,'허리띠 크기');	-- 8
-	insert into gibon_option5 values(seq_gibon_option5.nextVal,'막기 확률');	-- 9
-	insert into gibon_option5 values(seq_gibon_option5.nextVal,'성기사 강타 피해');	-- 10
-	insert into gibon_option5 values(seq_gibon_option5.nextVal,'투척 피해');	-- 11
-	insert into gibon_option5 values(seq_gibon_option5.nextVal,'수량');			-- 12
-	insert into gibon_option5 values(seq_gibon_option5.nextVal,'암살자 전용');	-- 13
-	insert into gibon_option5 values(seq_gibon_option5.nextVal,'공격 속도');	-- 14
-	
-	
-	
-	
-	create table gibon_option6(
-		gibon_option6 int,
-		gibon_option6_name varchar2(100)
-	)
-	
-	alter table gibon_option6
-		add constraint pk_gibon_option6 primary key (gibon_option6)
-	
-		
-	create sequence seq_gibon_option6
-	
-
-	select * from gibon_option6
-	
-	
-	insert into gibon_option6 values(seq_gibon_option6.nextVal,'한손 피해'); 	-- 1
-	insert into gibon_option6 values(seq_gibon_option6.nextVal,'양손 피해'); 	-- 2
-	insert into gibon_option6 values(seq_gibon_option6.nextVal,'방어력'); 		-- 3
-	insert into gibon_option6 values(seq_gibon_option6.nextVal,'내구도'); 		-- 4
-	insert into gibon_option6 values(seq_gibon_option6.nextVal,'필요 힘'); 		-- 5
-	insert into gibon_option6 values(seq_gibon_option6.nextVal,'필요 민첩');	-- 6
-	insert into gibon_option6 values(seq_gibon_option6.nextVal,'요구 레벨');	-- 7
-	insert into gibon_option6 values(seq_gibon_option6.nextVal,'허리띠 크기');	-- 8
-	insert into gibon_option6 values(seq_gibon_option6.nextVal,'막기 확률');	-- 9
-	insert into gibon_option6 values(seq_gibon_option6.nextVal,'성기사 강타 피해');	-- 10
-	insert into gibon_option6 values(seq_gibon_option6.nextVal,'투척 피해');	-- 11
-	insert into gibon_option6 values(seq_gibon_option6.nextVal,'수량');			-- 12
-	insert into gibon_option6 values(seq_gibon_option6.nextVal,'암살자 전용');	-- 13
-	insert into gibon_option6 values(seq_gibon_option6.nextVal,'공격 속도');	-- 14
-	
-	
-	
-	
-	create table gibon_option7(
-		gibon_option7 int,
-		gibon_option7_name varchar2(100)
-	)
-	
-	alter table gibon_option7
-		add constraint pk_gibon_option7 primary key (gibon_option7)
-	
-		
-	create sequence seq_gibon_option7
-	
-
-	select * from gibon_option7
-	
-	
-	insert into gibon_option7 values(seq_gibon_option7.nextVal,'한손 피해'); 	-- 1
-	insert into gibon_option7 values(seq_gibon_option7.nextVal,'양손 피해'); 	-- 2
-	insert into gibon_option7 values(seq_gibon_option7.nextVal,'방어력'); 		-- 3
-	insert into gibon_option7 values(seq_gibon_option7.nextVal,'내구도'); 		-- 4
-	insert into gibon_option7 values(seq_gibon_option7.nextVal,'필요 힘'); 		-- 5
-	insert into gibon_option7 values(seq_gibon_option7.nextVal,'필요 민첩');	-- 6
-	insert into gibon_option7 values(seq_gibon_option7.nextVal,'요구 레벨');	-- 7
-	insert into gibon_option7 values(seq_gibon_option7.nextVal,'허리띠 크기');	-- 8
-	insert into gibon_option7 values(seq_gibon_option7.nextVal,'막기 확률');	-- 9
-	insert into gibon_option7 values(seq_gibon_option7.nextVal,'성기사 강타 피해');	-- 10
-	insert into gibon_option7 values(seq_gibon_option7.nextVal,'투척 피해');	-- 11
-	insert into gibon_option7 values(seq_gibon_option7.nextVal,'수량');			-- 12
-	insert into gibon_option7 values(seq_gibon_option7.nextVal,'암살자 전용');	-- 13
-	insert into gibon_option7 values(seq_gibon_option7.nextVal,'공격 속도');	-- 14
