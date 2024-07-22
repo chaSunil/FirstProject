@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +32,16 @@ public class ItemsDao {
 	public List<ItemsVo> selectListOption() {
 		
 		return sqlSession.selectList("items.items_list_option");
+	}
+	
+	public int selectRowTotal() {
+		
+		return sqlSession.selectOne("items.items_row_total");
+	}
+	
+	public List<ItemsVo> selectList(Map<String, Object> map) {
+		
+		return sqlSession.selectList("items.items_list_page",map);
 	}
 	
 }

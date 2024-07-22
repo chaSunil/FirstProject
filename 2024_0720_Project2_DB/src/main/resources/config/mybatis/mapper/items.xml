@@ -135,6 +135,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</trim>
 	</select>
 	
+	
+	<!-- 거래 아이템 데이터 총 개수 구하기 PAGE용 -->
+	<select id="items_row_total" resultType="int">
+		select nvl(count(*),0) from trade_order_by_view
+	</select>
+	
+	<!-- 거래 아이템 페이지별로 보여질 갯수(최신순으로 정렬) -->
+	<select id="items_list_page" parameterType="Map" resultType="items">
+		select * from
+		(
+			select
+				rank() over(order by item_idx desc) as no,
+				i.*
+			from
+				(select * from trade_order_by_view) i
+		)
+		where no between #{ start } and #{ end }
+	</select>
+	
 
 	
 	

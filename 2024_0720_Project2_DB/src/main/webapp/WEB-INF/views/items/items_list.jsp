@@ -605,25 +605,25 @@ function downArrow() {
 			<div id="item-box3">
 				<div id="gibon_option_font">
 				<!-- 해당 값에 값이 0이거나 이름이 null이라면 출력하지 않겠다. -->
-				<c:if test="${ items.gibon_option1_val != 0 || items.gibon_option1_name != null }">
+				<c:if test="${ items.gibon_option1_name != null }">
 				<span>${ items.gibon_option1_name } ${ items.gibon_option1_val }</span><br>
 				</c:if>
-				<c:if test="${ items.gibon_option2_val != 0 || items.gibon_option2_name != null }">
+				<c:if test="${ items.gibon_option2_name != null }">
 				<span>${ items.gibon_option2_name } ${ items.gibon_option2_val }</span><br>
 				</c:if>
-				<c:if test="${ items.gibon_option3_val != 0 || items.gibon_option3_name != null }">
+				<c:if test="${ items.gibon_option3_name != null }">
 				<span>${ items.gibon_option3_name } ${ items.gibon_option3_val }</span><br>
 				</c:if>
-				<c:if test="${ items.gibon_option4_val != 0 || items.gibon_option4_name != null }">
+				<c:if test="${ items.gibon_option4_name != null }">
 				<span>${ items.gibon_option4_name } ${ items.gibon_option4_val }</span><br>
 				</c:if>
-				<c:if test="${ items.gibon_option5_val != 0 || items.gibon_option5_name != null }">
+				<c:if test="${ items.gibon_option5_name != null }">
 				<span>${ items.gibon_option5_name} ${ items.gibon_option5_val }</span><br>
 				</c:if>
-				<c:if test="${ items.gibon_option6_val != 0 || items.gibon_option6_name != null }">
+				<c:if test="${ items.gibon_option6_name != null }">
 				<span>${ items.gibon_option6_name } ${ items.gibon_option6_val }</span><br>
 				</c:if>
-				<c:if test="${ items.gibon_option7_val != 0 || items.gibon_option7_name != null }">
+				<c:if test="${ items.gibon_option7_name != null }">
 				<span>${ items.gibon_option7_name } ${ items.gibon_option7_val }</span><br>
 				</c:if>
 				<br>
@@ -700,6 +700,10 @@ function downArrow() {
 </div>
 		</form>
 		</c:forEach>
+		
+		<div style="text-align:center; margin-top:20px;">
+			${ pageMenu }
+		</div>
 
 </body>
 </html>

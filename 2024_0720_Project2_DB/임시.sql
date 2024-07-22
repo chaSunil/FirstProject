@@ -1173,7 +1173,7 @@
 		
 	-- 1. items table 넣기
 		
-	-- itmes9 (갑옷)
+	-- items10 (갑옷)
 	create table items10(
 		item_idx int, 						-- 아이템 번호(부모키)
 		item_name varchar2(100) not null,	-- 아이템명(유니크)
@@ -1241,13 +1241,246 @@
 								'수리가능',0,
 								-- 기본옵션
 							    --g1   g2   g3   g4   g5   g6   g7
-								3,279,4,24,5,43,7,29,0,0,0,0,0,0,
+								3,216,4,60,5,41,7,29,0,0,0,0,0,0,
 								-- 하단 변동옵션
-								37,1,		-- option1_idx
-								25,30, 	-- option2_idx
-								12,120,		-- option3_idx
-								39,35,		-- option4_idx
+								86,50,		-- option1_idx
+								89,100, 	-- option2_idx
+								12,100,		-- option3_idx
+								18,15,		-- option4_idx
 								74,13,  	-- option5_idx
+								87,25, 	 	-- option6_idx
+								39,10,		-- option7_idx
+								0,0
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items10_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items10 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items11 (갑옷)
+	create table items11(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items11 values(
+								seq_items_item_idx.nextVal,
+								'티리엘의 권능 세이크리드 아머',
+								'티리엘의 권능.jpg',
+								'갑옷',
+								'엘리트',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								3,1923,4,60,5,232,7,74,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								111,2,		-- option1_idx
+								26,20, 	-- option2_idx
+								12,220,		-- option3_idx
+								101,300,		-- option4_idx
+								15,15,  	-- option5_idx
+								17,15, 	 	-- option6_idx
+								39,10,		-- option7_idx
+								120,50
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items11_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items11 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items12 (갑옷)
+	create table items12(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items12 values(
+								seq_items_item_idx.nextVal,
+								'섬뜩한 얼굴 마스크',
+								'섬뜩한 얼굴 마스크.jpg',
+								'투구',
+								'노멀',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								3,52,4,20,5,23,7,20,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								86,50,		-- option1_idx
+								59,50, 	-- option2_idx
+								36,25,		-- option3_idx
+								15,20,		-- option4_idx
+								39,10,  	-- option5_idx
 								0,0, 	 	-- option6_idx
 								0,0,		-- option7_idx
 								0,0
@@ -1258,7 +1491,7 @@
 	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
 							
 	-- items view 생성
-	create or replace view items9_item_o1_view
+	create or replace view items12_item_o1_view
 	as
 	select
 		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
@@ -1266,7 +1499,1679 @@
 		go7.gibon_option7_name gibon_option7_name,
 		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
 		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
-	from items9 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+	from items12 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items13 (갑옷)
+	create table items13(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items13 values(
+								seq_items_item_idx.nextVal,
+								'대군주의 진노 목걸이',
+								'대군주의 진노.jpg',
+								'목걸이',
+								'노멀',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								7,50,0,0,0,0,0,0,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								29,30,		-- option1_idx
+								24,20, 	-- option2_idx
+								36,100,		-- option3_idx
+								101,100,		-- option4_idx
+								16,25,  	-- option5_idx
+								0,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items13_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items13 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items12 (갑옷)
+	create table items14(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items14 values(
+								seq_items_item_idx.nextVal,
+								'마라의 만화경 목걸이',
+								'마라의 만화경.jpg',
+								'목걸이',
+								'노멀',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								7,67,0,0,0,0,0,0,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								37,2,		-- option1_idx
+								38,5, 	-- option2_idx
+								39,30,		-- option3_idx
+								0,0,		-- option4_idx
+								0,0,  	-- option5_idx
+								0,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items14_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items14 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items12 (갑옷)
+	create table items15(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items15 values(
+								seq_items_item_idx.nextVal,
+								'초승달 목걸이',
+								'초승달.jpg',
+								'목걸이',
+								'노멀',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								7,50,0,0,0,0,0,0,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								34,15,		-- option1_idx
+								35,6, 	-- option2_idx
+								19,45,		-- option3_idx
+								74,10,		-- option4_idx
+								83,10,  	-- option5_idx
+								77,-2, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items15_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items15 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items12 (갑옷)
+	create table items16(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items16 values(
+								seq_items_item_idx.nextVal,
+								'요르단의 반지',
+								'요르단의 반지.jpg',
+								'반지',
+								'노멀',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								7,29,0,0,0,0,0,0,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								37,1,		-- option1_idx
+								109,12, 	-- option2_idx
+								19,20,		-- option3_idx
+								71,25,		-- option4_idx
+								0,0,  	-- option5_idx
+								0,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items16_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items16 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items12 (갑옷)
+	create table items17(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items17 values(
+								seq_items_item_idx.nextVal,
+								'칠흑 서리 반지',
+								'칠흑 서리.jpg',
+								'반지',
+								'노멀',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								7,45,0,0,0,0,0,0,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								23,250,		-- option1_idx
+								108,45, 	-- option2_idx
+								16,20,		-- option3_idx
+								19,40,		-- option4_idx
+								98,20,  	-- option5_idx
+								58,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items17_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items17 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items12 (갑옷)
+	create table items18(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items18 values(
+								seq_items_item_idx.nextVal,
+								'불카토스의 결혼 반지',
+								'불카토스의 결혼 반지.jpg',
+								'반지',
+								'노멀',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								7,58,0,0,0,0,0,0,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								37,1,		-- option1_idx
+								35,5, 	-- option2_idx
+								20,49,		-- option3_idx
+								120,50,		-- option4_idx
+								0,0,  	-- option5_idx
+								0,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items18_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items18 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items12 (갑옷)
+	create table items19(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items19 values(
+								seq_items_item_idx.nextVal,
+								'죽음나락 불길 즈바이핸더',
+								'죽음나락 불길.jpg',
+								'두손검',
+								'익셉셔널',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								1,91,2,140,4,50,6,94,5,125,7,46,14,-10,
+								-- 하단 변동옵션
+								11,160,		-- option1_idx
+								107,200, 	-- option2_idx
+								40,40,		-- option3_idx
+								93,10,		-- option4_idx
+								0,20,  	-- option5_idx
+								0,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items19_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items19 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items12 (갑옷)
+	create table items20(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items20 values(
+								seq_items_item_idx.nextVal,
+								'지옥역병 롱소드',
+								'지옥역병.jpg',
+								'두손검',
+								'노멀',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								1,34,4,44,6,39,5,55,7,22,14,-10,0,0,
+								-- 하단 변동옵션
+								79,2,		-- option1_idx
+								11,80, 	-- option2_idx
+								107,75,		-- option3_idx
+								34,5,		-- option4_idx
+								35,5,  	-- option5_idx
+								58,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items20_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items20 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items12 (갑옷)
+	create table items21(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items21 values(
+								seq_items_item_idx.nextVal,
+								'푸른 서슬 페이즈 블레이드',
+								'푸른 서슬.jpg',
+								'한손검',
+								'노멀',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								1,114,6,136,5,25,7,85,14,-30,0,0,0,0,
+								-- 하단 변동옵션
+								37,1,		-- option1_idx
+								24,30, 	-- option2_idx
+								11,270,		-- option3_idx
+								110,500,		-- option4_idx
+								108,500,  	-- option5_idx
+								38,10, 	 	-- option6_idx
+								77,3,		-- option7_idx
+								0,0
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items21_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items20 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items12 (갑옷)
+	create table items22(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items22 values(
+								seq_items_item_idx.nextVal,
+								'그림자송곳니 투핸드 소드',
+								'그림자송곳니.jpg',
+								'두손검',
+								'노멀',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								1,18,2,34,4,44,6,27,5,35,7,12,14,0,
+								-- 하단 변동옵션
+								11,100,		-- option1_idx
+								108,30, 	-- option2_idx
+								34,9,		-- option3_idx
+								35,9,		-- option4_idx
+								41,20,  	-- option5_idx
+								77,-2, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items22_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items22 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items12 (갑옷)
+	create table items23(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items23 values(
+								seq_items_item_idx.nextVal,
+								'유혈자 글래디우스',
+								'유혈자.jpg',
+								'한손검',
+								'노멀',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								1,97,4,54,5,25,7,30,14,0,0,0,0,0,
+								-- 하단 변동옵션
+								24,20,		-- option1_idx
+								11,140, 	-- option2_idx
+								13,45,		-- option3_idx
+								23,90,		-- option4_idx
+								35,8,  	-- option5_idx
+								116,3, 	 	-- option6_idx
+								116,4,		-- option7_idx
+								82,10
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items23_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items23 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items12 (갑옷)
+	create table items24(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items24 values(
+								seq_items_item_idx.nextVal,
+								'마수',
+								'마수.jpg',
+								'장갑',
+								'노멀',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								3,25,4,18,5,45,7,23,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								79,1,		-- option1_idx
+								25,20, 	-- option2_idx
+								107,6,		-- option3_idx
+								12,30,		-- option4_idx
+								36,10,  	-- option5_idx
+								87,25, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items24_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items24 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items12 (갑옷)
+	create table items25(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items25 values(
+								seq_items_item_idx.nextVal,
+								'무덤손바닥 샤크스킨 글러브',
+								'유혈자.jpg',
+								'한손검',
+								'익셉셔널',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								3,112,4,14,5,20,7,32,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								86,200,		-- option1_idx
+								89,200, 	-- option2_idx
+								12,180,		-- option3_idx
+								15,10,		-- option4_idx
+								18,10,  	-- option5_idx
+								0,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items25_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items25 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
+		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
+		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
+		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
+		left outer join gibon_option5 go5 on i.gibon_option5 = go5.gibon_option5
+		left outer join gibon_option6 go6 on i.gibon_option6 = go6.gibon_option6
+		left outer join gibon_option7 go7 on i.gibon_option7 = go7.gibon_option7
+		left outer join options o1 on i.option1_idx = o1.option1_idx
+		left outer join options2 o2 on i.option2_idx = o2.option2_idx
+		left outer join options3 o3 on i.option3_idx = o3.option3_idx
+		left outer join options4 o4 on i.option4_idx = o4.option4_idx
+		left outer join options5 o5 on i.option5_idx = o5.option5_idx
+		left outer join options6 o6 on i.option6_idx = o6.option6_idx
+		left outer join options7 o7 on i.option7_idx = o7.option7_idx
+		left outer join options8 o8 on i.option8_idx = o8.option8_idx;
+		
+		
+		
+		
+		
+		
+		
+		
+	-- 1. items table 넣기
+		
+	-- items12 (갑옷)
+	create table items26(
+		item_idx int, 						-- 아이템 번호(부모키)
+		item_name varchar2(100) not null,	-- 아이템명(유니크)
+		item_image varchar2(2000) not null,	-- 이미지경로
+		item_type varchar2(100) not null,	-- 아이템타입
+		item_grade varchar2(100) not null,	-- 아이템등급
+		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_im varchar2(100) default '수리가능',	-- 무형
+		item_shot int default '0',			-- 솟개수
+		
+		
+		gibon_option1		int,			-- 기본 한손 피해 5~6 - 28~32
+		gibon_option1_val	int,			
+		gibon_option2		int,			-- 기본 양손 피해 16~18 - 50~56
+		gibon_option2_val	int,		
+		gibon_option3		int default 50,			-- 기본내구도
+		gibon_option3_val	int,		
+		gibon_option4		int default 34,			-- 기본필요민첩
+		gibon_option4_val	int,
+		gibon_option5		int default 56,			-- 기본필요힘
+		gibon_option5_val	int,
+		gibon_option6		int default 23,			-- 요구레벨
+		gibon_option6_val	int,
+		gibon_option7		int default 0,			-- 기본 공격속도
+		gibon_option7_val	int,
+		
+		
+		
+		--item_damage varchar2(100),		-- 기본 한손 피해 5~6 - 28~32
+		--item_2hand_damage varchar2(100),	-- 기본 양손 피해 16~18 - 50~56
+		--item_durability int,				-- 기본내구도
+		--item_dex int,			  			-- 기본필요민첩
+		--item_strength int,				-- 기본필요힘
+		--item_level int,					-- 요구레벨
+		--item_weapon_speed int,			-- 기본 공격속도
+		
+		option1_idx int,					-- 피해 증가(변동옵션)80~100
+		item_o1_val int,
+		option2_idx int,					-- 명중률(변동옵션)100~150
+		item_o2_val int,
+		option3_idx int,					-- 화염 피해 추가(변동옵션)20~40
+		item_o3_val int,
+		option4_idx int,					-- 신성한 불꽃(성기사 전용)
+		item_o4_val int,
+		option5_idx int,					-- 마나
+		item_o5_val int,
+		option6_idx int,					
+		item_o6_val int,
+		option7_idx int,					
+		item_o7_val int,
+		option8_idx int,					
+		item_o8_val int
+	);
+	
+	
+	-- 2. items values 넣기
+							
+	insert into items26 values(
+								seq_items_item_idx.nextVal,
+								'강철찢개',
+								'강철찢개.jpg',
+								'장갑',
+								'엘리트',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								3,281,4,24,5,185,7,70,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								11,60,		-- option1_idx
+								30,10, 	-- option2_idx
+								36,210,		-- option3_idx
+								15,20,		-- option4_idx
+								0,0,  	-- option5_idx
+								0,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+
+		
+		
+	-- 4. items view 생성하기(items 뒤에 번호만 변경해주면 됌!! view명, from 뒤 items명)	
+							
+	-- items view 생성
+	create or replace view items26_item_o1_view
+	as
+	select
+		i.*,go1.gibon_option1_name gibon_option1_name, go2.gibon_option2_name gibon_option2_name, go3.gibon_option3_name gibon_option3_name,
+		go4.gibon_option4_name gibon_option4_name, go5.gibon_option5_name gibon_option5_name, go6.gibon_option6_name gibon_option6_name,
+		go7.gibon_option7_name gibon_option7_name,
+		o1.item_o1 option_name1, o2.item_o2 option_name2, o3.item_o3 option_name3,
+		o4.item_o4 option_name4, o5.item_o5 option_name5, o6.item_o6 option_name6, o7.item_o7 option_name7, o8.item_o8 option_name8
+	from items26 i left outer join gibon_option1 go1 on i.gibon_option1 = go1.gibon_option1
 		left outer join gibon_option2 go2 on i.gibon_option2 = go2.gibon_option2
 		left outer join gibon_option3 go3 on i.gibon_option3 = go3.gibon_option3
 		left outer join gibon_option4 go4 on i.gibon_option4 = go4.gibon_option4
@@ -1311,7 +3216,41 @@
 	UNION ALL
 	(SELECT * FROM items8_item_o1_view)
 	UNION ALL
-	(SELECT * FROM items9_item_o1_view);
+	(SELECT * FROM items9_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items10_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items11_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items12_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items13_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items14_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items15_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items16_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items17_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items18_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items19_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items20_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items21_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items22_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items23_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items24_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items25_item_o1_view)
+	UNION ALL
+	(SELECT * FROM items26_item_o1_view);
 	
 	-------- item trade table 오름차순 정렬 --------
 	
@@ -1327,8 +3266,6 @@
 	
 	
 	
-		
-
 	
 
 	
@@ -1453,6 +3390,7 @@
 	insert into options values(seq_options_option_idx.nextVal,'암살자 전용 스킬+');	-- 117
 	insert into options values(seq_options_option_idx.nextVal,'암살자 전용');		-- 118
 	insert into options values(seq_options_option_idx.nextVal,'성기사 강타 피해');	-- 119
+	insert into options values(seq_options_option_idx.nextVal,'최대 지구력');	-- 120
 	
 	
 	                                              
@@ -1577,6 +3515,7 @@
 	insert into options2 values(seq_options_option2_idx.nextVal,'암살자 전용 스킬+');	-- 117
 	insert into options2 values(seq_options_option2_idx.nextVal,'암살자 전용');		-- 118
 	insert into options2 values(seq_options_option2_idx.nextVal,'성기사 강타 피해');	-- 119
+	insert into options2 values(seq_options_option2_idx.nextVal,'최대 지구력');	-- 120
 	
 	                                              
 	                                              
@@ -1700,6 +3639,7 @@
 	insert into options3 values(seq_options_option3_idx.nextVal,'암살자 전용 스킬+');	-- 117
 	insert into options3 values(seq_options_option3_idx.nextVal,'암살자 전용');		-- 118
 	insert into options3 values(seq_options_option3_idx.nextVal,'성기사 강타 피해');	-- 119
+	insert into options3 values(seq_options_option3_idx.nextVal,'최대 지구력');	-- 120
 	
 	                                              
 	                                              
@@ -1823,6 +3763,7 @@
 	insert into options4 values(seq_options_option4_idx.nextVal,'암살자 전용 스킬+');	-- 117
 	insert into options4 values(seq_options_option4_idx.nextVal,'암살자 전용');		-- 118
 	insert into options4 values(seq_options_option4_idx.nextVal,'성기사 강타 피해');	-- 119
+	insert into options4 values(seq_options_option4_idx.nextVal,'최대 지구력');	-- 120
 	                                          
 	
 	                                              
@@ -1947,6 +3888,7 @@
 	insert into options5 values(seq_options_option5_idx.nextVal,'암살자 전용 스킬+');	-- 117
 	insert into options5 values(seq_options_option5_idx.nextVal,'암살자 전용');		-- 118
 	insert into options5 values(seq_options_option5_idx.nextVal,'성기사 강타 피해');	-- 119
+	insert into options5 values(seq_options_option5_idx.nextVal,'최대 지구력');	-- 120
 	                                          
 	
 	                                              
@@ -2071,7 +4013,7 @@
 	insert into options6 values(seq_options_option6_idx.nextVal,'암살자 전용 스킬+');	-- 117
 	insert into options6 values(seq_options_option6_idx.nextVal,'암살자 전용');		-- 118
 	insert into options6 values(seq_options_option6_idx.nextVal,'성기사 강타 피해');	-- 119
-	                                          
+	insert into options6 values(seq_options_option6_idx.nextVal,'최대 지구력');	-- 120                                 
 	
 	                                              
 	                                              
@@ -2195,7 +4137,7 @@
 	insert into options7 values(seq_options_option7_idx.nextVal,'암살자 전용 스킬+');	-- 117
 	insert into options7 values(seq_options_option7_idx.nextVal,'암살자 전용');		-- 118
 	insert into options7 values(seq_options_option7_idx.nextVal,'성기사 강타 피해');	-- 119
-	                                          
+	insert into options7 values(seq_options_option7_idx.nextVal,'최대 지구력');	-- 120	                                          
 	
 	                                              
 	                                              
@@ -2319,7 +4261,7 @@
 	insert into options8 values(seq_options_option8_idx.nextVal,'암살자 전용 스킬+');	-- 117
 	insert into options8 values(seq_options_option8_idx.nextVal,'암살자 전용');		-- 118
 	insert into options8 values(seq_options_option8_idx.nextVal,'성기사 강타 피해');	-- 119
-	                                          
+	insert into options8 values(seq_options_option8_idx.nextVal,'최대 지구력');	-- 120	                                          
 	
 		
 	
@@ -2341,6 +4283,7 @@
 	insert into gibon_option1 values(seq_gibon_option1.nextVal,'투척 피해');	-- 11
 	insert into gibon_option1 values(seq_gibon_option1.nextVal,'수량');			-- 12
 	insert into gibon_option1 values(seq_gibon_option1.nextVal,'암살자 전용');	-- 13
+	insert into gibon_option1 values(seq_gibon_option1.nextVal,'공격 속도');	-- 14
 
 	
 	
@@ -2361,6 +4304,7 @@
 	insert into gibon_option2 values(seq_gibon_option2.nextVal,'투척 피해');	-- 11
 	insert into gibon_option2 values(seq_gibon_option2.nextVal,'수량');			-- 12
 	insert into gibon_option2 values(seq_gibon_option2.nextVal,'암살자 전용');	-- 13
+	insert into gibon_option2 values(seq_gibon_option2.nextVal,'공격 속도');	-- 14
 	
 	
 	
@@ -2381,7 +4325,7 @@
 	insert into gibon_option3 values(seq_gibon_option3.nextVal,'투척 피해');	-- 11
 	insert into gibon_option3 values(seq_gibon_option3.nextVal,'수량');			-- 12
 	insert into gibon_option3 values(seq_gibon_option3.nextVal,'암살자 전용');	-- 13
-	
+	insert into gibon_option3 values(seq_gibon_option3.nextVal,'공격 속도');	-- 14	
 	
 
 	
@@ -2399,7 +4343,7 @@
 	insert into gibon_option4 values(seq_gibon_option4.nextVal,'투척 피해');	-- 11
 	insert into gibon_option4 values(seq_gibon_option4.nextVal,'수량');			-- 12
 	insert into gibon_option4 values(seq_gibon_option4.nextVal,'암살자 전용');	-- 13
-	
+	insert into gibon_option4 values(seq_gibon_option4.nextVal,'공격 속도');	-- 14	
 	
 	
 	
@@ -2420,9 +4364,8 @@
 	insert into gibon_option5 values(seq_gibon_option5.nextVal,'암살자 전용');	-- 13
 	insert into gibon_option5 values(seq_gibon_option5.nextVal,'공격 속도');	-- 14
 	
-	
-	
 
+	
 	
 	
 	insert into gibon_option6 values(seq_gibon_option6.nextVal,'한손 피해'); 	-- 1

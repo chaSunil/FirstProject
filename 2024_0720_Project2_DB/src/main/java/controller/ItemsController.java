@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.ItemsDao;
+import util.MyCommon;
+import util.Paging;
 import vo.ItemsVo;
 
 @Controller
@@ -29,7 +32,8 @@ public class ItemsController {
 		this.items_dao = items_dao;
 	}
 
-	@RequestMapping("/items/list.do")
+	// paging 처리 안된 거래 데이터가 전체보이는 페이지
+	@RequestMapping("/items/list2.do")
 	public String list(Model model) {
 
 		List<ItemsVo> list = items_dao.selectList();
@@ -76,5 +80,36 @@ public class ItemsController {
 		 
 		return "items/items_list";
 	}
-
+	
+	
+	@RequestMapping("/items/list.do")
+	public String list2(@RequestParam(name="page",defaultValue = "1")int page,
+			Model model) {
+		
+		int start = (page-1) * MyCommon.Items.BLOCK_LIST + 1;
+		int end = start + MyCommon.Items.BLOCK_LIST -1;
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end);
+		
+		List<ItemsVo> list = items_dao.selectList(map);
+		
+		// 전체 게시물 수
+		int rowTotal = items_dao.selectRowTotal();
+		
+		// pageMenu 만들기
+		String pageMenu = Paging.getPaging("list.do",
+											page,
+											rowTotal,
+											MyCommon.Items.BLOCK_LIST,
+											MyCommon.Items.BLOCK_PAGE);
+		
+		// request binding
+		model.addAttribute("list",list);
+		model.addAttribute("pageMenu",pageMenu);
+		
+		return "items/items_list";
+	}
+	
 }
