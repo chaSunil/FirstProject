@@ -12,7 +12,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="../resources/css/items_list.css">
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -65,395 +65,8 @@
 	}
 		
 </script>
-<link rel="stylesheet" href="../css/item.css">
-<style type="text/css">
-@font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-}
-
-* {
-	font-family: "Pretendard-Regular";
-	margin: 0px;
-	padding: 0px;
-}
-
-.search {
-	margin: auto;
-	
-	background: white;
-	border-radius: 20px;
-	
-	font-weight: bold;
-	padding-left: 25px;
-	
-	height: 50px;
-	width: 250px;
-	min-width: 18vw;
-}
-
-#search-btn {
-	position : absolute;
-	top : 25px;
-	left : 53%; 
-}
-
-#search-btn > input {
-	background: #f7feff;
-	border-radius: 10px;
-	width : 65px;
-	border: 2px solid skyblue;
-	color : skyblue;
-	
-	height: 45px;
-}
-
-/* #search-btn > img {
-	width: 20px;
-	display: inline;
-} */
-
-#search-btn > input:hover {
-	box-shadow: 1px 1px 2px gray;
-}
-
-.ui-autocomplete {
-	width: 300px; /* 원하는 너비로 설정 */
-	overflow-y: auto;
-	/* prevent horizontal scrollbar */
-	overflow-x: hidden;
-	height: 500px;
-}
-
-.ui-menu-item div.ui-state-hover,
-.ui-menu-item div.ui-state-active {
-  color: #ffffff;
-  text-decoration: none;
-  background-color: skyblue;
-  border-radius: 0px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  background-image: none;
-  border:none;
-}
-
-#item-box-head {
-	width : 1300px;
-	height : 100px;
-	background-color : #1C1E24;
-	
-	display: grid;
-    grid-template-columns: 1fr 0.3fr 0.5fr 0.3fr 1fr 0.3fr 1fr 0.3fr 1fr 3fr;
-	margin : auto;
-	
-	position: relative;
-	top: 50%;
-}
-
-#item-box-head2 {
-	width : 150px;
-	height : 100px;
-	
-	float : left;
-	background-color: #9dd9ff;
-	border: 1px solid red;
-	
-	position: absolute;
-	top: 50%;
-}
-
-#item-box-head2 > span {
-	position: absolute;
-	top: 50%;
-}
-
-#item-box-head3 {
-	margin-top: 30px;
-	
-	position: absolute;
-}
-
-#item-box {
-	width : 1300px;
-	height : 350px;
-	background-color: #1B1D23;
-	margin: auto;
-	border: 0.3px solid #ab8a6a;
-	border-bottom: 0px;
-}
-
-#item-image-box {
- 	width: 300px;
-	height : 350px;
-	display: inline-block;
-	float: left;
-	
-    display: flex;
-    justify-content: center; /* 자식 요소를 가로(수평) 기준으로 가운데 정렬시킴 */
-    align-items: center; /* 자식 요소를 세로(수직) 기준으로 가운데 정렬시킴 */
-    overflow: hidden;
-}
-#item-image-box > img {
-	max-height: 320px;
-	height: auto;
-    max-width: 150px;
-}
-
-#item-box2 {
-	width: 300px;
-	height : 350px;
-	display: inline-block;
-	float: left;
-	
-	display: flex;
-    align-items: center; /* 자식 요소를 세로(수직) 기준으로 가운데 정렬시킴 */
-    overflow: hidden;
-}
-
-#item_name_gongback {
-	margin-bottom: 0px;
-}
-
-#item_name {
-	font-size: 18px;
-	color: #c4b590;
-}
-
-hr {
-	border: 0;
-    height: 0.2px;
-    background: #292a2b;
-	
-}
-
-#item-box3 {
-	width: 150px;
-	height : 350px;
-	display: inline-block;
-	float: left;
-	
-	display: flex;
-    align-items: center; /* 자식 요소를 세로(수직) 기준으로 가운데 정렬시킴 */
-    overflow: hidden;
-}
-
-#gibon_option_font {
-	font-size: 13px;
-	color : #aaa8a3
-}
-
-#option_font {
-	font-size: 13px;
-	color: #2b6ca2;
-}
-
-#item-box4 {
-	width: 500px;
-	height : 350px;
-	display: inline-block;
-}
-
-.item_tag {
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-.btn-0 {
-	font-size: 13px;
-	text-decoration: none;
-	border-radius: 5px;
-	width: 100px;
-	height: 15px;
-	padding: 4px;
-	background-color: #353944;
-	color: #929a9e;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	
-	text-decoration: none;
-	pointer-events: none;
-	cursor: default;
-}
-
-.btn-1 {
-	font-size: 13px;
-	text-decoration: none;
-	border-radius: 5px;
-	width: 100px;
-	height: 15px;
-	padding: 4px;
-	background-color: #353944;
-	color: #c4b590;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	margin-left: 10px;
-	
-	text-decoration: none;
-	pointer-events: none;
-	cursor: default;
-}
-
-.btn-3 {
-	font-size: 13px;
-	text-decoration: none;
-	width: 70px;
-	height: 25px;
-	padding: 3px;
-	padding-left: 5px;
-	
-	display: inline-block;
-	
-	background-color: #353944;
-	color: #949492;
-	margin-left: 80px;
-	
-	text-decoration: none;
-	pointer-events: none;
-	cursor: default;
-}
-
-.btn-4 {
-	font-size: 13px;
-	text-decoration: none;
-	width: 60px;
-	height: 25px;
-	padding: 3px;
-	
-	display: inline-block;
-	
-	border: 1px solid #CB9D41;
-	color: #CB9D41;
-	
-	text-decoration: none;
-	pointer-events: none;
-	cursor: default;
-}
-
-#item_sell {
-	width: 400px;
-	height: 300px;
-	margin-top: 25px;
-	margin-left: 100px;
-	
-	float: left;
-	
-	border: 0.5px solid #2C2F36;
-	background-color: #1C1F26;
-	
-	color: #A5A2A5;
-}
-
-#item_sell1 {
-	margin: 30px;
-}
-
-#item_sell2 {
-
-}
-
-#usercard-text {
-	width: 115px;
-	
-	color: #CB9D41;
-	
-	margin-top: -10px;
-	margin-left: 12px;
-	
-	background-color: #1B1D23;
-}
-
-.usercard-text {
-	font-size: 12px;
-}
-
-.usercard-text > span {
-	color: #AE906A;
-}
-
-.usercard-image {
-    width: 22px;
-    height: 22px;
-    object-fit: cover;
-    border-radius: 50%;
-    
-    margin-right: 5px;
-}
-
-.usercard-grade {
-    width: 15px;
-    height: 15px;
-    object-fit: cover;
-    
-    margin-right: 5px;
-}
-
-.usercard-name {
-	display: inline-flex;
-}
-
-#item_sell3 > span {
-	font-size: 13px;
-}
-
-.item_clock {
-	margin-left: 15px;
-	margin-bottom: 8px;
-}
-
-.item_clock2 {
-	margin-left: 50px;
-	margin-bottom: 8px;
-}
-
-#usercard-text2 {
-	width: 50px;
-	
-	color: #CB9D41;
-	
-	margin-top: -30px;
-	margin-left: 12px;
-	
-	background-color: #1B1D23;
-}
-
-#usercard-cp {
-	margin: auto;
-	margin-top: 10px;
-	background-color: #15171E;
-	width: 350px;
-	height: 30px;
-	
-	border-radius: 5px;
-}
-
-#usercard-cp > img {
-	width: 15px;
-	height: 15px;
-}
-
-#usercard-cp2 {
-	margin-top: 10px;
-	margin-left: 10px;
-}
-
-#usercard-btn {
-	text-align: center;
-	margin-top: 5px;
-}
-
-#usercard-btn > button {
-	width: 350px;
-	height: 40px;
-	border-radius: 7px;
-	box-shadow: 0px;
-	background-color: #252830;
-}
 
 
-
-</style>
 
 
 <!-- jquery -->
@@ -537,9 +150,37 @@ function downArrow() {
         		<option value="수리가능">수리가능</option>
         	</select>   
         </form>
-        	
+        
+        
+        
+        
         <!-- item head -->
 		<div id="item-box-head">
+        
+        <div id="item-box-head-text">
+        	<div id="item-box-head-text-sub">
+        	<img alt="" src="https://i.ibb.co/0YqhDTP/bullet-1.png">
+        	<span><b>물품 목록</b></span>
+        	<span id="item-box-head-text-sub-font"><b>ㅣ</b></span>
+        	<span id="item-box-head-text2">총 <b>${ rowTotal }개</b> 검색 결과</span>
+        	</div>
+        	<img id="item-box-head-text-img" alt="" src="https://i.ibb.co/7bBf5zC/cc-category-titlepin.png">
+        	<img id="item-box-head-text-img2" alt="" src="https://i.ibb.co/9hhcwxf/titleline.png">
+        	<img id="item-box-head-text-img3" alt="" src="https://i.ibb.co/7bBf5zC/cc-category-titlepin.png">
+        </div>
+        
+        <div id="item-box-head-text-2">
+		<div class="dropdown">
+		<button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">최근 등록일
+		<span class="caret"></span></button>
+			<ul class="dropdown-menu">
+				<li><a href="#">종료 마감순</a></li>
+				<li><a href="#">낮은 가격순</a></li>
+				<li><a href="#">높은 가격순</a></li>
+			</ul>
+		</div>
+        </div>
+        
 			<div class="item-box-head2">
 			<span class="item-box-head2-font">Game</span><br>
 			<span class="item-box-head2-font2">레저렉션 (D2R)</span>
@@ -570,7 +211,10 @@ function downArrow() {
 			</div>
 			<div class="item-box-head2">
 			<span class="item-box-head2-font">Mode</span><br>
-			<span class="item-box-head2-font2">소프트코어</span>
+			<span class="item-box-head2-font21">소프트코어</span>
+			</div>
+			<div class="item-box-head4">
+			<button type="button" class="btn btn-primary active">?&nbsp;&nbsp; 자주 찾는 질문</button>
 			</div>
 		</div>
 		

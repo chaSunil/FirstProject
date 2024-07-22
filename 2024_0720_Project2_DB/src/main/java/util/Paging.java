@@ -47,7 +47,7 @@ public class Paging {
 //-----그룹페이지처리 이전 --------------------------------------------------------------------------------------------		
 		if(isPrevPage){
 			
-			sb.append(String.format("<li><a href='list.do?page=%d'>🐈</a></li>", startPage-1));
+			sb.append(String.format("<li><a href='list.do?page=%d'>뒤로</a></li>", startPage-1));
 			/*
 			 * sb.append("<a href ='"+pageURL+"?page="); // sb.append(nowPage - blockPage);
 			 * sb.append(startPage - 1); // startPage - 1은 이전 page의 마지막 번호로 가진다.
@@ -55,7 +55,7 @@ public class Paging {
 			 */
 		}
 		else
-			sb.append("<li><a href='#'>🐈</a></li>");
+			sb.append("<li><a href='#'>뒤로</a></li>");
 		
 //------페이지 목록 출력 -------------------------------------------------------------------------------------------------
 		// sb.append("|");
@@ -82,14 +82,14 @@ public class Paging {
 		
 //-----그룹페이지처리 다음 ----------------------------------------------------------------------------------------------
 		if(isNextPage){
-			sb.append(String.format("<li><a href='list.do?page=%d'>🐑</a></li>", endPage+1));
+			sb.append(String.format("<li><a href='list.do?page=%d'>다음</a></li>", endPage+1));
 			/*
 			 * sb.append("<a href='"+pageURL+"?page="); sb.append(endPage + 1);
 			 * sb.append(nowPage); sb.append("'>🐑</a>");
 			 */
 		}
 		else
-			sb.append("<li><a href='#'>🐑</a></li>");
+			sb.append("<li><a href='#'>다음</a></li>");
 			/* sb.append("🐑"); */
 //---------------------------------------------------------------------------------------------------------------------	    
 

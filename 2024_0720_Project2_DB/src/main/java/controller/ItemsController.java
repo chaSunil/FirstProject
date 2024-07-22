@@ -108,6 +108,7 @@ public class ItemsController {
 		// request binding
 		model.addAttribute("list",list);
 		model.addAttribute("pageMenu",pageMenu);
+		model.addAttribute("rowTotal",rowTotal);
 		
 		return "items/items_list";
 	}
