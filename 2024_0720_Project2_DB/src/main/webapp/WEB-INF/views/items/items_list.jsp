@@ -21,10 +21,10 @@
 
    var inputSource =[]; 
 
-   $(function(){
+    $(function(){
 	   
    	$.ajax({
-   		url  : "../items/getlist.do",
+   		url  : "../items/getlist2.do",
    		dataType:"json",
    		success:function(res_data){
    			for(let data of res_data.result){
@@ -37,8 +37,9 @@
    	});
 	   
    });
+   
 
-   var inputSource2 =[]; 
+    var inputSource2 =[]; 
 
    $(function(){
 	   
@@ -78,10 +79,21 @@
 		f.submit();
 	}
 	
-	
+   
 	function send(f) {
 		
+		// 입력값 검증
+		let item_name = f.item_name.value.trim();
 		
+		if(item_name=='') {
+			alert("검색어를 입력하세요!")
+			f.item_name.value = "";
+			f.item_name.focus();
+			return;
+		}
+		
+		f.action = "../items/search.do";// 전송대상(PhotoInsertAction)
+		f.submit();
 	}
 		
 </script>
@@ -98,7 +110,8 @@
 
 var $112 = $.noConflict(true);
 
-$(document).ready(function() {
+
+ 	$(document).ready(function() {
 
 	$112('#inputBox').autocomplete({
         source : inputSource, // autocomplete가 될 요소
@@ -117,27 +130,6 @@ function downArrow() {
     document.getElementById("inputBox").dispatchEvent(event);
 };
 
-
-
-$(document).ready(function() {
-
-	$112('#inputBox2').autocomplete({
-        source : inputSource2, // autocomplete가 될 요소
-        minLength : 0 // 0글자부터 배열안에 있는 글자를 인식한다.
-    });
-    
-    var inputBox2 = document.querySelector('#inputBox2'); // 변수 저장
-    inputBox2.addEventListener("focus", downArrow); // inputBox(검색창)에 커서가 올라가면 함수실행
-
-});
-
-function downArrow() {
-    var event = document.createEvent("Event");
-    event.initEvent("keydown", true, true); // keydown 키로 이동가능
-    event.keyCode = 40 // 자동완성 딜레이시간
-    document.getElementById("inputBox2").dispatchEvent(event);
-};
-
 </script>
 
 </head>
@@ -147,14 +139,7 @@ function downArrow() {
 <body>
  	    <div id="search">
 	    	<form>
-          	  <input type="text" id="inputBox" name="name" class="form-control search" placeholder="검색창"/>
-			  <input type="submit" onclick="send(this.form)" value="검색" id="search_chang">
-			</form>
-        </div>
-        
- 	    <div id="search">
-	    	<form>
-          	  <input type="text" id="inputBox2" name="name" class="form-control search" placeholder="검색창"/>
+          	  <input type="text" id="inputBox" name="item_name" class="form-control search" placeholder="검색창"/>
 			  <input type="submit" onclick="send(this.form)" value="검색" id="search_chang">
 			</form>
         </div>
@@ -352,41 +337,41 @@ function downArrow() {
 			<!-- 거래회원 정보 기입란 -->
 			<div id="item_sell">
 				<div id="usercard-text">
-				<span class="usercard-text"><span>기본정보</span> 💡 ONLINE</span>
+					<span class="usercard-text"><span>기본정보</span> 💡 ONLINE</span>
 				</div>
 				<div id="item_sell1">
-				<img class="usercard-image" src="https://image.chaoscube.co.kr/new/user/367949/profile/b6478d67-9a45-46da-8910-f9f74efcaa18.jpg"> 
-				<img class="usercard-grade" src="https://i.ibb.co/BNKG8b4/image.jpg">
-				<span class="usercard-name"><b>블랙마린</b></span>
-				<a class="btn-3">&ensp;일반판매&ensp;</a>
-				<!-- 판매진행 여부 -->
-				<a class="btn-4">&ensp;판매 중&ensp;</a>
+					<img class="usercard-image" src="https://image.chaoscube.co.kr/new/user/367949/profile/b6478d67-9a45-46da-8910-f9f74efcaa18.jpg"> 
+					<img class="usercard-grade" src="https://i.ibb.co/BNKG8b4/image.jpg">
+					<span class="usercard-name"><b>블랙마린</b></span>
+					<a class="btn-3">&ensp;일반판매&ensp;</a>
+					<!-- 판매진행 여부 -->
+					<a class="btn-4">&ensp;판매 중&ensp;</a>
 				</div>
 				<hr>
 				<div id="item_sell2">
 				<!-- 판매양식 -->
 				</div>
 				<div id="item_sell3">
-				<span class="item_clock">등록</span>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<span class="item_clock2">2024.07.20 15:35</span><br>
-				<span class="item_clock">종료예정</span>
-				<span class="item_clock2">2024.07.27 15:35</span><br>
-				<span class="item_clock">판매수량</span>
-				<span class="item_clock2">10EA</span><br>
+					<span class="item_clock">등록</span>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<span class="item_clock2">2024.07.20 15:35</span><br>
+					<span class="item_clock">종료예정</span>
+					<span class="item_clock2">2024.07.27 15:35</span><br>
+					<span class="item_clock">판매수량</span>
+					<span class="item_clock2">10EA</span><br>
 				</div>
 				<hr>
 				<div id="usercard-text2">
-				<span class="usercard-text"><span>판매정보</span></span>
+					<span class="usercard-text"><span>판매정보</span></span>
 				</div>
 				<div id="usercard-cp">
 				<div id="usercard-cp2">
-				<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
-				<span>&nbsp;&nbsp;판매가 800cp</span>
+					<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
+					<span>&nbsp;&nbsp;판매가 800cp</span>
 				</div>
 				</div>
 				<div id="usercard-btn">
-				<button>자세히보기 →</button>
+					<button>자세히보기 →</button>
 				</div>
 			</div>
 </div>

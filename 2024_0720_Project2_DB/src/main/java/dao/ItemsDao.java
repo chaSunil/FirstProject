@@ -48,4 +48,9 @@ public class ItemsDao {
 		return sqlSession.selectList("items.items_list_option2");
 	}
 	
+	public List<ItemsVo> selectSearch(String item_name) {
+		
+		return sqlSession.selectList("items.items_list_search",item_name);
+	}
+	
 }
