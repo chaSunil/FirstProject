@@ -37,7 +37,27 @@
    	});
 	   
    });
+
+   var inputSource2 =[]; 
+
+   $(function(){
+	   
+   	$.ajax({
+   		url  : "../items/getlist2.do",
+   		dataType:"json",
+   		success:function(res_data){
+   			for(let data of res_data.result){
+   				inputSource2.push(data);
+   			}
+   		},
+   		error:function(err){
+   			alert("검색정보를 가져오지 못했습니다.");
+   		}
+   	});
+	   
+   });
 	
+   /*  */
 	function search(f) {
 		
 		let item_name = f.item_name.value.trim();
@@ -97,6 +117,27 @@ function downArrow() {
     document.getElementById("inputBox").dispatchEvent(event);
 };
 
+
+
+$(document).ready(function() {
+
+	$112('#inputBox2').autocomplete({
+        source : inputSource2, // autocomplete가 될 요소
+        minLength : 0 // 0글자부터 배열안에 있는 글자를 인식한다.
+    });
+    
+    var inputBox2 = document.querySelector('#inputBox2'); // 변수 저장
+    inputBox2.addEventListener("focus", downArrow); // inputBox(검색창)에 커서가 올라가면 함수실행
+
+});
+
+function downArrow() {
+    var event = document.createEvent("Event");
+    event.initEvent("keydown", true, true); // keydown 키로 이동가능
+    event.keyCode = 40 // 자동완성 딜레이시간
+    document.getElementById("inputBox2").dispatchEvent(event);
+};
+
 </script>
 
 </head>
@@ -107,6 +148,13 @@ function downArrow() {
  	    <div id="search">
 	    	<form>
           	  <input type="text" id="inputBox" name="name" class="form-control search" placeholder="검색창"/>
+			  <input type="submit" onclick="send(this.form)" value="검색" id="search_chang">
+			</form>
+        </div>
+        
+ 	    <div id="search">
+	    	<form>
+          	  <input type="text" id="inputBox2" name="name" class="form-control search" placeholder="검색창"/>
 			  <input type="submit" onclick="send(this.form)" value="검색" id="search_chang">
 			</form>
         </div>

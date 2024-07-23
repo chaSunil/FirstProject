@@ -161,6 +161,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="items_list_option" resultType="items">
 		select item_o1 as option_name1 from options
 	</select>
+
+	
+	
+	<!-- search list가 나올 수 있도록 출력한다 -->
+	<select id="items_list_option2" resultType="items">
+		select distinct item_name from trade_order_by_view
+	</select>
 </mapper>
 
 

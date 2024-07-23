@@ -313,6 +313,8 @@ hr {
 	display: inline-block;
 	float: left;
 	
+	margin-left: 80px;
+	
 	display: flex;
     align-items: center; /* 자식 요소를 세로(수직) 기준으로 가운데 정렬시킴 */
     overflow: hidden;
@@ -411,7 +413,7 @@ hr {
 }
 
 #item_sell {
-	width: 400px;
+	width: 320px;
 	height: 300px;
 	margin-top: 25px;
 	margin-left: 100px;

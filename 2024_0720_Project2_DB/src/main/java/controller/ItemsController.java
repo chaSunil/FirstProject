@@ -113,4 +113,29 @@ public class ItemsController {
 		return "items/items_list";
 	}
 	
+	
+	 @RequestMapping(value="/items/getlist2.do",produces = "application/json;charset=utf-8")
+	 @ResponseBody 
+	 public String search_list2() {
+		 
+	 List<ItemsVo> list = items_dao.selectListOption2();
+	 
+	 StringBuilder sb = new StringBuilder("[");
+	 
+	 for(ItemsVo vo : list) {
+		 sb.append("\""); sb.append(vo.getOption_name1()); sb.append("\",");
+	 }
+	 
+	 int index = sb.lastIndexOf(",");
+	 
+	 String result = sb.toString().substring(0,index)+ "]";
+	 
+	 //{"result": "%s"}
+	 String json = String.format("{\"result\": %s }", result);
+	  
+	 return json;
+	 
+	 }
+	
+	
 }
