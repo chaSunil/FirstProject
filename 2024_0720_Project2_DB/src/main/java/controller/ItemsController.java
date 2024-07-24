@@ -44,7 +44,7 @@ public class ItemsController {
 	}
 
 	
-	 @RequestMapping(value="/items/getlist.do",produces = "application/json;charset=utf-8")
+	 @RequestMapping(value="/items/getlist2.do",produces = "application/json;charset=utf-8")
 	 @ResponseBody 
 	 public String search_list() {
 		 
@@ -114,7 +114,7 @@ public class ItemsController {
 	}
 	
 	
-	 @RequestMapping(value="/items/getlist2.do",produces = "application/json;charset=utf-8")
+	 @RequestMapping(value="/items/getlist.do",produces = "application/json;charset=utf-8")
 	 @ResponseBody 
 	 public String search_list2() {
 		 

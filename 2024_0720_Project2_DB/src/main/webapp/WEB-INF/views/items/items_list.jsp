@@ -19,12 +19,15 @@
 <!-- 검색기능 넣기 이이이이이이이 선일작업 -->
 <script type="text/javascript">
 
-   var inputSource =[]; 
+	var inputSource =[]; 
+   
+	var inputSource2 =[]; 
 
     $(function(){
 	   
+   	// getItem_name
    	$.ajax({
-   		url  : "../items/getlist2.do",
+   		url  : "../items/getlist.do",
    		dataType:"json",
    		success:function(res_data){
    			for(let data of res_data.result){
@@ -34,41 +37,106 @@
    		error:function(err){
    			alert("검색정보를 가져오지 못했습니다.");
    		}
-   	});
+   	}); // end: getItem_name
+   	
+   	
+   	// getOption_name1
+   	$.ajax({
+   		url  	: "../items/getlist2.do",
+   		dataType:"json",
+   		success	:function(res_data2){
+   			for(let data2 of res_data2.result){
+   				inputSource2.push(data2);
+   			}
+   		},
+   		error	:function(err){
+   			alert("검색정보를 가져오지 못했습니다.");
+   		}
+   	}); // end: getOption_name1
 	   
    });
    
 
-    var inputSource2 =[]; 
+    
+    
 
-   $(function(){
-	   
-   	$.ajax({
-   		url  : "../items/getlist2.do",
-   		dataType:"json",
-   		success:function(res_data){
-   			for(let data of res_data.result){
-   				inputSource2.push(data);
-   			}
-   		},
-   		error:function(err){
-   			alert("검색정보를 가져오지 못했습니다.");
-   		}
-   	});
-	   
-   });
+
 	
-   /*  */
-	function search(f) {
+   /* 옵션검색을 넘길때의 로직 */
+	function option_search(f) {
 		
 		let item_name = f.item_name.value.trim();
 		let item_name_val = f.item_name_val.value.trim();
+		
 		let item_name2 = f.item_name2.value.trim();
 		let item_name_val2 = f.item_name_val2.value.trim();
+		
 		let item_name3 = f.item_name3.value.trim();
 		let item_name_val3 = f.item_name_val3.value.trim();
+		
 		let item_name4 = f.item_name4.value.trim();
 		let item_name_val4 = f.item_name_val4.value.trim();
+		
+		let item_name5 = f.item_name5.value.trim();
+		let item_name_val5 = f.item_name_val5.value.trim();
+		
+		let item_name6 = f.item_name6.value.trim();
+		let item_name_val6 = f.item_name_val6.value.trim();
+		
+		// 입력값 option중 동일한 옵션이 있으면 알람
+		if(item_name!='' && item_name2!='' && item_name3 !='' && item_name4!='' && item_name5!='' && item_name6!='') {
+			if(item_name == item_name2 || item_name == item_name3 || item_name == item_name4 
+			|| item_name == item_name5 || item_name == item_name6 
+			|| item_name2 == item_name3 || item_name2 == item_name4
+			|| item_name2 == item_name5 || item_name2 == item_name6
+			|| item_name3 == item_name4 || item_name3 == item_name5
+			|| item_name3 == item_name6 || item_name4 == item_name5
+			|| item_name4 == item_name6 || item_name5 == item_name6) {
+				
+			alert("중복되는 아이템 옵션이 있습니다.\n다시 한 번 확인해주시고 검색해주세요.")
+			return;
+			}
+		}
+		
+		if(item_name!='' && item_name2!='' && item_name3 !='' && item_name4!='' && item_name5!='') {
+			if(item_name == item_name2 || item_name == item_name3 || item_name == item_name4 
+			|| item_name == item_name5 || item_name2 == item_name3 || item_name2 == item_name4
+			|| item_name2 == item_name5 || item_name3 == item_name4 || item_name3 == item_name5
+			|| item_name4 == item_name5) {
+				
+			alert("중복되는 아이템 옵션이 있습니다.\n다시 한 번 확인해주시고 검색해주세요.")
+			return;
+			}
+		}
+		
+		if(item_name!='' && item_name2!='' && item_name3 !='' && item_name4!='') {
+			if(item_name == item_name2 || item_name == item_name3
+			|| item_name1 == item_name4 || item_name2 == item_name3
+			|| item_name2 == item_name4 || item_name4 == item_name4) {
+				
+			alert("중복되는 아이템 옵션이 있습니다.\n다시 한 번 확인해주시고 검색해주세요.")
+			return;
+			}
+		}
+		
+		if(item_name!='' && item_name2!='' && item_name3 !='') {
+			if(item_name == item_name2 || item_name == item_name3 || item_name2 == item_name3) {
+				
+			alert("중복되는 아이템 옵션이 있습니다.\n다시 한 번 확인해주시고 검색해주세요.")
+			return;
+			}
+		}
+		
+		if(item_name!='' && item_name2!='') {
+			if(item_name == item_name2) {
+				
+			alert("중복되는 아이템 옵션이 있습니다.\n다시 한 번 확인해주시고 검색해주세요.")
+			return;
+			}
+		}
+
+		
+		
 		const item_shot = $("#item_shot").val();
 		const item_type = $("#item_type").val();
 		const item_grade = $("#item_grade").val();
@@ -112,7 +180,7 @@ var $112 = $.noConflict(true);
 
 
  	$(document).ready(function() {
-
+ 	// item 설정 검색창
 	$112('#inputBox').autocomplete({
         source : inputSource, // autocomplete가 될 요소
         minLength : 0 // 0글자부터 배열안에 있는 글자를 인식한다.
@@ -120,6 +188,46 @@ var $112 = $.noConflict(true);
     
     var inputBox = document.querySelector('#inputBox'); // 변수 저장
     inputBox.addEventListener("focus", downArrow); // inputBox(검색창)에 커서가 올라가면 함수실행
+
+    // option 설정 검색창
+	$112('#inputBox2').autocomplete({
+        source : inputSource2, // autocomplete가 될 요소
+        minLength : 0, // 0글자부터 배열안에 있는 글자를 인식한다.
+        select : function(event, ui) {
+        	
+        	if($("#itemName").val()=="") {
+        		
+        		$("#itemName").val(ui.item.value);
+        		
+        	} else if($("#itemName2").val()=="") {
+        		
+        		$("#itemName2").val(ui.item.value);
+        		
+        	} else if($("#itemName3").val()=="") {
+        		
+        		$("#itemName3").val(ui.item.value);
+        		
+        	} else if($("#itemName4").val()=="") {
+        		
+        		$("#itemName4").val(ui.item.value);
+        		
+        	} else if($("#itemName5").val()=="") {
+        		
+        		$("#itemName5").val(ui.item.value);
+        		
+        	} else if($("#itemName6").val()=="") {
+        		
+        		$("#itemName6").val(ui.item.value);
+        		
+        	}
+        	
+        	
+        	return false;
+        }
+    });
+    
+    var inputBox2 = document.querySelector('#inputBox2'); // 변수 저장
+    inputBox2.addEventListener("focus", downArrow2); // inputBox(검색창)에 커서가 올라가면 함수실행
 
 });
 
@@ -130,6 +238,13 @@ function downArrow() {
     document.getElementById("inputBox").dispatchEvent(event);
 };
 
+function downArrow2() {
+    var event = document.createEvent("Event");
+    event.initEvent("keydown", true, true); // keydown 키로 이동가능
+    event.keyCode = 40 // 자동완성 딜레이시간
+    document.getElementById("inputBox2").dispatchEvent(event);
+};
+
 </script>
 
 </head>
@@ -137,6 +252,7 @@ function downArrow() {
 
 
 <body>
+		<!-- 아이템 검색창 -->
  	    <div id="search">
 	    	<form>
           	  <input type="text" id="inputBox" name="item_name" class="form-control search" placeholder="검색창"/>
@@ -144,19 +260,39 @@ function downArrow() {
 			</form>
         </div>
         
+        <!-- 옵션 검색창 -->
+ 	    <div id="search2">
+	    	<form>
+          	  <input type="text" id="inputBox2" name="item_option" class="form-control search" placeholder="검색창"/>
+			  <!-- <input type="submit" onclick="send2(this.form)" value="검색" id="search_chang"> -->
+			</form>
+        </div>
+        
         <input type="hidden" >
         
         
         <form>
-        	<input name="item_name" placeholder="옵션명">
+        	<input name="item_name" id="itemName" placeholder="옵션명">
         	<input name="item_name_val" placeholder="옵션수치">
-        	<input name="item_name2" placeholder="옵션명2">
+        	
+        	<input name="item_name2" id="itemName2" placeholder="옵션명2">
         	<input name="item_name_val2" placeholder="옵션수치2"><br>
-        	<input name="item_name3" placeholder="옵션명3">
+        	
+        	
+        	<input name="item_name3" id="itemName3" placeholder="옵션명3">
         	<input name="item_name_val3" placeholder="옵션수치3">
-        	<input name="item_name4" placeholder="옵션명4">
+        	
+        	<input name="item_name4" id="itemName4" placeholder="옵션명4">
         	<input name="item_name_val4" placeholder="옵션수치4"><br>
-        	<input type="button" value="검색" onclick="search(this.form);">     
+        	
+        	<input name="item_name5" id="itemName5" placeholder="옵션명5">
+        	<input name="item_name_val5" placeholder="옵션수치5">
+        	
+        	<input name="item_name6" id="itemName6" placeholder="옵션명6">
+        	<input name="item_name_val6" placeholder="옵션수치6"><br>
+        	
+        	
+        	<input type="button" value="검색" onclick="option_search(this.form);">     
         	<select id="item_type" name="item_type">
         		<option value="양손검">양손검</option>
         		<option value="투구">투구</option>
