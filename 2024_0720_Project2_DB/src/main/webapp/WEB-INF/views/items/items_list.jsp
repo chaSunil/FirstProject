@@ -365,10 +365,15 @@ function downArrow() {
 					<span class="usercard-text"><span>판매정보</span></span>
 				</div>
 				<div id="usercard-cp">
-				<div id="usercard-cp2">
-					<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
-					<span>&nbsp;&nbsp;판매가 800cp</span>
-				</div>
+					<div id="usercard-cp2">
+						<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
+					</div>
+					<div id="usercard-cp3">
+						<span>판매가</span>
+					</div>
+					<div id="usercard-cp4">
+						<span>800cp</span>
+					</div>
 				</div>
 				<div id="usercard-btn">
 					<button>자세히보기 →</button>

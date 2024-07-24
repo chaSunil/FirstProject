@@ -197,7 +197,7 @@ public class ItemsController {
 		 
 		 model.addAttribute("list",list);
 		 
-		 return "redirect:list.do";
+		 return "items/items_list";
 	 }
 	
 	

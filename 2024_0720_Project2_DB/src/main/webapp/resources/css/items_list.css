@@ -61,8 +61,18 @@ body {
 	overflow-y: auto;
 	/* prevent horizontal scrollbar */
 	overflow-x: hidden;
+	font-size: 20px;
 	height: 500px;
+	border: 1px solid gray;
+	border-style: solid;
+    border-width: 1px;
 }
+
+.ui-menu-item {
+	border-bottom: 1px solid gray;
+	height: 40px;
+}
+
 
 .ui-menu-item div.ui-state-hover,
 .ui-menu-item div.ui-state-active {
@@ -73,7 +83,11 @@ body {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   background-image: none;
-  border:none;
+  border: 1px solid gray;
+}
+
+.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content {
+  font-size: 20px;
 }
 
 
@@ -510,6 +524,11 @@ hr {
 	height: 30px;
 	
 	border-radius: 5px;
+	
+	display: grid;
+	grid-template-columns: 1fr 2fr 8fr 2fr;
+	align-items: center; /* gird 속성 세로 가운데 정렬 */
+    /* justify-items: center; gird 속성 가로 가운데 정렬 */
 }
 
 #usercard-cp > img {
@@ -518,8 +537,6 @@ hr {
 }
 
 #usercard-cp2 {
-	margin-top: 10px;
-	margin-left: 10px;
 }
 
 #usercard-btn {
