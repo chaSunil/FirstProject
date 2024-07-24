@@ -191,7 +191,9 @@ var $112 = $.noConflict(true);
     });
  	
 	$112("#inputBox").data("ui-autocomplete")._renderItem = function (ul, item) {
+		
 		const imagePath = '../resources/images/' + item.icon;
+		
 	    return $('<li/>', {'data-value': item.label}).append($('<a/>', {href: "#"})
 	            .append($('<img/>', {src: imagePath})).append(item.label))
 	            .appendTo(ul);
