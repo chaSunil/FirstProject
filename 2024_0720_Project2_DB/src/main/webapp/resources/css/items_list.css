@@ -20,7 +20,7 @@ body {
 .search {
 	margin-left: 300px;
 	
-	background: white;
+	background: #191C20;
 	border-radius: 20px;
 	
 	font-weight: bold;
@@ -35,7 +35,7 @@ body {
 	margin: auto;
 	float: right;
 	
-	background: white;
+	background: #191C20;
 	border-radius: 20px;
 	
 	font-weight: bold;
@@ -78,6 +78,9 @@ body {
 	overflow-x: hidden;
 	font-size: 20px;
 	height: 500px;
+	
+	background: #191C20;
+	
 	border: 1px solid gray;
 	border-style: solid;
     border-width: 1px;
@@ -85,8 +88,33 @@ body {
 
 .ui-menu-item {
 	border-bottom: 1px solid gray;
-	height: 40px;
+	height: 60px;
 }
+
+/* aa */
+
+.ui-autocomplete {
+    max-height: 200px; /* 최대 높이 설정 */
+    overflow-y: auto; /* 스크롤 가능하게 설정 */
+    justify-content: center; /* 자식 요소를 가로(수평) 기준으로 가운데 정렬시킴 */
+    align-items: center; /* 자식 요소를 세로(수직) 기준으로 가운데 정렬시킴 */
+}
+
+.ui-autocomplete li {
+    white-space: nowrap; /* 텍스트를 한 줄로 표시 */
+    overflow: hidden; /* 넘치는 텍스트 숨김 */
+    text-overflow: ellipsis; /* 넘치는 텍스트에 ... 표시 */
+}
+
+.ui-autocomplete img {
+    max-width: 30px; /* 이미지의 너비 설정 */
+    max-height: 50px;
+    height: auto;
+    margin-right: 5px; /* 이미지와 텍스트 사이의 간격 설정 */
+    vertical-align: middle;
+}
+
+/* aa */
 
 
 .ui-menu-item div.ui-state-hover,
@@ -102,7 +130,14 @@ body {
 }
 
 .ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content {
-  font-size: 20px;
+  font-size: 15px;
+  color: #AE906A;
+  font-weight: 200;
+}
+
+/* 광고 */
+#item-box-advertisement {
+	text-align: center;
 }
 
 

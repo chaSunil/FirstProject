@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -114,16 +115,16 @@ public class ItemsController {
 	}
 	
 	
-	 @RequestMapping(value="/items/getlist.do",produces = "application/json;charset=utf-8")
+	 /* @RequestMapping(value="/items/getlist2.do",produces = "application/json;charset=utf-8")
 	 @ResponseBody 
-	 public String search_list2() {
+	 public String search_list() {
 		 
-	  List<ItemsVo> list = items_dao.selectListOption2();
+	 List<ItemsVo> list = items_dao.selectListOption();
 	 
 	 StringBuilder sb = new StringBuilder("[");
 	 
 	 for(ItemsVo vo : list) {
-		 sb.append("\""); sb.append(vo.getItem_name()); sb.append("\",");
+		 sb.append("\""); sb.append(vo.getOption_name1()); sb.append("\",");
 	 }
 	 
 	 int index = sb.lastIndexOf(",");
@@ -133,26 +134,49 @@ public class ItemsController {
 	 //{"result": "%s"}
 	 String json = String.format("{\"result\": %s }", result);
 	  
-	 return json; 
+	 return json;
+	 
+	 } */
+	
+	
+	 @RequestMapping(value="/items/getlist.do",produces = "application/json;charset=utf-8")
+	 @ResponseBody 
+	 public String search_list2() {
+		 
+	  List<ItemsVo> list = items_dao.selectListOption2();
+	 
 		/*
-		 * List<ItemsVo> list = items_dao.selectListOption2();
-		 * 
-		 * StringBuilder sb = new StringBuilder("[");
-		 * 
-		 * for(ItemsVo vo : list) { sb.append("{");
-		 * sb.append("\"label\":\"").append(vo.getItem_name()).append("\",");
-		 * sb.append("\"value\":\"").append(vo.getItem_name()).append("\",");
-		 * sb.append("\"imageUrl\":\"").append(vo.getItem_image()).append("\"");
-		 * sb.append("},"); }
-		 * 
-		 * if(sb.length() > 1) { sb.setLength(sb.length()-1); }
-		 * 
-		 * sb.append("]");
-		 * 
-		 * String json = String.format("{\"result\": %s }", sb.toString());
-		 * 
-		 * return json;
-		 */
+		 JSONObject json = new JSONObject();
+		 
+		 for(ItemsVo vo : list) {
+			 json.put("item_name", vo.getItem_name());
+			 //json.put("item_image", vo.getItem_image()); 
+		 }
+		 
+		 return json.toString(); */
+		 
+		
+		  //List<ItemsVo> list = items_dao.selectListOption2();
+		  
+		 
+		  StringBuilder sb = new StringBuilder("[");
+		  
+		  for(ItemsVo vo : list) { sb.append("{");
+		  sb.append("\"label\":\"").append(vo.getItem_name()).append("\",");
+		  sb.append("\"value\":\"").append(vo.getItem_name()).append("\",");
+		  sb.append("\"icon\":\"").append(vo.getItem_image()).append("\"");
+		  sb.append("},"); }
+		  
+		  if(sb.length() > 1) { sb.setLength(sb.length()-1); }
+		  
+		  sb.append("]");
+		  
+		  String json = String.format("{\"result\": %s }", sb.toString());
+		  
+		  System.out.println(json);
+		  
+		  return json;
+		 
 	 }
 	 
 	 
@@ -195,7 +219,10 @@ public class ItemsController {
 		 
 		 List<ItemsVo> list = items_dao.selectSearch(item_name);
 		 
+		 int rowTotal = items_dao.selectRowTotalSearch(item_name);
+		 
 		 model.addAttribute("list",list);
+		 model.addAttribute("rowTotal",rowTotal);
 		 
 		 return "items/items_list";
 	 }

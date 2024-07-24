@@ -38,6 +38,11 @@ public class ItemsDao {
 		return sqlSession.selectOne("items.items_row_total");
 	}
 	
+	public int selectRowTotalSearch(String item_name) {
+		
+		return sqlSession.selectOne("items.items_row_total_item_name",item_name);
+	}
+	
 	public List<ItemsVo> selectList(Map<String, Object> map) {
 		
 		return sqlSession.selectList("items.items_list_page",map);

@@ -250,6 +250,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select nvl(count(*),0) from trade_order_by_view
 	</select>
 	
+	<!-- 거래 아이템 데이터 총 개수 구하기 item_search용 -->
+	<select id="items_row_total_item_name" resultType="int" parameterType="String">
+		select nvl(count(*),0) from trade_order_by_view where item_name = #{ item_name }
+	</select>
+	
+	
+	
 	<!-- 거래 아이템 페이지별로 보여질 갯수(최신순으로 정렬) -->
 	<select id="items_list_page" parameterType="Map" resultType="items">
 		select * from
@@ -275,7 +282,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- search list가 나올 수 있도록 출력한다 -->
 	<select id="items_list_option2" resultType="items">
-		select distinct item_name from trade_order_by_view
+		select distinct item_name,item_image from trade_order_by_view
 	</select>
 	
 	

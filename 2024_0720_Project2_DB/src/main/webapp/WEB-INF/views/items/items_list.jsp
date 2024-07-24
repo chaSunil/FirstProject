@@ -183,11 +183,23 @@ var $112 = $.noConflict(true);
  	// item 설정 검색창
 	$112('#inputBox').autocomplete({
         source : inputSource, // autocomplete가 될 요소
-        minLength : 0 // 0글자부터 배열안에 있는 글자를 인식한다.
+        minLength : 0, // 0글자부터 배열안에 있는 글자를 인식한다.instance;
+        select: function (event, ui) {
+            $("#search").val(ui.item.label);
+            return false;
+        }
     });
+ 	
+	$112("#inputBox").data("ui-autocomplete")._renderItem = function (ul, item) {
+		const imagePath = '../resources/images/' + item.icon;
+	    return $('<li/>', {'data-value': item.label}).append($('<a/>', {href: "#"})
+	            .append($('<img/>', {src: imagePath})).append(item.label))
+	            .appendTo(ul);
+	};
     
     var inputBox = document.querySelector('#inputBox'); // 변수 저장
     inputBox.addEventListener("focus", downArrow); // inputBox(검색창)에 커서가 올라가면 함수실행
+    
 
     // option 설정 검색창
 	$112('#inputBox2').autocomplete({
@@ -320,7 +332,9 @@ function downArrow2() {
         	</select>   
         </form>
         
-        
+        <div id="item-box-advertisement">
+        	<img src="https://i.ibb.co/9WWsngp/Kakao-Talk-20240724-144334979.jpg" alt="광고">
+        </div>
         
         
         <!-- item head -->
