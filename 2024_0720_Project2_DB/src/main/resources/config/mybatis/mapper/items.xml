@@ -289,10 +289,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
+	
 	<!-- search list가 나올 수 있도록 출력한다 -->
 	<select id="items_list_search" resultType="items" parameterType="String">
 		select * from trade_order_by_view where item_name = #{ name }
 	</select>
+	
+	
+		
+	<!-- search list가 나올 수 있도록 출력한다 -->
+	<select id="search_sell_search" parameterType="String" resultType="items">
+		select * from trade_search_by_view where item_name = #{ item_name } and no = 1
+	</select>
+	
 </mapper>
 
 

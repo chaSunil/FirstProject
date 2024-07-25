@@ -10,6 +10,7 @@ public class ItemsVo {
 	String item_rarity;
 	String item_im;
 	int item_shot;
+	int no;
 	
 	int gibon_option1;
 	int gibon_option1_val;
@@ -64,6 +65,12 @@ public class ItemsVo {
 	String option_name8;
 	
 	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	public String getOption_name8() {
 		return option_name8;
 	}

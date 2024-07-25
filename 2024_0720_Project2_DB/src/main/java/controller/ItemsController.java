@@ -227,6 +227,55 @@ public class ItemsController {
 		 
 		 return "items/items_list";
 	 }
+	 
+	 
+	 
+	// 판매 form
+	@RequestMapping("/sell/sell_reg.do")
+	public String sell_form() {
+
+		return "sell/sell_reg"; // /WEB-INF/views/ + items/items_list + .jsp
+	}
 	
+	
+	// 판매 아이템 검색 자동완성
+	 @RequestMapping(value="/sell/get_item.do",produces = "application/json;charset=utf-8")
+	 @ResponseBody 
+	 public String sell_search_list() {
+		 
+	  List<ItemsVo> list = items_dao.selectListOption2();
+		  
+		  StringBuilder sb = new StringBuilder("[");
+		  
+		  for(ItemsVo vo : list) { sb.append("{");
+		  sb.append("\"label\":\"").append(vo.getItem_name()).append("\",");
+		  sb.append("\"value\":\"").append(vo.getItem_name()).append("\",");
+		  sb.append("\"icon\":\"").append(vo.getItem_image()).append("\",");
+		  sb.append("\"type\":\"").append(vo.getItem_type()).append("\"");
+		  sb.append("},"); }
+		  
+		  if(sb.length() > 1) { sb.setLength(sb.length()-1); }
+		  
+		  sb.append("]");
+		  
+		  String json = String.format("{\"result\": %s }", sb.toString());
+		  
+		  System.out.println(json);
+		  
+		  return json;
+		 
+	 }
+	 
+	 // 판매 아이템 검색시 실행
+	@RequestMapping("/sell/sell_reg_search.do")
+	public String sell_search_item(String item_name, Model model) {
+		
+		ItemsVo items = items_dao.selectOneSellSearch(item_name);
+		
+		model.addAttribute("items", items);
+		
+		return "sell/sell_reg";
+	}
+
 	
 }

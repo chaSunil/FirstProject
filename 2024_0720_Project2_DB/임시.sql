@@ -3265,7 +3265,19 @@
 	);
 	
 	
-
+		
+	create or replace view trade_search_by_view
+	as
+	select * from
+	(
+		select
+		t.*,
+		rank() over(order by item_idx asc) as no
+		from (select * from trade_view) t 
+	);
+	
+	-- where item_name = '도둑의 왕관 그랜드 크라운' and no = 1
+	
 	
 		
 	
