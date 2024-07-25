@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -179,23 +180,24 @@
 var $112 = $.noConflict(true);
 
 
+	
  	$(document).ready(function() {
  	// item 설정 검색창
+	/* const imagePath = '../resources/images/' + item.icon; */
 	$112('#inputBox').autocomplete({
         source : inputSource, // autocomplete가 될 요소
         minLength : 0, // 0글자부터 배열안에 있는 글자를 인식한다.instance;
         select: function (event, ui) {
-            $("#search").val(ui.item.label);
+        	$("#inputBox").val(ui.item.label);
             return false;
         }
     });
  	
 	$112("#inputBox").data("ui-autocomplete")._renderItem = function (ul, item) {
 		
-		const imagePath = '../resources/images/' + item.icon;
-		
-	    return $('<li/>', {'data-value': item.label}).append($('<a/>', {href: "#"})
-	            .append($('<img/>', {src: imagePath})).append(item.label))
+	    
+		return $('<li/>', {'data-value': item.label}).append($('<div/>')
+	            .append($('<img/>', {src: '../resources/images/' + item.icon , alt: item.label})).append(item.label)).append('<div id="btn-btn">'+item.type+'</div>')
 	            .appendTo(ul);
 	};
     
@@ -305,6 +307,7 @@ function downArrow2() {
         	<input name="item_name6" id="itemName6" placeholder="옵션명6">
         	<input name="item_name_val6" placeholder="옵션수치6"><br>
         	
+        	<input name="item_name7" id="itemName7" placeholder="아이템명">
         	
         	<input type="button" value="검색" onclick="option_search(this.form);">     
         	<select id="item_type" name="item_type">
@@ -524,7 +527,13 @@ function downArrow2() {
 						<span>판매가</span>
 					</div>
 					<div id="usercard-cp4">
-						<span>800cp</span>
+						<span></span>
+					</div>
+					<div id="usercard-cp5">
+						<span><fmt:formatNumber type="currency" value="118000" currencySymbol=""/></span>
+					</div>
+					<div id="usercard-cp6">
+						<span>CP</span>
 					</div>
 				</div>
 				<div id="usercard-btn">

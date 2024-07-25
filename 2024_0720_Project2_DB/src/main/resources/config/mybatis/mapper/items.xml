@@ -227,6 +227,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				or option_name7 = #{ item_name } and item_o7_val>=#{ item_name_val }
 				or option_name8 = #{ item_name } and item_o8_val>=#{ item_name_val })s
 			</when>
+			<when test="item_name!='5000000'">
+			select * from trade_order_by_view
+			</when>
 		</choose>
  			<trim prefix="where" prefixOverrides="and">
 			<if test="item_type!=''">
@@ -282,7 +285,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- search list가 나올 수 있도록 출력한다 -->
 	<select id="items_list_option2" resultType="items">
-		select distinct item_name,item_image from trade_order_by_view
+		select distinct item_name,item_image,item_type from trade_order_by_view
 	</select>
 	
 	

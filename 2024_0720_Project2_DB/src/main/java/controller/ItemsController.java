@@ -164,7 +164,8 @@ public class ItemsController {
 		  for(ItemsVo vo : list) { sb.append("{");
 		  sb.append("\"label\":\"").append(vo.getItem_name()).append("\",");
 		  sb.append("\"value\":\"").append(vo.getItem_name()).append("\",");
-		  sb.append("\"icon\":\"").append(vo.getItem_image()).append("\"");
+		  sb.append("\"icon\":\"").append(vo.getItem_image()).append("\",");
+		  sb.append("\"type\":\"").append(vo.getItem_type()).append("\"");
 		  sb.append("},"); }
 		  
 		  if(sb.length() > 1) { sb.setLength(sb.length()-1); }
