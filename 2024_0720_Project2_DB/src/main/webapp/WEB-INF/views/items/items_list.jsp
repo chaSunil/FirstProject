@@ -171,9 +171,15 @@
 
 
 <!-- jquery -->
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 <script type="text/javascript">
 
@@ -181,28 +187,23 @@ var $112 = $.noConflict(true);
 
 
 	
- 	$(document).ready(function() {
+  $112(document).ready(function() {
  	// item 설정 검색창
 	/* const imagePath = '../resources/images/' + item.icon; */
 	$112('#inputBox').autocomplete({
         source : inputSource, // autocomplete가 될 요소
         minLength : 0, // 0글자부터 배열안에 있는 글자를 인식한다.instance;
         select: function (event, ui) {
-        	$("#inputBox").val(ui.item.label);
+        	$("#itemName7").val(ui.item.value);
+        	$("#inputBox").val(ui.item.value);
             return false;
         }
     });
- 	
-	$112("#inputBox").data("ui-autocomplete")._renderItem = function (ul, item) {
-		
-	    
-		return $('<li/>', {'data-value': item.label}).append($('<div/>')
-	            .append($('<img/>', {src: '../resources/images/' + item.icon , alt: item.label})).append(item.label)).append('<div id="btn-btn">'+item.type+'</div>')
-	            .appendTo(ul);
-	};
+	
+	
     
     var inputBox = document.querySelector('#inputBox'); // 변수 저장
-    inputBox.addEventListener("focus", downArrow); // inputBox(검색창)에 커서가 올라가면 함수실행
+    inputBox.addEventListener("focus", downArrow); // inputBox(검색창) 커서가 올라가면 함수실행
     
 
     // option 설정 검색창
@@ -210,6 +211,8 @@ var $112 = $.noConflict(true);
         source : inputSource2, // autocomplete가 될 요소
         minLength : 0, // 0글자부터 배열안에 있는 글자를 인식한다.
         select : function(event, ui) {
+        	
+        	
         	
         	if($("#itemName").val()=="") {
         		
