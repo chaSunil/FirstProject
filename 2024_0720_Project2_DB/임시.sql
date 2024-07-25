@@ -3278,6 +3278,7 @@
 	
 	-- where item_name = '도둑의 왕관 그랜드 크라운' and no = 1
 	
+
 	
 		
 	
@@ -4962,3 +4963,17 @@
 	insert into options8 values(seq_options8_option8_idx.nextVal,'신성한 불꽃(성기사 전용)');
 	insert into options8 values(seq_options8_option8_idx.nextVal,'마나');
 	insert into options8 values(seq_options8_option8_idx.nextVal,'빈옵션');
+	
+	
+	/*select * from all_tables where table_name like 'items';
+
+	
+	
+	select * from
+	(SELECT table_name
+	FROM all_tables
+	WHERE REGEXP_LIKE(table_name, '^ITEMS[1-9]$|^ITEMS1[0-9]$'))*/
+	
+	
+
+	

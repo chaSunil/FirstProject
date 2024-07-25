@@ -270,9 +270,9 @@ public class ItemsController {
 	@RequestMapping("/sell/sell_reg_search.do")
 	public String sell_search_item(String item_name, Model model) {
 		
-		ItemsVo items = items_dao.selectOneSellSearch(item_name);
+		ItemsVo vo = items_dao.selectOneSellSearch(item_name);
 		
-		model.addAttribute("items", items);
+		model.addAttribute("vo", vo);
 		
 		return "sell/sell_reg";
 	}

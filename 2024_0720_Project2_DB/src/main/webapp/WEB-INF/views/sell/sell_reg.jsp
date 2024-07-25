@@ -117,31 +117,6 @@ var $112 = $.noConflict(true);
         </div>
         
         
-        <form>
-        	<input name="item_name" id="itemName" placeholder="옵션명">
-        	<input name="item_name_val" placeholder="옵션수치">
-        	
-        	<input name="item_name2" id="itemName2" placeholder="옵션명2">
-        	<input name="item_name_val2" placeholder="옵션수치2"><br>
-        	
-        	
-        	<input name="item_name3" id="itemName3" placeholder="옵션명3">
-        	<input name="item_name_val3" placeholder="옵션수치3">
-        	
-        	<input name="item_name4" id="itemName4" placeholder="옵션명4">
-        	<input name="item_name_val4" placeholder="옵션수치4"><br>
-        	
-        	<input name="item_name5" id="itemName5" placeholder="옵션명5">
-        	<input name="item_name_val5" placeholder="옵션수치5">
-        	
-        	<input name="item_name6" id="itemName6" placeholder="옵션명6">
-        	<input name="item_name_val6" placeholder="옵션수치6"><br>
-        	
-        	<input name="item_name7" id="itemName7" placeholder="아이템명">
-        	
-        	<input type="button" value="검색" onclick="option_search(this.form);"> 
-        </form>
-        
         <div id="item-box-advertisement">
         	<img src="https://i.ibb.co/9WWsngp/Kakao-Talk-20240724-144334979.jpg" alt="광고">
         </div>
@@ -196,7 +171,7 @@ var $112 = $.noConflict(true);
 			<span class="item-box-head2-font21">소프트코어</span>
 			</div>
 			<div class="item-box-head4">
-			<button type="button" class="btn btn-primary active">?&nbsp;&nbsp; 자주 찾는 질문</button>
+			<button type="button" class="btn btn-primary active">?&nbsp;&nbsp; ${ requestScope.vo.item_name }</button>
 			</div>
 		</div>
 		
@@ -258,7 +233,7 @@ var $112 = $.noConflict(true);
 		
 		<!-- item_trade_list -->
 		
-		
+		<c:forEach var="items" items="${ requestScope.list }">
         <form>
 <div id="item-box">
 			<div id="item-image-box">
@@ -389,6 +364,6 @@ var $112 = $.noConflict(true);
 			</div>
 </div>
 		</form>
-
+		</c:forEach>
 </body>
 </html>
