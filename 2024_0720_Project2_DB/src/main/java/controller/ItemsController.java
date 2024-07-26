@@ -231,7 +231,7 @@ public class ItemsController {
 	 
 	 
 	// 판매 form
-	@RequestMapping("/sell/sell_reg.do")
+	@RequestMapping("/items/sell_reg.do")
 	public String sell_form() {
 
 		return "sell/sell_reg"; // /WEB-INF/views/ + items/items_list + .jsp
@@ -239,7 +239,7 @@ public class ItemsController {
 	
 	
 	// 판매 아이템 검색 자동완성
-	 @RequestMapping(value="/sell/get_item.do",produces = "application/json;charset=utf-8")
+	 @RequestMapping(value="/items/get_item.do",produces = "application/json;charset=utf-8")
 	 @ResponseBody 
 	 public String sell_search_list() {
 		 
@@ -267,7 +267,7 @@ public class ItemsController {
 	 }
 	 
 	 // 판매 아이템 검색시 실행
-	@RequestMapping("/sell/sell_reg_search.do")
+	@RequestMapping("/items/sell_reg_search.do")
 	public String sell_search_item(String item_name, Model model) {
 		
 		ItemsVo vo = items_dao.selectOneSellSearch(item_name);

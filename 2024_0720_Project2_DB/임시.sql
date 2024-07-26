@@ -3132,7 +3132,7 @@
 		option8_idx int,					
 		item_o8_val int
 	);
-	
+	select * from trade_search_by_view where item_name = '마수'
 	
 	-- 2. items values 넣기
 							
