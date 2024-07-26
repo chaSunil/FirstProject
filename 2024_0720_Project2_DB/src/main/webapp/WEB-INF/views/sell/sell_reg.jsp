@@ -100,6 +100,20 @@
 
 
 
+function shot_change() {
+	
+	let input_item_shot = $("#input_item_shot").val().trim();
+	alert("값을 넘겨받았습니다.");
+	
+	
+	$("span#item_shot").text(input_item_shot);
+	$("#item_shot").val(input_item_shot);
+	
+} 
+
+
+
+
 function gibon_option1_change() {
 	
 	let input_gibon_option1_val = $("#input_gibon_option1_val").val().trim();
@@ -476,32 +490,26 @@ var $112 = $.noConflict(true);
 				
 				
 				
-				<!-- 소켓 유무에 따른 출력 변화 -->
-				<span>${ vo.item_shot }소켓</span><br>
-				
-				<div id="modal" data-toggle="modal" data-target="#myModal">
-					${ vo.gibon_option1_name }
-					<span id="gibon_option1_val" data-value="gibon_option1_val">${ vo.gibon_option1_val }</span><br>
+				<div id="modals" data-toggle="modal" data-target="#myModals">
+					<span id="item_shot" data-value="item_shot">${ vo.item_shot }</span>소켓<br>
 				</div>
 				
-				
-				
 				<!-- 모달 -->
-				<div id="myModal" class="modal fade" role="dialog">
+				<div id="myModals" class="modal fade" role="dialog">
 				  <div class="modal-dialog">
 				
 				    <!-- 모달 내부 내용 -->
 				    <div class="modal-content">
 				      <div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal">&times;</button>
-				        <h4 class="modal-title">옵션 변경</h4>
+				        <h4 class="modal-title">소켓 변경</h4>
 				      </div>	
 				      <div class="modal-body">
 				      
 				      
-				      	${ vo.gibon_option1_name }
-				        <input type="number" name="item_gibon_option1" id="input_gibon_option1_val" placeholder="${ vo.gibon_option1_val }">
-				        <input type="button" id="gibon_option_button1" value="적용" onclick="gibon_option1_change();">  
+				      	소켓
+				        <input type="number" name="input_item_shot" id="input_item_shot" placeholder="${ vo.item_shot }">
+				        <input type="button" id="shot_change_button1" value="적용" onclick="shot_change();">  
 				        
 				        
 				      </div>
@@ -512,7 +520,6 @@ var $112 = $.noConflict(true);
 				
 				  </div>
 				</div>
-				</c:if>
 				</div>
 			</div>
 			
@@ -532,6 +539,9 @@ var $112 = $.noConflict(true);
 				<input type="hidden" name="item_grade" value="${ vo.item_grade }">
 				<!-- ★이미지 레어도 넘겨주기★ -->
 				<input type="hidden" name="item_rarity" value="${ vo.item_rarity }">
+				
+				<!-- ★이미지 소켓 넘겨주기★ -->
+				<input type="hidden" name="item_shot" value="${ vo.item_shot }">
 				
 				<!-- 아이템 기본 옵션1  -->
 				<input type="hidden" id="gibon_option1" name="gibon_option1" value="${ vo.gibon_option1 }">
