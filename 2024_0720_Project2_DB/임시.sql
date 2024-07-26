@@ -316,7 +316,7 @@
 		option8_idx int,					
 		item_o8_val int
 	);
-	
+
 	
 	-- 2. items values 넣기
 	
@@ -3132,7 +3132,7 @@
 		option8_idx int,					
 		item_o8_val int
 	);
-	select * from trade_search_by_view where item_name = '마수'
+
 	
 	-- 2. items values 넣기
 							
@@ -3263,7 +3263,6 @@
 		rank() over(order by item_idx desc) as rank
 		from (select * from trade_view)t
 	);
-	
 	
 		
 	create or replace view trade_search_by_view

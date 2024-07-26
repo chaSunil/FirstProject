@@ -276,6 +276,15 @@ public class ItemsController {
 		
 		return "sell/sell_reg";
 	}
-
+	
+	
+	// 판매 등록하기
+	@RequestMapping("/items/sell_reg_data.do")
+	public String sell_reg_data(ItemsVo vo) {
+		
+		int res = items_dao.sell_insert(vo);
+		
+		return "redirect:list.do";
+	}
 	
 }

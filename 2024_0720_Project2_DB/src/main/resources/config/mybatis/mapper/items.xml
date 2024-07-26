@@ -299,8 +299,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	<!-- search list가 나올 수 있도록 출력한다 -->
 	<select id="search_sell_search" parameterType="String" resultType="items">
-		select * from trade_search_by_view where item_name = #{ item_name }
-	</select>
+	
+		select * from trade_search_by_view 
+		where item_idx = 
+		(
+			select min(item_idx)
+			from trade_search_by_view
+			where item_name = #{ item_name }
+		)
+	</select>	
+	
+	
+	
+	<insert id="sell_insert" parameterType="items">
+		insert into items8 values(
+							seq_items_item_idx.nextVal,
+							#{ item_name },
+							#{ item_image },
+							#{ item_type },
+							#{ item_grade },
+							#{ item_rarity },
+							'수리가능',2,
+							#{ gibon_option1 },#{ gibon_option1_val },
+							#{ gibon_option2 },#{ gibon_option2_val },
+							#{ gibon_option3 },#{ gibon_option3_val },
+							#{ gibon_option4 },#{ gibon_option4_val },
+							#{ gibon_option5 },#{ gibon_option5_val },
+							#{ gibon_option6 },#{ gibon_option6_val },
+							#{ gibon_option7 },#{ gibon_option7_val },
+							62,0,
+							37,1,
+							26,30,
+							12,50,
+							36,150,
+							39,30,
+							33,15,
+							0,0
+						)
+	</insert>
 	
 </mapper>
 

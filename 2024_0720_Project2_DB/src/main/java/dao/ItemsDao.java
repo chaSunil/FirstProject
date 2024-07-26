@@ -70,4 +70,10 @@ public class ItemsDao {
 		
 		return sqlSession.selectOne("items.search_sell_search",item_name);
 	}
+
+	// 판매등록하기
+	public int sell_insert(ItemsVo vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("items.sell_insert",vo);
+	}
 }
