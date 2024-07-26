@@ -474,8 +474,45 @@ var $112 = $.noConflict(true);
 				<a class="btn-1">&ensp;${ vo.item_rarity  }&ensp;</a></div>
 				<span>${ vo.item_im }</span><br>
 				
+				
+				
 				<!-- 소켓 유무에 따른 출력 변화 -->
 				<span>${ vo.item_shot }소켓</span><br>
+				
+				<div id="modal" data-toggle="modal" data-target="#myModal">
+					${ vo.gibon_option1_name }
+					<span id="gibon_option1_val" data-value="gibon_option1_val">${ vo.gibon_option1_val }</span><br>
+				</div>
+				
+				
+				
+				<!-- 모달 -->
+				<div id="myModal" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
+				
+				    <!-- 모달 내부 내용 -->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        <h4 class="modal-title">옵션 변경</h4>
+				      </div>	
+				      <div class="modal-body">
+				      
+				      
+				      	${ vo.gibon_option1_name }
+				        <input type="number" name="item_gibon_option1" id="input_gibon_option1_val" placeholder="${ vo.gibon_option1_val }">
+				        <input type="button" id="gibon_option_button1" value="적용" onclick="gibon_option1_change();">  
+				        
+				        
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
+				    </div>
+				
+				  </div>
+				</div>
+				</c:if>
 				</div>
 			</div>
 			
@@ -497,74 +534,74 @@ var $112 = $.noConflict(true);
 				<input type="hidden" name="item_rarity" value="${ vo.item_rarity }">
 				
 				<!-- 아이템 기본 옵션1  -->
-				<input id="gibon_option1" name="gibon_option1" value="${ vo.gibon_option1 }">
-				<input id="gibon_option1_val" name="gibon_option1_val" value="${ vo.gibon_option1_val }"><br>
+				<input type="hidden" id="gibon_option1" name="gibon_option1" value="${ vo.gibon_option1 }">
+				<input type="hidden" id="gibon_option1_val" name="gibon_option1_val" value="${ vo.gibon_option1_val }">
 				
 				
 				<!-- 아이템 기본 옵션2  -->
-				<input id="gibon_option2" name="gibon_option2" value="${ vo.gibon_option2 }">
-				<input id="gibon_option2_val" name="gibon_option2_val" value="${ vo.gibon_option2_val }"><br>
+				<input type="hidden" id="gibon_option2" name="gibon_option2" value="${ vo.gibon_option2 }">
+				<input type="hidden" id="gibon_option2_val" name="gibon_option2_val" value="${ vo.gibon_option2_val }">
 				
 				<!-- 아이템 기본 옵션3  -->
-				<input id="gibon_option3" name="gibon_option3" value="${ vo.gibon_option3 }">
-				<input id="gibon_option3_val" name="gibon_option3_val" value="${ vo.gibon_option3_val }"><br>
+				<input type="hidden" id="gibon_option3" name="gibon_option3" value="${ vo.gibon_option3 }">
+				<input type="hidden" id="gibon_option3_val" name="gibon_option3_val" value="${ vo.gibon_option3_val }">
 				
 				<!-- 아이템 기본 옵션4  -->
-				<input id="gibon_option4" name="gibon_option4" value="${ vo.gibon_option4 }">
-				<input id="gibon_option4_val" name="gibon_option4_val" value="${ vo.gibon_option4_val }"><br>
+				<input type="hidden" id="gibon_option4" name="gibon_option4" value="${ vo.gibon_option4 }">
+				<input type="hidden" id="gibon_option4_val" name="gibon_option4_val" value="${ vo.gibon_option4_val }">
 				
 				<!-- 아이템 기본 옵션5  -->
-				<input id="gibon_option5" name="gibon_option5" value="${ vo.gibon_option5 }">
-				<input id="gibon_option5_val" name="gibon_option5_val" value="${ vo.gibon_option5_val }"><br>
+				<input type="hidden" id="gibon_option5" name="gibon_option5" value="${ vo.gibon_option5 }">
+				<input type="hidden" id="gibon_option5_val" name="gibon_option5_val" value="${ vo.gibon_option5_val }">
 				
 				<!-- 아이템 기본 옵션6  -->
-				<input id="gibon_option6" name="gibon_option6" value="${ vo.gibon_option6 }">
-				<input id="gibon_option6_val" name="gibon_option6_val" value="${ vo.gibon_option6_val }"><br>
+				<input type="hidden" id="gibon_option6" name="gibon_option6" value="${ vo.gibon_option6 }">
+				<input type="hidden" id="gibon_option6_val" name="gibon_option6_val" value="${ vo.gibon_option6_val }">
 				
 				<!-- 아이템 기본 옵션7  -->
-				<input id="gibon_option7" name="gibon_option7" value="${ vo.gibon_option7 }">
-				<input id="gibon_option7_val" name="gibon_option7_val" value="${ vo.gibon_option7_val }"><br>
+				<input type="hidden" id="gibon_option7" name="gibon_option7" value="${ vo.gibon_option7 }">
+				<input type="hidden" id="gibon_option7_val" name="gibon_option7_val" value="${ vo.gibon_option7_val }">
 		
 		
 				
 				<!-- 아이템 옵션1  -->
-				<input id="option1_idx" name="option1_idx" value="${ vo.option1_idx }">
-				<input id="item_o1_val" name="item_o1_val" value="${ vo.item_o1_val }"><br>
+				<input type="hidden" id="option1_idx" name="option1_idx" value="${ vo.option1_idx }">
+				<input type="hidden" id="item_o1_val" name="item_o1_val" value="${ vo.item_o1_val }">
 		
 				
 				<!-- 아이템 옵션2  -->
-				<input id="option2_idx" name="option2_idx" value="${ vo.option2_idx }">
-				<input id="item_o2_val" name="item_o2_val" value="${ vo.item_o2_val }"><br>
+				<input type="hidden" id="option2_idx" name="option2_idx" value="${ vo.option2_idx }">
+				<input type="hidden" id="item_o2_val" name="item_o2_val" value="${ vo.item_o2_val }">
 		
 				
 				<!-- 아이템 옵션3  -->
-				<input id="option3_idx" name="option3_idx" value="${ vo.option3_idx }">
-				<input id="item_o3_val" name="item_o3_val" value="${ vo.item_o3_val }"><br>
+				<input type="hidden" id="option3_idx" name="option3_idx" value="${ vo.option3_idx }">
+				<input type="hidden" id="item_o3_val" name="item_o3_val" value="${ vo.item_o3_val }">
 		
 				
 				<!-- 아이템 옵션4  -->
-				<input id="option4_idx" name="option4_idx" value="${ vo.option4_idx }">
-				<input id="item_o4_val" name="item_o4_val" value="${ vo.item_o4_val }"><br>
+				<input type="hidden" id="option4_idx" name="option4_idx" value="${ vo.option4_idx }">
+				<input type="hidden" id="item_o4_val" name="item_o4_val" value="${ vo.item_o4_val }">
 		
 				
 				<!-- 아이템 옵션5  -->
-				<input id="option5_idx" name="option5_idx" value="${ vo.option5_idx }">
-				<input id="item_o5_val" name="item_o5_val" value="${ vo.item_o5_val }"><br>
+				<input type="hidden" id="option5_idx" name="option5_idx" value="${ vo.option5_idx }">
+				<input type="hidden" id="item_o5_val" name="item_o5_val" value="${ vo.item_o5_val }">
 		
 				
 				<!-- 아이템 옵션6  -->
-				<input id="option6_idx" name="option6_idx" value="${ vo.option6_idx }">
-				<input id="item_o6_val" name="item_o6_val" value="${ vo.item_o6_val }"><br>
-		
+				<input type="hidden" id="option6_idx" name="option6_idx" value="${ vo.option6_idx }">
+				<input type="hidden" id="item_o6_val" name="item_o6_val" value="${ vo.item_o6_val }">
+	 
 				
 				<!-- 아이템 옵션7  -->
-				<input id="option7_idx" name="option7_idx" value="${ vo.option7_idx }">
-				<input id="item_o7_val" name="item_o7_val" value="${ vo.item_o7_val }"><br>
+				<input type="hidden" id="option7_idx" name="option7_idx" value="${ vo.option7_idx }">
+				<input type="hidden" id="item_o7_val" name="item_o7_val" value="${ vo.item_o7_val }">
 		
 				
 				<!-- 아이템 옵션8  -->
-				<input id="option8_idx" name="option8_idx" value="${ vo.option8_idx }">
-				<input id="item_o8_val" name="item_o8_val" value="${ vo.item_o8_val }"><br>
+				<input type="hidden" id="option8_idx" name="option8_idx" value="${ vo.option8_idx }">
+				<input type="hidden" id="item_o8_val" name="item_o8_val" value="${ vo.item_o8_val }">
 				
 
 				
@@ -575,15 +612,9 @@ var $112 = $.noConflict(true);
 		</form>
 		
 		
-				<span id="test">변화</span>
-				<!-- 아이템 옵션 바뀌는지 체크하는 항목  -->
-				<input id="gibon_option1_s_val">
 				
 				
 				
-				
-				
-			<input id="option_btn" type="button" class="btn btn-info btn-lg" value="옵션넣기">
 			
 			
 			
@@ -1104,30 +1135,199 @@ var $112 = $.noConflict(true);
 				
 				
 				
+
+				
+				
+
+				
+				<c:if test="${ vo.option_name5 != null }">
+				<!-- 기본 옵션1번 변경 모달 -->
+				<!-- 모달 버튼 -->
+				
+				
+				<div id="modal1_5" data-toggle="modal" data-target="#myModal1_5">
+					${ vo.option_name5 }
+					<span id="item_o5_val" data-value=item_o5_val>${ vo.item_o5_val }</span><br>
+				</div>
 				
 				
 				
+				<!-- 모달 -->
+				<div id="myModal1_5" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
 				
+				    <!-- 모달 내부 내용 -->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        <h4 class="modal-title">옵션 변경</h4>
+				      </div>	
+				      <div class="modal-body">
+				      
+				      
+				      	${ vo.option_name5 }
+				        <input type="number" name="option_name5" id="input_item_o5_val" placeholder="${ vo.item_o5_val }">
+				        <input type="button" id="option_button5" value="적용" onclick="option5_change();">  
+				        
+				        
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
+				    </div>
 				
+				  </div>
+				</div>
+				</c:if>
 				
 				
 				
 
-				<c:if test="${ vo.item_o4_val != 0 || vo.option_name4 != null }">
-				<span>${ vo.option_name4 } ${ vo.item_o4_val }</span><br>
+				
+				
+
+				
+				<c:if test="${ vo.option_name6 != null }">
+				<!-- 기본 옵션1번 변경 모달 -->
+				<!-- 모달 버튼 -->
+				
+				
+				<div id="modal1_6" data-toggle="modal" data-target="#myModal1_6">
+					${ vo.option_name6 }
+					<span id="item_o6_val" data-value=item_o6_val>${ vo.item_o6_val }</span><br>
+				</div>
+				
+				
+				
+				<!-- 모달 -->
+				<div id="myModal1_6" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
+				
+				    <!-- 모달 내부 내용 -->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        <h4 class="modal-title">옵션 변경</h4>
+				      </div>	
+				      <div class="modal-body">
+				      
+				      
+				      	${ vo.option_name6 }
+				        <input type="number" name="option_name6" id="input_item_o6_val" placeholder="${ vo.item_o6_val }">
+				        <input type="button" id="option_button6" value="적용" onclick="option6_change();">  
+				        
+				        
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
+				    </div>
+				
+				  </div>
+				</div>
 				</c:if>
-				<c:if test="${ vo.item_o5_val != 0 || vo.option_name5 != null }">
-				<span>${ vo.option_name5 } ${ vo.item_o5_val }</span><br>
+				
+				
+				
+
+				
+				
+
+				
+				<c:if test="${ vo.option_name7 != null }">
+				<!-- 기본 옵션1번 변경 모달 -->
+				<!-- 모달 버튼 -->
+				
+				
+				<div id="modal1_7" data-toggle="modal" data-target="#myModal1_7">
+					${ vo.option_name7 }
+					<span id="item_o7_val" data-value=item_o7_val>${ vo.item_o7_val }</span><br>
+				</div>
+				
+				
+				
+				<!-- 모달 -->
+				<div id="myModal1_7" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
+				
+				    <!-- 모달 내부 내용 -->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        <h4 class="modal-title">옵션 변경</h4>
+				      </div>	
+				      <div class="modal-body">
+				      
+				      
+				      	${ vo.option_name7 }
+				        <input type="number" name="option_name7" id="input_item_o7_val" placeholder="${ vo.item_o7_val }">
+				        <input type="button" id="option_button7" value="적용" onclick="option7_change();">  
+				        
+				        
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
+				    </div>
+				
+				  </div>
+				</div>
 				</c:if>
-				<c:if test="${ vo.item_o6_val != 0 || vo.option_name6 != null }">
-				<span>${ vo.option_name6 } ${ vo.item_o6_val }</span><br>
+				
+				
+				
+
+				
+				
+
+				
+				<c:if test="${ vo.option_name8 != null }">
+				<!-- 기본 옵션1번 변경 모달 -->
+				<!-- 모달 버튼 -->
+				
+				
+				<div id="modal1_8" data-toggle="modal" data-target="#myModal1_8">
+					${ vo.option_name8 }
+					<span id="item_o8_val" data-value=item_o8_val>${ vo.item_o8_val }</span><br>
+				</div>
+				
+				
+				
+				<!-- 모달 -->
+				<div id="myModal1_8" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
+				
+				    <!-- 모달 내부 내용 -->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        <h4 class="modal-title">옵션 변경</h4>
+				      </div>	
+				      <div class="modal-body">
+				      
+				      
+				      	${ vo.option_name8 }
+				        <input type="number" name="option_name8" id="input_item_o8_val" placeholder="${ vo.item_o8_val }">
+				        <input type="button" id="option_button8" value="적용" onclick="option8_change();">  
+				        
+				        
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
+				    </div>
+				
+				  </div>
+				</div>
 				</c:if>
-				<c:if test="${ vo.item_o7_val != 0 || vo.option_name7 != null }">
-				<span>${ vo.option_name7 } ${ vo.item_o7_val }</span><br>
-				</c:if>
-				<c:if test="${ vo.item_o8_val != 0 || vo.option_name8 != null }">
-				<span>${ vo.option_name8 } ${ vo.item_o8_val }</span><br>
-				</c:if>
+				
+				
+				
+				
+				
+				
+				
+				
 				</div>
 				</div>
 			</div>

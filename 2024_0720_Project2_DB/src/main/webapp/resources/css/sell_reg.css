@@ -238,9 +238,12 @@ body {
 
 /* 모달 action */
 
-.modal:hover {
-	color: skyblue;
-	
+.modal {
+	color: #AE906A;
+}
+
+.modal-content {
+	background-color: #1F2128;
 }
 
 

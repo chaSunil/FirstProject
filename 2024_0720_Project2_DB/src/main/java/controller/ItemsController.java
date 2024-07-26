@@ -73,7 +73,6 @@ public class ItemsController {
 	@RequestMapping("/items/category.do")
 	public String category(@RequestParam Map<String, Object> map, Model model) {
 		
-		System.out.println(map);
 		// Category에 해당하는 아이템을 가져온다. 
 		List<ItemsVo> list = items_dao.selectList2(map);
 		 
@@ -173,8 +172,6 @@ public class ItemsController {
 		  sb.append("]");
 		  
 		  String json = String.format("{\"result\": %s }", sb.toString());
-		  
-		  System.out.println(json);
 		  
 		  return json;
 		 
