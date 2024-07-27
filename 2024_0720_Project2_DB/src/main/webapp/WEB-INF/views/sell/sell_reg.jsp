@@ -114,6 +114,20 @@
 
 
 
+function im_change() {
+	
+	let input_item_shot = $("#input_item_shot").val().trim();
+	alert("값을 넘겨받았습니다.");
+	
+	
+	$("span#item_shot").text(input_item_shot);
+	$("#item_shot").val(input_item_shot);
+	
+}
+
+
+
+
 function shot_change() {
 	
 	let input_item_shot = $("#input_item_shot").val().trim();
@@ -310,7 +324,18 @@ function option8_change() {
 	
 	$("span#item_o8_val").text(input_item_o8_val);
 	$("#item_o8_val").val(input_item_o8_val);
-} 
+}
+
+
+
+function show_div() {
+	
+    var div = document.getElementById('input_coin');
+    var item_box_radius_footer = document.getElementById('item_box_radius_footer');
+    div.style.display = 'block'; // div를 보여줍니다.
+    item_box_radius_footer.style.display = 'none';
+	
+}
 
 
 
@@ -501,7 +526,7 @@ var $112 = $.noConflict(true);
 	        <div id="item-box-head-text">
 	        	<div id="item-box-head-text-sub">
 	        	<img alt="" src="https://i.ibb.co/0YqhDTP/bullet-1.png">
-	        	<span><b>아이템 등록</b></span>
+	        	<span style="color: #646464;"><b>아이템 등록</b></span>
 	        	<span id="item-box-head-text-sub-font"><b>ㅣ</b></span>
 	        	<span id="item-box-head-text2">일반판매, 경매</span>
 	        	</div>
@@ -690,7 +715,7 @@ var $112 = $.noConflict(true);
                         <div class="filter-box">
                             <div style="flex: 1;">
                                 <div style="position: relative;">
-                                    <div style="position: relative; width: 100%">\
+                                    <div style="position: relative; width: 100%">
                                         <div class="search-window">
                                         <span>
                                         <form>
@@ -790,12 +815,49 @@ var $112 = $.noConflict(true);
 				<div class="item_tag"><a class="btn-0">&ensp;${ vo.item_grade }&ensp;</a>
 				<a class="btn-1">&ensp;${ vo.item_rarity  }&ensp;</a></div>
 				<hr>
-				<span>${ vo.item_im }</span><br>
+				
+				
+				<c:if test="${ vo.item_im != null }">
+				<div class="modal-text" id="modali" data-toggle="modal" data-target="#myModali">
+					<span id="item_im" data-value="item_im"><img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.item_im }</span><br>
+				</div>
+				
+				<!-- 모달 -->
+				<div id="myModali" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
+				
+				    <!-- 모달 내부 내용 -->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        <h4 class="modal-title">수리여부 변경</h4>
+				      </div>	
+				      <div class="modal-body">
+				      
+				      	<input type="checkbox" id="input_item_im" name="input_item_im" value="input_item_im_1">
+						<label for="option1">수리가능</label>
+						
+						<input type="checkbox" id="input_item_im" name="input_item_im" value="input_item_im_2">
+						<label for="option2">수리불가</label>
+						
+				        <input type="button" id="im_change_button1" value="적용" onclick="im_change();">  
+				        
+				        
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
+				    </div>
+				
+				  </div>
+				</div>
+			</c:if>		
+				
 				
 				
 				<c:if test="${ vo.item_shot != null }">
-				<div id="modals" data-toggle="modal" data-target="#myModals">
-					<span id="item_shot" data-value="item_shot">${ vo.item_shot }</span>소켓<br>
+				<div class="modal-text" id="modals" data-toggle="modal" data-target="#myModals">
+					<span id="item_shot" data-value="item_shot"><img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.item_shot }</span>소켓<br>
 				</div>
 				
 				<!-- 모달 -->
@@ -860,7 +922,7 @@ var $112 = $.noConflict(true);
 				
 				
 				<div class="modal-text" id="modal" data-toggle="modal" data-target="#myModal">
-					${ vo.gibon_option1_name }
+					&nbsp;<img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.gibon_option1_name }
 					<span id="gibon_option1_val" data-value="gibon_option1_val">${ vo.gibon_option1_val }</span><br>
 				</div>
 				
@@ -906,7 +968,7 @@ var $112 = $.noConflict(true);
 				
 				
 				<div class="modal-text" id="modal2" data-toggle="modal" data-target="#myModal2">
-					<img src="../resources/images/pencil.png">${ vo.gibon_option2_name }
+					&nbsp;<img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.gibon_option2_name }
 					<span id="gibon_option2_val" data-value="gibon_option2_val">${ vo.gibon_option2_val }</span><br>
 				</div>
 				
@@ -953,7 +1015,7 @@ var $112 = $.noConflict(true);
 				
 				
 				<div class="modal-text" id="modal3" data-toggle="modal" data-target="#myModal3">
-					${ vo.gibon_option3_name }
+					&nbsp;<img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.gibon_option3_name }
 					<span id="gibon_option3_val" data-value="gibon_option3_val">${ vo.gibon_option3_val }</span><br>
 				</div>
 				
@@ -996,7 +1058,7 @@ var $112 = $.noConflict(true);
 				
 				
 				<div class="modal-text" id="modal4" data-toggle="modal" data-target="#myModal4">
-					${ vo.gibon_option4_name }
+					&nbsp;<img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.gibon_option4_name }
 					<span id="gibon_option4_val" data-value="gibon_option4_val">${ vo.gibon_option4_val }</span><br>
 				</div>
 				
@@ -1039,7 +1101,7 @@ var $112 = $.noConflict(true);
 				
 				
 				<div class="modal-text" id="modal5" data-toggle="modal" data-target="#myModal5">
-					${ vo.gibon_option5_name }
+					&nbsp;<img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.gibon_option5_name }
 					<span id="gibon_option5_val" data-value="gibon_option5_val">${ vo.gibon_option5_val }</span><br>
 				</div>
 				
@@ -1085,7 +1147,7 @@ var $112 = $.noConflict(true);
 				
 				
 				<div class="modal-text" id="modal6" data-toggle="modal" data-target="#myModal6">
-					${ vo.gibon_option6_name }
+					&nbsp;<img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.gibon_option6_name }
 					<span id="gibon_option6_val" data-value="gibon_option6_val">${ vo.gibon_option6_val }</span><br>
 				</div>
 				
@@ -1132,7 +1194,7 @@ var $112 = $.noConflict(true);
 				
 				
 				<div class="modal-text" id="modal7" data-toggle="modal" data-target="#myModal7">
-					${ vo.gibon_option7_name }
+					&nbsp;<img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.gibon_option7_name }
 					<span id="gibon_option7_val" data-value="gibon_option7_val">${ vo.gibon_option7_val }</span><br>
 				</div>
 				
@@ -1180,7 +1242,7 @@ var $112 = $.noConflict(true);
 				
 				
 				<div class="modal-text-option" id="modal1_1" data-toggle="modal" data-target="#myModal1_1">
-					${ vo.option_name1 }
+					&nbsp;<img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.option_name1 }
 					<span id="item_o1_val" data-value=item_o1_val>${ vo.item_o1_val }</span><br>
 				</div>
 				
@@ -1227,7 +1289,7 @@ var $112 = $.noConflict(true);
 				
 				
 				<div class="modal-text-option" id="modal1_2" data-toggle="modal" data-target="#myModal1_2">
-					${ vo.option_name2 }
+					&nbsp;<img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.option_name2 }
 					<span id="item_o2_val" data-value=item_o2_val>${ vo.item_o2_val }</span><br>
 				</div>
 				
@@ -1274,7 +1336,7 @@ var $112 = $.noConflict(true);
 				
 				
 				<div class="modal-text-option" id="modal1_3" data-toggle="modal" data-target="#myModal1_3">
-					${ vo.option_name3 }
+					&nbsp;<img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.option_name3 }
 					<span id="item_o3_val" data-value=item_o3_val>${ vo.item_o3_val }</span><br>
 				</div>
 				
@@ -1321,7 +1383,7 @@ var $112 = $.noConflict(true);
 				
 				
 				<div class="modal-text-option" id="modal1_4" data-toggle="modal" data-target="#myModal1_4">
-					🖋️ ${ vo.option_name4 }
+					&nbsp;<img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.option_name4 }
 					<span id="item_o4_val" data-value=item_o4_val>${ vo.item_o4_val }</span><br>
 				</div>
 				
@@ -1368,7 +1430,7 @@ var $112 = $.noConflict(true);
 				
 				
 				<div class="modal-text-option" id="modal1_5" data-toggle="modal" data-target="#myModal1_5">
-					${ vo.option_name5 }
+					&nbsp;<img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.option_name5 }
 					<span id="item_o5_val" data-value=item_o5_val>${ vo.item_o5_val }</span><br>
 				</div>
 				
@@ -1415,7 +1477,7 @@ var $112 = $.noConflict(true);
 				
 				
 				<div class="modal-text-option" id="modal1_6" data-toggle="modal" data-target="#myModal1_6">
-					${ vo.option_name6 }
+					&nbsp;<img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.option_name6 }
 					<span id="item_o6_val" data-value=item_o6_val>${ vo.item_o6_val }</span><br>
 				</div>
 				
@@ -1462,7 +1524,7 @@ var $112 = $.noConflict(true);
 				
 				
 				<div class="modal-text-option" id="modal1_7" data-toggle="modal" data-target="#myModal1_7">
-					${ vo.option_name7 }
+					&nbsp;<img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.option_name7 }
 					<span id="item_o7_val" data-value=item_o7_val>${ vo.item_o7_val }</span><br>
 				</div>
 				
@@ -1509,7 +1571,7 @@ var $112 = $.noConflict(true);
 				
 				
 				<div class="modal-text-option" id="modal1_8" data-toggle="modal" data-target="#myModal1_8">
-					${ vo.option_name8 }
+					&nbsp;<img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.option_name8 }
 					<span id="item_o8_val" data-value=item_o8_val>${ vo.item_o8_val }</span><br>
 				</div>
 				
@@ -1556,63 +1618,42 @@ var $112 = $.noConflict(true);
 			
 			</c:if>
 			
-			
-			<!-- 거래회원 정보 기입란 -->
-<%-- 			<div id="item_sell">
-				<div id="usercard-text">
-					<span class="usercard-text"><span>기본정보</span> 💡 ONLINE</span>
-				</div>
-				<div id="item_sell1">
-					<img class="usercard-image" src="https://image.chaoscube.co.kr/new/user/367949/profile/b6478d67-9a45-46da-8910-f9f74efcaa18.jpg"> 
-					<img class="usercard-grade" src="https://i.ibb.co/BNKG8b4/image.jpg">
-					<span class="usercard-name"><b>블랙마린</b></span>
-					<a class="btn-3">&ensp;일반판매&ensp;</a>
-					<!-- 판매진행 여부 -->
-					<a class="btn-4">&ensp;판매 중&ensp;</a>
-				</div>
-				<hr>
-				<div id="item_sell2">
-				<!-- 판매양식 -->
-				</div>
-				<div id="item_sell3">
-					<span class="item_clock">등록</span>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<span class="item_clock2">2024.07.20 15:35</span><br>
-					<span class="item_clock">종료예정</span>
-					<span class="item_clock2">2024.07.27 15:35</span><br>
-					<span class="item_clock">판매수량</span>
-					<span class="item_clock2">10EA</span><br>
-				</div>
-				<hr>
-				<div id="usercard-text2">
-					<span class="usercard-text"><span>판매정보</span></span>
-				</div>
-				<div id="usercard-cp">
-					<div id="usercard-cp2">
-						<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
-					</div>
-					<div id="usercard-cp3">
-						<span>판매가</span>
-					</div>
-					<div id="usercard-cp4">
-						<span></span>
-					</div>
-					<div id="usercard-cp5">
-						<span><fmt:formatNumber type="currency" value="118000" currencySymbol=""/></span>
-					</div>
-					<div id="usercard-cp6">
-						<span>CP</span>
-					</div>
-				</div>
-				<div id="usercard-btn">
-					<button>자세히보기 →</button>
-				</div>
-			</div> --%>
+
+
+
+
+
+
+
+
+
+
+
 	</div>
 	
-			<input id="item-box-radius-footer" type="button" class="btn btn-info btn-lg" value="판매 방식 및 가격 설정하기 ↓" onclick="">
+			<input id="item_box_radius_footer" type="button" class="btn btn-info btn-lg" value="판매 방식 및 가격 설정하기 ↓" onclick="show_div()">
             
-            
+            <div id="input_coin" style="display: none;">
+        		<div id="input_coin-sub1">
+        			<div id="input_coin-sub1-1">
+        			판매방식
+        			</div>
+        			<div id="input_coin-sub1-1">
+        			판매기간
+        			</div>
+        			<div id="input_coin-sub1-1">
+        			메모
+        			</div>
+        		</div>
+        		<div id="input_coin-sub2">
+        			<div id="input_coin-sub1-2">
+        			</div>
+        			<div id="input_coin-sub1-2">
+        			</div>
+        			<div id="input_coin-sub1-2">
+        			</div>
+        		</div>
+    		</div>
             
             
 			<form>
