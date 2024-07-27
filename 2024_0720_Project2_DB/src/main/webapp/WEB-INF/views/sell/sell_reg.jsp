@@ -83,6 +83,14 @@
 	
 	function sell_reg_data(f) {
 		
+	    var checkbox = document.getElementById("switch");
+	    
+	    // 체크박스가 체크되어 있지 않은 경우
+	    if (!checkbox.checked) {
+	        alert("판매 등록을 위해 약관에 동의 해주세요.");
+	        return; // 함수 종료
+	    }
+		
 		
  		if(confirm("판매등록하시겠습니까?")==false) {
 			return;
@@ -94,9 +102,22 @@
 	}
 	
 	
-/*  	$("#option_button1").click(funtion() {
-		#("#item_o1.val").val($("#item_option1").val());
-	}); */
+    
+    
+    // 입력값이 변경될 때마다 실행
+    document.getElementById("inputBox").addEventListener("input", function() {
+        var value = this.value; // 입력값 가져오기
+        var button = document.getElementById("inputBox_x"); // 버튼 요소
+
+        // 입력값이 비어 있으면 버튼 숨기기, 아니면 버튼 보이기
+        if (value === '') {
+            button.style.display = 'none'; // 버튼 숨김
+        } else {
+            button.style.display = 'block'; // 버튼 보임
+        }
+    });
+	
+	
 		
 	
 	
@@ -833,6 +854,9 @@ var $112 = $.noConflict(true);
                                         <span>
                                         <form>
                                             <input id="inputBox" name="item_name" type="text" placeholder="판매할 아이템 이름을 검색하세요.">
+                                            <button id="inputBox_x" type="reset">
+                                           		<img src="../resources/images/X.png" alt="버튼 이미지" style="width: 15px; height: 15px;">
+                                            </button>
                                             <input type="image" src="../resources/images/search_sell.png" value="submit" onclick="send(this.form);" class="search-btn">
                                         </span>
                                         </form>
@@ -1822,7 +1846,7 @@ var $112 = $.noConflict(true);
         				<span>* 구매자가 있을 때 장시간 연락이 안되거나 아이템 인계를 거부하면 사이트 이용 제재를 받을 수 있습니다.</span><br>
         				<span>* 허위 또는 임의 아이템 편법 거래 시 사이트 이용 제재를 받을 수 있습니다.</span><br>
         				<label id="filsu">
-						    <input role="switch" type="checkbox"/>
+						    <input id="switch" role="switch" type="checkbox"/>
 						    <span id="filsu_text">필수 *</span><span id="filsu_text2">ㅣ 위 안내를 읽고 이해했으며 진행 방식에 동의합니다.</span>
 					    </label>
         			</div>
