@@ -343,7 +343,7 @@ a:hover{
     padding-top: 3rem;
     padding-bottom: 3rem;
     
-    border: 0.5px solid #3f3f3f;
+    border: 0.7px solid #292a2b;
 }
 .tab-label{
     position: absolute;
@@ -396,7 +396,7 @@ a:hover{
     width: 100%;
     padding: 1.5rem;    
     
-    border: 0.5px solid #3f3f3f;
+    border: 0.7px solid #292a2b;
 }
 #filter-title{
     background: #1e2128;

@@ -263,8 +263,12 @@ body {
 
 .modal-content {
 	background-color: #1F2128;
+	border: 0px;
 }
 
+.modal-header, .modal-footer {
+	border: 0px;
+}
 
 
 
@@ -560,7 +564,7 @@ body {
 	
 	position: relative;
 		
-	border: 0.2px solid #3f3f3f;
+	border: 0.2px solid #292a2b;
 	border-top: 0.2px solid #AE906A;
 }
 
@@ -670,6 +674,10 @@ body {
 	max-height: 320px;
 	height: auto;
     max-width: 150px;
+    transition: all 0.2s linear;
+}
+#item-image-box > img:hover {
+	ransform: scale(1.08);
 }
 
 #item-box2 {
@@ -873,7 +881,7 @@ hr {
 
 #input_coin {
 	width: 1250px;
-	height: 500px;
+	height: 700px;
 	background-color: #1E2128;
 	margin: auto;
 	margin-top: 30px;
@@ -883,8 +891,8 @@ hr {
 
 #input_coin-sub1 {
 	width: 50%;
-	height: 250px;
-	border-bottom: 0.1px solid #3e3e3e;
+	height: 450px;
+	border-bottom: 0.1px solid #292a2b;
 		
 	display: flex;
 	float: left;
@@ -895,9 +903,8 @@ hr {
 
 #input_coin-sub2 {
 	width: 50%;
-	height: 250px;
-	border-bottom: 0.1px solid #3e3e3e;
-	border-left: 0.1px solid #3e3e3e;
+	height: 450px;
+	border-bottom: 0.1px solid #292a2b;
 	
 	display: flex;
 	float: left;
@@ -911,6 +918,27 @@ hr {
 	width: 100%;
 	height: 55px;
 	margin-top: 23px;
+}
+
+#input_coin-sub1-3 {
+	margin-top: 80px;
+	font-size: 14px;
+	color: #aaa8a3;
+}
+
+#input_coin-sub1-3 > span{
+	display: block;
+	margin-bottom: 0.5px;
+}
+
+#input_coin-sub1-1 > hr {
+	margin-top: 45px;
+	width: 100%;
+}
+
+#input_coin-sub1-2 > hr {
+	margin-top: 40px;
+	width: 100%;
 }
 
 
@@ -936,7 +964,6 @@ hr {
     height: 45px;
     width: 300px;
     
-    padding: 0 6rem 0 1rem;
     margin-left: 60px;
     
     border: 0px;
@@ -944,15 +971,21 @@ hr {
     border-radius: 0px;
 }
 
-.dropdown{
-	position: relative;
+#hadan_dropdown:hover,
+#coin_sell_price:hover,
+#reset_footer_btn:hover,
+#sell_footer_btn:hover,
+#inputBox:hover,
+.modal-dialog {
+	box-shadow: 0px 0px 5px #444;
 }
+
 
 
 
 /* 최근 등록순 button dropdown-menu */
 .dropdown-menu {
-	width : 200px;
+	width : 300px;
 	height : auto;
 	border-radius: 0px;
 	background-color: #191C20!important;
@@ -962,9 +995,17 @@ hr {
 	font-size: 15px;
 	
 	position: absolute;
-	top: 50px;
+	left: 95px;
+	margin-left: 100px;
 	
 	z-index: 20;
+}
+
+#sell-time {
+	font-size: 15px;
+	
+	position: absolute;
+	margin-left: 50px;
 }
 
 
@@ -1055,8 +1096,8 @@ hr {
 
 /* 최하단 버튼 두개 */
 #reset_footer_btn {
-	width : 625px;
-	height: 50px;
+	width : 300px;
+	height: 65px;
 	
 	background-color: #191C20;
 	border: 0px;
@@ -1065,23 +1106,111 @@ hr {
 	float: left;
 	
 	margin: auto;
-	margin-top: 15px;
+	margin-top: 70px;
+	margin-left: 250px;
 	
 	font-size: 15px;
 }
 /* 최하단 버튼 두개 */
 #sell_footer_btn {
-	width : 625px;
-	height: 50px;
+	width : 300px;
+	height: 65px;
 	
 	background-color: #2B2E36;
 	border: 0px;
 	
 	display: block;
-	float: left;
+	float: right;
 	
 	margin: auto;
-	margin-top: 15px;
+	margin-top: 70px;
+	margin-right: 250px;
 	
 	font-size: 15px;
+}
+
+
+/* 토글키 */
+label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+[type="checkbox"] {
+  appearance: none;
+  position: relative;
+  border: max(2px, 0.1em) solid gray;
+  border-radius: 1.25em;
+  width: 2.25em;
+  height: 1.25em;
+}
+
+[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  transform: scale(0.8);
+  background-color: gray;
+  transition: left 250ms linear;
+}
+
+[type="checkbox"]:checked {
+  background-color: #78b693;
+  border-color: #78b693;
+}
+
+[type="checkbox"]:checked::before {
+  background-color: white;
+  left: 1em;
+}
+
+[type="checkbox"]:disabled {
+  border-color: lightgray;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+[type="checkbox"]:disabled:before {
+  background-color: lightgray;
+}
+
+[type="checkbox"]:disabled + span {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+[type="checkbox"]:focus-visible {
+  outline-offset: max(2px, 0.1em);
+  outline: max(2px, 0.1em) solid #78b693;
+}
+
+[type="checkbox"]:enabled:hover {
+  box-shadow: 0 0 0 max(0.5px, 0.1em) lightgray;
+}
+
+#filsu {
+	margin-top: 15px;
+}
+
+#filsu_text {
+	margin-top: 5px;
+	color: #DC3545;
+	font-size: 15px;
+}
+
+#filsu_text2 {
+	margin-top: 5px;
+	color: #cfcfcf;
+	font-size: 15px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }

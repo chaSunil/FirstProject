@@ -327,14 +327,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 							#{ gibon_option5 },#{ gibon_option5_val },
 							#{ gibon_option6 },#{ gibon_option6_val },
 							#{ gibon_option7 },#{ gibon_option7_val },
-							62,0,
-							37,1,
-							26,30,
-							12,50,
-							36,150,
-							39,30,
-							33,15,
-							0,0
+							#{ option1_idx },#{ item_o1_val },
+							#{ option2_idx },#{ item_o2_val },
+							#{ option3_idx },#{ item_o3_val },
+							#{ option4_idx },#{ item_o4_val },
+							#{ option5_idx },#{ item_o5_val },
+							#{ option6_idx },#{ item_o6_val },
+							#{ option7_idx },#{ item_o7_val },
+							#{ option8_idx },#{ item_o8_val }
 						)
 	</insert>
 	

@@ -424,10 +424,15 @@ body {
     align-items: center; /* 자식 요소를 세로(수직) 기준으로 가운데 정렬시킴 */
     overflow: hidden;
 }
+
 #item-image-box > img {
 	max-height: 320px;
 	height: auto;
     max-width: 150px;
+    transition: all 0.2s linear;
+}
+#item-image-box > img:hover {
+	transform: scale(1.08);
 }
 
 #item-box2 {

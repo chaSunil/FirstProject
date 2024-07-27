@@ -145,12 +145,18 @@ function shot_change() {
 function gibon_option1_change() {
 	
 	let input_gibon_option1_val = $("#input_gibon_option1_val").val().trim();
-	alert("값을 넘겨받았습니다.");
 	
-	
-	$("span#gibon_option1_val").text(input_gibon_option1_val);
-	$("#gibon_option1_val").val(input_gibon_option1_val);
-	
+	if(input_gibon_option1_val>3000 || input_gibon_option1_val < 0) {
+		alert("값이 올바르지 않습니다. 0~3000 범위 안에서만 입력해주세요.");
+		$("#input_gibon_option1_val").val("");
+		$("#input_gibon_option1_val").focus();
+		return;
+		
+	} else {
+		alert("값을 넘겨받았습니다.");
+		$("span#gibon_option1_val").text(input_gibon_option1_val);
+		$("#gibon_option1_val").val(input_gibon_option1_val);
+	}
 } 
 
 
@@ -158,11 +164,18 @@ function gibon_option1_change() {
 function gibon_option2_change() {
 	
 	let input_gibon_option2_val = $("#input_gibon_option2_val").val().trim();
-	alert("값을 넘겨받았습니다.");
 	
-	
-	$("span#gibon_option2_val").text(input_gibon_option2_val);
-	$("#gibon_option2_val").val(input_gibon_option2_val);
+	if(input_gibon_option2_val>3000 || input_gibon_option2_val < 0) {
+		alert("값이 올바르지 않습니다. 0~3000 범위 안에서만 입력해주세요.");
+		$("#input_gibon_option2_val").val("");
+		$("#input_gibon_option2_val").focus();
+		return;
+		
+	} else {
+		alert("값을 넘겨받았습니다.");
+		$("span#gibon_option2_val").text(input_gibon_option2_val);
+		$("#gibon_option2_val").val(input_gibon_option2_val);
+	}
 } 
 
 
@@ -170,11 +183,18 @@ function gibon_option2_change() {
 function gibon_option3_change() {
 	
 	let input_gibon_option3_val = $("#input_gibon_option3_val").val().trim();
-	alert("값을 넘겨받았습니다.");
 	
-	
-	$("span#gibon_option3_val").text(input_gibon_option3_val);
-	$("#gibon_option3_val").val(input_gibon_option3_val);
+	if(input_gibon_option3_val>3000 || input_gibon_option3_val < 0) {
+		alert("값이 올바르지 않습니다. 0~3000 범위 안에서만 입력해주세요.");
+		$("#input_gibon_option3_val").val("");
+		$("#input_gibon_option3_val").focus();
+		return;
+		
+	} else {
+		alert("값을 넘겨받았습니다.");
+		$("span#gibon_option3_val").text(input_gibon_option3_val);
+		$("#gibon_option3_val").val(input_gibon_option3_val);
+	}
 } 
 
 
@@ -182,11 +202,18 @@ function gibon_option3_change() {
 function gibon_option4_change() {
 	
 	let input_gibon_option4_val = $("#input_gibon_option4_val").val().trim();
-	alert("값을 넘겨받았습니다.");
 	
-	
-	$("span#gibon_option4_val").text(input_gibon_option4_val);
-	$("#gibon_option4_val").val(input_gibon_option4_val);
+	if(input_gibon_option4_val>3000 || input_gibon_option4_val < 0) {
+		alert("값이 올바르지 않습니다. 0~3000 범위 안에서만 입력해주세요.");
+		$("#input_gibon_option4_val").val("");
+		$("#input_gibon_option4_val").focus();
+		return;
+		
+	} else {
+		alert("값을 넘겨받았습니다.");
+		$("span#gibon_option4_val").text(input_gibon_option4_val);
+		$("#gibon_option4_val").val(input_gibon_option4_val);
+	}
 } 
 
 
@@ -194,11 +221,18 @@ function gibon_option4_change() {
 function gibon_option5_change() {
 	
 	let input_gibon_option5_val = $("#input_gibon_option5_val").val().trim();
-	alert("값을 넘겨받았습니다.");
 	
-	
-	$("span#gibon_option5_val").text(input_gibon_option5_val);
-	$("#gibon_option5_val").val(input_gibon_option5_val);
+	if(input_gibon_option5_val>3000 || input_gibon_option5_val < 0) {
+		alert("값이 올바르지 않습니다. 0~3000 범위 안에서만 입력해주세요.");
+		$("#input_gibon_option5_val").val("");
+		$("#input_gibon_option5_val").focus();
+		return;
+		
+	} else {
+		alert("값을 넘겨받았습니다.");
+		$("span#gibon_option5_val").text(input_gibon_option5_val);
+		$("#gibon_option5_val").val(input_gibon_option5_val);
+	}
 } 
 
 
@@ -206,11 +240,18 @@ function gibon_option5_change() {
 function gibon_option6_change() {
 	
 	let input_gibon_option6_val = $("#input_gibon_option6_val").val().trim();
-	alert("값을 넘겨받았습니다.");
 	
-	
-	$("span#gibon_option6_val").text(input_gibon_option6_val);
-	$("#gibon_option6_val").val(input_gibon_option6_val);
+	if(input_gibon_option6_val>3000 || input_gibon_option6_val < 0) {
+		alert("값이 올바르지 않습니다. 0~3000 범위 안에서만 입력해주세요.");
+		$("#input_gibon_option6_val").val("");
+		$("#input_gibon_option6_val").focus();
+		return;
+		
+	} else {
+		alert("값을 넘겨받았습니다.");
+		$("span#gibon_option6_val").text(input_gibon_option6_val);
+		$("#gibon_option6_val").val(input_gibon_option6_val);
+	}
 } 
 
 
@@ -218,11 +259,18 @@ function gibon_option6_change() {
 function gibon_option7_change() {
 	
 	let input_gibon_option7_val = $("#input_gibon_option7_val").val().trim();
-	alert("값을 넘겨받았습니다.");
 	
-	
-	$("span#gibon_option7_val").text(input_gibon_option7_val);
-	$("#gibon_option7_val").val(input_gibon_option7_val);
+	if(input_gibon_option7_val>3000 || input_gibon_option7_val < 0) {
+		alert("값이 올바르지 않습니다. 0~3000 범위 안에서만 입력해주세요.");
+		$("#input_gibon_option7_val").val("");
+		$("#input_gibon_option7_val").focus();
+		return;
+		
+	} else {
+		alert("값을 넘겨받았습니다.");
+		$("span#gibon_option7_val").text(input_gibon_option7_val);
+		$("#gibon_option7_val").val(input_gibon_option7_val);
+	}
 } 
 
 
@@ -235,11 +283,18 @@ function gibon_option7_change() {
 function option1_change() {
 	
 	let input_item_o1_val = $("#input_item_o1_val").val().trim();
-	alert("값을 넘겨받았습니다.");
 	
-	
-	$("span#item_o1_val").text(input_item_o1_val);
-	$("#item_o1_val").val(input_item_o1_val);
+	if(input_item_o1_val>3000 || input_item_o1_val < 0) {
+		alert("값이 올바르지 않습니다. 0~3000 범위 안에서만 입력해주세요.");
+		$("#input_item_o1_val").val("");
+		$("#input_item_o1_val").focus();
+		return;
+		
+	} else if(input_item_o1_val<=3000 && input_item_o1_val >= 0) {
+		alert("값을 넘겨받았습니다.");
+		$("span#item_o1_val").text(input_item_o1_val);
+		$("input#item_o1_val").val(input_item_o1_val);
+	}
 } 
 
 
@@ -247,11 +302,19 @@ function option1_change() {
 function option2_change() {
 	
 	let input_item_o2_val = $("#input_item_o2_val").val().trim();
-	alert("값을 넘겨받았습니다.");
 	
+	if(input_item_o2_val>3000 || input_item_o2_val < 0) {
+		alert("값이 올바르지 않습니다. 0~3000 범위 안에서만 입력해주세요.");
+		$("#input_item_o2_val").val("");
+		$("#input_item_o2_val").focus();
+		return;
+		
+	} else if(input_item_o2_val<=3000 && input_item_o2_val >= 0) {
+		alert("값을 넘겨받았습니다.");
+		$("span#item_o2_val").text(input_item_o2_val);
+		$("input#item_o2_val").val(input_item_o2_val);
+	}
 	
-	$("span#item_o2_val").text(input_item_o2_val);
-	$("#item_o2_val").val(input_item_o2_val);
 } 
 
 
@@ -259,11 +322,19 @@ function option2_change() {
 function option3_change() {
 	
 	let input_item_o3_val = $("#input_item_o3_val").val().trim();
-	alert("값을 넘겨받았습니다.");
 	
+	if(input_item_o3_val>3000 || input_item_o3_val < 0) {
+		alert("값이 올바르지 않습니다. 0~3000 범위 안에서만 입력해주세요.");
+		$("#input_item_o3_val").val("");
+		$("#input_item_o3_val").focus();
+		return;
+		
+	} else if(input_item_o3_val<=3000 && input_item_o3_val >= 0) {
+		alert("값을 넘겨받았습니다.");
+		$("span#item_o3_val").text(input_item_o3_val);
+		$("input#item_o3_val").val(input_item_o3_val);
+	}
 	
-	$("span#item_o3_val").text(input_item_o3_val);
-	$("#item_o3_val").val(input_item_o3_val);
 } 
 
 
@@ -271,11 +342,18 @@ function option3_change() {
 function option4_change() {
 	
 	let input_item_o4_val = $("#input_item_o4_val").val().trim();
-	alert("값을 넘겨받았습니다.");
 	
-	
-	$("span#item_o4_val").text(input_item_o4_val);
-	$("#item_o4_val").val(input_item_o4_val);
+	if(input_item_o4_val>3000 || input_item_o4_val < 0) {
+		alert("값이 올바르지 않습니다. 0~3000 범위 안에서만 입력해주세요.");
+		$("#input_item_o4_val").val("");
+		$("#input_item_o4_val").focus();
+		return;
+		
+	} else if(input_item_o4_val<=3000 && input_item_o4_val >= 0) {
+		alert("값을 넘겨받았습니다.");
+		$("span#item_o4_val").text(input_item_o4_val);
+		$("input#item_o4_val").val(input_item_o4_val);
+	}
 } 
 
 
@@ -283,11 +361,18 @@ function option4_change() {
 function option5_change() {
 	
 	let input_item_o5_val = $("#input_item_o5_val").val().trim();
-	alert("값을 넘겨받았습니다.");
 	
-	
-	$("span#item_o5_val").text(input_item_o5_val);
-	$("#item_o5_val").val(input_item_o5_val);
+	if(input_item_o5_val>3000 || input_item_o5_val < 0) {
+		alert("값이 올바르지 않습니다. 0~3000 범위 안에서만 입력해주세요.");
+		$("#input_item_o5_val").val("");
+		$("#input_item_o5_val").focus();
+		return;
+		
+	} else if(input_item_o5_val<=3000 && input_item_o5_val >= 0) {
+		alert("값을 넘겨받았습니다.");
+		$("span#item_o5_val").text(input_item_o5_val);
+		$("input#item_o5_val").val(input_item_o5_val);
+	}
 } 
 
 
@@ -295,11 +380,18 @@ function option5_change() {
 function option6_change() {
 	
 	let input_item_o6_val = $("#input_item_o6_val").val().trim();
-	alert("값을 넘겨받았습니다.");
 	
-	
-	$("span#item_o6_val").text(input_item_o6_val);
-	$("#item_o6_val").val(input_item_o6_val);
+	if(input_item_o6_val>3000 || input_item_o6_val < 0) {
+		alert("값이 올바르지 않습니다. 0~3000 범위 안에서만 입력해주세요.");
+		$("#input_item_o6_val").val("");
+		$("#input_item_o6_val").focus();
+		return;
+		
+	} else if(input_item_o6_val<=3000 && input_item_o6_val >= 0) {
+		alert("값을 넘겨받았습니다.");
+		$("span#item_o6_val").text(input_item_o6_val);
+		$("input#item_o6_val").val(input_item_o6_val);
+	}
 } 
 
 
@@ -307,11 +399,18 @@ function option6_change() {
 function option7_change() {
 	
 	let input_item_o7_val = $("#input_item_o7_val").val().trim();
-	alert("값을 넘겨받았습니다.");
 	
-	
-	$("span#item_o7_val").text(input_item_o7_val);
-	$("#item_o7_val").val(input_item_o7_val);
+	if(input_item_o7_val>3000 || input_item_o7_val < 0) {
+		alert("값이 올바르지 않습니다. 0~3000 범위 안에서만 입력해주세요.");
+		$("#input_item_o7_val").val("");
+		$("#input_item_o7_val").focus();
+		return;
+		
+	} else if(input_item_o7_val<=3000 && input_item_o7_val >= 0) {
+		alert("값을 넘겨받았습니다.");
+		$("span#item_o7_val").text(input_item_o7_val);
+		$("input#item_o7_val").val(input_item_o7_val);
+	}
 } 
 
 
@@ -319,11 +418,19 @@ function option7_change() {
 function option8_change() {
 	
 	let input_item_o8_val = $("#input_item_o8_val").val().trim();
-	alert("값을 넘겨받았습니다.");
 	
-	
-	$("span#item_o8_val").text(input_item_o8_val);
-	$("#item_o8_val").val(input_item_o8_val);
+	if(input_item_o8_val>3000 || input_item_o8_val < 0) {
+		alert("값이 올바르지 않습니다. 0~3000 범위 안에서만 입력해주세요.");
+		$("#input_item_o8_val").val("");
+		$("#input_item_o8_val").focus();
+		return;
+	} else {
+		alert("값을 넘겨받았습니다.");
+		$("span#item_o8_val").text(input_item_o8_val);
+		$("input#item_o8_val").val(input_item_o8_val);
+	}
+
+
 }
 
 
@@ -1660,6 +1767,7 @@ var $112 = $.noConflict(true);
 							<li><a>60</a></li>
 						</ul>
 					</div>
+					<hr>
 					
 					
 					<script>
@@ -1670,7 +1778,7 @@ var $112 = $.noConflict(true);
 								// 클릭된 항목의 텍스트를 가져와서 버튼의 value로 설정
 								var selectedText = $(this).text();
 								$('#drop-time').val(selectedText);
-								$('#hadan_dropdown').val(selectedText);
+								$('#hadan_dropdown').val("판매기간을 " + selectedText+"분으로 설정합니다.");
 							});
 						});
 						
@@ -1691,9 +1799,17 @@ var $112 = $.noConflict(true);
 					
 					
         			</div>
-        			<div id="input_coin-sub1-1">
         			
+        			<div id="input_coin-sub1-3">
+        				<span>* 아이템 판매 등록 시 반드시 보유하고 있는 아이템을 등록하며, 구매자가 있으면 반드시 인계해야 합니다.</span><br>
+        				<span>* 구매자가 있을 때 장시간 연락이 안되거나 아이템 인계를 거부하면 사이트 이용 제재를 받을 수 있습니다.</span><br>
+        				<span>* 허위 또는 임의 아이템 편법 거래 시 사이트 이용 제재를 받을 수 있습니다.</span><br>
+        				<label id="filsu">
+						    <input role="switch" type="checkbox"/>
+						    <span id="filsu_text">필수 *</span><span id="filsu_text2">ㅣ 위 안내를 읽고 이해했으며 진행 방식에 동의합니다.</span>
+					    </label>
         			</div>
+        			
         		</div>
         		
         		
@@ -1725,6 +1841,7 @@ var $112 = $.noConflict(true);
 							id="coin_sell_price_img">
 							<span id="coin_sell_price_text2">CP</span>
 	        			</div>
+	        			<hr>
 						
         			</div>
         			
@@ -1827,7 +1944,7 @@ var $112 = $.noConflict(true);
 				
 
 				
-				<input id="reset_footer_btn" type="button" class="btn btn-info btn-lg" value="모두 초기화" onclick="#">
+				<input id="reset_footer_btn" type="button" class="btn btn-info btn-lg" value="모두 초기화" onclick="location.href='sell_reg.do'">
 				<input id="sell_footer_btn" type="button" class="btn btn-info btn-lg" value="지금 판매 등록하기" onclick="sell_reg_data(this.form);">
 		</form>
             
