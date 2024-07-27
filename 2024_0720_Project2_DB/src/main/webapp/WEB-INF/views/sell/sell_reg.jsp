@@ -1633,29 +1633,111 @@ var $112 = $.noConflict(true);
 	
 			<input id="item_box_radius_footer" type="button" class="btn btn-info btn-lg" value="판매 방식 및 가격 설정하기 ↓" onclick="show_div()">
             
-            <div id="input_coin" style="display: none;">
+            <div id="input_coin" style="display: block;">
         		<div id="input_coin-sub1">
+        		
+        		
+        		
         			<div id="input_coin-sub1-1">
-        			판매방식
+        			<span>판매방식</span>
+        			<button type="button" class="btn btn-primary2-1 active">●&nbsp;&nbsp;일반판매&nbsp;</button>
+        			<button type="button" class="btn btn-primary2-2 active">●&nbsp;&nbsp;경매판매&nbsp;</button>
+        			</div>
+        			
+        			
+        			
+        			<div id="input_coin-sub1-1">
+					<div class="dropdown">
+        			<span>판매기간</span>
+					    <input type="hidden" name="a_selltime" id="drop-time"> 
+						<input id="hadan_dropdown" class="btn dropdown-toggle" type="button"
+										data-toggle="dropdown" value="아이템 판매 기간을 선택하세요.">
+						<ul class="dropdown-menu" id="sell-time">
+							<li><a>3</a></li>
+							<li><a>10</a></li>
+							<li><a>15</a></li>
+							<li><a>30</a></li>
+							<li><a>60</a></li>
+						</ul>
+					</div>
+					
+					
+					<script>
+						// jQuery를 사용하여 문서가 준비되면 실행될 함수 설정
+						$(document).ready(function() {
+							// 드롭다운 메뉴의 각 항목을 클릭했을 때의 처리
+							$('#sell-time a').click(function() {
+								// 클릭된 항목의 텍스트를 가져와서 버튼의 value로 설정
+								var selectedText = $(this).text();
+								$('#drop-time').val(selectedText);
+								$('#hadan_dropdown').val(selectedText);
+							});
+						});
+						
+						const input = document.querySelector('#coin_sell_input');
+						input.addEventListener('keyup', function(e) {
+						  let value = e.target.value;
+						  value = Number(value.replaceAll(',', ''));
+						  if(isNaN(value)) {         //NaN인지 판별
+						    input.value = 0;   
+						  }else {                   //NaN이 아닌 경우
+						    const formatValue = value.toLocaleString('ko-KR');
+						    input.value = formatValue;
+						  }
+						})
+						
+						
+					</script>
+					
+					
         			</div>
         			<div id="input_coin-sub1-1">
-        			판매기간
-        			</div>
-        			<div id="input_coin-sub1-1">
-        			메모
+        			
         			</div>
         		</div>
+        		
+        		
+        		
+        		
+        		
+        		
         		<div id="input_coin-sub2">
         			<div id="input_coin-sub1-2">
+        			
+	        			<div id="coin_sell_price">
+	        			<span id="coin_sell_price_text1">즉시 구매가</span>
+		        			<input id="coin_sell_input" type="text" name="a_direct_price" 
+		        			placeholder="0" style="text-align:right;">
+							<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0"
+							id="coin_sell_price_img">
+							<span id="coin_sell_price_text2">CP</span>
+	        			</div>
         			</div>
+        			
+        			
         			<div id="input_coin-sub1-2">
+        			
+	        			<div id="coin_sell_price">
+	        			<span id="coin_sell_price_text1">최초 입찰가</span>
+		        			<input id="coin_sell_input" type="text" name="a_initial_price" 
+		        			placeholder="0" style="text-align:right;">
+							<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0"
+							id="coin_sell_price_img">
+							<span id="coin_sell_price_text2">CP</span>
+	        			</div>
+						
         			</div>
-        			<div id="input_coin-sub1-2">
-        			</div>
-        		</div>
-    		</div>
-            
-            
+        			
+        			
+
+		
+		
+		
+    		</div><!-- // end:item_box -->
+    		
+    		
+    		
+    		        			
 			<form>
 				<!-- 아이템 table 공유해서 넘겨주는 공식 (어떤 테이블이여도 가능) ---중요도★10000--- -->
 			
@@ -1745,9 +1827,11 @@ var $112 = $.noConflict(true);
 				
 
 				
-				
-				<input type="button" class="btn btn-info btn-lg" value="판매등록하기" onclick="sell_reg_data(this.form);">
+				<input id="reset_footer_btn" type="button" class="btn btn-info btn-lg" value="모두 초기화" onclick="#">
+				<input id="sell_footer_btn" type="button" class="btn btn-info btn-lg" value="지금 판매 등록하기" onclick="sell_reg_data(this.form);">
 		</form>
+            
+            
 		
 		
 		

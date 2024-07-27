@@ -101,10 +101,14 @@ body {
 
 
 
+
+
 #inputBox {
 	color: #8D795C;
 	font-size: 16px;
 	font-weight: 300px;
+	
+	outline: none;
 }
 
 #inputBox::placeholder {
@@ -306,18 +310,6 @@ body {
 .btn-success {
 	width : 120px;
 	height : 40px;
-	border-radius: 0px;
-	background-color: #191C20!important;
-	border: 1px solid #AE906A !important;
-	color: #AE906A !important;
-	
-	font-size: 15px;
-}
-
-/* 최근 등록순 button dropdown-menu */
-.dropdown-menu {
-	width : 200px;
-	height : 300px;
 	border-radius: 0px;
 	background-color: #191C20!important;
 	border: 1px solid #AE906A !important;
@@ -586,6 +578,8 @@ body {
 	
 	display: flex;
 	justify-content: start;
+	
+	box-shadow: 0px 0px 5px #444;
 }
 
 #item-box-radius-head-children {
@@ -644,6 +638,8 @@ body {
 	
 	border-radius: 10px;
 	border: 0.2px solid #3f3f3f;
+	
+	box-shadow: 0px 0px 5px #444;
 }
 
 .tab-label{
@@ -893,6 +889,7 @@ hr {
 	display: flex;
 	float: left;
     align-items: center; /* 자식 요소를 세로(수직) 기준으로 가운데 정렬시킴 */
+    flex-direction: column;
     overflow: hidden;
 }
 
@@ -905,5 +902,186 @@ hr {
 	display: flex;
 	float: left;
     align-items: center; /* 자식 요소를 세로(수직) 기준으로 가운데 정렬시킴 */
+    flex-direction: column;
     overflow: hidden;
+}
+
+
+#input_coin-sub1-1 {
+	width: 100%;
+	height: 55px;
+	margin-top: 23px;
+}
+
+
+#input_coin-sub1-2 {
+	width: 100%;
+	height: 55px;
+	margin-top: 20px;
+}
+
+
+.dropdown > span,
+#input_coin-sub1-1 > span,
+#input_coin-sub1-2 > span {
+	color: #aaa8a3;
+	font-size: 15px;
+	margin-left: 30px;
+}
+
+#hadan_dropdown{
+    font-size: 15px;
+    color: #8D795C;
+    
+    height: 45px;
+    width: 300px;
+    
+    padding: 0 6rem 0 1rem;
+    margin-left: 60px;
+    
+    border: 0px;
+    background: #191C20;
+    border-radius: 0px;
+}
+
+.dropdown{
+	position: relative;
+}
+
+
+
+/* 최근 등록순 button dropdown-menu */
+.dropdown-menu {
+	width : 200px;
+	height : auto;
+	border-radius: 0px;
+	background-color: #191C20!important;
+	border: 1px solid #AE906A !important;
+	color: #AE906A !important;
+	
+	font-size: 15px;
+	
+	position: absolute;
+	top: 50px;
+	
+	z-index: 20;
+}
+
+
+.btn-primary2-1 {
+	margin-left: 60px;
+	width : 105px;
+	height : 35px;
+	border-radius: 20px;
+	background-color: #8D795C!important;
+	color: white !important;
+}
+
+.btn-primary2-2 {
+	margin-left: 10px;
+	width : 105px;
+	height : 35px;
+	border-radius: 20px;
+	background-color: #8D795C!important;
+	color: white !important;
+}
+
+#coin_sell_price {
+	margin-left: 250px;
+	width : 250px;
+	height : 56px;
+	border: 0px;
+	
+	border-radius: 5px;
+	background-color: #181922;
+	font-size: 25px;
+	
+	color: white;
+	position: relative;
+	
+}
+
+
+#coin_sell_price_text1 {
+	position: absolute;
+	left: -210px;
+	top: 14px;
+	font-size: 15px;
+	color: #aaa8a3;
+}
+
+#coin_sell_price_text2 {
+	position: absolute;
+	right: 16px;
+	top: 22px;
+	font-size: 15px;
+}
+
+
+#coin_sell_input {
+	width : 140px;
+	height : 56px;
+	
+	background-color: #181922;
+	color: white !important;
+	border: 0px;
+	
+	font-size: 25px;
+	position: absolute;
+	left: 50px;
+	
+	outline: none;
+}
+
+#coin_sell_price_img {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	width: 22px;	
+}
+
+#coin_auction {
+	margin-left: 100px;
+	width : 250px;
+	height : 56px;
+	
+	border: 0px;
+	background-color: #191C20;
+	color: white !important;
+	
+	font-size: 25px;
+}
+
+
+/* 최하단 버튼 두개 */
+#reset_footer_btn {
+	width : 625px;
+	height: 50px;
+	
+	background-color: #191C20;
+	border: 0px;
+	
+	display: block;
+	float: left;
+	
+	margin: auto;
+	margin-top: 15px;
+	
+	font-size: 15px;
+}
+/* 최하단 버튼 두개 */
+#sell_footer_btn {
+	width : 625px;
+	height: 50px;
+	
+	background-color: #2B2E36;
+	border: 0px;
+	
+	display: block;
+	float: left;
+	
+	margin: auto;
+	margin-top: 15px;
+	
+	font-size: 15px;
 }
