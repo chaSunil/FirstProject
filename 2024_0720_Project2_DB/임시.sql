@@ -3020,8 +3020,8 @@
 	insert into items25 values(
 								seq_items_item_idx.nextVal,
 								'무덤손바닥 샤크스킨 글러브',
-								'유혈자.jpg',
-								'한손검',
+								'무덤손바닥.jpg',
+								'장갑',
 								'익셉셔널',
 								'유니크',
 								'수리가능',0,
@@ -3035,6 +3035,116 @@
 								15,10,		-- option4_idx
 								18,10,  	-- option5_idx
 								0,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+							
+	insert into items25 values(
+								seq_items_item_idx.nextVal,
+								'구울 가죽 헤비 브레이서',
+								'구울가죽.jpg',
+								'장갑',
+								'익셉셔널',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								3,130,4,16,5,58,7,36,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								86,198,		-- option1_idx
+								89,792, 	-- option2_idx
+								34,5,		-- option3_idx
+								12,190,		-- option4_idx
+								20,20,  	-- option5_idx
+								0,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+							
+	insert into items25 values(
+								seq_items_item_idx.nextVal,
+								'아테나의 진노 배틀 싸이드',
+								'아테나의 진노.jpg',
+								'미늘창',
+								'익셉셔널',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								2,224,4,65,6,82,5,82,7,42,14,-10,0,0,
+								-- 하단 변동옵션
+								115,3,		-- option1_idx
+								24,30, 	-- option2_idx
+								11,180,		-- option3_idx
+								21,99,		-- option4_idx
+								16,15,  	-- option5_idx
+								20,99, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+							
+	insert into items25 values(
+								seq_items_item_idx.nextVal,
+								'사신의 종소리 쓰레셔',
+								'사신의 종소리.jpg',
+								'미늘창',
+								'엘리트',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								2,479,4,65,6,89,5,114,7,75,14,-10,0,0,
+								-- 하단 변동옵션
+								11,240,		-- option1_idx
+								64,0, 	-- option2_idx
+								108,44,		-- option3_idx
+								35,15,		-- option4_idx
+								32,33,  	-- option5_idx
+								78,-25, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+							
+	insert into items25 values(
+								seq_items_item_idx.nextVal,
+								'혼령 수확자 싸이드',
+								'혼령 수확자.jpg',
+								'미늘창',
+								'엘리트',
+								'노멀',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								2,38,4,65,6,41,5,41,7,19,14,-10,0,0,
+								-- 하단 변동옵션
+								11,90,		-- option1_idx
+								23,45, 	-- option2_idx
+								34,10,		-- option3_idx
+								31,30,		-- option4_idx
+								18,5,  	-- option5_idx
+								39,20, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+							
+	insert into items25 values(
+								seq_items_item_idx.nextVal,
+								'할리퀸 관모 샤코',
+								'혼령 수확자.jpg',
+								'미늘창',
+								'엘리트',
+								'노멀',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								2,38,4,65,6,41,5,41,7,19,14,-10,0,0,
+								-- 하단 변동옵션
+								11,90,		-- option1_idx
+								23,45, 	-- option2_idx
+								34,10,		-- option3_idx
+								31,30,		-- option4_idx
+								18,5,  	-- option5_idx
+								39,20, 	 	-- option6_idx
 								0,0,		-- option7_idx
 								0,0
 							);
