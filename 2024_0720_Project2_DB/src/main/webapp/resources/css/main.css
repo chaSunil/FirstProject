@@ -352,7 +352,7 @@ a:hover{
     justify-content: center;
     gap: 1rem;
     bottom: calc(100% - .5rem);
-    left: 1.5rem;
+    left: 1.9rem;
     line-height: 1rem;
     padding: 0 1rem;
     background: #1e2128;
@@ -407,7 +407,7 @@ a:hover{
     justify-content: center;
     gap: 1rem;
     bottom: calc(100% - .5rem);
-    left: 1.5rem;
+    left: 1.9rem;
     line-height: 1rem;
     padding: 0 1rem;
 }

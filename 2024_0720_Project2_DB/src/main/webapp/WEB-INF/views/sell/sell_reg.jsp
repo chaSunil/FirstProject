@@ -65,6 +65,18 @@
 	
 	
 	
+	function play1() {
+		
+	    var audio = document.getElementById('audio1'); 
+	    
+	    if (audio.paused) { 
+	        audio.play(); 
+	    }else{ 
+	        audio.pause(); 
+	        audio.currentTime = 0 
+	    } 
+	}
+	
 
 	
 	
@@ -511,7 +523,7 @@ var $112 = $.noConflict(true);
 		        </ul>
 		        </div>
 		        <div class="sell-btn">
-                        <a href="#" id="sell-link">아이템 판매하기</a>
+                        <a href="#" id="sell-link">아이템을 등록해주세요</a>
                 </div>    
 		    </div>    
 		</div>
@@ -597,8 +609,19 @@ var $112 = $.noConflict(true);
         <div id="item-search">
         
         
-            
             <div class="search-tab">
+            	<c:if test="${ vo.item_idx == null }">
+           		<div id="side-btn">
+           			<span>&ensp;STEP 1&ensp;</span>
+           		</div>
+            	</c:if>
+            	<c:if test="${ vo.item_idx != null }">
+           		<div id="side-btn2">
+           			<span>&ensp;✓&ensp;</span>
+           		</div>
+            	</c:if>
+            
+            
                 <div class="tab-label">
                     <span style="color: #B89971; font-size: 15px;">게임 & 모드</span>
                 </div>
@@ -648,6 +671,17 @@ var $112 = $.noConflict(true);
             </div> <!-- search-tab end -->
                 
             <div id="item-filter">
+            	<c:if test="${ vo.item_idx == null }">
+           		<div id="side-btn">
+           			<span>&ensp;STEP 2&ensp;</span>
+           		</div>
+            	</c:if>
+            	<c:if test="${ vo.item_idx != null }">
+           		<div id="side-btn2">
+           			<span>&ensp;✓&ensp;</span>
+           		</div>
+            	</c:if>
+            
                 <div id="filter-title">
                     <span style="color: #B89971; font-size: 15px;">아이템 필터</span>
                 </div>
@@ -661,7 +695,7 @@ var $112 = $.noConflict(true);
                                         <span>
                                         <form>
                                             <input id="inputBox" name="item_name" type="text" placeholder="판매할 아이템 이름을 검색하세요.">
-                                            <input type="image" src="../resources/images/search_sell.png" value="submit" onclick="send(this.form)" class="search-btn">
+                                            <input type="image" src="../resources/images/search_sell.png" value="submit" onclick="send(this.form);" class="search-btn">
                                         </span>
                                         </form>
                                         </div>
@@ -708,6 +742,10 @@ var $112 = $.noConflict(true);
 
 		<c:if test="${ vo.item_idx != null }">
 		
+		<audio autoplay>
+        	<source src="../resources/sound/identify.mp3" type="audio/mpeg">
+    	</audio>
+		
 		
 		
 		<!-- item_trade_list -->
@@ -717,6 +755,29 @@ var $112 = $.noConflict(true);
 	        <div class="tab-label">
             	<span style="color: #B89971; font-size: 15px;">상세 옵션 설정</span>
             </div>
+                
+            
+            <div id="item-box-radius-head">
+                <c:if test="${ vo.item_idx != null }">
+           		<div id="side-btn">
+           			<span>&ensp;STEP 3&ensp;</span>
+           		</div>
+           		</c:if>
+            	<div id="item-box-radius-head-children">
+            		<img alt="" src="../resources/images/말풍선.png">
+            	</div>
+            	<div id="item-box-radius-head-children2">
+            		<span>아이템 상세 옵션을 설정하세요.</span>
+            	</div>
+            </div>
+            
+            
+            <!-- 아이템 둘러싸여있는 항목 -->
+            <div id="item-box-radius">
+            
+            
+                
+                
                 
 			<div id="item-image-box">
 			<img src="../resources/images/${ vo.item_image }">
@@ -728,6 +789,7 @@ var $112 = $.noConflict(true);
 				<hr>
 				<div class="item_tag"><a class="btn-0">&ensp;${ vo.item_grade }&ensp;</a>
 				<a class="btn-1">&ensp;${ vo.item_rarity  }&ensp;</a></div>
+				<hr>
 				<span>${ vo.item_im }</span><br>
 				
 				
@@ -769,101 +831,7 @@ var $112 = $.noConflict(true);
 			
 			
 
-		<form>
-				<!-- 아이템 table 공유해서 넘겨주는 공식 (어떤 테이블이여도 가능) ---중요도★10000--- -->
-			
-				<!-- ★이미지 이름 넘겨주기★ -->
-				<input type="hidden" name="item_name" value="${ vo.item_name }">
-				<!-- ★이미지 태그 넘겨주기★ -->
-				<input type="hidden" name="item_image" value="${ vo.item_image }">
-				<!-- ★이미지 타입 넘겨주기★ -->
-				<input type="hidden" name="item_type" value="${ vo.item_type }">
-				<!-- ★이미지 등급 넘겨주기★ -->
-				<input type="hidden" name="item_grade" value="${ vo.item_grade }">
-				<!-- ★이미지 레어도 넘겨주기★ -->
-				<input type="hidden" name="item_rarity" value="${ vo.item_rarity }">
-				
-				<!-- ★이미지 소켓 넘겨주기★ -->
-				<input type="hidden" name="item_shot" value="${ vo.item_shot }">
-				
-				<!-- 아이템 기본 옵션1  -->
-				<input type="hidden" id="gibon_option1" name="gibon_option1" value="${ vo.gibon_option1 }">
-				<input type="hidden" id="gibon_option1_val" name="gibon_option1_val" value="${ vo.gibon_option1_val }">
-				
-				
-				<!-- 아이템 기본 옵션2  -->
-				<input type="hidden" id="gibon_option2" name="gibon_option2" value="${ vo.gibon_option2 }">
-				<input type="hidden" id="gibon_option2_val" name="gibon_option2_val" value="${ vo.gibon_option2_val }">
-				
-				<!-- 아이템 기본 옵션3  -->
-				<input type="hidden" id="gibon_option3" name="gibon_option3" value="${ vo.gibon_option3 }">
-				<input type="hidden" id="gibon_option3_val" name="gibon_option3_val" value="${ vo.gibon_option3_val }">
-				
-				<!-- 아이템 기본 옵션4  -->
-				<input type="hidden" id="gibon_option4" name="gibon_option4" value="${ vo.gibon_option4 }">
-				<input type="hidden" id="gibon_option4_val" name="gibon_option4_val" value="${ vo.gibon_option4_val }">
-				
-				<!-- 아이템 기본 옵션5  -->
-				<input type="hidden" id="gibon_option5" name="gibon_option5" value="${ vo.gibon_option5 }">
-				<input type="hidden" id="gibon_option5_val" name="gibon_option5_val" value="${ vo.gibon_option5_val }">
-				
-				<!-- 아이템 기본 옵션6  -->
-				<input type="hidden" id="gibon_option6" name="gibon_option6" value="${ vo.gibon_option6 }">
-				<input type="hidden" id="gibon_option6_val" name="gibon_option6_val" value="${ vo.gibon_option6_val }">
-				
-				<!-- 아이템 기본 옵션7  -->
-				<input type="hidden" id="gibon_option7" name="gibon_option7" value="${ vo.gibon_option7 }">
-				<input type="hidden" id="gibon_option7_val" name="gibon_option7_val" value="${ vo.gibon_option7_val }">
-		
-		
-				
-				<!-- 아이템 옵션1  -->
-				<input type="hidden" id="option1_idx" name="option1_idx" value="${ vo.option1_idx }">
-				<input type="hidden" id="item_o1_val" name="item_o1_val" value="${ vo.item_o1_val }">
-		
-				
-				<!-- 아이템 옵션2  -->
-				<input type="hidden" id="option2_idx" name="option2_idx" value="${ vo.option2_idx }">
-				<input type="hidden" id="item_o2_val" name="item_o2_val" value="${ vo.item_o2_val }">
-		
-				
-				<!-- 아이템 옵션3  -->
-				<input type="hidden" id="option3_idx" name="option3_idx" value="${ vo.option3_idx }">
-				<input type="hidden" id="item_o3_val" name="item_o3_val" value="${ vo.item_o3_val }">
-		
-				
-				<!-- 아이템 옵션4  -->
-				<input type="hidden" id="option4_idx" name="option4_idx" value="${ vo.option4_idx }">
-				<input type="hidden" id="item_o4_val" name="item_o4_val" value="${ vo.item_o4_val }">
-		
-				
-				<!-- 아이템 옵션5  -->
-				<input type="hidden" id="option5_idx" name="option5_idx" value="${ vo.option5_idx }">
-				<input type="hidden" id="item_o5_val" name="item_o5_val" value="${ vo.item_o5_val }">
-		
-				
-				<!-- 아이템 옵션6  -->
-				<input type="hidden" id="option6_idx" name="option6_idx" value="${ vo.option6_idx }">
-				<input type="hidden" id="item_o6_val" name="item_o6_val" value="${ vo.item_o6_val }">
-	 
-				
-				<!-- 아이템 옵션7  -->
-				<input type="hidden" id="option7_idx" name="option7_idx" value="${ vo.option7_idx }">
-				<input type="hidden" id="item_o7_val" name="item_o7_val" value="${ vo.item_o7_val }">
-		
-				
-				<!-- 아이템 옵션8  -->
-				<input type="hidden" id="option8_idx" name="option8_idx" value="${ vo.option8_idx }">
-				<input type="hidden" id="item_o8_val" name="item_o8_val" value="${ vo.item_o8_val }">
-				
 
-				
-				
-				
-				
-		
-				<input type="button" class="btn btn-info btn-lg" value="판매등록하기" onclick="sell_reg_data(this.form);">
-		</form>
 		
 		
 				
@@ -891,7 +859,7 @@ var $112 = $.noConflict(true);
 				<!-- 모달 버튼 -->
 				
 				
-				<div id="modal" data-toggle="modal" data-target="#myModal">
+				<div class="modal-text" id="modal" data-toggle="modal" data-target="#myModal">
 					${ vo.gibon_option1_name }
 					<span id="gibon_option1_val" data-value="gibon_option1_val">${ vo.gibon_option1_val }</span><br>
 				</div>
@@ -911,7 +879,7 @@ var $112 = $.noConflict(true);
 				      <div class="modal-body">
 				      
 				      
-				      	${ vo.gibon_option1_name }
+				      	🖋️ ${ vo.gibon_option1_name }
 				        <input type="number" name="item_gibon_option1" id="input_gibon_option1_val" placeholder="${ vo.gibon_option1_val }">
 				        <input type="button" id="gibon_option_button1" value="적용" onclick="gibon_option1_change();">  
 				        
@@ -937,8 +905,8 @@ var $112 = $.noConflict(true);
 				<!-- 모달 버튼 -->
 				
 				
-				<div id="modal2" data-toggle="modal" data-target="#myModal2">
-					${ vo.gibon_option2_name }
+				<div class="modal-text" id="modal2" data-toggle="modal" data-target="#myModal2">
+					<img src="../resources/images/pencil.png">${ vo.gibon_option2_name }
 					<span id="gibon_option2_val" data-value="gibon_option2_val">${ vo.gibon_option2_val }</span><br>
 				</div>
 				
@@ -984,7 +952,7 @@ var $112 = $.noConflict(true);
 				<!-- 모달 버튼 -->
 				
 				
-				<div id="modal3" data-toggle="modal" data-target="#myModal3">
+				<div class="modal-text" id="modal3" data-toggle="modal" data-target="#myModal3">
 					${ vo.gibon_option3_name }
 					<span id="gibon_option3_val" data-value="gibon_option3_val">${ vo.gibon_option3_val }</span><br>
 				</div>
@@ -1027,7 +995,7 @@ var $112 = $.noConflict(true);
 				<!-- 모달 버튼 -->
 				
 				
-				<div id="modal4" data-toggle="modal" data-target="#myModal4">
+				<div class="modal-text" id="modal4" data-toggle="modal" data-target="#myModal4">
 					${ vo.gibon_option4_name }
 					<span id="gibon_option4_val" data-value="gibon_option4_val">${ vo.gibon_option4_val }</span><br>
 				</div>
@@ -1070,7 +1038,7 @@ var $112 = $.noConflict(true);
 				<!-- 모달 버튼 -->
 				
 				
-				<div id="modal5" data-toggle="modal" data-target="#myModal5">
+				<div class="modal-text" id="modal5" data-toggle="modal" data-target="#myModal5">
 					${ vo.gibon_option5_name }
 					<span id="gibon_option5_val" data-value="gibon_option5_val">${ vo.gibon_option5_val }</span><br>
 				</div>
@@ -1116,7 +1084,7 @@ var $112 = $.noConflict(true);
 				<!-- 모달 버튼 -->
 				
 				
-				<div id="modal6" data-toggle="modal" data-target="#myModal6">
+				<div class="modal-text" id="modal6" data-toggle="modal" data-target="#myModal6">
 					${ vo.gibon_option6_name }
 					<span id="gibon_option6_val" data-value="gibon_option6_val">${ vo.gibon_option6_val }</span><br>
 				</div>
@@ -1163,7 +1131,7 @@ var $112 = $.noConflict(true);
 				<!-- 모달 버튼 -->
 				
 				
-				<div id="modal7" data-toggle="modal" data-target="#myModal7">
+				<div class="modal-text" id="modal7" data-toggle="modal" data-target="#myModal7">
 					${ vo.gibon_option7_name }
 					<span id="gibon_option7_val" data-value="gibon_option7_val">${ vo.gibon_option7_val }</span><br>
 				</div>
@@ -1211,7 +1179,7 @@ var $112 = $.noConflict(true);
 				<!-- 모달 버튼 -->
 				
 				
-				<div id="modal1_1" data-toggle="modal" data-target="#myModal1_1">
+				<div class="modal-text-option" id="modal1_1" data-toggle="modal" data-target="#myModal1_1">
 					${ vo.option_name1 }
 					<span id="item_o1_val" data-value=item_o1_val>${ vo.item_o1_val }</span><br>
 				</div>
@@ -1258,7 +1226,7 @@ var $112 = $.noConflict(true);
 				<!-- 모달 버튼 -->
 				
 				
-				<div id="modal1_2" data-toggle="modal" data-target="#myModal1_2">
+				<div class="modal-text-option" id="modal1_2" data-toggle="modal" data-target="#myModal1_2">
 					${ vo.option_name2 }
 					<span id="item_o2_val" data-value=item_o2_val>${ vo.item_o2_val }</span><br>
 				</div>
@@ -1305,7 +1273,7 @@ var $112 = $.noConflict(true);
 				<!-- 모달 버튼 -->
 				
 				
-				<div id="modal1_3" data-toggle="modal" data-target="#myModal1_3">
+				<div class="modal-text-option" id="modal1_3" data-toggle="modal" data-target="#myModal1_3">
 					${ vo.option_name3 }
 					<span id="item_o3_val" data-value=item_o3_val>${ vo.item_o3_val }</span><br>
 				</div>
@@ -1352,8 +1320,8 @@ var $112 = $.noConflict(true);
 				<!-- 모달 버튼 -->
 				
 				
-				<div id="modal1_4" data-toggle="modal" data-target="#myModal1_4">
-					${ vo.option_name4 }
+				<div class="modal-text-option" id="modal1_4" data-toggle="modal" data-target="#myModal1_4">
+					🖋️ ${ vo.option_name4 }
 					<span id="item_o4_val" data-value=item_o4_val>${ vo.item_o4_val }</span><br>
 				</div>
 				
@@ -1399,7 +1367,7 @@ var $112 = $.noConflict(true);
 				<!-- 모달 버튼 -->
 				
 				
-				<div id="modal1_5" data-toggle="modal" data-target="#myModal1_5">
+				<div class="modal-text-option" id="modal1_5" data-toggle="modal" data-target="#myModal1_5">
 					${ vo.option_name5 }
 					<span id="item_o5_val" data-value=item_o5_val>${ vo.item_o5_val }</span><br>
 				</div>
@@ -1446,7 +1414,7 @@ var $112 = $.noConflict(true);
 				<!-- 모달 버튼 -->
 				
 				
-				<div id="modal1_6" data-toggle="modal" data-target="#myModal1_6">
+				<div class="modal-text-option" id="modal1_6" data-toggle="modal" data-target="#myModal1_6">
 					${ vo.option_name6 }
 					<span id="item_o6_val" data-value=item_o6_val>${ vo.item_o6_val }</span><br>
 				</div>
@@ -1493,7 +1461,7 @@ var $112 = $.noConflict(true);
 				<!-- 모달 버튼 -->
 				
 				
-				<div id="modal1_7" data-toggle="modal" data-target="#myModal1_7">
+				<div class="modal-text-option" id="modal1_7" data-toggle="modal" data-target="#myModal1_7">
 					${ vo.option_name7 }
 					<span id="item_o7_val" data-value=item_o7_val>${ vo.item_o7_val }</span><br>
 				</div>
@@ -1540,7 +1508,7 @@ var $112 = $.noConflict(true);
 				<!-- 모달 버튼 -->
 				
 				
-				<div id="modal1_8" data-toggle="modal" data-target="#myModal1_8">
+				<div class="modal-text-option" id="modal1_8" data-toggle="modal" data-target="#myModal1_8">
 					${ vo.option_name8 }
 					<span id="item_o8_val" data-value=item_o8_val>${ vo.item_o8_val }</span><br>
 				</div>
@@ -1641,6 +1609,107 @@ var $112 = $.noConflict(true);
 				</div>
 			</div> --%>
 	</div>
+	
+			<input id="item-box-radius-footer" type="button" class="btn btn-info btn-lg" value="판매 방식 및 가격 설정하기 ↓" onclick="">
+            
+            
+            
+            
+			<form>
+				<!-- 아이템 table 공유해서 넘겨주는 공식 (어떤 테이블이여도 가능) ---중요도★10000--- -->
+			
+				<!-- ★이미지 이름 넘겨주기★ -->
+				<input type="hidden" name="item_name" value="${ vo.item_name }">
+				<!-- ★이미지 태그 넘겨주기★ -->
+				<input type="hidden" name="item_image" value="${ vo.item_image }">
+				<!-- ★이미지 타입 넘겨주기★ -->
+				<input type="hidden" name="item_type" value="${ vo.item_type }">
+				<!-- ★이미지 등급 넘겨주기★ -->
+				<input type="hidden" name="item_grade" value="${ vo.item_grade }">
+				<!-- ★이미지 레어도 넘겨주기★ -->
+				<input type="hidden" name="item_rarity" value="${ vo.item_rarity }">
+				
+				<!-- ★이미지 소켓 넘겨주기★ -->
+				<input type="hidden" name="item_shot" value="${ vo.item_shot }">
+				
+				<!-- 아이템 기본 옵션1  -->
+				<input type="hidden" id="gibon_option1" name="gibon_option1" value="${ vo.gibon_option1 }">
+				<input type="hidden" id="gibon_option1_val" name="gibon_option1_val" value="${ vo.gibon_option1_val }">
+				
+				
+				<!-- 아이템 기본 옵션2  -->
+				<input type="hidden" id="gibon_option2" name="gibon_option2" value="${ vo.gibon_option2 }">
+				<input type="hidden" id="gibon_option2_val" name="gibon_option2_val" value="${ vo.gibon_option2_val }">
+				
+				<!-- 아이템 기본 옵션3  -->
+				<input type="hidden" id="gibon_option3" name="gibon_option3" value="${ vo.gibon_option3 }">
+				<input type="hidden" id="gibon_option3_val" name="gibon_option3_val" value="${ vo.gibon_option3_val }">
+				
+				<!-- 아이템 기본 옵션4  -->
+				<input type="hidden" id="gibon_option4" name="gibon_option4" value="${ vo.gibon_option4 }">
+				<input type="hidden" id="gibon_option4_val" name="gibon_option4_val" value="${ vo.gibon_option4_val }">
+				
+				<!-- 아이템 기본 옵션5  -->
+				<input type="hidden" id="gibon_option5" name="gibon_option5" value="${ vo.gibon_option5 }">
+				<input type="hidden" id="gibon_option5_val" name="gibon_option5_val" value="${ vo.gibon_option5_val }">
+				
+				<!-- 아이템 기본 옵션6  -->
+				<input type="hidden" id="gibon_option6" name="gibon_option6" value="${ vo.gibon_option6 }">
+				<input type="hidden" id="gibon_option6_val" name="gibon_option6_val" value="${ vo.gibon_option6_val }">
+				
+				<!-- 아이템 기본 옵션7  -->
+				<input type="hidden" id="gibon_option7" name="gibon_option7" value="${ vo.gibon_option7 }">
+				<input type="hidden" id="gibon_option7_val" name="gibon_option7_val" value="${ vo.gibon_option7_val }">
+		
+		
+				
+				<!-- 아이템 옵션1  -->
+				<input type="hidden" id="option1_idx" name="option1_idx" value="${ vo.option1_idx }">
+				<input type="hidden" id="item_o1_val" name="item_o1_val" value="${ vo.item_o1_val }">
+		
+				
+				<!-- 아이템 옵션2  -->
+				<input type="hidden" id="option2_idx" name="option2_idx" value="${ vo.option2_idx }">
+				<input type="hidden" id="item_o2_val" name="item_o2_val" value="${ vo.item_o2_val }">
+		
+				
+				<!-- 아이템 옵션3  -->
+				<input type="hidden" id="option3_idx" name="option3_idx" value="${ vo.option3_idx }">
+				<input type="hidden" id="item_o3_val" name="item_o3_val" value="${ vo.item_o3_val }">
+		
+				
+				<!-- 아이템 옵션4  -->
+				<input type="hidden" id="option4_idx" name="option4_idx" value="${ vo.option4_idx }">
+				<input type="hidden" id="item_o4_val" name="item_o4_val" value="${ vo.item_o4_val }">
+		
+				
+				<!-- 아이템 옵션5  -->
+				<input type="hidden" id="option5_idx" name="option5_idx" value="${ vo.option5_idx }">
+				<input type="hidden" id="item_o5_val" name="item_o5_val" value="${ vo.item_o5_val }">
+		
+				
+				<!-- 아이템 옵션6  -->
+				<input type="hidden" id="option6_idx" name="option6_idx" value="${ vo.option6_idx }">
+				<input type="hidden" id="item_o6_val" name="item_o6_val" value="${ vo.item_o6_val }">
+	 
+				
+				<!-- 아이템 옵션7  -->
+				<input type="hidden" id="option7_idx" name="option7_idx" value="${ vo.option7_idx }">
+				<input type="hidden" id="item_o7_val" name="item_o7_val" value="${ vo.item_o7_val }">
+		
+				
+				<!-- 아이템 옵션8  -->
+				<input type="hidden" id="option8_idx" name="option8_idx" value="${ vo.option8_idx }">
+				<input type="hidden" id="item_o8_val" name="item_o8_val" value="${ vo.item_o8_val }">
+				
+
+				
+				
+				<input type="button" class="btn btn-info btn-lg" value="판매등록하기" onclick="sell_reg_data(this.form);">
+		</form>
+		
+		
+		
 </div>
 </body>
 </html>
