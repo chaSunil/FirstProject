@@ -485,8 +485,37 @@ var $112 = $.noConflict(true);
     
     
     
-
-
+        <div id="item-search2">
+	        <div id="item-box-head-text">
+	        	<div id="item-box-head-text-sub">
+	        	<img alt="" src="https://i.ibb.co/0YqhDTP/bullet-1.png">
+	        	<span><b>아이템 등록</b></span>
+	        	<span id="item-box-head-text-sub-font"><b>ㅣ</b></span>
+	        	<span id="item-box-head-text2">일반판매, 경매</span>
+	        	</div>
+	        	<img id="item-box-head-text-img" alt="" src="https://i.ibb.co/7bBf5zC/cc-category-titlepin.png">
+	        	<img id="item-box-head-text-img2" alt="" src="https://i.ibb.co/9hhcwxf/titleline.png">
+	        	<img id="item-box-head-text-img3" alt="" src="https://i.ibb.co/7bBf5zC/cc-category-titlepin.png">
+	        </div>
+		<div>
+		    <div class="tab-box">
+		        <div class="tabs">
+		        <ul id="search-tab-list">
+		            <!-- 페이지 별로 active를 따로 줘야함 -->
+		            <li class="cate-box cate1 active"><a href="#" >아이템 찾기</a></li>
+		            <li class="cate-box" onclick="buy_list();"><a>나의 구매 현황</a></li>
+		            <li class="cate-box" onclick="sell_list();"><a>나의 판매 현황</a></li>
+		            <li class="cate-box cate4">
+		                <a  href="#">찜</a>
+		            </li>
+		        </ul>
+		        </div>
+		        <div class="sell-btn">
+                        <a href="#" id="sell-link">아이템 판매하기</a>
+                </div>    
+		    </div>    
+		</div>
+	</div>		
 
 
         
@@ -571,7 +600,7 @@ var $112 = $.noConflict(true);
             
             <div class="search-tab">
                 <div class="tab-label">
-                    <span style="color: #8D795C; font-size: 15px;">게임 & 모드</span>
+                    <span style="color: #B89971; font-size: 15px;">게임 & 모드</span>
                 </div>
                 
                 <div class="game-mode">
@@ -620,7 +649,7 @@ var $112 = $.noConflict(true);
                 
             <div id="item-filter">
                 <div id="filter-title">
-                    <span style="color: #8D795C; font-size: 15px;">아이템 필터</span>
+                    <span style="color: #B89971; font-size: 15px;">아이템 필터</span>
                 </div>
                 <div class="filter-box" style="margin-top: -5px;">
                     <div class="filter-box1">
@@ -684,6 +713,11 @@ var $112 = $.noConflict(true);
 		<!-- item_trade_list -->
 		
 <div id="item-box">
+
+	        <div class="tab-label">
+            	<span style="color: #B89971; font-size: 15px;">상세 옵션 설정</span>
+            </div>
+                
 			<div id="item-image-box">
 			<img src="../resources/images/${ vo.item_image }">
 			</div>
@@ -1606,6 +1640,7 @@ var $112 = $.noConflict(true);
 					<button>자세히보기 →</button>
 				</div>
 			</div> --%>
+	</div>
 </div>
 </body>
 </html>

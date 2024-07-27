@@ -107,6 +107,7 @@ body {
 }
 
 input::placeholder {
+	padding-left: 10px;
 	font-size: 13px;
 	animation: blink 1s infinite; /* 1초 간격으로 무한 반복 */
 }
@@ -468,8 +469,25 @@ input::placeholder {
 	height : 350px;
 	background-color: #1B1D23;
 	margin: auto;
-	border: 1px solid #1F2128;
-	border-bottom: 0px;
+	margin-top: 25px;
+	
+	position: relative;
+		
+	border: 0.2px solid #3f3f3f;
+	border-top: 0.2px solid #AE906A;
+}
+
+.tab-label{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    bottom: calc(100% - .5rem);
+    left: 1.5rem;
+    line-height: 1rem;
+    padding: 0 1rem;
+    background: #1e2128;
 }
 
 #item-image-box {
