@@ -422,10 +422,22 @@ function downArrow2() {
 				<div id="gibon_option_font">
 				<span>거래번호 : ${ items.item_idx }</span><br>
 				<div class="item_tag"><a class="btn-0">&ensp;${ items.item_type }&ensp;</a></div>
+				<c:if test="${ items.item_rarity == '유니크' }">
 				<div id="item_name_gongback"><span id="item_name"><b>${ items.item_name }</b></span></div><br>
+				</c:if>
+				<c:if test="${ items.item_rarity == '세트' }">
+				<div id="item_name_gongback"><span id="item_name-set"><b>${ items.item_name }</b></span></div><br>
+				</c:if>
 				<hr>
 				<div class="item_tag"><a class="btn-0">&ensp;${ items.item_grade }&ensp;</a>
+				
+				<c:if test="${ items.item_rarity == '유니크' }">
 				<a class="btn-1">&ensp;${ items.item_rarity  }&ensp;</a></div>
+				</c:if>
+				
+				<c:if test="${ items.item_rarity == '세트' }">
+				<a class="btn-7">&ensp;${ items.item_rarity  }&ensp;</a></div>
+				</c:if>
 				<span>${ items.item_im }</span><br>
 				
 				<!-- 소켓 유무에 따른 출력 변화 -->

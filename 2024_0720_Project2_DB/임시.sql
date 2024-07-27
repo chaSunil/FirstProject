@@ -3110,8 +3110,8 @@
 								'혼령 수확자 싸이드',
 								'혼령 수확자.jpg',
 								'미늘창',
-								'엘리트',
 								'노멀',
+								'유니크',
 								'수리가능',0,
 								-- 기본옵션
 							    --g1   g2   g3   g4   g5   g6   g7
@@ -3130,23 +3130,67 @@
 	insert into items25 values(
 								seq_items_item_idx.nextVal,
 								'할리퀸 관모 샤코',
-								'혼령 수확자.jpg',
-								'미늘창',
+								'샤코.jpg',
+								'투구',
 								'엘리트',
-								'노멀',
+								'유니크',
 								'수리가능',0,
 								-- 기본옵션
 							    --g1   g2   g3   g4   g5   g6   g7
-								2,38,4,65,6,41,5,41,7,19,14,-10,0,0,
+								3,141,4,12,5,50,7,62,0,0,0,0,0,0,
 								-- 하단 변동옵션
-								11,90,		-- option1_idx
-								23,45, 	-- option2_idx
-								34,10,		-- option3_idx
-								31,30,		-- option4_idx
-								18,5,  	-- option5_idx
-								39,20, 	 	-- option6_idx
+								37,2,		-- option1_idx
+								38,2, 	-- option2_idx
+								20,148,		-- option3_idx
+								19,148,		-- option4_idx
+								75,10,  	-- option5_idx
+								52,50, 	 	-- option6_idx
 								0,0,		-- option7_idx
 								0,0
+							);
+							
+	insert into items25 values(
+								seq_items_item_idx.nextVal,
+								'탈 라샤의 보호 래커트 플레이트',
+								'탈 라샤의 보호 래커트 플레이트.jpg',
+								'갑옷',
+								'엘리트',
+								'세트',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								3,941,4,55,5,84,7,71,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								36,400,		-- option1_idx
+								41,40, 	-- option2_idx
+								42,40,		-- option3_idx
+								40,40,		-- option4_idx
+								74,15,  	-- option5_idx
+								52,88, 	 	-- option6_idx
+								78,-60,		-- option7_idx
+								0,0
+							);
+							
+	insert into items25 values(
+								seq_items_item_idx.nextVal,
+								'망울 스월링 크리스탈',
+								'망울 스월링 크리스탈.jpg',
+								'보주',
+								'익셉셔널',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								1,42,4,50,7,42,14,10,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								114,3,		-- option1_idx
+								25,30, 	-- option2_idx
+								12,20,		-- option3_idx
+								17,20,		-- option4_idx
+								18,20,  	-- option5_idx
+								39,20, 	 	-- option6_idx
+								91,5,		-- option7_idx
+								52,50
 							);
 
 		

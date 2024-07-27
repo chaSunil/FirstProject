@@ -455,6 +455,11 @@ body {
 	color: #c4b590;
 }
 
+#item_name-set {
+	font-size: 18px;
+	color: #00ff40;
+}
+
 hr {
 	border: 0;
     height: 0.2px;
@@ -522,6 +527,24 @@ hr {
 	padding: 4px;
 	background-color: #353944;
 	color: #c4b590;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 10px;
+	
+	text-decoration: none;
+	pointer-events: none;
+	cursor: default;
+}
+
+.btn-7 {
+	font-size: 13px;
+	text-decoration: none;
+	border-radius: 5px;
+	width: 100px;
+	height: 15px;
+	padding: 4px;
+	background-color: #353944;
+	color: #00ff40;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	margin-left: 10px;

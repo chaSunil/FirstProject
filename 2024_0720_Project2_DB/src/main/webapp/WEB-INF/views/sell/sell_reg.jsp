@@ -924,10 +924,25 @@ var $112 = $.noConflict(true);
 			<div id="item-box2">
 				<div id="gibon_option_font">
 				<div class="item_tag"><a class="btn-0">&ensp;${ vo.item_type }&ensp;</a></div>
+				
+				<c:if test="${ vo.item_rarity == '유니크' }">
 				<div id="item_name_gongback"><span id="item_name"><b>${ vo.item_name }</b></span></div><br>
+				</c:if>
+				<c:if test="${ vo.item_rarity == '세트' }">
+				<div id="item_name_gongback"><span id="item_name-set"><b>${ vo.item_name }</b></span></div><br>
+				</c:if>
+				
 				<hr>
 				<div class="item_tag"><a class="btn-0">&ensp;${ vo.item_grade }&ensp;</a>
+				
+				
+				<c:if test="${ vo.item_rarity == '유니크' }">
 				<a class="btn-1">&ensp;${ vo.item_rarity  }&ensp;</a></div>
+				</c:if>
+				
+				<c:if test="${ vo.item_rarity == '세트' }">
+				<a class="btn-7">&ensp;${ vo.item_rarity  }&ensp;</a></div>
+				</c:if>
 				<hr>
 				
 				
