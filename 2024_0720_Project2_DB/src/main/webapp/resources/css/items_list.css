@@ -336,7 +336,7 @@ body {
 
 #item-box-head2 {
 	width : 150px;
-	height : 100px;
+	height : 80px;
 	
 	float : left;
 	background-color: #9dd9ff;
@@ -564,8 +564,8 @@ hr {
 
 #item_sell {
 	width: 370px;
-	height: 300px;
-	margin-top: 25px;
+	height: 330px;
+	margin-top: 2px;
 	margin-left: 50px;
 	
 	float: left;
@@ -654,7 +654,7 @@ hr {
 
 #usercard-cp {
 	margin: auto;
-	margin-top: 10px;
+	margin-top: 5px;
 	background-color: #15171E;
 	width: 350px;
 	height: 30px;
@@ -662,7 +662,7 @@ hr {
 	border-radius: 5px;
 	
 	display: grid;
-	grid-template-columns: 1.5fr 2fr 8fr 1fr 1.3fr;
+	grid-template-columns: 1.5fr 3fr 7fr 1fr 1.3fr;
 	align-items: center; /* gird 속성 세로 가운데 정렬 */
     justify-items: right; /* gird 속성 가로 오른쪽 정렬 */
     

@@ -13,7 +13,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../resources/css/items_list.css">
 <link rel="stylesheet" href="../resources/css/sell_reg.css">
+<link rel="stylesheet" href="../resources/css/main.css">
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -350,18 +352,145 @@ var $112 = $.noConflict(true);
 
 
 <body>
-		<!-- 아이템 검색창 -->
- 	    <div id="search">
-	    	<form>
-          	  <input type="text" id="inputBox" name="item_name" class="form-control search" placeholder="검색창"/>
-			  <input type="submit" onclick="send(this.form)" value="검색" id="search_chang">
-			</form>
+
+<!-- header 다희 코드 -->
+    <div id="header">
+  
+    	<div id="header1">
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+    	</div>
+    	<div id="header-img2">
+    		<img alt="" src="../resources/images/deco_1.png">
+    	</div>
+        <div id="header-box">
+	        <div id="logo">
+	            <img alt="" src="../resources/images/디션.png">
+	        </div>
+	        <div id="login-main">
+	            <div id="login-btn">
+	                <!-- 로그인 화면 전환 -->
+	                <!-- 로그인 안되었을 때 session ~~ -->
+	                <!-- <c:if test="${ empty sessionScope.user }"> -->
+	                <div class="login-icon">
+	                    <a style="cursor: pointer;" href="#"> 
+	                        <!-- <img src="../image/user_icon.png"> -->
+	                        <i class="user-circle"></i>
+	                        로그인
+	                    </a>                  
+	                </div>
+	                    <a href="#">회원가입</a>
+	                <!-- </c:if> -->
+	                <!-- 로그인 되었을 때 session 살리기~~ -->
+	                <!--  <c:if test="${ not empty sessionScope.user }">
+	                    <span id="user_ment">${ sessionScope.user.mem_nickname }님</span>
+	                로그아웃시 실행될 onclick 함수
+	                    <a id="logout" style="cursor:pointer;">로그아웃</a>
+	                </c:if>
+	                로그인 계정이 관리자일 경우 회원관리 버튼 생성
+	                <c:if test="${ user.mem_grade eq '관리자' }">
+	                    <a href="../member/list.do">회원관리</a>
+	                </c:if>
+	                <c:if test="${ user.mem_grade eq '일반' }">
+	                    <a onclick="location.href='../member/modify_form.do?mem_idx=${user.mem_idx}'"
+	                     style="cursor:pointer;">내정보</a>
+	                </c:if> -->     
+	                &nbsp;
+	                <div class="updown"></div>
+	                &nbsp;
+	                <a href="#">채팅</a>
+	                <a id="who" onclick="blink();" style="cursor:pointer;">
+	                	<img src="../resources/images/who.PNG">비회원
+	                </a>
+	               
+	            </div>
+	            
+	        </div>
+        </div>
+        	   
+        <div id="header-tab">
+        	<div id="header-tab-inside">
+	            <nav class="navbar navbar-inverse">
+				  <div class="container-fleid">
+				    <ul class="container-fleid-list">
+				    <img src="../resources/images/category.png">
+				      <li class="dropdown header-tab-menu">
+				        <a id="first" href="#">
+				        	<img src="../resources/images/li1.PNG">
+				        	<span>레저렉션</span>
+				        </a>
+				      </li>
+				      <img src="../resources/images/category.png">
+				      <li class="dropdown header-tab-menu">
+				        <a id="second" href="#">
+				        	<span>아이템 마켓</span>
+				        </a>
+				      </li>
+				       <img src="../resources/images/category.png">
+				      <li class="dropdown header-tab-menu">
+				        <a href="#">
+				        	<span>커뮤니티</span>
+				        </a>
+				      </li>
+				       <img src="../resources/images/category.png">
+				      <li class="dropdown header-tab-menu">
+				        <a href="#">
+				        	<span>베스트</span>
+				        </a>
+				      </li>
+				       <img src="../resources/images/category.png">
+				      <li class="dropdown header-tab-menu">
+				        <a href="#">
+				        	<span>아이템 정보</span>
+				        </a>
+				      </li>
+				      <img src="../resources/images/category.png">
+				      <li class="dropdown header-tab-menu">
+				        <a href="#">
+				        	<span>DP충전</span>
+				        </a>
+				      </li>
+				      <img src="../resources/images/category.png">
+				    </ul>
+				  </div>
+				</nav>
+			</div>
         </div>
         
+    </div><!-- end - header -->
+    
+    
+    
+    
+    
+
+
+
+
         
-        <div id="item-box-advertisement">
-        	<img src="https://i.ibb.co/9WWsngp/Kakao-Talk-20240724-144334979.jpg" alt="광고">
-        </div>
+        
         
         
         <!-- item head -->
@@ -419,58 +548,137 @@ var $112 = $.noConflict(true);
 		
 		
 		
-		<!-- item head -->
-		<div id="item-box-head">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    <div id="main-content" style="padding-top: 10px;">
         
-        <div id="item-box-head-text">
-        	<div id="item-box-head-text-sub">
-        	<img alt="" src="https://i.ibb.co/0YqhDTP/bullet-1.png">
-        	<span><b>아이템 필터</b></span>
-        	<span id="item-box-head-text-sub-font"><b>ㅣ</b></span>
-        	<span id="item-box-head-text2">아이템 등록</span>
-        	</div>
-        	<img id="item-box-head-text-img" alt="" src="https://i.ibb.co/7bBf5zC/cc-category-titlepin.png">
-        	<img id="item-box-head-text-img2" alt="" src="https://i.ibb.co/9hhcwxf/titleline.png">
-        	<img id="item-box-head-text-img3" alt="" src="https://i.ibb.co/7bBf5zC/cc-category-titlepin.png">
-        </div>
+        <div id="item-search">
         
         
-			<div class="item-box-head2">
-			<span class="item-box-head2-font">Game</span><br>
-			<span class="item-box-head2-font2">레저렉션 (D2R)</span>
-			</div>
-			<div class="item-box-head3">
-			<span class="item-box-head3-font">→</span><br>
-			</div>
-			<div class="item-box-head2">
-			<span class="item-box-head2-font">Platform</span><br>
-			<span class="item-box-head2-font2">PC</span>
-			</div>
-			<div class="item-box-head3">
-			<span class="item-box-head3-font">→</span><br>
-			</div>
-			<div class="item-box-head2">
-			<span class="item-box-head2-font">Server(TimeZone)</span><br>
-			<span class="item-box-head2-font2">아시아(Asia)</span>
-			</div>
-			<div class="item-box-head3">
-			<span class="item-box-head3-font">→</span><br>
-			</div>
-			<div class="item-box-head2">
-			<span class="item-box-head2-font">Game Type(TimeZone)</span><br>
-			<span class="item-box-head2-font2">레더</span>
-			</div>
-			<div class="item-box-head3">
-			<span class="item-box-head3-font">→</span><br>
-			</div>
-			<div class="item-box-head2">
-			<span class="item-box-head2-font">Mode</span><br>
-			<span class="item-box-head2-font21">소프트코어</span>
-			</div>
-			<div class="item-box-head4">
-			<button type="button" class="btn btn-primary active">?&nbsp;&nbsp; 자주 찾는 질문</button>
-			</div>
-		</div>
+            
+            <div class="search-tab">
+                <div class="tab-label">
+                    <span style="color: #8D795C; font-size: 15px;">게임 & 모드</span>
+                </div>
+                
+                <div class="game-mode">
+                    <div class="mode">
+                        <div class="mode-title">
+                            <div class="mode-sub">
+                                <span style="color: #666666; font-size: 12px;">Game</span>
+                            </div>
+                            <div style="color: #8D795C;">레저렉션 (D2R)</div>
+                        </div>
+                    </div>
+                    <div class="mode">
+                        <div class="mode-title">
+                            <div class="mode-sub">
+                                <span style="color: #666666; font-size: 12px;">Platform</span>
+                            </div>
+                            <div style="color: #8D795C;">PC</div>
+                        </div>
+                    </div>
+                    <div class="mode">
+                        <div class="mode-title">
+                            <div class="mode-sub">
+                                <span style="color: #666666; font-size: 12px;">Server (TimeZone)</span>
+                            </div>
+                            <div style="color: #8D795C;">아시아 (Asia)</div>
+                        </div>
+                    </div>
+                    <div class="mode">
+                        <div class="mode-title">
+                            <div class="mode-sub">
+                                <span style="color: #666666; font-size: 12px;">Game Type</span>
+                            </div>
+                            <div style="color: #8D795C;">래더</div>
+                        </div>
+                    </div>
+                    <div class="mode">
+                        <div class="mode-title">
+                            <div class="mode-sub">
+                                <span style="color: #666666; font-size: 12px;">Mode</span>
+                            </div>
+                            <div style="color: #8D795C;">소프트코어</div>
+                        </div>
+                    </div>
+                </div>            
+            </div> <!-- search-tab end -->
+                
+            <div id="item-filter">
+                <div id="filter-title">
+                    <span style="color: #8D795C; font-size: 15px;">아이템 필터</span>
+                </div>
+                <div class="filter-box" style="margin-top: -5px;">
+                    <div class="filter-box1">
+                        <div class="filter-box">
+                            <div style="flex: 1;">
+                                <div style="position: relative;">
+                                    <div style="position: relative; width: 100%">\
+                                        <div class="search-window">
+                                        <span>
+                                        <form>
+                                            <input id="inputBox" name="item_name" type="text" placeholder="판매할 아이템 이름을 검색하세요.">
+                                            <input type="image" src="../resources/images/search_sell.png" value="submit" onclick="send(this.form)" class="search-btn">
+                                        </span>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="flex: 1;">
+                            
+                            </div>                
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div> <!-- item-filter end -->
+            
+        
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+		<c:if test="${ vo.item_idx != null }">
+		
 		
 		
 		<!-- item_trade_list -->
@@ -489,7 +697,7 @@ var $112 = $.noConflict(true);
 				<span>${ vo.item_im }</span><br>
 				
 				
-				
+				<c:if test="${ vo.item_shot != null }">
 				<div id="modals" data-toggle="modal" data-target="#myModals">
 					<span id="item_shot" data-value="item_shot">${ vo.item_shot }</span>소켓<br>
 				</div>
@@ -520,6 +728,7 @@ var $112 = $.noConflict(true);
 				
 				  </div>
 				</div>
+			</c:if>
 				</div>
 			</div>
 			
@@ -618,6 +827,7 @@ var $112 = $.noConflict(true);
 				
 				
 				
+		
 				<input type="button" class="btn btn-info btn-lg" value="판매등록하기" onclick="sell_reg_data(this.form);">
 		</form>
 		
@@ -1342,7 +1552,7 @@ var $112 = $.noConflict(true);
 				</div>
 			</div>
 			
-			
+			</c:if>
 			
 			
 			<!-- 거래회원 정보 기입란 -->
