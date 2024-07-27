@@ -139,26 +139,6 @@ body {
 
 
 
-.ui-autocomplete {
-	width: 300px; /* 원하는 너비로 설정 */
-	overflow-y: auto;
-	/* 가로 스크롤바는 가리기 */
-	overflow-x: hidden;
-	font-size: 20px;
-	height: 500px;
-	
-	background: #191C20;
-	
-	border: 1px solid #181B1F;
-}
-
-.ui-menu-item {
-	border-bottom: 1px solid gray;
-	height: 60px;
-}
-
-
-
 
 
 #btn-btn {
@@ -182,6 +162,26 @@ body {
 
 
 /* 아이템 검색창 li */
+
+
+
+.ui-autocomplete {
+	width: 300px; /* 원하는 너비로 설정 */
+	overflow-y: auto;
+	/* 가로 스크롤바는 가리기 */
+	overflow-x: hidden;
+	font-size: 20px;
+	height: 500px;
+	
+	background: #191C20;
+	
+	border: 1px solid #181B1F;
+}
+
+.ui-menu-item {
+	height: 60px;
+}
+
 
 .ui-autocomplete {
 	
@@ -1048,7 +1048,7 @@ hr {
 	width : 300px;
 	height : auto;
 	border-radius: 0px;
-	background-color: #191C20!important;
+	background-color: #191C20 !important;
 	border: 1px solid #AE906A !important;
 	color: #AE906A !important;
 	
@@ -1060,6 +1060,15 @@ hr {
 	
 	z-index: 20;
 }
+
+.dropdown-menu a {
+	color: #AE906A !important;
+}
+
+.dropdown-menu a:hover {
+	background-color: #2b2f35 !important;
+}
+
 
 #sell-time {
 	font-size: 15px;
