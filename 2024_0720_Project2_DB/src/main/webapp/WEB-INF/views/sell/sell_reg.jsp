@@ -98,12 +98,15 @@
 		#("#item_o1.val").val($("#item_option1").val());
 	}); */
 		
+	
+	
+
+	
+	
+	
 
 		
 </script>
-
-
-
 
 
 
@@ -497,6 +500,9 @@ var $112 = $.noConflict(true);
 
 <body>
 
+<div id="mask"></div>
+
+
 <!-- header 다희 코드 -->
     <div id="header">
   
@@ -883,6 +889,7 @@ var $112 = $.noConflict(true);
 		<!-- item_trade_list -->
 		
 <div id="item-box">
+
 
 	        <div class="tab-label">
             	<span style="color: #B89971; font-size: 15px;">상세 옵션 설정</span>
@@ -1713,18 +1720,10 @@ var $112 = $.noConflict(true);
 				</c:if>
 				
 				
-				
-				
-				
-				
-				
-				
 				</div>
 				</div>
 			</div>
-			
-			</c:if>
-			
+
 
 
 
@@ -1739,8 +1738,11 @@ var $112 = $.noConflict(true);
 	</div>
 	
 			<input id="item_box_radius_footer" type="button" class="btn btn-info btn-lg" value="판매 방식 및 가격 설정하기 ↓" onclick="show_div()">
+			
+			</c:if>
+			
             
-            <div id="input_coin" style="display: block;">
+            <div id="input_coin" style="display: none;">
         		<div id="input_coin-sub1">
         		
         		
@@ -1952,6 +1954,7 @@ var $112 = $.noConflict(true);
 		
 		
 		
+
 </div>
 </body>
 </html>

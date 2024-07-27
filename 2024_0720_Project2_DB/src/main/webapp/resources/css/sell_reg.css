@@ -176,26 +176,6 @@ body {
 	vertical-align: middle;
 }
 
-.ui-autocomplete li {
-    white-space: nowrap; /* 텍스트를 한 줄로 표시 */
-    
-    display: block;
-    height: 60px;
-    
-    text-align: left;
-    
-    background: #191C20;
-    color: #AE906A;
-	font-weight: 200; 
-	
-}
-
-
-.ui-autocomplete li:hover {
-	text-decoration: none;
-    background: #23262c;
-}
-
 
 .ui-menu-item div.ui-state-hover,
 .ui-menu-item div.ui-state-active {
@@ -216,6 +196,8 @@ body {
   font-size: 15px;
   color: #AE906A;;
   font-weight: 200;
+  
+  margin-left: 50px;
   
   word-break: break-all;
 }
@@ -561,6 +543,7 @@ body {
 	background-color: #1E2128;
 	margin: auto;
 	margin-top: 25px;
+	margin-bottom: 150px;
 	
 	position: relative;
 		
@@ -622,7 +605,8 @@ body {
 	display: block;
 	
 	margin: auto;
-	margin-top: 15px;
+	margin-top: 30px;
+	margin-bottom: 50px;
 	
 	font-size: 15px;
 }
@@ -1213,4 +1197,26 @@ label {
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+
+
+
+.loader{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0, 0.7);
+  z-index: 9999;
+  opacity: 1;
+  transition: 0.5s ease;
+}
+
+.loader i{
+  font-size: 80px;
+  position: absolute;
+  top: 50%; left: 50%;
+  margin: -40px 0 0 -40px;
+  color: #fff;
 }
