@@ -102,9 +102,45 @@
 	}
 	
 	
+	// 3자리 단위마다 콤마추가하기
+	function formatNumber() {
+		
+		const input = document.getElementById('coin_sell_input');
+		
+	    let value = input.value.replace(/,/g, '');
+
+	    // 정규 표현식을 사용하여 3자리마다 콤마 추가
+	    const regex = /(\d)(?=(\d{3})+(?!\d))/g;
+	    const formattedValue = value.replace(regex, '$1,');
+	    
+	    // 포맷된 값을 입력 필드에 다시 설정
+	    input.value = formattedValue;
+		
+	}
+	
+	
+	// 3자리 단위마다 콤마추가하기
+	function formatNumber2() {
+		
+		const input = document.getElementById('coin_sell_input2');
+		
+	    let value = input.value.replace(/,/g, '');
+
+	    // 정규 표현식을 사용하여 3자리마다 콤마 추가
+	    const regex = /(\d)(?=(\d{3})+(?!\d))/g;
+	    const formattedValue = value.replace(regex, '$1,');
+	    
+	    // 포맷된 값을 입력 필드에 다시 설정
+	    input.value = formattedValue;
+		
+	}
+	
+	
+
+	
     
     
-    // 입력값이 변경될 때마다 실행
+/*     // 입력값이 변경될 때마다 실행
     document.getElementById("inputBox").addEventListener("input", function() {
         var value = this.value; // 입력값 가져오기
         var button = document.getElementById("inputBox_x"); // 버튼 요소
@@ -115,7 +151,7 @@
         } else {
             button.style.display = 'block'; // 버튼 보임
         }
-    });
+    }); */
 	
 	
 		
@@ -137,16 +173,14 @@
 
 
 
-
 function im_change() {
-	
-	let input_item_shot = $("#input_item_shot").val().trim();
+    
+	let input_item_im = $("#input_item_im").val().trim();
 	alert("값을 넘겨받았습니다.");
-	
-	
-	$("span#item_shot").text(input_item_shot);
-	$("#item_shot").val(input_item_shot);
-	
+
+   	$("span#item_im").text(input_item_im);
+   	$("input#item_im").val(input_item_im);
+  
 }
 
 
@@ -159,7 +193,7 @@ function shot_change() {
 	
 	
 	$("span#item_shot").text(input_item_shot);
-	$("#item_shot").val(input_item_shot);
+	$("input#item_shot").val(input_item_shot);
 	
 } 
 
@@ -521,7 +555,8 @@ var $112 = $.noConflict(true);
 
 <body>
 
-<div id="mask"></div>
+<jsp:include page="../items/loading.jsp"/>
+
 
 
 <!-- header 다희 코드 -->
@@ -900,7 +935,6 @@ var $112 = $.noConflict(true);
 		
 		
 		
-		
 
 		<c:if test="${ vo.item_idx != null }">
 		
@@ -972,7 +1006,7 @@ var $112 = $.noConflict(true);
 				
 				<c:if test="${ vo.item_im != null }">
 				<div class="modal-text" id="modali" data-toggle="modal" data-target="#myModali">
-					<span id="item_im" data-value="item_im"><img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.item_im }</span><br>
+					<span id="item_im2"><img src="../resources/images/pencil.png">&nbsp;&nbsp;</span><span id="item_im" data-value="item_im">${ vo.item_im }</span><br>
 				</div>
 				
 				<!-- 모달 -->
@@ -987,11 +1021,10 @@ var $112 = $.noConflict(true);
 				      </div>	
 				      <div class="modal-body">
 				      
-				      	<input type="checkbox" id="input_item_im" name="input_item_im" value="input_item_im_1">
-						<label for="option1">수리가능</label>
-						
-						<input type="checkbox" id="input_item_im" name="input_item_im" value="input_item_im_2">
-						<label for="option2">수리불가</label>
+				      	<select id="input_item_im" name="input_item_im">
+				      		<option value="수리가능">수리가능</option>
+				      		<option value="수리불가">수리불가</option>
+				      	</select>
 						
 				        <input type="button" id="im_change_button1" value="적용" onclick="im_change();">  
 				        
@@ -1010,7 +1043,7 @@ var $112 = $.noConflict(true);
 				
 				<c:if test="${ vo.item_shot != null }">
 				<div class="modal-text" id="modals" data-toggle="modal" data-target="#myModals">
-					<span id="item_shot" data-value="item_shot"><img src="../resources/images/pencil.png">&nbsp;&nbsp;${ vo.item_shot }</span>소켓<br>
+					<span id="item_shot2"><img src="../resources/images/pencil.png"></span>&nbsp;&nbsp;<span id="item_shot" data-value="item_shot">${ vo.item_shot }</span>소켓<br>
 				</div>
 				
 				<!-- 모달 -->
@@ -1863,10 +1896,13 @@ var $112 = $.noConflict(true);
         			
 	        			<div id="coin_sell_price">
 	        			<span id="coin_sell_price_text1">즉시 구매가</span>
+	        			
 		        			<input id="coin_sell_input" type="text" name="a_direct_price" 
-		        			placeholder="0" style="text-align:right;">
+		        			placeholder="0" style="text-align:right;" oninput="formatNumber();">
+		        			
 							<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0"
 							id="coin_sell_price_img">
+							
 							<span id="coin_sell_price_text2">CP</span>
 	        			</div>
         			</div>
@@ -1876,8 +1912,10 @@ var $112 = $.noConflict(true);
         			
 	        			<div id="coin_sell_price">
 	        			<span id="coin_sell_price_text1">최초 입찰가</span>
-		        			<input id="coin_sell_input" type="text" name="a_initial_price" 
-		        			placeholder="0" style="text-align:right;">
+	        			
+		        			<input id="coin_sell_input2" type="text" name="a_initial_price" 
+		        			placeholder="0" style="text-align:right;" oninput="formatNumber2();">
+		        			
 							<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0"
 							id="coin_sell_price_img">
 							<span id="coin_sell_price_text2">CP</span>
@@ -1910,8 +1948,11 @@ var $112 = $.noConflict(true);
 				<!-- ★이미지 레어도 넘겨주기★ -->
 				<input type="hidden" name="item_rarity" value="${ vo.item_rarity }">
 				
+				<!-- ★이미지 수리가능 여부 넘겨주기★ -->
+				<input name="item_im" id="item_im" value="${ vo.item_im }">
+				
 				<!-- ★이미지 소켓 넘겨주기★ -->
-				<input type="hidden" name="item_shot" value="${ vo.item_shot }">
+				<input id="item_shot" name="item_shot" value="${ vo.item_shot }">
 				
 				<!-- 아이템 기본 옵션1  -->
 				<input type="hidden" id="gibon_option1" name="gibon_option1" value="${ vo.gibon_option1 }">

@@ -3192,6 +3192,160 @@
 								91,5,		-- option7_idx
 								52,50
 							);
+							
+	insert into items25 values(
+								seq_items_item_idx.nextVal,
+								'탈 라샤의 고운 띠 메쉬 벨트',
+								'탈 라샤의 고운 띠.jpg',
+								'허리띠',
+								'익셉셔널',
+								'세트',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								3,40,8,12,4,16,5,47,7,53,0,0,0,0,
+								-- 하단 변동옵션
+								16,20,		-- option1_idx
+								19,30, 	-- option2_idx
+								83,37,		-- option3_idx
+								52,15,		-- option4_idx
+								78,-20,  	-- option5_idx
+								0,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+							
+	insert into items25 values(
+								seq_items_item_idx.nextVal,
+								'탈 라샤의 선고 목걸이',
+								'탈 라샤의 선고 목걸이.jpg',
+								'목걸이',
+								'익셉셔널',
+								'세트',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								7,67,0,0,0,0,0,0,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								114,2,		-- option1_idx
+								109,32, 	-- option2_idx
+								20,50,		-- option3_idx
+								19,42,		-- option4_idx
+								42,33,  	-- option5_idx
+								0,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+							
+	insert into items25 values(
+								seq_items_item_idx.nextVal,
+								'탈 라샤의 호라드림 관모 데스 마스크',
+								'탈 라샤의 호라드림 관모 데스 마스크.jpg',
+								'투구',
+								'익셉셔널',
+								'세트',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								3,131,4,20,5,55,7,66,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								34,10,		-- option1_idx
+								35,10, 	-- option2_idx
+								36,45,		-- option3_idx
+								20,60,		-- option4_idx
+								19,30,  	-- option5_idx
+								39,15, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+							
+	insert into items25 values(
+								seq_items_item_idx.nextVal,
+								'이라타의 소매 장식 라이트 건틀릿',
+								'이라타의 소매 장식 라이트 건틀릿.jpg',
+								'장갑',
+								'노멀',
+								'세트',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								3,11,4,18,5,45,7,15,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								41,30,		-- option1_idx
+								67,0, 	-- option2_idx
+								0,0,		-- option3_idx
+								0,0,		-- option4_idx
+								0,0,  	-- option5_idx
+								0,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+							
+	insert into items25 values(
+								seq_items_item_idx.nextVal,
+								'아르카나의 죽음의 지팡이 워 스태프',
+								'아르카나의 죽음의 지팡이 워 스태프.jpg',
+								'지팡이',
+								'노멀',
+								'세트',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								2,28,4,50,7,15,0,0,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								114,1,		-- option1_idx
+								32,25, 	-- option2_idx
+								86,50,		-- option3_idx
+								0,0,		-- option4_idx
+								0,0,  	-- option5_idx
+								0,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
+							
+	insert into items25 values(
+								seq_items_item_idx.nextVal,
+								'이로의 횃불 원드',
+								'이로의 횃불 원드.jpg',
+								'마법봉',
+								'노멀',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								1,4,4,15,7,5,14,0,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								112,1,		-- option1_idx
+								107,9, 	-- option2_idx
+								35,6,		-- option3_idx
+								18,10,		-- option4_idx
+								87,5,  	-- option5_idx
+								77,3, 	 	-- option6_idx
+								86,50,		-- option7_idx
+								0,0
+							);
+							
+	insert into items25 values(
+								seq_items_item_idx.nextVal,
+								'에슈타의 성미 엘드리치 오브',
+								'에슈타의 성미 엘드리치 오브.jpg',
+								'보주',
+								'엘리트',
+								'유니크',
+								'수리가능',0,
+								-- 기본옵션
+							    --g1   g2   g3   g4   g5   g6   g7
+								1,50,4,30,7,72,14,-10,0,0,0,0,0,0,
+								-- 하단 변동옵션
+								114,3,		-- option1_idx
+								25,40, 	-- option2_idx
+								109,20,		-- option3_idx
+								107,20,		-- option4_idx
+								18,30,  	-- option5_idx
+								0,0, 	 	-- option6_idx
+								0,0,		-- option7_idx
+								0,0
+							);
 
 		
 		

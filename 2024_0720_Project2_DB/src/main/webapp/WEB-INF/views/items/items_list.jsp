@@ -271,6 +271,11 @@ function downArrow2() {
 
 
 <body>
+
+
+<jsp:include page="loading.jsp"/>
+
+
 		<!-- 아이템 검색창 -->
  	    <div id="search">
 	    	<form>

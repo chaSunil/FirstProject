@@ -803,11 +803,11 @@ hr {
 	background-color: #16181d;
 }
 
-#item_im > img {
+#item_im2 > img {
 	width: 12px;
 }
 
-#item_shot > img {
+#item_shot2 > img {
 	width: 12px;
 }
 
@@ -1129,6 +1129,22 @@ hr {
 
 
 #coin_sell_input {
+	width : 140px;
+	height : 56px;
+	
+	background-color: #181922;
+	color: white !important;
+	border: 0px;
+	
+	font-size: 25px;
+	position: absolute;
+	left: 50px;
+	
+	outline: none;
+}
+
+
+#coin_sell_input2 {
 	width : 140px;
 	height : 56px;
 	

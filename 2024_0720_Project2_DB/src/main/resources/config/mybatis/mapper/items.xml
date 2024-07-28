@@ -319,7 +319,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 							#{ item_type },
 							#{ item_grade },
 							#{ item_rarity },
-							'수리가능',#{ item_shot },
+							#{ item_im },#{ item_shot },
 							#{ gibon_option1 },#{ gibon_option1_val },
 							#{ gibon_option2 },#{ gibon_option2_val },
 							#{ gibon_option3 },#{ gibon_option3_val },
