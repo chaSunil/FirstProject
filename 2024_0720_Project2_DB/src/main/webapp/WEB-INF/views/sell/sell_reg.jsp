@@ -15,7 +15,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="../resources/css/items_list.css">
 <link rel="stylesheet" href="../resources/css/sell_reg.css">
-<link rel="stylesheet" href="../resources/css/main.css">
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -108,6 +107,11 @@
 		const input = document.getElementById('coin_sell_input');
 		
 	    let value = input.value.replace(/,/g, '');
+	    
+        // 숫자 범위 제한: 1,000,000 초과 시 입력 제한
+        if (parseInt(value, 10) > 10000000) {
+            value = '10000000'; // 최대값으로 설정
+        }
 
 	    // 정규 표현식을 사용하여 3자리마다 콤마 추가
 	    const regex = /(\d)(?=(\d{3})+(?!\d))/g;
@@ -115,7 +119,23 @@
 	    
 	    // 포맷된 값을 입력 필드에 다시 설정
 	    input.value = formattedValue;
-		
+	    
+        // 색상 변경 로직
+        const numericValue = parseInt(value, 10); // 숫자로 변환
+
+        if (numericValue >= 1000000) { // 백만 이상
+            input.className = 'red';
+        } else if (numericValue >= 100000) { // 십만 이상
+        	input.className = 'pink';
+        } else if (numericValue >= 10000) { // 만 이상
+        	input.className = 'yellow';
+        } else if (numericValue >= 1000) { // 천 이상
+        	input.className = 'blue';
+        } else if (numericValue >= 100) { // 백 이상
+        	input.className = 'white';
+        } else {
+        	input.className = 'gray'; // 기본 색상
+        }
 	}
 	
 	
@@ -125,6 +145,12 @@
 		const input = document.getElementById('coin_sell_input2');
 		
 	    let value = input.value.replace(/,/g, '');
+	    
+	    
+        // 숫자 범위 제한: 1,000,000 초과 시 입력 제한
+        if (parseInt(value, 10) > 10000000) {
+            value = '10000000'; // 최대값으로 설정
+        }
 
 	    // 정규 표현식을 사용하여 3자리마다 콤마 추가
 	    const regex = /(\d)(?=(\d{3})+(?!\d))/g;
@@ -132,6 +158,23 @@
 	    
 	    // 포맷된 값을 입력 필드에 다시 설정
 	    input.value = formattedValue;
+	    
+        // 색상 변경 로직
+        const numericValue = parseInt(value, 10); // 숫자로 변환
+	    
+        if (numericValue >= 1000000) { // 백만 이상
+            input.className = 'red';
+        } else if (numericValue >= 100000) { // 십만 이상
+        	input.className = 'pink';
+        } else if (numericValue >= 10000) { // 만 이상
+        	input.className = 'yellow';
+        } else if (numericValue >= 1000) { // 천 이상
+        	input.className = 'blue';
+        } else if (numericValue >= 100) { // 백 이상
+        	input.className = 'white';
+        } else {
+        	input.className = 'gray'; // 기본 색상
+        }
 		
 	}
 	
@@ -686,6 +729,16 @@ var $112 = $.noConflict(true);
         </div>
         
     </div><!-- end - header -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1949,10 +2002,10 @@ var $112 = $.noConflict(true);
 				<input type="hidden" name="item_rarity" value="${ vo.item_rarity }">
 				
 				<!-- ★이미지 수리가능 여부 넘겨주기★ -->
-				<input name="item_im" id="item_im" value="${ vo.item_im }">
+				<input type="hidden" name="item_im" id="item_im" value="${ vo.item_im }">
 				
 				<!-- ★이미지 소켓 넘겨주기★ -->
-				<input id="item_shot" name="item_shot" value="${ vo.item_shot }">
+				<input type="hidden" id="item_shot" name="item_shot" value="${ vo.item_shot }">
 				
 				<!-- 아이템 기본 옵션1  -->
 				<input type="hidden" id="gibon_option1" name="gibon_option1" value="${ vo.gibon_option1 }">

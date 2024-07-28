@@ -729,6 +729,7 @@ hr {
 	width: 350px;
 	height: 40px;
 	border-radius: 7px;
+	border: 0px;
 	box-shadow: 0px;
 	background-color: #252830;
 }

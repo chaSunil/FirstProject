@@ -275,6 +275,155 @@ function downArrow2() {
 
 <jsp:include page="loading.jsp"/>
 
+<!-- header 다희 코드 -->
+    <div id="header">
+  
+    	<div id="header1">
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+	    	<div id="header-img1">
+	    		<img alt="" src="../resources/images/deco_bg_1.png">
+	    	</div>
+    	</div>
+    	<div id="header-img2">
+    		<img alt="" src="../resources/images/deco_1.png">
+    	</div>
+        <div id="header-box">
+	        <div id="logo">
+	            <img alt="" src="../resources/images/디션.png">
+	        </div>
+	        <div id="login-main">
+	            <div id="login-btn">
+	                <!-- 로그인 화면 전환 -->
+	                <!-- 로그인 안되었을 때 session ~~ -->
+	                <!-- <c:if test="${ empty sessionScope.user }"> -->
+	                <div class="login-icon">
+	                    <a style="cursor: pointer;" href="#"> 
+	                        <!-- <img src="../image/user_icon.png"> -->
+	                        <i class="user-circle"></i>
+	                        로그인
+	                    </a>                  
+	                </div>
+	                    <a href="#">회원가입</a>
+	                <!-- </c:if> -->
+	                <!-- 로그인 되었을 때 session 살리기~~ -->
+	                <!--  <c:if test="${ not empty sessionScope.user }">
+	                    <span id="user_ment">${ sessionScope.user.mem_nickname }님</span>
+	                로그아웃시 실행될 onclick 함수
+	                    <a id="logout" style="cursor:pointer;">로그아웃</a>
+	                </c:if>
+	                로그인 계정이 관리자일 경우 회원관리 버튼 생성
+	                <c:if test="${ user.mem_grade eq '관리자' }">
+	                    <a href="../member/list.do">회원관리</a>
+	                </c:if>
+	                <c:if test="${ user.mem_grade eq '일반' }">
+	                    <a onclick="location.href='../member/modify_form.do?mem_idx=${user.mem_idx}'"
+	                     style="cursor:pointer;">내정보</a>
+	                </c:if> -->     
+	                &nbsp;
+	                <div class="updown"></div>
+	                &nbsp;
+	                <a href="#">채팅</a>
+	                <a id="who" onclick="blink();" style="cursor:pointer;">
+	                	<img src="../resources/images/who.PNG">비회원
+	                </a>
+	               
+	            </div>
+	            
+	        </div>
+        </div>
+        	   
+        <div id="header-tab">
+        	<div id="header-tab-inside">
+	            <nav class="navbar navbar-inverse">
+				  <div class="container-fleid">
+				    <ul class="container-fleid-list">
+				    <img src="../resources/images/category.png">
+				      <li class="dropdown header-tab-menu">
+				        <a id="first" href="#">
+				        	<img src="../resources/images/li1.PNG">
+				        	<span>레저렉션</span>
+				        </a>
+				      </li>
+				      <img src="../resources/images/category.png">
+				      <li class="dropdown header-tab-menu">
+				        <a id="second" href="#">
+				        	<span>아이템 마켓</span>
+				        </a>
+				      </li>
+				       <img src="../resources/images/category.png">
+				      <li class="dropdown header-tab-menu">
+				        <a href="#">
+				        	<span>커뮤니티</span>
+				        </a>
+				      </li>
+				       <img src="../resources/images/category.png">
+				      <li class="dropdown header-tab-menu">
+				        <a href="#">
+				        	<span>베스트</span>
+				        </a>
+				      </li>
+				       <img src="../resources/images/category.png">
+				      <li class="dropdown header-tab-menu">
+				        <a href="#">
+				        	<span>아이템 정보</span>
+				        </a>
+				      </li>
+				      <img src="../resources/images/category.png">
+				      <li class="dropdown header-tab-menu">
+				        <a href="#">
+				        	<span>DP충전</span>
+				        </a>
+				      </li>
+				      <img src="../resources/images/category.png">
+				    </ul>
+				  </div>
+				</nav>
+			</div>
+        </div>
+        
+    </div><!-- end - header -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
 
 		<!-- 아이템 검색창 -->
  	    <div id="search">
