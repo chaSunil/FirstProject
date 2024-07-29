@@ -146,4 +146,106 @@ public class subPhotoDao {
 
 	}// end:insert()
 	
+	public subPhotoVo selectOne(int sub_p_idx) {
+
+		subPhotoVo vo = null;
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from sub_photo where sub_p_idx=?";
+
+		try {
+			//1.Connection 얻어오기
+			conn = DBService.getInstance().getConnection();
+
+			//2.PreparedStatement
+			pstmt = conn.prepareStatement(sql);
+
+			//3.pstmt parameter index 채우기
+			pstmt.setInt(1, sub_p_idx);
+
+			//4.ResultSet 얻어온다
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+
+				// 1.rs가 가리키는 레코드의 값을 읽어온다
+
+				// 2.저장객체 생성 -> 레코드에서 읽은 값을 넣는다
+				vo = new subPhotoVo();
+
+				// rs가 가리키는 레코드값을 vo에 넣는다
+				vo.setSub_p_idx(rs.getInt("sub_p_idx"));
+				vo.setSub_p_title(rs.getString("sub_p_title"));
+				vo.setSub_p_category(rs.getString("sub_p_category"));
+				vo.setSub_p_filename(rs.getString("sub_p_filename"));
+				vo.setSub_p_min_player(rs.getInt("sub_p_min_player"));
+				vo.setSub_p_max_player(rs.getInt("sub_p_max_player"));
+				vo.setSub_p_playtime(rs.getInt("sub_p_playtime"));
+				vo.setSub_p_age(rs.getInt("sub_p_age"));
+				vo.setSub_p_year(rs.getInt("sub_p_year"));
+				vo.setSub_p_publisher(rs.getString("sub_p_publisher"));
+				vo.setSub_p_detail_loc(rs.getString("sub_p_detail_loc"));
+
+			} //end:if
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			//마무리작업(열린 역순으로 닫기)
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return vo;
+	}
+	
+	public int delete(int sub_p_idx) {
+
+		int res = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		String sql = "delete from sub_photo where sub_p_idx=?";
+
+		try {
+			//1.Connection 얻어오기
+			conn = DBService.getInstance().getConnection();
+
+			//2.PreparedStatement
+			pstmt = conn.prepareStatement(sql);
+
+			//3.pstmt parameter index 채우기
+			pstmt.setInt(1, sub_p_idx);
+
+			//4.DB delete
+			res = pstmt.executeUpdate(); //select문 이외는 무조건 update 성공시 1 증가
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			//마무리작업(열린 역순으로 닫기)
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return res;
+	}//end:delete()
+	
 }

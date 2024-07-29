@@ -327,4 +327,10 @@ public class ItemsController {
 		return "redirect:list.do";
 	}
 	
+	@RequestMapping("/items/dpcoin.do")
+	public String dpcoin() {
+		
+		return "/items/dpcoin";
+	}
+	
 }

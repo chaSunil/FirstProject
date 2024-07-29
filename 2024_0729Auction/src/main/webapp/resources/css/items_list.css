@@ -163,6 +163,27 @@ body {
 #item-box-advertisement {
     text-align: center;
 }
+
+
+#head-banner {
+	width: 1900px;
+	height: 100px;
+	margin: auto;
+}
+
+#head-banner-youtube {
+}
+
+#head-banner img {
+	width: 1900px;
+}
+
+
+
+
+
+
+
 /* 거래 아이템 리스트 윗부분 */
 /* 물품 목록 갯수 */
 #item-box-head-text {

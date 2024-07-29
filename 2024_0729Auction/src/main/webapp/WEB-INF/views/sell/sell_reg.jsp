@@ -61,21 +61,6 @@
 		f.submit();
 	}
 	
-	
-	
-	
-	function play1() {
-		
-	    var audio = document.getElementById('audio1'); 
-	    
-	    if (audio.paused) { 
-	        audio.play(); 
-	    }else{ 
-	        audio.pause(); 
-	        audio.currentTime = 0 
-	    } 
-	}
-	
 
 	
 	
@@ -626,6 +611,7 @@ var $112 = $.noConflict(true);
 
 
 
+
 <!-- header 다희 코드 -->
     <div id="header">
   
@@ -1015,9 +1001,18 @@ var $112 = $.noConflict(true);
 
 		<c:if test="${ vo.item_idx != null }">
 		
-		<audio autoplay>
+		<audio id="myAudio2">
         	<source src="../resources/sound/identify.mp3" type="audio/mpeg">
     	</audio>
+    	
+    	<script>
+			const audio = document.getElementById('myAudio2');
+		
+		    setTimeout(function() {
+		        audio.volume = 0.3;
+		        audio.play();
+			}, 300);
+		</script>
 		
 		
 		
@@ -2116,8 +2111,8 @@ var $112 = $.noConflict(true);
             
 		
 		
-		
 
 </div>
+<jsp:include page="../items/footer.jsp"/>		
 </body>
 </html>

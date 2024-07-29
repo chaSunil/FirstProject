@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" type="image/png" sizes="32x32" href="../resources/images/아이콘.png">
 <meta charset="UTF-8">
 <title>디아블로2 아이템 거래소</title>
 <link rel="stylesheet"
@@ -255,6 +256,9 @@ function downArrow2() {
 
 <body>
 
+<jsp:include page="loading.jsp"/>
+
+
 <!-- header 다희 코드 -->
     <div id="header">
     	<div id="header-img1">
@@ -346,7 +350,7 @@ function downArrow2() {
 				      </li>
 				      <img src="../resources/images/category.png">
 				      <li class="dropdown header-tab-menu">
-				        <a href="#">
+				        <a href="dpcoin.do">
 				        	<span>DP충전</span>
 				        </a>
 				      </li>
@@ -359,11 +363,20 @@ function downArrow2() {
         
     </div><!-- end - header -->
         
-    <!-- content 정환 -->
-    <div id="main-content" style="padding-top: 10px;">
+    <!-- content 환박사와 서닐 -->
+    <div id="main-content">
         
-        <div id="commercial" style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
-            <img style="width: 1300px; height: 300px;" src="../resources/images/banner.PNG">
+        <div id="commercial" style="text-align: center; margin-bottom: 20px;">
+        	<div id="head-banner">
+        	
+			<a href="https://www.itemmania.com/event/event_ing/e240712_lordnine_open/index.html" target="_blank">
+				<img id="PT0001" class="banner_content_images" src="http://img3.itemmania.com/new_images/banner_manager/20240711/20240711133819_5SoJa.jpg" alt="로드나인 오픈 이벤트" title="로드나인 오픈 이벤트">
+			</a>
+        	
+        	</div>
+        
+            
+            
         </div>
         <div id="item-search">
             <div id="search-title">
@@ -752,7 +765,7 @@ function downArrow2() {
         	<div id="item-box-head-text-sub">
         	<img alt="" src="https://i.ibb.co/0YqhDTP/bullet-1.png">
         	<span><b>물품 목록</b></span>
-        	<span id="item-box-head-text-sub-font"><b>ㅣ</b></span>
+        	<img src="../resources/images/piperline.PNG">
         	<span id="item-box-head-text2">총 <b>${ rowTotal }개</b> 검색 결과</span>
         	</div>
         	<img id="item-box-head-text-img" alt="" src="https://i.ibb.co/7bBf5zC/cc-category-titlepin.png">

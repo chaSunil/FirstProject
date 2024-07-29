@@ -39,6 +39,10 @@
   <img src="../resources/images/입장.gif" alt="loading">
 </div>
 
+<audio id="myAudio">
+	<source src="../resources/sound/portalenter.mp3" type="audio/mpeg">
+</audio>
+
 
 <script>
     const loading_page = document.getElementById("load");
@@ -46,8 +50,17 @@
     // 로딩 화면을 2초(2000ms) 동안 보여줍니다.
     setTimeout(function() {
       loading_page.style.display = 'none';
-    }, 2000); // 2000ms = 2초
+    }, 2150); // 2000ms = 2초
+    
+	const audio = document.getElementById('myAudio');
+
+    setTimeout(function() {
+        audio.volume = 0.3;
+        audio.play();
+	}, 300);
 </script>
+
+
 
 </body>
 </html>

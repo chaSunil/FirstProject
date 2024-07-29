@@ -79,6 +79,12 @@
 	function photo_insert(){
 		location.href="sub_photo_insert_form.do";
 	}
+	
+	function photo_delete(sub_p_idx){
+		if(confirm("정말 삭제하시겠습니까?")==false) return;
+		
+		location.href = "delete.do?sub_p_idx=" + sub_p_idx;
+	}
 
 </script>
  

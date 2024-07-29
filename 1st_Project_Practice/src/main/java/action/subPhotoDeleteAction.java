@@ -1,13 +1,16 @@
 package action;
 
+import java.io.File;
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dao.subPhotoDao;
+import db.vo.subPhotoVo;
 
 /**
  * Servlet implementation class subPhotoDeleteAction
@@ -22,11 +25,19 @@ public class subPhotoDeleteAction extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// Dispatcher형식으로 호출
-		String forward_page = "";
-		RequestDispatcher disp = request.getRequestDispatcher(forward_page);
-		disp.forward(request, response);
-
+		int sub_p_idx = Integer.parseInt(request.getParameter("sub_p_idx"));
+		
+		subPhotoVo vo = subPhotoDao.getInstance().selectOne(sub_p_idx);
+		
+		String absPath = request.getServletContext().getRealPath("/images/");
+		
+		File delFile = new File(absPath, vo.getSub_p_filename());
+		
+		delFile.delete();
+		
+		int res = subPhotoDao.getInstance().delete(sub_p_idx);
+		
+		response.sendRedirect("list.do");
 	}
 
 }
