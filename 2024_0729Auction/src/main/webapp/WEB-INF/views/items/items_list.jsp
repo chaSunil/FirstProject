@@ -387,7 +387,7 @@ function downArrow2() {
                     </ul>
                     </div>
                     <div class="sell-btn">
-                        <a href="#" id="sell-link">아이템 판매하기</a>
+                        <a href="sell_reg.do" id="sell-link">아이템 판매하기</a>
                     </div>    
                 </div>    
             </div>

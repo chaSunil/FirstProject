@@ -205,7 +205,7 @@ a:hover{
     color: gray;
     margin-bottom: 20px;
     
-    border-bottom: 0.1px solid gray;
+    border-bottom: 0.7px solid #292a2b;
 }
 #search-title p{
     display: inline;
@@ -239,7 +239,7 @@ a:hover{
     font-size: 20px;
     font-weight: bold;
     color: #cccccc;
-    border: 1px solid gray;
+    border: 0.7px solid #4b4e50;
     padding: 1.5rem;
     
     opacity: 0.5;
