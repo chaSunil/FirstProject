@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="items">
+
+	<select id="items_list" resultType="vo.ItemsVo">
+		select * from auction_list_view
+	</select>
+
+
+	<select id="items_list2" resultType="items" parameterType="Map">
+		<choose>
+			<when test="item_name!='' and item_name2!='' and item_name3!='' and item_name4!='' and item_name5!='' and item_name6!=''">
+			select s6.* from
+			(select s5.* from
+			(select s4.* from
+			(select s3.* from
+			(select s2.* from
+			(select s.* from
+			(select * from auction_list_view
+				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
+				or option_name2 = #{ item_name } and item_o2_val>=#{ item_name_val }
+				or option_name3 = #{ item_name } and item_o3_val>=#{ item_name_val }
+				or option_name4 = #{ item_name } and item_o4_val>=#{ item_name_val }
+				or option_name5 = #{ item_name } and item_o5_val>=#{ item_name_val }
+				or option_name6 = #{ item_name } and item_o6_val>=#{ item_name_val }
+				or option_name7 = #{ item_name } and item_o7_val>=#{ item_name_val }
+				or option_name8 = #{ item_name } and item_o8_val>=#{ item_name_val })
+				s
+				where option_name1 = #{ item_name2 } and item_o1_val>=#{ item_name_val2 }
+				or option_name2 = #{ item_name2 } and item_o2_val>=#{ item_name_val2 }
+				or option_name3 = #{ item_name2 } and item_o3_val>=#{ item_name_val2 }
+				or option_name4 = #{ item_name2 } and item_o4_val>=#{ item_name_val2 }
+				or option_name5 = #{ item_name2 } and item_o5_val>=#{ item_name_val2 }
+				or option_name6 = #{ item_name2 } and item_o6_val>=#{ item_name_val2 }
+				or option_name7 = #{ item_name2 } and item_o7_val>=#{ item_name_val2 }
+				or option_name8 = #{ item_name2 } and item_o8_val>=#{ item_name_val2 }
+				)s2
+				where option_name1 = #{ item_name3 } and item_o1_val>=#{ item_name_val3 }
+				or option_name2 = #{ item_name3 } and item_o2_val>=#{ item_name_val3 }
+				or option_name3 = #{ item_name3 } and item_o3_val>=#{ item_name_val3 }
+				or option_name4 = #{ item_name3 } and item_o4_val>=#{ item_name_val3 }
+				or option_name5 = #{ item_name3 } and item_o5_val>=#{ item_name_val3 }
+				or option_name6 = #{ item_name3 } and item_o6_val>=#{ item_name_val3 }
+				or option_name7 = #{ item_name3 } and item_o7_val>=#{ item_name_val3 }
+				or option_name8 = #{ item_name3 } and item_o8_val>=#{ item_name_val3 })s3
+				where option_name1 = #{ item_name4 } and item_o1_val>=#{ item_name_val4 }
+				or option_name2 = #{ item_name4 } and item_o2_val>=#{ item_name_val4 }
+				or option_name3 = #{ item_name4 } and item_o3_val>=#{ item_name_val4 }
+				or option_name4 = #{ item_name4 } and item_o4_val>=#{ item_name_val4 }
+				or option_name5 = #{ item_name4 } and item_o5_val>=#{ item_name_val4 }
+				or option_name6 = #{ item_name4 } and item_o6_val>=#{ item_name_val4 }
+				or option_name7 = #{ item_name4 } and item_o7_val>=#{ item_name_val4 }
+				or option_name8 = #{ item_name4 } and item_o8_val>=#{ item_name_val4 })s4
+				where option_name1 = #{ item_name5 } and item_o1_val>=#{ item_name_val5 }
+				or option_name2 = #{ item_name5 } and item_o2_val>=#{ item_name_val5 }
+				or option_name3 = #{ item_name5 } and item_o3_val>=#{ item_name_val5 }
+				or option_name4 = #{ item_name5 } and item_o4_val>=#{ item_name_val5 }
+				or option_name5 = #{ item_name5 } and item_o5_val>=#{ item_name_val5 }
+				or option_name6 = #{ item_name5 } and item_o6_val>=#{ item_name_val5 }
+				or option_name7 = #{ item_name5 } and item_o7_val>=#{ item_name_val5 }
+				or option_name8 = #{ item_name5 } and item_o8_val>=#{ item_name_val5 })s5
+				where option_name1 = #{ item_name6 } and item_o1_val>=#{ item_name_val6 }
+				or option_name2 = #{ item_name6 } and item_o2_val>=#{ item_name_val6 }
+				or option_name3 = #{ item_name6 } and item_o3_val>=#{ item_name_val6 }
+				or option_name4 = #{ item_name6 } and item_o4_val>=#{ item_name_val6 }
+				or option_name5 = #{ item_name6 } and item_o5_val>=#{ item_name_val6 }
+				or option_name6 = #{ item_name6 } and item_o6_val>=#{ item_name_val6 }
+				or option_name7 = #{ item_name6 } and item_o7_val>=#{ item_name_val6 }
+				or option_name8 = #{ item_name6 } and item_o8_val>=#{ item_name_val6 })s6
+			</when>
+			<when test="item_name!='' and item_name2!='' and item_name3!='' and item_name4!='' and item_name5!=''">
+			select s5.* from
+			(select s4.* from
+			(select s3.* from
+			(select s2.* from
+			(select s.* from
+			(select * from auction_list_view
+				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
+				or option_name2 = #{ item_name } and item_o2_val>=#{ item_name_val }
+				or option_name3 = #{ item_name } and item_o3_val>=#{ item_name_val }
+				or option_name4 = #{ item_name } and item_o4_val>=#{ item_name_val }
+				or option_name5 = #{ item_name } and item_o5_val>=#{ item_name_val }
+				or option_name6 = #{ item_name } and item_o6_val>=#{ item_name_val }
+				or option_name7 = #{ item_name } and item_o7_val>=#{ item_name_val }
+				or option_name8 = #{ item_name } and item_o8_val>=#{ item_name_val })
+				s
+				where option_name1 = #{ item_name2 } and item_o1_val>=#{ item_name_val2 }
+				or option_name2 = #{ item_name2 } and item_o2_val>=#{ item_name_val2 }
+				or option_name3 = #{ item_name2 } and item_o3_val>=#{ item_name_val2 }
+				or option_name4 = #{ item_name2 } and item_o4_val>=#{ item_name_val2 }
+				or option_name5 = #{ item_name2 } and item_o5_val>=#{ item_name_val2 }
+				or option_name6 = #{ item_name2 } and item_o6_val>=#{ item_name_val2 }
+				or option_name7 = #{ item_name2 } and item_o7_val>=#{ item_name_val2 }
+				or option_name8 = #{ item_name2 } and item_o8_val>=#{ item_name_val2 }
+				)s2
+				where option_name1 = #{ item_name3 } and item_o1_val>=#{ item_name_val3 }
+				or option_name2 = #{ item_name3 } and item_o2_val>=#{ item_name_val3 }
+				or option_name3 = #{ item_name3 } and item_o3_val>=#{ item_name_val3 }
+				or option_name4 = #{ item_name3 } and item_o4_val>=#{ item_name_val3 }
+				or option_name5 = #{ item_name3 } and item_o5_val>=#{ item_name_val3 }
+				or option_name6 = #{ item_name3 } and item_o6_val>=#{ item_name_val3 }
+				or option_name7 = #{ item_name3 } and item_o7_val>=#{ item_name_val3 }
+				or option_name8 = #{ item_name3 } and item_o8_val>=#{ item_name_val3 })s3
+				where option_name1 = #{ item_name4 } and item_o1_val>=#{ item_name_val4 }
+				or option_name2 = #{ item_name4 } and item_o2_val>=#{ item_name_val4 }
+				or option_name3 = #{ item_name4 } and item_o3_val>=#{ item_name_val4 }
+				or option_name4 = #{ item_name4 } and item_o4_val>=#{ item_name_val4 }
+				or option_name5 = #{ item_name4 } and item_o5_val>=#{ item_name_val4 }
+				or option_name6 = #{ item_name4 } and item_o6_val>=#{ item_name_val4 }
+				or option_name7 = #{ item_name4 } and item_o7_val>=#{ item_name_val4 }
+				or option_name8 = #{ item_name4 } and item_o8_val>=#{ item_name_val4 })s4
+				where option_name1 = #{ item_name5 } and item_o1_val>=#{ item_name_val5 }
+				or option_name2 = #{ item_name5 } and item_o2_val>=#{ item_name_val5 }
+				or option_name3 = #{ item_name5 } and item_o3_val>=#{ item_name_val5 }
+				or option_name4 = #{ item_name5 } and item_o4_val>=#{ item_name_val5 }
+				or option_name5 = #{ item_name5 } and item_o5_val>=#{ item_name_val5 }
+				or option_name6 = #{ item_name5 } and item_o6_val>=#{ item_name_val5 }
+				or option_name7 = #{ item_name5 } and item_o7_val>=#{ item_name_val5 }
+				or option_name8 = #{ item_name5 } and item_o8_val>=#{ item_name_val5 })s5
+			</when>
+			<when test="item_name!='' and item_name2!='' and item_name3!='' and item_name4!=''">
+			select s4.* from
+			(select s3.* from
+			(select s2.* from
+			(select s.* from
+			(select * from auction_list_view
+				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
+				or option_name2 = #{ item_name } and item_o2_val>=#{ item_name_val }
+				or option_name3 = #{ item_name } and item_o3_val>=#{ item_name_val }
+				or option_name4 = #{ item_name } and item_o4_val>=#{ item_name_val }
+				or option_name5 = #{ item_name } and item_o5_val>=#{ item_name_val }
+				or option_name6 = #{ item_name } and item_o6_val>=#{ item_name_val }
+				or option_name7 = #{ item_name } and item_o7_val>=#{ item_name_val }
+				or option_name8 = #{ item_name } and item_o8_val>=#{ item_name_val })
+				s
+				where option_name1 = #{ item_name2 } and item_o1_val>=#{ item_name_val2 }
+				or option_name2 = #{ item_name2 } and item_o2_val>=#{ item_name_val2 }
+				or option_name3 = #{ item_name2 } and item_o3_val>=#{ item_name_val2 }
+				or option_name4 = #{ item_name2 } and item_o4_val>=#{ item_name_val2 }
+				or option_name5 = #{ item_name2 } and item_o5_val>=#{ item_name_val2 }
+				or option_name6 = #{ item_name2 } and item_o6_val>=#{ item_name_val2 }
+				or option_name7 = #{ item_name2 } and item_o7_val>=#{ item_name_val2 }
+				or option_name8 = #{ item_name2 } and item_o8_val>=#{ item_name_val2 }
+				)s2
+				where option_name1 = #{ item_name3 } and item_o1_val>=#{ item_name_val3 }
+				or option_name2 = #{ item_name3 } and item_o2_val>=#{ item_name_val3 }
+				or option_name3 = #{ item_name3 } and item_o3_val>=#{ item_name_val3 }
+				or option_name4 = #{ item_name3 } and item_o4_val>=#{ item_name_val3 }
+				or option_name5 = #{ item_name3 } and item_o5_val>=#{ item_name_val3 }
+				or option_name6 = #{ item_name3 } and item_o6_val>=#{ item_name_val3 }
+				or option_name7 = #{ item_name3 } and item_o7_val>=#{ item_name_val3 }
+				or option_name8 = #{ item_name3 } and item_o8_val>=#{ item_name_val3 })s3
+				where option_name1 = #{ item_name4 } and item_o1_val>=#{ item_name_val4 }
+				or option_name2 = #{ item_name4 } and item_o2_val>=#{ item_name_val4 }
+				or option_name3 = #{ item_name4 } and item_o3_val>=#{ item_name_val4 }
+				or option_name4 = #{ item_name4 } and item_o4_val>=#{ item_name_val4 }
+				or option_name5 = #{ item_name4 } and item_o5_val>=#{ item_name_val4 }
+				or option_name6 = #{ item_name4 } and item_o6_val>=#{ item_name_val4 }
+				or option_name7 = #{ item_name4 } and item_o7_val>=#{ item_name_val4 }
+				or option_name8 = #{ item_name4 } and item_o8_val>=#{ item_name_val4 })s4
+			</when>
+			<when test="item_name!='' and item_name2!='' and item_name3!=''">
+			select s3.* from
+			(select s2.* from
+			(select s.* from
+			(select * from auction_list_view
+				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
+				or option_name2 = #{ item_name } and item_o2_val>=#{ item_name_val }
+				or option_name3 = #{ item_name } and item_o3_val>=#{ item_name_val }
+				or option_name4 = #{ item_name } and item_o4_val>=#{ item_name_val }
+				or option_name5 = #{ item_name } and item_o5_val>=#{ item_name_val }
+				or option_name6 = #{ item_name } and item_o6_val>=#{ item_name_val }
+				or option_name7 = #{ item_name } and item_o7_val>=#{ item_name_val }
+				or option_name8 = #{ item_name } and item_o8_val>=#{ item_name_val })
+				s
+				where option_name1 = #{ item_name2 } and item_o1_val>=#{ item_name_val2 }
+				or option_name2 = #{ item_name2 } and item_o2_val>=#{ item_name_val2 }
+				or option_name3 = #{ item_name2 } and item_o3_val>=#{ item_name_val2 }
+				or option_name4 = #{ item_name2 } and item_o4_val>=#{ item_name_val2 }
+				or option_name5 = #{ item_name2 } and item_o5_val>=#{ item_name_val2 }
+				or option_name6 = #{ item_name2 } and item_o6_val>=#{ item_name_val2 }
+				or option_name7 = #{ item_name2 } and item_o7_val>=#{ item_name_val2 }
+				or option_name8 = #{ item_name2 } and item_o8_val>=#{ item_name_val2 }
+				)s2
+				where option_name1 = #{ item_name3 } and item_o1_val>=#{ item_name_val3 }
+				or option_name2 = #{ item_name3 } and item_o2_val>=#{ item_name_val3 }
+				or option_name3 = #{ item_name3 } and item_o3_val>=#{ item_name_val3 }
+				or option_name4 = #{ item_name3 } and item_o4_val>=#{ item_name_val3 }
+				or option_name5 = #{ item_name3 } and item_o5_val>=#{ item_name_val3 }
+				or option_name6 = #{ item_name3 } and item_o6_val>=#{ item_name_val3 }
+				or option_name7 = #{ item_name3 } and item_o7_val>=#{ item_name_val3 }
+				or option_name8 = #{ item_name3 } and item_o8_val>=#{ item_name_val3 })s3
+			</when>
+			<when test="item_name!='' and item_name2!=''">
+			select s2.* from
+			(select s.* from
+			(select * from auction_list_view
+				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
+				or option_name2 = #{ item_name } and item_o2_val>=#{ item_name_val }
+				or option_name3 = #{ item_name } and item_o3_val>=#{ item_name_val }
+				or option_name4 = #{ item_name } and item_o4_val>=#{ item_name_val }
+				or option_name5 = #{ item_name } and item_o5_val>=#{ item_name_val }
+				or option_name6 = #{ item_name } and item_o6_val>=#{ item_name_val }
+				or option_name7 = #{ item_name } and item_o7_val>=#{ item_name_val }
+				or option_name8 = #{ item_name } and item_o8_val>=#{ item_name_val })
+				s
+				where option_name1 = #{ item_name2 } and item_o1_val>=#{ item_name_val2 }
+				or option_name2 = #{ item_name2 } and item_o2_val>=#{ item_name_val2 }
+				or option_name3 = #{ item_name2 } and item_o3_val>=#{ item_name_val2 }
+				or option_name4 = #{ item_name2 } and item_o4_val>=#{ item_name_val2 }
+				or option_name5 = #{ item_name2 } and item_o5_val>=#{ item_name_val2 }
+				or option_name6 = #{ item_name2 } and item_o6_val>=#{ item_name_val2 }
+				or option_name7 = #{ item_name2 } and item_o7_val>=#{ item_name_val2 }
+				or option_name8 = #{ item_name2 } and item_o8_val>=#{ item_name_val2 })s2
+			</when>
+			<when test="item_name!=''">
+			select s.* from
+			(select * from auction_list_view
+				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
+				or option_name2 = #{ item_name } and item_o2_val>=#{ item_name_val }
+				or option_name3 = #{ item_name } and item_o3_val>=#{ item_name_val }
+				or option_name4 = #{ item_name } and item_o4_val>=#{ item_name_val }
+				or option_name5 = #{ item_name } and item_o5_val>=#{ item_name_val }
+				or option_name6 = #{ item_name } and item_o6_val>=#{ item_name_val }
+				or option_name7 = #{ item_name } and item_o7_val>=#{ item_name_val }
+				or option_name8 = #{ item_name } and item_o8_val>=#{ item_name_val })s
+			</when>
+			<when test="item_name!='5000000'">
+			select * from auction_list_view
+			</when>
+		</choose>
+ 			<trim prefix="where" prefixOverrides="and">
+			<if test="item_type!=''">
+				item_type = #{ item_type }
+			</if>
+			<if test="item_grade!=''">
+				and item_grade = #{ item_grade }
+			</if>
+			<if test="item_shot!=''">
+				and item_shot = #{ item_shot }
+			</if>
+			<if test="item_im!=''">
+				and item_im = #{ item_im }
+			</if>
+			</trim>
+	</select>
+	
+	
+	<!-- 거래 아이템 데이터 총 개수 구하기 PAGE용 -->
+	<select id="items_row_total" resultType="int">
+		select nvl(count(*),0) from auction_list_view
+	</select>
+	
+	<!-- 거래 아이템 데이터 총 개수 구하기 item_search용 -->
+	<select id="items_row_total_item_name" resultType="int" parameterType="String">
+		select nvl(count(*),0) from auction_list_view where item_name = #{ item_name }
+	</select>
+	
+	
+	
+	<!-- 거래 아이템 페이지별로 보여질 갯수(최신순으로 정렬) -->
+	<select id="items_list_page" parameterType="Map" resultType="items">
+		select * from
+		(
+			select
+				rank() over(order by item_idx desc) as no,
+				i.*
+			from
+				(select * from auction_list_view) i
+		)
+		where no between #{ start } and #{ end }
+	</select>
+	
+
+	
+	
+	<!-- search list가 나올 수 있도록 출력한다 -->
+	<select id="items_list_option" resultType="items">
+		select item_o1 as option_name1 from options
+	</select>
+
+	
+	
+	<!-- search list가 나올 수 있도록 출력한다 -->
+	<select id="items_list_option2" resultType="items">
+		select distinct item_name,item_image,item_type from trade_order_by_view
+	</select>
+	
+	
+	
+	<!-- search list가 나올 수 있도록 출력한다 -->
+	<select id="items_list_search" resultType="items" parameterType="String">
+		select * from auction_list_view where item_name = #{ name }
+	</select>
+	
+	
+		
+	<!-- search list가 나올 수 있도록 출력한다 -->
+	<select id="search_sell_search" parameterType="String" resultType="items">
+	
+		select * from trade_search_by_view 
+		where item_idx = 
+		(
+			select min(item_idx)
+			from trade_search_by_view
+			where item_name = #{ item_name }
+		)
+	</select>	
+	
+	
+	
+	<insert id="sell_insert" parameterType="items">
+		insert into items8 values(
+							seq_items_item_idx.nextVal,
+							#{ item_name },
+							#{ item_image },
+							#{ item_type },
+							#{ item_grade },
+							#{ item_rarity },
+							#{ item_im },#{ item_shot },
+							#{ gibon_option1 },#{ gibon_option1_val },
+							#{ gibon_option2 },#{ gibon_option2_val },
+							#{ gibon_option3 },#{ gibon_option3_val },
+							#{ gibon_option4 },#{ gibon_option4_val },
+							#{ gibon_option5 },#{ gibon_option5_val },
+							#{ gibon_option6 },#{ gibon_option6_val },
+							#{ gibon_option7 },#{ gibon_option7_val },
+							#{ option1_idx },#{ item_o1_val },
+							#{ option2_idx },#{ item_o2_val },
+							#{ option3_idx },#{ item_o3_val },
+							#{ option4_idx },#{ item_o4_val },
+							#{ option5_idx },#{ item_o5_val },
+							#{ option6_idx },#{ item_o6_val },
+							#{ option7_idx },#{ item_o7_val },
+							#{ option8_idx },#{ item_o8_val }
+						)
+	</insert>
+	
+		
+	<!-- 판매 등록시 item_idx를 뽑아 -->
+	<select id="items_selectOne" resultType="items">
+		select * from trade_order_by_view where rank = 1
+	</select>
+	
+	<select id="select_bid_one" parameterType="int" resultType="items">
+		select * from items where item_idx = #{ item_idx }
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
