@@ -17,16 +17,16 @@
     left: 0;
     position: fixed;
     display: block;
-    opacity: 0.1;
-    background: white;
+    opacity: 0.95;
+    background: #1B1D23;
     z-index: 99;
     text-align: center;
 }
 
 #load > img {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 40%;
+    left: 35%;
     z-index: 100;
 }
 
@@ -36,7 +36,7 @@
 <body>
 
 <div id="load">
-  <img src="../resources/images/loading.gif" alt="loading">
+  <img src="../resources/images/입장.gif" alt="loading">
 </div>
 
 

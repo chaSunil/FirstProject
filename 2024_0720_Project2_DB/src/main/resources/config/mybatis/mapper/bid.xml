@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bid">
+
+	<select id="bid_list" resultType="bid">
+		select * from bid_list_view
+	</select>
+	
+	
+	
+	<insert id="bid_insert" parameterType="vo.BidVo">
+		insert into bid values(
+									seq_bid_idx.nextVal,
+									#{ b_bid_price },									
+									sysdate,
+									'y',
+									#{ item_idx },
+									2,
+									'일길동'
+								   )	
+	</insert>
+	
+	
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

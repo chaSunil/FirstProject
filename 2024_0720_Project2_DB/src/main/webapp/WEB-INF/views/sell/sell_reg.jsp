@@ -82,6 +82,26 @@
 	
 	function sell_reg_data(f) {
 		
+		
+		let a_selltime 	= f.a_selltime.value;
+		let a_initial_price = f.a_initial_price.value.trim();
+		let a_direct_price	= f.a_direct_price.value.trim();
+		
+		
+		if(a_initial_price==''){
+			alert("최초입찰가를 입력하세요.")
+			f.a_initial_price.value="";
+			f.a_initial_price.focus();
+			return;
+		}
+		if(a_direct_price==''){
+			alert("즉시구매가를 입력하세요.")
+			f.a_direct_price.value="";
+			f.a_direct_price.focus();
+			return;
+		}
+		
+		
 	    var checkbox = document.getElementById("switch");
 	    
 	    // 체크박스가 체크되어 있지 않은 경우
@@ -89,7 +109,8 @@
 	        alert("판매 등록을 위해 약관에 동의 해주세요.");
 	        return; // 함수 종료
 	    }
-		
+
+
 		
  		if(confirm("판매등록하시겠습니까?")==false) {
 			return;
@@ -177,6 +198,9 @@
         }
 		
 	}
+	
+	
+
 	
 	
 
@@ -1868,6 +1892,9 @@ var $112 = $.noConflict(true);
 			
             
             <div id="input_coin" style="display: none;">
+            <form>
+            
+			
         		<div id="input_coin-sub1">
         		
         		
@@ -1949,9 +1976,11 @@ var $112 = $.noConflict(true);
         			
 	        			<div id="coin_sell_price">
 	        			<span id="coin_sell_price_text1">즉시 구매가</span>
-	        			
+	        				
 		        			<input id="coin_sell_input" type="text" name="a_direct_price" 
-		        			placeholder="0" style="text-align:right;" oninput="formatNumber();">
+		        			placeholder="0" style="text-align:right;">
+		        			
+		        			<!-- oninput="formatNumber();" -->
 		        			
 							<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0"
 							id="coin_sell_price_img">
@@ -1967,7 +1996,9 @@ var $112 = $.noConflict(true);
 	        			<span id="coin_sell_price_text1">최초 입찰가</span>
 	        			
 		        			<input id="coin_sell_input2" type="text" name="a_initial_price" 
-		        			placeholder="0" style="text-align:right;" oninput="formatNumber2();">
+		        			placeholder="0" style="text-align:right;">
+		        			
+		        			<!-- oninput="formatNumber2();" -->
 		        			
 							<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0"
 							id="coin_sell_price_img">
@@ -1987,7 +2018,6 @@ var $112 = $.noConflict(true);
     		
     		
     		        			
-			<form>
 				<!-- 아이템 table 공유해서 넘겨주는 공식 (어떤 테이블이여도 가능) ---중요도★10000--- -->
 			
 				<!-- ★이미지 이름 넘겨주기★ -->

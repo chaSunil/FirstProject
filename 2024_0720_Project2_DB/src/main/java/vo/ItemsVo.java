@@ -383,4 +383,95 @@ public class ItemsVo {
 		this.option_name7 = option_name7;
 	}
 	
+	
+	// 경매(판매)
+	int 	a_idx;
+	int 	a_initial_price;
+	int 	a_direct_price;
+	String  a_regtime;
+	String  a_selltime;
+	String	a_sledding;
+	int 	mem_idx; 
+	String  mem_name;
+
+	public int getA_idx() {
+		return a_idx;
+	}
+	public void setA_idx(int a_idx) {
+		this.a_idx = a_idx;
+	}
+	public int getA_initial_price() {
+		return a_initial_price;
+	}
+	public void setA_initial_price(int a_initial_price) {
+		this.a_initial_price = a_initial_price;
+	}
+	public int getA_direct_price() {
+		return a_direct_price;
+	}
+	public void setA_direct_price(int a_direct_price) {
+		this.a_direct_price = a_direct_price;
+	}
+	public String getA_regtime() {
+		return a_regtime;
+	}
+	public void setA_regtime(String a_regtime) {
+		this.a_regtime = a_regtime;
+	}
+	public String getA_selltime() {
+		return a_selltime;
+	}
+	public void setA_selltime(String a_selltime) {
+		this.a_selltime = a_selltime;
+	}
+	public String getA_sledding() {
+		return a_sledding;
+	}
+	public void setA_sledding(String a_sledding) {
+		this.a_sledding = a_sledding;
+	}
+	public int getMem_idx() {
+		return mem_idx;
+	}
+	public void setMem_idx(int mem_idx) {
+		this.mem_idx = mem_idx;
+	}
+	public String getMem_name() {
+		return mem_name;
+	}
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
+	}
+	
+	// 입찰
+	int 	b_idx;
+	int 	b_bid_price;
+	String	b_regtime;
+	String	b_sledding;
+
+	public int getB_idx() {
+		return b_idx;
+	}
+	public void setB_idx(int b_idx) {
+		this.b_idx = b_idx;
+	}
+	public int getB_bid_price() {
+		return b_bid_price;
+	}
+	public void setB_bid_price(int b_bid_price) {
+		this.b_bid_price = b_bid_price;
+	}
+	public String getB_regtime() {
+		return b_regtime;
+	}
+	public void setB_regtime(String b_regtime) {
+		this.b_regtime = b_regtime;
+	}
+	public String getB_sledding() {
+		return b_sledding;
+	}
+	public void setB_sledding(String b_sledding) {
+		this.b_sledding = b_sledding;
+	}
+	
 }

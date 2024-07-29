@@ -6,7 +6,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,9 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import dao.AuctionDao;
+import dao.BidDao;
 import dao.ItemsDao;
 import util.MyCommon;
 import util.Paging;
+import vo.AuctionVo;
+import vo.BidVo;
 import vo.ItemsVo;
 
 @Controller
@@ -27,6 +30,13 @@ public class ItemsController {
 
 	@Autowired
 	ItemsDao items_dao;
+	
+	@Autowired
+	AuctionDao auction_dao;
+	
+	@Autowired
+	BidDao bid_dao;
+	
 
 	public ItemsController(ItemsDao items_dao) {
 		super();
@@ -257,7 +267,7 @@ public class ItemsController {
 		  
 		  String json = String.format("{\"result\": %s }", sb.toString());
 		  
-		  System.out.println(json);
+		  //System.out.println(json);
 		  
 		  return json;
 		 
@@ -277,9 +287,54 @@ public class ItemsController {
 	
 	// 판매 등록하기
 	@RequestMapping("/items/sell_reg_data.do")
-	public String sell_reg_data(ItemsVo vo) {
+	public String sell_reg_data(ItemsVo vo1, AuctionVo vo2) {
 		
-		int res = items_dao.sell_insert(vo);
+		int res1 = items_dao.sell_insert(vo1);
+		
+		ItemsVo vo3 = items_dao.selectOne();
+	
+		int item_idx = vo3.getItem_idx(); 
+		vo2.setItem_idx(item_idx);
+		  
+		int res2 = auction_dao.sell_insert(vo2);
+		 	
+		return "redirect:list.do";
+	}
+	
+	
+	// 입찰,구매 form
+	@RequestMapping("/items/bid_reg_form.do")
+	public String bid_reg_form(int item_idx, Model model) {
+		
+		ItemsVo vo = items_dao.select_bid_one(item_idx); // 한건의 정보를 불러온다.
+		
+		model.addAttribute("vo", vo);
+		
+		return "bid/bid_reg_form"; // /WEB-INF/views/ + items/items_list + .jsp
+	}
+	
+	// 입찰 등록하기
+	@RequestMapping("/items/bid_reg_data.do")
+	public String bid_reg_data(ItemsVo vo1, BidVo vo2) {
+		
+		int res1 = items_dao.sell_insert(vo1);
+		
+		ItemsVo vo3 = items_dao.selectOne();
+		
+		int item_idx = vo3.getItem_idx(); 
+		vo2.setItem_idx(item_idx);
+		
+		int res2 = bid_dao.sell_insert(vo2);
+		
+		return "redirect:list.do";
+	}
+	
+	
+	// 입찰등록
+	@RequestMapping("/items/reg_timer.do")
+	public String reg_timer(ItemsVo vo) {
+		
+		
 		
 		return "redirect:list.do";
 	}

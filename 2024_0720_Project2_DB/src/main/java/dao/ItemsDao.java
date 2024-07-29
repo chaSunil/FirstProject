@@ -58,6 +58,11 @@ public class ItemsDao {
 		
 		return sqlSession.selectList("items.items_list_search",item_name);
 	}
+
+	public ItemsVo selectOne() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("items.items_selectOne");
+	}
 	
 	
 	
@@ -75,5 +80,10 @@ public class ItemsDao {
 	public int sell_insert(ItemsVo vo) {
 		// TODO Auto-generated method stub
 		return sqlSession.insert("items.sell_insert",vo);
+	}
+
+	public ItemsVo select_bid_one(int item_idx) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("items.select_bid_one", item_idx);
 	}
 }

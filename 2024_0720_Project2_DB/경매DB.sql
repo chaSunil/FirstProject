@@ -7,8 +7,6 @@ drop table auction
 
 create sequence seq_auction_idx
 
-select * from auction
-
 create table auction
 (
 	a_idx				int,					-- 경매(판매)번호

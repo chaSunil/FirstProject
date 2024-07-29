@@ -71,6 +71,50 @@ body {
 	box-shadow: 1px 1px 2px gray;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ui-autocomplete {
+	width: 300px; /* 원하는 너비로 설정 */
+	overflow-y: auto;
+	/* 가로 스크롤바는 가리기 */
+	overflow-x: hidden;
+	font-size: 20px;
+	height: 500px;
+	
+	background: #191C20;
+	
+	border: 1px solid gray;
+	border-style: solid;
+    border-width: 1px;
+}
+
+.ui-menu-item {
+	border-bottom: 1px solid gray;
+	height: 60px;
+}
+
+
+
+
+
 #btn-btn {
 	font-size: 13px;
 	text-decoration: none;
@@ -93,45 +137,57 @@ body {
 
 /* 아이템 검색창 li */
 
-
-
 .ui-autocomplete {
-	width: 300px; /* 원하는 너비로 설정 */
-	overflow-y: auto;
-	/* 가로 스크롤바는 가리기 */
-	overflow-x: hidden;
-	font-size: 20px;
-	height: 500px;
-	
-	background: #191C20;
-	
-	border: 1px solid #181B1F;
-}
-
-.ui-menu-item {
-	height: 60px;
-}
-
-
-.ui-autocomplete {
-	
-	height: auto;
-    max-height: 180px; /* 최대 높이 설정 */
+    max-height: 200px; /* 최대 높이 설정 */
     overflow-y: auto; /* 스크롤 가능하게 설정 */
     justify-content: center; /* 자식 요소를 가로(수평) 기준으로 가운데 정렬시킴 */
     align-items: center; /* 자식 요소를 세로(수직) 기준으로 가운데 정렬시킴 */
-    background: #121212;
+    background: #191C20;
 }
+
+.ui-autocomplete > div {
+	vertical-align: middle;
+}
+
+.ui-autocomplete li {
+    white-space: nowrap; /* 텍스트를 한 줄로 표시 */
+    
+    display: block;
+    height: 60px;
+    
+    text-align: left;
+    
+    background: #191C20;
+    color: #AE906A;
+	font-weight: 200; 
+	
+}
+
+
+.ui-autocomplete li:hover {
+	text-decoration: none;
+    background: #23262c;
+}
+
+/* AutoComplete Image 변경 */
+.ui-autocomplete img {
+    max-width: 40px; /* 이미지의 너비 설정 */
+    max-height: 60px;
+    height: auto;
+    margin-right: 5px; /* 이미지와 텍스트 사이의 간격 설정 */
+}
+/* AutoComplete Image 변경 end */
 
 .ui-menu-item div.ui-state-hover,
 .ui-menu-item div.ui-state-active {
-  color: #AE906A;
+  color: #ffffff;
   text-decoration: none;
-  background-color: #1c1c1c;
+  background-color: skyblue;
   border-radius: 0px;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   background-image: none;
+  border: 1px solid gray;
   
   height: 100%;
 }
@@ -139,28 +195,10 @@ body {
 /* AutoComplete font 변경 */
 .ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content {
   font-size: 15px;
-  color: #AE906A;;
+  color: #AE906A;
   font-weight: 200;
   
-  text-indent: 15px;
-  line-height: 50px;
-  
-  border: 0.5px solid #8D795C;
-  
   word-break: break-all;
-}
-
-.ui-autocomplete .ui-menu-item {
-  border-top: 0.2px solid #8D795C;
-  border-bottom: 0.2px solid #8D795C;
-}
-
-.ui-autocomplete .ui-menu-item:first-child {
-  border-top: none;
-}
-
-.ui-autocomplete .ui-menu-item:last-child {
-  border-bottom: none;
 }
 
 .ui-autocomplete:hover
@@ -168,28 +206,6 @@ body {
 .ui-widget-content:hover {
   background-color: none;
 }
-
-
-
-/* 스크롤바 스타일 */
-.ui-autocomplete::-webkit-scrollbar {
-  width: 8px;
-}
-/* 스크롤바 배경 색상 */
-.ui-autocomplete::-webkit-scrollbar-track {
-  background: #121212;
-  border-left: 0.5px solid #AE906A;
-}
-
-/* 스크롤바 색상 */
-.ui-autocomplete::-webkit-scrollbar-thumb {
-  background: #AE906A; 
-}
-
-.ui-autocomplete::-webkit-scrollbar-thumb:hover {
-  background: #8B6F50;
-}
-
 /* AutoComplete font 변경 end */
 
 
@@ -312,7 +328,7 @@ body {
 	display: grid;
     grid-template-columns: 1fr 0.3fr 0.5fr 0.3fr 1fr 0.3fr 1fr 0.3fr 1fr 3fr;
 	margin : auto;
-	margin-top : 20px;
+	margin-top : 100px;
 
 	align-items: center; /* gird 속성 세로 가운데 정렬 */
     justify-items: center; /* gird 속성 가로 가운데 정렬 */
@@ -320,7 +336,7 @@ body {
 
 #item-box-head2 {
 	width : 150px;
-	height : 100px;
+	height : 80px;
 	
 	float : left;
 	background-color: #9dd9ff;
@@ -408,10 +424,15 @@ body {
     align-items: center; /* 자식 요소를 세로(수직) 기준으로 가운데 정렬시킴 */
     overflow: hidden;
 }
+
 #item-image-box > img {
 	max-height: 320px;
 	height: auto;
     max-width: 150px;
+    transition: all 0.2s linear;
+}
+#item-image-box > img:hover {
+	transform: scale(1.08);
 }
 
 #item-box2 {
@@ -432,6 +453,11 @@ body {
 #item_name {
 	font-size: 18px;
 	color: #c4b590;
+}
+
+#item_name-set {
+	font-size: 18px;
+	color: #00ff40;
 }
 
 hr {
@@ -510,6 +536,24 @@ hr {
 	cursor: default;
 }
 
+.btn-7 {
+	font-size: 13px;
+	text-decoration: none;
+	border-radius: 5px;
+	width: 100px;
+	height: 15px;
+	padding: 4px;
+	background-color: #353944;
+	color: #00ff40;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 10px;
+	
+	text-decoration: none;
+	pointer-events: none;
+	cursor: default;
+}
+
 .btn-3 {
 	font-size: 13px;
 	text-decoration: none;
@@ -540,24 +584,6 @@ hr {
 	
 	border: 1px solid #CB9D41;
 	color: #CB9D41;
-	
-	text-decoration: none;
-	pointer-events: none;
-	cursor: default;
-}
-
-.btn-7 {
-	font-size: 13px;
-	text-decoration: none;
-	border-radius: 5px;
-	width: 100px;
-	height: 15px;
-	padding: 4px;
-	background-color: #353944;
-	color: #00ff40;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	margin-left: 10px;
 	
 	text-decoration: none;
 	pointer-events: none;
@@ -699,10 +725,11 @@ hr {
 	margin-top: 5px;
 }
 
-#usercard-btn > input {
+#usercard-btn > button {
 	width: 350px;
 	height: 40px;
 	border-radius: 7px;
+	border: 0px;
 	box-shadow: 0px;
 	background-color: #252830;
 }

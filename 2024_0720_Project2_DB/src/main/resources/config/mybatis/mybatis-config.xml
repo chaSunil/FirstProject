@@ -10,11 +10,17 @@
 	
 	<typeAliases>
 		<!-- <typeAlias type="vo.BoardVo" alias="board"/> -->
+		<typeAlias type="vo.AuctionVo" alias="auction"/>
+		<typeAlias type="vo.BidVo" alias="bid"/>
 		<typeAlias type="vo.ItemsVo" alias="items"/>
+		<typeAlias type="vo.MemberVo" alias="member"/>
 	</typeAliases>
 	
 	<mappers>
+		<mapper resource="config/mybatis/mapper/auction.xml" /> 
 		<mapper resource="config/mybatis/mapper/items.xml" />
+		<mapper resource="config/mybatis/mapper/bid.xml" />
+		<mapper resource="config/mybatis/mapper/member.xml" />
 	</mappers>
 	
 </configuration>

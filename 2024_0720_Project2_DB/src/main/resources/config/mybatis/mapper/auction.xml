@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="auction">
+
+	<select id="auction_list" resultType="auction">
+		select * from auction_list_view
+	</select>
+	
+	
+	
+	<insert id="auction_insert" parameterType="vo.AuctionVo">
+		insert into auction values(
+									seq_auction_idx.nextVal,
+									#{ a_initial_price },
+									#{ a_direct_price },
+									sysdate,
+									#{ a_selltime },
+									'y',
+									#{ item_idx },
+									2,
+									'일길동',
+									'30000'
+								   )	
+	</insert>
+	
+	
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

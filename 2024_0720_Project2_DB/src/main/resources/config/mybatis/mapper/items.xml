@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="items">
 
 	<select id="items_list" resultType="vo.ItemsVo">
-		select * from trade_order_by_view
+		select * from auction_list_view
 	</select>
 
 
@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			(select s3.* from
 			(select s2.* from
 			(select s.* from
-			(select * from trade_order_by_view
+			(select * from auction_list_view
 				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
 				or option_name2 = #{ item_name } and item_o2_val>=#{ item_name_val }
 				or option_name3 = #{ item_name } and item_o3_val>=#{ item_name_val }
@@ -76,7 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			(select s3.* from
 			(select s2.* from
 			(select s.* from
-			(select * from trade_order_by_view
+			(select * from auction_list_view
 				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
 				or option_name2 = #{ item_name } and item_o2_val>=#{ item_name_val }
 				or option_name3 = #{ item_name } and item_o3_val>=#{ item_name_val }
@@ -125,7 +125,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			(select s3.* from
 			(select s2.* from
 			(select s.* from
-			(select * from trade_order_by_view
+			(select * from auction_list_view
 				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
 				or option_name2 = #{ item_name } and item_o2_val>=#{ item_name_val }
 				or option_name3 = #{ item_name } and item_o3_val>=#{ item_name_val }
@@ -165,7 +165,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select s3.* from
 			(select s2.* from
 			(select s.* from
-			(select * from trade_order_by_view
+			(select * from auction_list_view
 				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
 				or option_name2 = #{ item_name } and item_o2_val>=#{ item_name_val }
 				or option_name3 = #{ item_name } and item_o3_val>=#{ item_name_val }
@@ -196,7 +196,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<when test="item_name!='' and item_name2!=''">
 			select s2.* from
 			(select s.* from
-			(select * from trade_order_by_view
+			(select * from auction_list_view
 				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
 				or option_name2 = #{ item_name } and item_o2_val>=#{ item_name_val }
 				or option_name3 = #{ item_name } and item_o3_val>=#{ item_name_val }
@@ -217,7 +217,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</when>
 			<when test="item_name!=''">
 			select s.* from
-			(select * from trade_order_by_view
+			(select * from auction_list_view
 				where option_name1 = #{ item_name } and item_o1_val>=#{ item_name_val }
 				or option_name2 = #{ item_name } and item_o2_val>=#{ item_name_val }
 				or option_name3 = #{ item_name } and item_o3_val>=#{ item_name_val }
@@ -228,7 +228,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				or option_name8 = #{ item_name } and item_o8_val>=#{ item_name_val })s
 			</when>
 			<when test="item_name!='5000000'">
-			select * from trade_order_by_view
+			select * from auction_list_view
 			</when>
 		</choose>
  			<trim prefix="where" prefixOverrides="and">
@@ -250,12 +250,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 거래 아이템 데이터 총 개수 구하기 PAGE용 -->
 	<select id="items_row_total" resultType="int">
-		select nvl(count(*),0) from trade_order_by_view
+		select nvl(count(*),0) from auction_list_view
 	</select>
 	
 	<!-- 거래 아이템 데이터 총 개수 구하기 item_search용 -->
 	<select id="items_row_total_item_name" resultType="int" parameterType="String">
-		select nvl(count(*),0) from trade_order_by_view where item_name = #{ item_name }
+		select nvl(count(*),0) from auction_list_view where item_name = #{ item_name }
 	</select>
 	
 	
@@ -268,7 +268,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				rank() over(order by item_idx desc) as no,
 				i.*
 			from
-				(select * from trade_order_by_view) i
+				(select * from auction_list_view) i
 		)
 		where no between #{ start } and #{ end }
 	</select>
@@ -292,7 +292,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- search list가 나올 수 있도록 출력한다 -->
 	<select id="items_list_search" resultType="items" parameterType="String">
-		select * from trade_order_by_view where item_name = #{ name }
+		select * from auction_list_view where item_name = #{ name }
 	</select>
 	
 	
@@ -337,6 +337,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 							#{ option8_idx },#{ item_o8_val }
 						)
 	</insert>
+	
+		
+	<!-- 판매 등록시 item_idx를 뽑아 -->
+	<select id="items_selectOne" resultType="items">
+		select * from trade_order_by_view where rank = 1
+	</select>
+	
+	<select id="select_bid_one" parameterType="int" resultType="items">
+		select * from items where item_idx = #{ item_idx }
+	</select>
 	
 </mapper>
 

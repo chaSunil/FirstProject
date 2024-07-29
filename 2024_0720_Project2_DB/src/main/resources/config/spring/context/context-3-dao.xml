@@ -10,9 +10,22 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	
 	<!-- DeptDao -->
 	<!-- DeptDao dept_dao = new DeptDao(sqlSession) -->
+	
+	<bean id="auction_dao" class="dao.AuctionDaoImpl">
+		<property name="sqlSession" ref="sqlSession"></property>
+	</bean>		
+	
+	<bean id="bid_dao" class="dao.BidDaoImpl">
+		<property name="sqlSession" ref="sqlSession"></property>
+	</bean>	
+	
 	<bean id="items_dao" class="dao.ItemsDao">
 		<constructor-arg ref="sqlSession" />
 	</bean>
+	
+	<bean id="member_dao" class="dao.MemberDaoImpl">
+		<property name="sqlSession" ref="sqlSession"/>
+	</bean>	
 	
    				
 	

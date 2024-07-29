@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="../resources/css/items_list.css">
+<link rel="stylesheet" href="../resources/css/main.css">
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -56,12 +58,6 @@
    	}); // end: getOption_name1
 	   
    });
-   
-
-    
-    
-
-
 	
    /* 옵션검색을 넘길때의 로직 */
 	function option_search(f) {
@@ -134,9 +130,7 @@
 			alert("중복되는 아이템 옵션이 있습니다.\n다시 한 번 확인해주시고 검색해주세요.")
 			return;
 			}
-		}
-
-		
+		}		
 		
 		const item_shot = $("#item_shot").val();
 		const item_type = $("#item_type").val();
@@ -147,8 +141,7 @@
 		f.action = "../items/category.do";
 		f.submit();
 	}
-	
-   
+	   
 	function send(f) {
 		
 		// 입력값 검증
@@ -167,9 +160,6 @@
 		
 </script>
 
-
-
-
 <!-- jquery -->
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -184,8 +174,6 @@
 <script type="text/javascript">
 
 var $112 = $.noConflict(true);
-
-
 	
   $112(document).ready(function() {
  	// item 설정 검색창
@@ -198,14 +186,11 @@ var $112 = $.noConflict(true);
         	$("#inputBox").val(ui.item.value);
             return false;
         }
-    });
-	
-	
+    });		
     
     var inputBox = document.querySelector('#inputBox'); // 변수 저장
     inputBox.addEventListener("focus", downArrow); // inputBox(검색창) 커서가 올라가면 함수실행
     
-
     // option 설정 검색창
 	$112('#inputBox2').autocomplete({
         source : inputSource2, // autocomplete가 될 요소
@@ -268,41 +253,12 @@ function downArrow2() {
 
 </head>
 
-
-
 <body>
-
-
-<jsp:include page="loading.jsp"/>
 
 <!-- header 다희 코드 -->
     <div id="header">
-  
-    	<div id="header1">
-	    	<div id="header-img1">
-	    		<img alt="" src="../resources/images/deco_bg_1.png">
-	    	</div>
-	    	<div id="header-img1">
-	    		<img alt="" src="../resources/images/deco_bg_1.png">
-	    	</div>
-	    	<div id="header-img1">
-	    		<img alt="" src="../resources/images/deco_bg_1.png">
-	    	</div>
-	    	<div id="header-img1">
-	    		<img alt="" src="../resources/images/deco_bg_1.png">
-	    	</div>
-	    	<div id="header-img1">
-	    		<img alt="" src="../resources/images/deco_bg_1.png">
-	    	</div>
-	    	<div id="header-img1">
-	    		<img alt="" src="../resources/images/deco_bg_1.png">
-	    	</div>
-	    	<div id="header-img1">
-	    		<img alt="" src="../resources/images/deco_bg_1.png">
-	    	</div>
-	    	<div id="header-img1">
-	    		<img alt="" src="../resources/images/deco_bg_1.png">
-	    	</div>
+    	<div id="header-img1">
+    		<img alt="" src="../resources/images/deco_bg_1.png">
     	</div>
     	<div id="header-img2">
     		<img alt="" src="../resources/images/deco_1.png">
@@ -317,7 +273,7 @@ function downArrow2() {
 	                <!-- 로그인 안되었을 때 session ~~ -->
 	                <!-- <c:if test="${ empty sessionScope.user }"> -->
 	                <div class="login-icon">
-	                    <a style="cursor: pointer;" href="#"> 
+	                    <a style="cursor: pointer;" href="../member/login_form.do"> 
 	                        <!-- <img src="../image/user_icon.png"> -->
 	                        <i class="user-circle"></i>
 	                        로그인
@@ -402,101 +358,391 @@ function downArrow2() {
         </div>
         
     </div><!-- end - header -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        
+    <!-- content 정환 -->
+    <div id="main-content" style="padding-top: 10px;">
+        
+        <div id="commercial" style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
+            <img style="width: 1300px; height: 300px;" src="../resources/images/banner.PNG">
+        </div>
+        <div id="item-search">
+            <div id="search-title">
+                <img src="../resources/images/bullet_1.png" style="width: 40px;">
+                <p>아이템 거래소</p>
+                <img src="../resources/images/piperline.PNG">
+                <span>옵션별 검색, 별칭, 시세 확인</span> 
+            </div>
+            
+            <div>
+                <div class="tab-box">
+                    <div class="tabs">
+                    <ul id="search-tab-list">
+                        <!-- 페이지 별로 active를 따로 줘야함 -->
+                        <li class="cate-box cate1 active"><a href="#" >아이템 찾기</a></li>
+                        <li class="cate-box" onclick="buy_list();"><a>나의 구매 현황</a></li>
+                        <li class="cate-box" onclick="sell_list();"><a>나의 판매 현황</a></li>
+                        <li class="cate-box cate4">
+                            <a  href="#">찜</a>
+                        </li>
+                    </ul>
+                    </div>
+                    <div class="sell-btn">
+                        <a href="#" id="sell-link">아이템 판매하기</a>
+                    </div>    
+                </div>    
+            </div>
+            
+            <div class="search-tab">
+                <div class="tab-label">
+                    <span style="color: #B89971; font-size: 15px;">게임 & 모드</span>
+                </div>
+                
+                <div class="game-mode">
+                    <div class="mode">
+                        <div class="mode-title">
+                            <div class="mode-sub">
+                                <span style="color: #666666;; font-size: 12px;">Game</span>
+                            </div>
+                            <div style="color: #8D795C;">레저렉션 (D2R)</div>
+                        </div>
+                    </div>
+                    <div class="mode">
+                        <div class="mode-title">
+                            <div class="mode-sub">
+                                <span style="color: #666666;; font-size: 12px;">Platform</span>
+                            </div>
+                            <div style="color: #8D795C;">PC</div>
+                        </div>
+                    </div>
+                    <div class="mode">
+                        <div class="mode-title">
+                            <div class="mode-sub">
+                                <span style="color: #666666;; font-size: 12px;">Server (TimeZone)</span>
+                            </div>
+                            <div style="color: #8D795C;">아시아 (Asia)</div>
+                        </div>
+                    </div>
+                    <div class="mode">
+                        <div class="mode-title">
+                            <div class="mode-sub">
+                                <span style="color: #666666;; font-size: 12px;">Game Type</span>
+                            </div>
+                            <div style="color: #8D795C;">래더</div>
+                        </div>
+                    </div>
+                    <div class="mode">
+                        <div class="mode-title">
+                            <div class="mode-sub">
+                                <span style="color: #666666;; font-size: 12px;">Mode</span>
+                            </div>
+                            <div style="color: #8D795C;">소프트코어</div>
+                        </div>
+                    </div>
+                </div>            
+            </div> <!-- search-tab end -->
+                
+            <div id="item-filter">
+                <div id="filter-title">
+                    <span style="color: #8D795C; font-size: 15px;">아이템 필터</span>
+                </div>
+                <div class="filter-box" style="margin-top: -5px;">
+                    <div class="filter-box1">
+                        <div class="filter-box">
+                            <div style="flex: 1;">
+                                <div style="position: relative;">
+                                    <div style="position: relative; width: 100%">
+                                    
+                                    
+                                        <div class="search-window">
+                                        <span>
+                                        	<form>
+                                            <input id="inputBox" name="item_name" type="text" placeholder="아이템 이름을 검색하세요.">
+                                            <button id="inputBox_x" type="reset">
+                                            	<img src="../resources/images/X.png" alt="버튼 이미지" style="width: 15px; height: 15px;">
+                                            </button>
+                                            <input type="image" src="../resources/images/search_sell.png" value="submit" onclick="send(this.form);" class="search-btn">
+                                        	</form>
+                                        </span>   
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="flex: 1;">
+                            
+                                    <div class="option-filter">
+                                        <div id="option-filter-title">
+						                	<span style="color: #8D795C; font-size: 15px;">옵션 필터</span>
+						                </div>
+                                        <input id="inputBox2" type="text" placeholder="원하시는 옵션을 선택해주세요. (선택하신 옵션은 자동으로 필터에 등록됩니다.)">
+                                        <!-- 검색 기능 넣기 -->
+                                    </div>
+                            </div>                
+                        </div>
+                        
 
+                        <!-- class="dropdown-menu" 속성 충돌 정환-선일 -->
+                        <div class="sort-tab">
+                                               
+                            <div class="sort-element">
+								<div class="dropdown">
+									<input type="hidden" name="item_rarity" id="item_rarity">
+									<input id="dropdown-btn0" class="btn dropdown-toggle" type="button"
+										data-toggle="dropdown" value="품질">
+									<ul class="dropdown-menu d-list" id="rarity">
+										<li><a>유니크</a></li>
+										<li><a>세트</a></li>
+									</ul>
+								</div>
+                            </div>
+                            
+                            
+							<script>
+								// jQuery를 사용하여 문서가 준비되면 실행될 함수 설정
+								$(document).ready(function() {
+									// 드롭다운 메뉴의 각 항목을 클릭했을 때의 처리
+									$('#rarity a').click(function() {
+										// 클릭된 항목의 텍스트를 가져와서 버튼의 value로 설정
+										var selectedText = $(this).text();
+										$('#item_rarity').val(selectedText);
+										$('#dropdown-btn0').val(selectedText);
+									});
+								});
+							</script>
+                            
+                            
+                            
+                            <div class="sort-element">
+								<div class="dropdown">
+									<input id="dropdown-btn1" class="btn dropdown-toggle" type="button"
+										data-toggle="dropdown" value="무기">
+									<ul class="dropdown-menu d-list" id="weapon-type">
+										<li><a>한손검</a></li>
+										<li><a>양손검</a></li>
+										<li><a>한손도끼</a></li>
+										<li><a>양손도끼</a></li>
+										<li><a>한손둔기</a></li>
+										<li><a>양손둔기</a></li>
+										<li><a>대거</a></li>
+										<li><a>셉터</a></li>
+										<li><a>완드</a></li>
+										<li><a>재벌린</a></li>
+										<li><a>투척무기</a></li>
+										<li><a>폴암</a></li>
+										<li><a>스피어</a></li>
+										<li><a>스태프</a></li>
+										<li><a>보우</a></li>
+										<li><a>크로스보우</a></li>
+									</ul>
+								</div>
+													
+							<script>
+								// jQuery를 사용하여 문서가 준비되면 실행될 함수 설정
+								$(document).ready(function() {
+									// 드롭다운 메뉴의 각 항목을 클릭했을 때의 처리
+									$('#weapon-type a').click(function() {
+										// 클릭된 항목의 텍스트를 가져와서 버튼의 value로 설정
+										var selectedText = $(this).text();
+										$('#item_type').val(selectedText);
+										$('#dropdown-btn1').val(selectedText);
+										$('#dropdown-btn2').val("방어구");
+									});
+								});
+							</script>
+								
+                        <form>
+								
+                            </div>
 
-		<!-- 아이템 검색창 -->
- 	    <div id="search">
-	    	<form>
-          	  <input type="text" id="inputBox" name="item_name" class="form-control search" placeholder="검색창"/>
-			  <input type="submit" onclick="send(this.form)" value="검색" id="search_chang">
-			</form>
-        </div>
+                            <div class="sort-element">
+								<div class="dropdown">
+									<input type="hidden" name="item_type" id="item_type">
+									<input id="dropdown-btn2" class="btn dropdown-toggle" type="button"
+										data-toggle="dropdown" value="방어구">
+									<ul class="dropdown-menu d-list" id="armor-type">
+										<li><a>투구</a></li>
+										<li><a>갑옷</a></li>
+										<li><a>방패</a></li>
+										<li><a>장갑</a></li>
+										<li><a>부츠</a></li>
+										<li><a>벨트</a></li>
+									</ul>
+								</div>
+                            </div>
+                            
+                            
+							<script>
+								// jQuery를 사용하여 문서가 준비되면 실행될 함수 설정
+								$(document).ready(function() {
+									// 드롭다운 메뉴의 각 항목을 클릭했을 때의 처리
+									$('#armor-type a').click(function() {
+										// 클릭된 항목의 텍스트를 가져와서 버튼의 value로 설정
+										var selectedText = $(this).text();
+										$('#item_type').val(selectedText);
+										$('#dropdown-btn2').val(selectedText);
+										$('#dropdown-btn1').val("무기");
+									});
+								});
+							</script>
+							
+							
+                            <div class="sort-element">
+								<div class="dropdown">
+									<input type="hidden" name="item_grade" id="item_grade">
+									<input id="dropdown-btn3" class="btn dropdown-toggle" type="button"
+										data-toggle="dropdown" value="등급">
+									<ul class="dropdown-menu d-list" id="grade-type">
+										<li><a>노멀</a></li>
+										<li><a>익셉셔널</a></li>
+										<li><a>엘리트</a></li>
+									</ul>
+								</div>
+                            </div>
+                            
+                            
+							<script>
+								// jQuery를 사용하여 문서가 준비되면 실행될 함수 설정
+								$(document).ready(function() {
+									// 드롭다운 메뉴의 각 항목을 클릭했을 때의 처리
+									$('#grade-type a').click(function() {
+										// 클릭된 항목의 텍스트를 가져와서 버튼의 value로 설정
+										var selectedText = $(this).text();
+										$('#item_grade').val(selectedText);
+										$('#dropdown-btn3').val(selectedText);
+									});
+								});
+							</script>
+							
+							
+							<div class="sort-element">
+								<div class="dropdown">
+									<input type="hidden" name="item_shot" id="item_shot">
+									<input id="dropdown-btn4" class="btn dropdown-toggle" type="button"
+										data-toggle="dropdown" value="소켓">
+									<ul class="dropdown-menu d-list" id="socket">
+										<li><a>0</a></li>
+										<li><a>1</a></li>
+										<li><a>2</a></li>
+										<li><a>3</a></li>
+										<li><a>4</a></li>
+										<li><a>5</a></li>
+										<li><a>6</a></li>
+									</ul>
+								</div>
+                            </div>
+                            
+                            
+							<script>
+								// jQuery를 사용하여 문서가 준비되면 실행될 함수 설정
+								$(document).ready(function() {
+									// 드롭다운 메뉴의 각 항목을 클릭했을 때의 처리
+									$('#socket a').click(function() {
+										// 클릭된 항목의 텍스트를 가져와서 버튼의 value로 설정
+										var selectedText = $(this).text();
+										$('#item_shot').val(selectedText);
+										$('#dropdown-btn4').val(selectedText);
+									});
+								});
+							</script>
+							
+							
+                            <div class="sort-element">
+								<div class="dropdown">
+									<input type="hidden" name="item_im" id="item_im">
+									<input id="dropdown-btn5" class="btn dropdown-toggle" type="button"
+										data-toggle="dropdown" value="수리여부">
+									<ul class="dropdown-menu d-list" id="im">
+										<li><a>수리가능</a></li>
+										<li><a>수리불가</a></li>
+									</ul>
+								</div>
+                            </div>
+                            
+                            
+							<script>
+								// jQuery를 사용하여 문서가 준비되면 실행될 함수 설정
+								$(document).ready(function() {
+									// 드롭다운 메뉴의 각 항목을 클릭했을 때의 처리
+									$('#im a').click(function() {
+										// 클릭된 항목의 텍스트를 가져와서 버튼의 value로 설정
+										var selectedText = $(this).text();
+										$('#item_im').val(selectedText);
+										$('#dropdown-btn5').val(selectedText);
+									});
+								});
+							</script>
+							
+							
+                            <div class="Initialization">
+                                <input type="button" value="↻ 초기화" onclick="location.href='items/list.do'">
+                            </div>                            
+                        </div>
+                        
+                        <div class="sort-tab">
+                            <div class="su-search">
+	                        	<div id="su-search-title">
+	                    			<span style="color: #8D795C; font-size: 13px;">옵션필터 1</span>
+	               				</div>
+                                <input id="itemName" name="item_name" type="text" placeholder="옵션명">
+                                <input id="su-search-input2" name="item_name_val" type="text" placeholder="옵션수치">
+                            </div>
+                            <div class="su-search">
+	                        	<div id="su-search-title">
+	                    			<span style="color: #8D795C; font-size: 13px;">옵션필터 2</span>
+	               				</div>
+                                <input id="itemName2" name="item_name2" type="text" placeholder="옵션명">
+                                <input id="su-search-input2" name="item_name_val2" type="text" placeholder="옵션수치">
+                            </div>
+                            <div class="su-search">
+	                        	<div id="su-search-title">
+	                    			<span style="color: #8D795C; font-size: 13px;">옵션필터 3</span>
+	               				</div>
+                                <input id="itemName3" name="item_name3" type="text" placeholder="옵션명">
+                                <input id="su-search-input2" name="item_name_val3" type="text" placeholder="옵션수치">
+                            </div>
+                            
+                            <div class="su-search">
+	                        	<div id="su-search-title">
+	                    			<span style="color: #8D795C; font-size: 13px;">옵션필터 4</span>
+	               				</div>
+                                <input id="itemName4" name="item_name4" type="text" placeholder="옵션명">
+                                <input id="su-search-input2" name="item_name_val4" type="text" placeholder="옵션수치">
+                            </div>
+                            <div class="su-search">
+	                        	<div id="su-search-title">
+	                    			<span style="color: #8D795C; font-size: 13px;">옵션필터 5</span>
+	               				</div>
+                                <input id="itemName5" name="item_name5" type="text" placeholder="옵션명">
+                                <input id="su-search-input2" name="item_name_val5" type="text" placeholder="옵션수치">
+                            </div>
+                            <div class="su-search">
+	                        	<div id="su-search-title">
+	                    			<span style="color: #8D795C; font-size: 13px;">옵션필터 6</span>
+	               				</div>
+                                <input id="itemName6" name="item_name6" type="text" placeholder="옵션명">
+                                <input id="su-search-input2" name="item_name_val6" type="text" placeholder="옵션수치">
+                            </div>
+                            	
+                            
+                            
+                            
+                            <div class="sort-btn">
+                                <input type="button" value="필터검색" onclick="option_search(this.form);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- item-filter end -->
+            
+        	
+        </form>    
+            
+        </div> <!-- item-search 정환 end -->
+
         
-        <!-- 옵션 검색창 -->
- 	    <div id="search2">
-	    	<form>
-          	  <input type="text" id="inputBox2" name="item_option" class="form-control search" placeholder="검색창"/>
-			  <!-- <input type="submit" onclick="send2(this.form)" value="검색" id="search_chang"> -->
-			</form>
-        </div>
-        
-        <input type="hidden" >
         
         
-        <form>
-        	<input name="item_name" id="itemName" placeholder="옵션명">
-        	<input name="item_name_val" placeholder="옵션수치">
-        	
-        	<input name="item_name2" id="itemName2" placeholder="옵션명2">
-        	<input name="item_name_val2" placeholder="옵션수치2"><br>
-        	
-        	
-        	<input name="item_name3" id="itemName3" placeholder="옵션명3">
-        	<input name="item_name_val3" placeholder="옵션수치3">
-        	
-        	<input name="item_name4" id="itemName4" placeholder="옵션명4">
-        	<input name="item_name_val4" placeholder="옵션수치4"><br>
-        	
-        	<input name="item_name5" id="itemName5" placeholder="옵션명5">
-        	<input name="item_name_val5" placeholder="옵션수치5">
-        	
-        	<input name="item_name6" id="itemName6" placeholder="옵션명6">
-        	<input name="item_name_val6" placeholder="옵션수치6"><br>
-        	
-        	<input name="item_name7" id="itemName7" placeholder="아이템명">
-        	
-        	<input type="button" value="검색" onclick="option_search(this.form);">     
-        	<select id="item_type" name="item_type">
-        		<option value="양손검">양손검</option>
-        		<option value="투구">투구</option>
-        		<option value="갑옷">갑옷</option>
-        		<option value="방패">방패</option>
-        		<option value="장갑">장갑</option>
-        		<option value="허리띠">허리띠</option>
-        		<option value="신발">신발</option>
-        	</select>  
-        	<select id="item_grade" name="item_grade">
-        		<option value="익셉셔널">익셉셔널</option>
-        		<option value="노멀">노멀</option>
-        		<option value="엘리트">엘리트</option>
-        	</select>   
-        	<select id="item_shot" name="item_shot">
-        		<option value="0">0</option>
-        		<option value="1">1</option>
-        		<option value="2">2</option>
-        		<option value="3">3</option>
-        		<option value="4">4</option>
-        	</select>   
-        	<select id="item_im" name="item_im">
-        		<option value="수리불가">수리불가</option>
-        		<option value="수리가능">수리가능</option>
-        	</select>   
-        </form>
-        
-        <div id="item-box-advertisement">
-        	<img src="https://i.ibb.co/9WWsngp/Kakao-Talk-20240724-144334979.jpg" alt="광고">
-        </div>
         
         
         <!-- item head -->
@@ -666,10 +912,11 @@ function downArrow2() {
 				<div id="item_sell1">
 					<img class="usercard-image" src="https://image.chaoscube.co.kr/new/user/367949/profile/b6478d67-9a45-46da-8910-f9f74efcaa18.jpg"> 
 					<img class="usercard-grade" src="https://i.ibb.co/BNKG8b4/image.jpg">
-					<span class="usercard-name"><b>블랙마린</b></span>
-					<a class="btn-3">&ensp;일반판매&ensp;</a>
+					<span class="usercard-name"><b>${ items.mem_name }</b></span>
+						<a class="btn-3">&ensp;즉시구매&ensp;</a>
+						<a class="btn-3">&ensp;경매&ensp;</a>
 					<!-- 판매진행 여부 -->
-					<a class="btn-4">&ensp;판매 중&ensp;</a>
+					<a class="btn-4">&ensp;판매중&ensp;</a>
 				</div>
 				<hr>
 				<div id="item_sell2">
@@ -678,11 +925,9 @@ function downArrow2() {
 				<div id="item_sell3">
 					<span class="item_clock">등록</span>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<span class="item_clock2">2024.07.20 15:35</span><br>
+					<span class="item_clock2">${ fn:substring(items.a_regtime,0,19) }</span><br>
 					<span class="item_clock">종료예정</span>
-					<span class="item_clock2">2024.07.27 15:35</span><br>
-					<span class="item_clock">판매수량</span>
-					<span class="item_clock2">10EA</span><br>
+					<span class="item_clock2">2024.07.26</span>
 				</div>
 				<hr>
 				<div id="usercard-text2">
@@ -693,20 +938,39 @@ function downArrow2() {
 						<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
 					</div>
 					<div id="usercard-cp3">
-						<span>판매가</span>
+						<span>즉시 구매가</span>
 					</div>
 					<div id="usercard-cp4">
 						<span></span>
 					</div>
 					<div id="usercard-cp5">
-						<span><fmt:formatNumber type="currency" value="118000" currencySymbol=""/></span>
+						<span><fmt:formatNumber type="currency" value="${ items.a_direct_price }" currencySymbol=""/></span>
 					</div>
 					<div id="usercard-cp6">
 						<span>CP</span>
 					</div>
 				</div>
+				<div id="usercard-cp">
+					<div id="usercard-cp2">
+						<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
+					</div>
+					<div id="usercard-cp3">
+						<span>현재 입찰가</span>
+					</div>
+					<div id="usercard-cp4">
+						<span></span>
+					</div>
+					<div id="usercard-cp5">
+						<span><fmt:formatNumber type="currency" value="${ items.a_initial_price }" currencySymbol=""/></span>
+					</div>
+					<div id="usercard-cp6">
+						<span>CP</span>
+					</div>
+				</div>
+				
 				<div id="usercard-btn">
-					<button>자세히보기 →</button>
+					<input type="button" value="자세히보기 →" 
+					onclick="location.href='bid_reg_form.do?item_idx=${ items.item_idx }'">
 				</div>
 			</div>
 </div>
@@ -716,6 +980,35 @@ function downArrow2() {
 		<div style="text-align:center; margin-top:20px;">
 			${ pageMenu }
 		</div>
+		
+				<div id="footer">
+        <div id="footer-tab">
+            <div class="footer-tab-menu">
+                <span><a href="#">카오스큐브</a>&emsp;&emsp;|</span>
+                <span>&emsp;&emsp;<a href="#">제휴문의</a>&emsp;&emsp;|</span>
+                <span>&emsp;&emsp;<a href="#">이용약관</a>&emsp;&emsp;|</span>
+                <span>&emsp;&emsp;<a href="#">개인정보 처리방침</a>&emsp;&emsp;|</span>
+                <span>&emsp;&emsp;<a href="#">청소년 보호정책</a>&emsp;</span>
+                
+                <!-- 토글메뉴넣기  -->
+                <select>                  
+                    <option>가이드</option>
+                    <option>cp란 무엇인가?</option>
+                    <option>cp거래 시 유의사항</option>
+                    <option>cp 거래완료 안내</option>
+                    <option>경험치/cp 획득</option>
+                </select>
+                <select>                  
+                    <option>안전거래 서비스</option>
+                    <option>안전거래 주의사항</option>
+                    <option>더치트 전화번호 조회</option>
+                    <option>사기 유형 및 대처법</option>
+                    <option>사이버 수사대</option>
+                </select>                         
+            </div>        
+        </div>
+        <hr>
+    </div><!-- end - footer 정환 -->
 
 </body>
 </html>
