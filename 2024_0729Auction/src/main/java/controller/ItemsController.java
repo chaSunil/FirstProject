@@ -418,10 +418,13 @@ public class ItemsController {
 	}
 	
 	
+	
+	
+	// 옥션에 참가하면 실행되는 로직
 	@RequestMapping("items/auction_check.do")
 	public String auction_check(int bidding_point, int a_idx, int item_idx,
 			int gumae_mem_idx, int mem_point, RedirectAttributes ra,
-			int a_initial_price, int auction_mem_idx) {
+			int a_initial_price, int auction_mem_idx, String gumae_mem_name) {
 		
 		if(mem_point < bidding_point) {
 				
@@ -438,6 +441,7 @@ public class ItemsController {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("item_idx", item_idx);
 			map.put("gumae_mem_idx", gumae_mem_idx);
+			map.put("gumae_mem_name", gumae_mem_name);
 			map.put("bidding_point", bidding_point);
 			
 			// 해당 item_idx를 찾아와서 구매자 idx와 입찰액을 넣는다.
@@ -491,6 +495,7 @@ public class ItemsController {
 			map.put("item_idx", item_idx);
 			map.put("gumae_mem_idx", gumae_mem_idx);
 			map.put("bidding_point", bidding_point);
+			map.put("gumae_mem_name", gumae_mem_name);
 			
 			
 			// 해당 item_idx를 찾아와서 구매자 idx와 입찰액을 넣는다.
@@ -511,7 +516,55 @@ public class ItemsController {
 			
 		}
 		
+	}
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	// 경매 낙찰 완료
+	@RequestMapping("items/auction_check")
+	public String gumae_check(int mem_point, int item_idx,
+			int panmae_mem_idx, int gumae_mem_idx, int a_direct_price, int a_idx,
+			RedirectAttributes ra, int a_initial_price) {
+		
+		
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("a_initial_price", a_initial_price);
+		map.put("gumae_mem_idx", gumae_mem_idx);
+		
+		
+		Map<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("a_initial_price", a_initial_price);
+		map2.put("panmae_mem_idx", panmae_mem_idx);
+		
+		
+		// 구매를 성공했을때 a_sledding을 n으로 표시해줘서 구매완료했다고 표시
+		int res = auction_dao.updateGumae(item_idx);
+		
+		// 구매 완료시 member_point 가격 그대로 차감하기
+		int res3 = member_dao.update_point_minus(map);
+		
+		// 구매 완료시 member_point 가격 그대로 올려주기
+		int res4 = member_dao.update_point_plus(map2);
+		
+		
+		return "redirect:list.do";
+	
+	
+	
 	}	
+		
+		
+		
+		
+		
+
 	
 	
 	

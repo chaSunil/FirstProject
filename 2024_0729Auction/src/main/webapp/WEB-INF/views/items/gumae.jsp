@@ -65,18 +65,6 @@ function showMessage() {
 			return;
 		}
 		
-/* 		$.ajax({
-			url		:	"gumae_check.do",
-			data	:	{"check_point":check_point},
-			success	:	function(res_data){
-				
-				location.reload(); // 페이지를 새로고침
-			},
-			error	:	function(err){
-				alert(err.responseText)
-			}
-		}); */
-		
 		
 		location.href="../items/gumae_check.do?item_idx=" + item_idx + "&a_direct_price=" + a_direct_price +
 				"&gumae_mem_idx=" + gumae_mem_idx + "&panmae_mem_idx=" + panmae_mem_idx + 
@@ -98,9 +86,15 @@ function showMessage() {
 		const a_initial_price = $("#a_initial_price").val();
 		const gumae_mem_idx = $("#gumae_mem_idx").val();
 		const auction_mem_idx = $("#auction_mem_idx").val();
+		const gumae_mem_name = $("#gumae_mem_name").val();
 		
 		if(confirm("정말 입찰하시겠습니까? 입찰시 가지고 있는 DP가 차감이 됩니다.") == false) {
 			alert("입찰이 취소되었습니다.");
+			return;
+		}
+		
+		if(gumae_mem_idx == panmae_mem_idx) {
+			alert("구매자 계정이 판매자 계정과 동일하여, 입찰이 불가능합니다.");
 			return;
 		}
 		
@@ -111,7 +105,7 @@ function showMessage() {
 		
 		location.href = "../items/auction_check.do?bidding_point=" + bidding_point  + "&a_idx=" + a_idx +
 				"&item_idx=" + item_idx + "&mem_point=" + mem_point + "&a_initial_price=" + a_initial_price +
-				"&gumae_mem_idx=" + gumae_mem_idx + "&auction_mem_idx=" + auction_mem_idx;
+				"&gumae_mem_idx=" + gumae_mem_idx + "&auction_mem_idx=" + auction_mem_idx + "&gumae_mem_name=" + gumae_mem_name;
 		
 /* 		$.ajax({
 			url		:	"bid_reg_data.do",
@@ -223,8 +217,9 @@ function showMessage() {
 	                &nbsp;
 	                <a href="#">채팅</a>
 	                <a id="who" onclick="blink();" style="cursor:pointer;">
-	                <c:if test="${ user.mem_name != null }">
-	                	<img src="../resources/images/who.PNG">${ sessionScope.user.mem_name }
+           	        <c:if test="${ user.mem_name != null }">
+                	<img src="../resources/images/who.PNG">${ sessionScope.user.mem_name }
+                	<a id="logout" href="../member/logout.do">로그아웃</a>
 	                </c:if>
 	                <c:if test="${ user.mem_name == null }">
 	                	<img src="../resources/images/who.PNG">비회원
@@ -321,17 +316,21 @@ function showMessage() {
 즉시구매가<input type="text" id="a_direct_price" value="${ items.a_direct_price }">
 <!-- 구매자 idx 가져오기 -->
 현재 구매자 idx<input type="text" id="gumae_mem_idx" value="${ user.mem_idx }">
+
+<!-- 구매자 name 가져오기 -->
+현재 구매자 이름 idx<input type="text" id="gumae_mem_name" value="${ user.mem_name }">
+
 <!-- 판매자 idx 가져오기 -->
 판매자 idx<input type="text" id="panmae_mem_idx" value="${ items.mem_idx }">
 <!-- 구매자가 가지고 있는 금액 가져오기 -->
-<input type="text" id="mem_point" value="${ user.mem_point }">
-<input type="text" id="a_idx" value="${ items.a_idx }">
-<input type="text" id="item_idx" value="${ items.item_idx }">
+가지고 있는 포인트<input type="text" id="mem_point" value="${ user.mem_point }">
+거래번호 <input type="text" id="a_idx" value="${ items.a_idx }">
+아이템 번호 <input type="text" id="item_idx" value="${ items.item_idx }">
 
-<input type="text" id="auction_mem_idx" value="${ items.gumae_mem_idx }">
+옥션 최근 입찰자<input type="text" id="auction_mem_idx" value="${ items.gumae_mem_idx }">
 
 
-<input type="text" id="a_initial_price" value="${ items.a_initial_price }">
+옥션 입찰가<input type="text" id="a_initial_price" value="${ items.a_initial_price }">
 
 
 
@@ -472,6 +471,27 @@ function showMessage() {
 					</div>
 					<div id="usercard-cp5">
 						<span><fmt:formatNumber type="currency" value="${ items.a_initial_price }" currencySymbol=""/></span>
+					</div>
+					<div id="usercard-cp6">
+						<span>CP</span>
+					</div>
+					<div id="usercard-cp7">
+						<input type="button" class="btn btn-danger" value="입찰하기"
+							onclick="bid();">
+					</div>
+				</div>
+				<div id="usercard-cp">
+					<div id="usercard-cp2">
+						<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
+					</div>
+					<div id="usercard-cp3">
+						<span>현재 입찰가</span>
+					</div>
+					<div id="usercard-cp4">
+						<span></span>
+					</div>
+					<div id="usercard-cp5">
+						<span>${ items.gumae_mem_name }</span>
 					</div>
 					<div id="usercard-cp6">
 						<span>CP</span>

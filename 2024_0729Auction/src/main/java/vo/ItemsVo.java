@@ -448,8 +448,15 @@ public class ItemsVo {
 	String	b_regtime;
 	String	b_sledding;
 	int gumae_mem_idx;
+	String gumae_mem_name;
 	
 
+	public String getGumae_mem_name() {
+		return gumae_mem_name;
+	}
+	public void setGumae_mem_name(String gumae_mem_name) {
+		this.gumae_mem_name = gumae_mem_name;
+	}
 	public int getGumae_mem_idx() {
 		return gumae_mem_idx;
 	}

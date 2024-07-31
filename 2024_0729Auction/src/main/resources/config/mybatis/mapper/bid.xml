@@ -39,6 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					sysdate,
 					'y',
 					#{ item_idx },
+					null,
 					null
 					)
     </insert>
@@ -49,6 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="update_auction_member" parameterType="Map">
         update bid
         set gumae_mem_idx = #{ gumae_mem_idx },
+        gumae_mem_name = #{ gumae_mem_name },
         b_bid_price = #{ bidding_point }
         where item_idx = #{ item_idx }
     </update>
