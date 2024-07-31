@@ -460,27 +460,54 @@ public class ItemsController {
 			
 			
 			return "redirect:../items/gumae.do?item_idx=" + item_idx + "&a_idx=" + a_idx;
+		} else {
+			
+			
+			// 입찰한 입찰자 입찰금액 마이너스
+			Map<String, Object> map3 = new HashMap<String, Object>();
+			map3.put("bidding_point", bidding_point);
+			map3.put("gumae_mem_idx", gumae_mem_idx);
+			
+			
+			int res3 = member_dao.update_point_minus_auction(map3);
+			
+			
+			
+			// 입찰취소 금액 입금
+			Map<String, Object> map4 = new HashMap<String, Object>();
+			map4.put("a_initial_price", a_initial_price);
+			map4.put("auction_mem_idx", auction_mem_idx);
+			
+			
+			
+			int res4 = member_dao.update_point_plus_auction(map4);
+			
+			
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("item_idx", item_idx);
+			map.put("gumae_mem_idx", gumae_mem_idx);
+			map.put("bidding_point", bidding_point);
+			
+			
+			// 해당 item_idx를 찾아와서 구매자 idx와 입찰액을 넣는다.
+			int res = bid_dao.update_auction_member(map);
+			// 입찰액과 판매 입찰액을 동일시 만들어준다.
+			a_initial_price = bidding_point;
+			
+			
+			// 입찰액 갱신
+			Map<String, Object> map2 = new HashMap<String, Object>();
+			map2.put("item_idx", item_idx);
+			map2.put("a_initial_price", a_initial_price);
+			
+			int res2 = auction_dao.updatePrice(map2);
+			
+			
+			return "redirect:../items/gumae.do?item_idx=" + item_idx + "&a_idx=" + a_idx;
+			
 		}
-
 		
-		
-		
-		
-		// 입찰금액 마이너스
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("bidding_point", bidding_point);
-		map.put("gumae_mem_idx", gumae_mem_idx);
-		
-		// 입찰취소 금액 입금
-		Map<String, Object> map2 = new HashMap<String, Object>();
-		map2.put("a_initial_price", a_initial_price);
-		map2.put("panmae_mem_idx", gumae_mem_idx);
-		
-		
-		
-		
-		
-		return "redirect:../items/gumae.do?item_idx=" + item_idx + "&a_idx=" + a_idx;
 	}	
 	
 	

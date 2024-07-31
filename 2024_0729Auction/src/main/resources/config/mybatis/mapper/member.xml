@@ -68,6 +68,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    		where mem_idx = #{ panmae_mem_idx }
    </update>
    
+   
+   <!-- 입찰자 금액 차감 -->
+   <update id="update_point_minus_auction" parameterType="Map">
+   		update member set mem_point= mem_point - #{ bidding_point }
+   		where mem_idx = #{ gumae_mem_idx }
+   </update>
+   
+   
+   <!-- 입찰자 취소 금액 추가 -->
+   <update id="update_point_plus_auction" parameterType="Map">
+   		update member set mem_point= mem_point + #{ a_initial_price }
+   		where mem_idx = #{ auction_mem_idx }
+   </update>
+   
 </mapper>
 
 
