@@ -18,6 +18,8 @@
 <link rel="stylesheet" href="../resources/css/items_list.css">
 <link rel="stylesheet" href="../resources/css/main.css">
 
+
+
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <!-- 검색기능 넣기 이이이이이이이 선일작업 -->
@@ -307,7 +309,18 @@ function downArrow2() {
 	                &nbsp;
 	                <a href="#">채팅</a>
 	                <a id="who" onclick="blink();" style="cursor:pointer;">
+	                <c:if test="${ user.mem_name != null }">
 	                	<img src="../resources/images/who.PNG">${ sessionScope.user.mem_name }
+	                </c:if>
+	                <c:if test="${ user.mem_name == null }">
+	                	<img src="../resources/images/who.PNG">비회원
+	                </c:if>
+	                </a>
+	                <a id="who" onclick="blink();" style="cursor:pointer;">
+	                <c:if test="${ user.mem_name != null }">
+	                	<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
+	                	보유 CP : <span><fmt:formatNumber type="currency" value="${ sessionScope.user.mem_point }" currencySymbol=""/></span>
+	                </c:if>
 	                </a>
 	               
 	            </div>
@@ -931,7 +944,6 @@ function downArrow2() {
                     <img class="usercard-grade" src="https://i.ibb.co/BNKG8b4/image.jpg">
                     <span class="usercard-name"><b>${ items.mem_name }</b></span>
                         <a class="btn-3">&ensp;즉시구매&ensp;</a>
-                        <a class="btn-3">&ensp;경매&ensp;</a>
                     <!-- 판매진행 여부 -->
                     
                     
@@ -959,7 +971,7 @@ function downArrow2() {
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="item_clock2">${ fn:substring(items.a_regtime,0,19) }</span><br>
                     <span class="item_clock">종료예정</span>
-                    <span class="item_clock2">2024.07.26</span>
+                    <span class="item_clock2">${ fn:substring(items.a_regtime,0,19) }span>
                 </div>
                 <hr>
                 <div id="usercard-text2">
@@ -1001,8 +1013,14 @@ function downArrow2() {
                 </div>
                 
                 <div id="usercard-btn">
+                	<c:if test="${ items.a_sledding == 'y' }">
                     <input type="button" value="자세히보기 →" 
                     onclick="location.href='gumae.do?item_idx=${ items.item_idx }&a_idx=${ items.a_idx }'">
+                    </c:if>
+                	<c:if test="${ items.a_sledding == 'n' }">
+                    <input type="button" value="거래완료된 아이템 입니다." 
+                    onclick="">
+                    </c:if>
                 </div>
             </div>
 </div>

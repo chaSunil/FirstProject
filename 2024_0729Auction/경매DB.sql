@@ -50,6 +50,9 @@ drop view list_view
 		)
 		where no between 1 and 5
 		
+		
+select * from auction
+		
 
 
 */

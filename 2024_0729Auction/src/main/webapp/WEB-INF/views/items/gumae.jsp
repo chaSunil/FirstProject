@@ -2,7 +2,12 @@
     pageEncoding="UTF-8"%>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>   
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +16,32 @@
 <link rel="stylesheet" href="../resources/css/bid_reg_form.css">
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+<script type="text/javascript">
+
+// jQuery 초기화
+$(document).ready(function(){
+	
+	//showMessage();
+	setTimeout(showMessage,100); // 0.1초후에 메시지 띄워라
+	
+}); // end - ready()
+
+function showMessage() {
+	
+	if("${ param.reason == 'fail_gumae' }" == "true") {
+		alert("구매에 필요한 DP가 부족합니다. 확인해주세요!")
+		
+	}
+	
+	if("${ param.reason == 'fail_auction' }" == "true") {
+		alert("입찰에 필요한 DP가 부족합니다. 확인해주세요!")
+		
+	}
+}
+
+</script>
+
 
 <script type="text/javascript">	
 	function buy(item_idx) {
@@ -21,7 +52,13 @@
 		const gumae_mem_idx = $("#gumae_mem_idx").val();
 		const panmae_mem_idx = $("#panmae_mem_idx").val();
 		const mem_point = $("#mem_point").val();
+		const a_idx = $("#a_idx").val();
 		
+		
+		if(confirm("정말 구매하시겠습니까? 구매시 가지고 있는 DP가 차감이 됩니다.") == false) {
+			alert("구매가 취소되었습니다.");
+			return;
+		}
 		
 /* 		$.ajax({
 			url		:	"gumae_check.do",
@@ -36,18 +73,33 @@
 		}); */
 		
 		
-		location.href="../items/gumae_check?item_idx=" + item_idx + "&a_direct_price=" + a_direct_price +
-				"&gumae_mem_idx=" + gumae_mem_idx + "&panmae_mem_idx=" + panmae_mem_idx + "&mem_point=" + mem_point;
+		location.href="../items/gumae_check.do?item_idx=" + item_idx + "&a_direct_price=" + a_direct_price +
+				"&gumae_mem_idx=" + gumae_mem_idx + "&panmae_mem_idx=" + panmae_mem_idx + 
+				"&mem_point=" + mem_point + "&a_idx=" + a_idx;
 		//location.href="../items/gumae_check" + a_direct_price;
 	}
+	
+	
+	
 	
 	
 	
 	function bid() {
 		
 	const bidding_point = $("#additional-amount").val();
+	const a_idx = $("#a_idx").val();
+	const item_idx = $("#item_idx").val();
+	const mem_point = $("#mem_point").val();
+	
+	if(confirm("정말 입찰하시겠습니까? 입찰시 가지고 있는 DP가 차감이 됩니다.") == false) {
+		alert("입찰이 취소되었습니다.");
+		return;
+	}
+	
+	location.href = "../items/auction_check.do?bidding_point=" + bidding_point  + "&a_idx=" + a_idx +
+			"&item_idx=" + item_idx + "&mem_point=" + mem_point;
 		
-		$.ajax({
+/* 		$.ajax({
 			url		:	"bid_reg_data.do",
 			data	:	{"bidding_point":bidding_point},
 			success	:	function(res_data){
@@ -57,7 +109,7 @@
 			error	:	function(err){
 				alert(err.responseText)
 			}
-		});
+		}); */
 	}
 	
 </script>
@@ -108,13 +160,7 @@
 </head>
 <body>
 
-<input type="hidden" id="a_direct_price" value="${ items.a_direct_price }">
-<!-- 구매자 idx 가져오기 -->
-<input type="hidden" id="gumae_mem_idx" value="${ sessionScope.user.mem_idx }">
-<!-- 판매자 idx 가져오기 -->
-<input type="hidden" id="panmae_mem_idx" value="${ items.mem_idx }">
-<!-- 구매자가 가지고 있는 금액 가져오기 -->
-<input type="hidden" id="mem_point" value="${ user.mem_point }">
+
 
 
 
@@ -163,8 +209,18 @@
 	                &nbsp;
 	                <a href="#">채팅</a>
 	                <a id="who" onclick="blink();" style="cursor:pointer;">
+	                <c:if test="${ user.mem_name != null }">
 	                	<img src="../resources/images/who.PNG">${ sessionScope.user.mem_name }
+	                </c:if>
+	                <c:if test="${ user.mem_name == null }">
+	                	<img src="../resources/images/who.PNG">비회원
+	                </c:if>
 	                </a>
+	                <a id="who" onclick="blink();" style="cursor:pointer;">
+	                <c:if test="${ user.mem_name != null }">
+	                	<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
+	                	보유 CP : <span><fmt:formatNumber type="currency" value="${ sessionScope.user.mem_point }" currencySymbol=""/></span>
+	                </c:if>
 	               
 	            </div>
 	            
@@ -232,11 +288,11 @@
 			<div class="item-info">
 				<div id="selltime-info">
 					<div id="reg-start" class="reg">
-						판매시작 &nbsp;&nbsp;&nbsp;&nbsp; 2024.07.28.19.37.30					
+						판매시작 &nbsp;&nbsp;&nbsp;&nbsp; ${ items.a_regtime }			
 					</div>
 					<hr>
 					<div id="reg-end" class="reg">
-						판매종료  &nbsp;&nbsp;&nbsp;&nbsp;  
+						판매종료  &nbsp;&nbsp;&nbsp;&nbsp;  ${ items.a_selltime }	
 						<div id="time" style="display: inline-block;">0${ items.a_selltime }분00초</div>
 						남음
 					</div>
@@ -244,6 +300,19 @@
 
 
 
+
+
+<div id="countdown"></div>
+
+<input type="text" id="a_direct_price" value="${ items.a_direct_price }">
+<!-- 구매자 idx 가져오기 -->
+<input type="text" id="gumae_mem_idx" value="${ sessionScope.user.mem_idx }">
+<!-- 판매자 idx 가져오기 -->
+<input type="text" id="panmae_mem_idx" value="${ items.mem_idx }">
+<!-- 구매자가 가지고 있는 금액 가져오기 -->
+<input type="text" id="mem_point" value="${ user.mem_point }">
+<input type="text" id="a_idx" value="${ items.a_idx }">
+<input type="text" id="item_idx" value="${ items.item_idx }">
 
 
 

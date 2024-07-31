@@ -425,6 +425,7 @@ input[type='button'] {
 	height: 30px;
 	color: white;
 	border-radius: .25rem;
+	border: 0px;
 }
 
 #bid-btn{

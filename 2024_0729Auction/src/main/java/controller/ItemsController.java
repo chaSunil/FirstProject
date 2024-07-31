@@ -10,9 +10,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import dao.AuctionDao;
 import dao.BidDao;
@@ -34,7 +36,7 @@ public class ItemsController {
 	ItemsDao items_dao;
 	
 	@Autowired
-	HttpSession sesion;
+	HttpSession session;
 	
 	@Autowired
 	AuctionDao auction_dao;
@@ -251,12 +253,16 @@ public class ItemsController {
 	@RequestMapping("/items/sell_reg.do")
 	public String sell_form(String mem_id) {
 		
-		//MemberVo user = member_dao.selectOne(mem_id);
+		//MemberVo user = (MemberVo) session.getAttribute("user");
+		
+		MemberVo user = member_dao.selectOne(mem_id);
 		
 		if(mem_id == "") {
 			
 			return "items/items_list";
 		}
+		
+		session.setAttribute("user", user);
 
 		return "sell/sell_reg"; // /WEB-INF/views/ + items/items_list + .jsp
 	}
@@ -307,7 +313,8 @@ public class ItemsController {
 	
 	// 판매 등록하기
 	@RequestMapping("/items/sell_reg_data.do")
-	public String sell_reg_data(ItemsVo vo1, AuctionVo vo2) {
+	public String sell_reg_data(ItemsVo vo1, AuctionVo vo2,
+			int mem_idx, String mem_name, int mem_point) {
 		
 		int res1 = items_dao.sell_insert(vo1);
 		
@@ -315,6 +322,9 @@ public class ItemsController {
 	
 		int item_idx = vo3.getItem_idx(); 
 		vo2.setItem_idx(item_idx);
+		vo2.setMem_idx(mem_idx);
+		vo2.setMem_name(mem_name);
+		vo2.setMem_point(mem_point);
 		  
 		int res2 = auction_dao.sell_insert(vo2);
 		 	
@@ -356,13 +366,18 @@ public class ItemsController {
 	
 	@RequestMapping("items/gumae_check")
 	public String gumae_check(int mem_point, int item_idx,
-			int panmae_mem_idx, int gumae_mem_idx, int a_direct_price) {
+			int panmae_mem_idx, int gumae_mem_idx, int a_direct_price, int a_idx,
+			RedirectAttributes ra) {
 		
 		
 		// 구매가능한 금액이 부족하다면
 		if(mem_point < a_direct_price) {
 			
-			return "/items/gumae";
+			ra.addAttribute("reason", "fail_gumae");
+			
+			return "redirect:../items/gumae.do?item_idx=" + item_idx + "&a_idx=" + a_idx;
+			
+			// return "redirect:gumae.do?reason=fail_gumae
 		}
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -382,13 +397,42 @@ public class ItemsController {
 		int res3 = member_dao.update_point_minus(map);
 		
 		// 구매 완료시 member_point 가격 그대로 올려주기
-		int res4 = member_dao.update_point_minus(map2);
+		int res4 = member_dao.update_point_plus(map2);
 		
 		
 		return "redirect:list.do";
 	}
 	
 	
+	@RequestMapping("items/auction_check.do")
+	public String auction_check(int bidding_point, int a_idx, int item_idx,
+			int gumae_mem_idx, int mem_point, RedirectAttributes ra) {
+		
+		if(mem_point < bidding_point) {
+				
+			ra.addAttribute("reason", "fail_auction");
+			
+			return "redirect:../items/gumae.do?item_idx=" + item_idx + "&a_idx=" + a_idx;
+			
+			// return "redirect:gumae.do?reason=fail_auction
+		}
+		
+		// 입찰금액 마이너스
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("a_direct_price", a_direct_price);
+		map.put("gumae_mem_idx", gumae_mem_idx);
+		
+		// 입찰취소 금액 입금
+		Map<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("a_direct_price", a_direct_price);
+		map2.put("panmae_mem_idx", panmae_mem_idx);
+		
+		
+		
+		
+		
+		return "redirect:../items/gumae.do?item_idx=" + item_idx + "&a_idx=" + a_idx;
+	}	
 	
 	
 	

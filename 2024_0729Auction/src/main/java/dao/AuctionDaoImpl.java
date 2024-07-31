@@ -25,6 +25,7 @@ public class AuctionDaoImpl implements AuctionDao {
 	}
 
 
+	// 판매등록하기
 	@Override
 	public int sell_insert(AuctionVo vo2) {
 		// TODO Auto-generated method stub

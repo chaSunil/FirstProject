@@ -362,6 +362,12 @@ body {
     font-size: 18px;
     color: #c4b590;
 }
+
+#item_name-set {
+	font-size: 18px;
+	color: #00ff40;
+}
+
 hr {
     border: 0;
     height: 0.2px;
@@ -432,7 +438,8 @@ hr {
 }
 .btn-3 {
     margin-top: 7px;
-    margin-right: 3px;
+    margin-left: 25px;
+    margin-right: 6px;
     font-size: 13px;
     text-decoration: none;
     text-align: center;
@@ -453,7 +460,7 @@ hr {
     margin-top: 9px;
     font-size: 13px;
     text-decoration: none;
-    width: 65px;
+    width: 80px;
     height: 25px;
     padding: 3px;
     
@@ -559,7 +566,7 @@ hr {
 }
 #usercard-cp {
     margin: auto;
-    margin-top: 5px;
+    margin-top: 10px;
     background-color: #15171E;
     width: 350px;
     height: 30px;
@@ -593,11 +600,12 @@ hr {
 }
 #usercard-btn {
     text-align: center;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 #usercard-btn > input {
     width: 350px;
     height: 40px;
+    border: 0px;
     border-radius: 7px;
     box-shadow: 0px;
     background-color: #252830;

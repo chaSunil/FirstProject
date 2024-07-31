@@ -611,7 +611,6 @@ var $112 = $.noConflict(true);
 
 
 
-
 <!-- header 다희 코드 -->
     <div id="header">
   
@@ -681,7 +680,7 @@ var $112 = $.noConflict(true);
 	                &nbsp;
 	                <a href="#">채팅</a>
 	                <a id="who" onclick="blink();" style="cursor:pointer;">
-	                	<img src="../resources/images/who.PNG">비회원
+	                	<img src="../resources/images/who.PNG">${ user.mem_name }
 	                </a>
 	               
 	            </div>
@@ -2005,6 +2004,8 @@ var $112 = $.noConflict(true);
         			
         			
 
+        			
+
 		
 		
 		
@@ -2014,7 +2015,14 @@ var $112 = $.noConflict(true);
     		
     		        			
 				<!-- 아이템 table 공유해서 넘겨주는 공식 (어떤 테이블이여도 가능) ---중요도★10000--- -->
-			
+				
+				
+		        			<!-- user 정보 넘기기 -->
+			<input type="text" id="mem_idx" name="mem_idx" value="${ user.mem_idx }">
+			<input type="text" id="mem_name" name="mem_name" value="${ user.mem_name }">
+			<input type="text" id="mem_point" name="mem_point" value="${ user.mem_point }">
+
+				
 				<!-- ★이미지 이름 넘겨주기★ -->
 				<input type="hidden" name="item_name" value="${ vo.item_name }">
 				<!-- ★이미지 태그 넘겨주기★ -->

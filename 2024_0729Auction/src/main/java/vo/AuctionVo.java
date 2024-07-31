@@ -11,7 +11,15 @@ public class AuctionVo {
 	int		item_idx;			// 아이템 일련번호(거래번호)
 	int 	mem_idx; 			// 판매자 회원번호
 	String  mem_name;			// 판매자 이름
+	int mem_point;				// 판매자 포인트
+	
 	 
+	public int getMem_point() {
+		return mem_point;
+	}
+	public void setMem_point(int mem_point) {
+		this.mem_point = mem_point;
+	}
 	public int getA_idx() {
 		return a_idx;
 	}
