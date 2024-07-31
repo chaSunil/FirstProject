@@ -59,11 +59,14 @@ public class ItemsDao {
 		return sqlSession.selectList("items.items_list_search",item_name);
 	}
 	
-
+	
+	// 판매 아이템 등록시 사용
 	public ItemsVo selectOne() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("items.items_selectOne");
 	}
+	
+	
 	
 	// 검색한 정보 하나만 가져오기
 	public ItemsVo selectOneSellSearch(String item_name) {

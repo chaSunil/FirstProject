@@ -318,11 +318,11 @@ function showMessage() {
 
 <div id="countdown"></div>
 
-<input type="text" id="a_direct_price" value="${ items.a_direct_price }">
+즉시구매가<input type="text" id="a_direct_price" value="${ items.a_direct_price }">
 <!-- 구매자 idx 가져오기 -->
-<input type="text" id="gumae_mem_idx" value="${ user.mem_idx }">
+현재 구매자 idx<input type="text" id="gumae_mem_idx" value="${ user.mem_idx }">
 <!-- 판매자 idx 가져오기 -->
-<input type="text" id="panmae_mem_idx" value="${ items.mem_idx }">
+판매자 idx<input type="text" id="panmae_mem_idx" value="${ items.mem_idx }">
 <!-- 구매자가 가지고 있는 금액 가져오기 -->
 <input type="text" id="mem_point" value="${ user.mem_point }">
 <input type="text" id="a_idx" value="${ items.a_idx }">

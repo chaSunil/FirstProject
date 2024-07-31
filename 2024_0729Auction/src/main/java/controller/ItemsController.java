@@ -316,19 +316,24 @@ public class ItemsController {
 	public String sell_reg_data(ItemsVo vo1, AuctionVo vo2,
 			int mem_idx, String mem_name, int mem_point) {
 		
+		
+		// 판매할 아이템 등록하기
 		int res1 = items_dao.sell_insert(vo1);
 		
+		// 방금 올린 item 정보 가져오기
 		ItemsVo vo3 = items_dao.selectOne();
 	
+		// 방금 올린 아이템 + 올린 회원 정보 기입하기
 		int item_idx = vo3.getItem_idx(); 
 		vo2.setItem_idx(item_idx);
 		vo2.setMem_idx(mem_idx);
 		vo2.setMem_name(mem_name);
 		vo2.setMem_point(mem_point);
-		  
 		int res2 = auction_dao.sell_insert(vo2);
 		
 		int a_initial_price = vo2.getA_initial_price();
+		
+		
 		
 		// 판매등록시 즉시구매와 더불어 입찰까지 새로 생성하기
 		Map<String, Object> map_insert = new HashMap<String, Object>();
@@ -336,8 +341,6 @@ public class ItemsController {
 		map_insert.put("item_idx", item_idx);
 		
 		int res3 = bid_dao.insert(map_insert);
-		
-		
 		 	
 		return "redirect:list.do";
 	}

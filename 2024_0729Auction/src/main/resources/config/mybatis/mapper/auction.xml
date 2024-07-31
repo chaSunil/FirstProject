@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 									#{ a_selltime },
 									'y',
 									#{ item_idx },
-									2,
+									#{ mem_idx },
 									#{ mem_name },
 									#{ mem_point }
 								   )	
