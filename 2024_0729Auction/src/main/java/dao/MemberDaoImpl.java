@@ -87,6 +87,18 @@ public class MemberDaoImpl implements MemberDao{
 		return sqlSession.update("member.update_point_plus_auction", map4);
 	}
 	
+	// 경매 최종 정산
+	public int update_point_minus_auction_final(Map<String, Object> map) {
+		
+		return sqlSession.update("member.update_point_minus_auction_final", map);
+	}
+	
+	// 경매 최종 정산
+	public int update_point_plus_auction_final(Map<String, Object> map2) {
+		
+		return sqlSession.update("member.update_point_plus_auction_final", map2);
+	}
+	
 	
 
 }

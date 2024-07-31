@@ -533,6 +533,10 @@ public class ItemsController {
 			RedirectAttributes ra, int a_initial_price) {
 		
 		
+		// 경매를 어떻게 끝내게 할 것인가??
+		
+		
+		
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("a_initial_price", a_initial_price);
@@ -548,14 +552,13 @@ public class ItemsController {
 		int res = auction_dao.updateGumae(item_idx);
 		
 		// 구매 완료시 member_point 가격 그대로 차감하기
-		int res3 = member_dao.update_point_minus(map);
+		int res3 = member_dao.update_point_minus_auction_final(map);
 		
 		// 구매 완료시 member_point 가격 그대로 올려주기
-		int res4 = member_dao.update_point_plus(map2);
+		int res4 = member_dao.update_point_plus_auction_final(map2);
 		
 		
 		return "redirect:list.do";
-	
 	
 	
 	}	

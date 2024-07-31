@@ -82,6 +82,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    		where mem_idx = #{ auction_mem_idx }
    </update>
    
+   
+   <!-- 경매 최종 낙찰 정산 -->
+   <update id="update_point_minus_auction_final" parameterType="Map">
+   		update member set mem_point= mem_point - #{ a_direct_price }
+   		where mem_idx = #{ gumae_mem_idx }
+   </update>
+   
+   
+   <update id="update_point_plus_auction_final" parameterType="Map">
+   		update member set mem_point= mem_point + #{ a_direct_price }
+   		where mem_idx = #{ panmae_mem_idx }
+   </update>
+   
+   
+   
 </mapper>
 
 
