@@ -1,8 +1,7 @@
 package dao;
 
 import java.util.List;
-
-import org.apache.ibatis.session.SqlSession;
+import java.util.Map;
 
 import vo.MemberVo;
 
@@ -23,8 +22,8 @@ public interface MemberDao {
 
 	public int update(MemberVo vo);
 	
-	public int update_point_minus(int a_direct_price, int mem_idx);
+	public int update_point_minus(Map<String, Object> map);
 	
-	public int update_point_plus(int a_direct_price, int mem_idx);
+	public int update_point_plus(Map<String, Object> map2);
 
 }

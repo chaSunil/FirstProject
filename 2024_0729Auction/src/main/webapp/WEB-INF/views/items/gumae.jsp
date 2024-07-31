@@ -20,6 +20,7 @@
 		const a_direct_price  = $("#a_direct_price").val();
 		const gumae_mem_idx = $("#gumae_mem_idx").val();
 		const panmae_mem_idx = $("#panmae_mem_idx").val();
+		const mem_point = $("#mem_point").val();
 		
 		
 /* 		$.ajax({
@@ -36,7 +37,7 @@
 		
 		
 		location.href="../items/gumae_check?item_idx=" + item_idx + "&a_direct_price=" + a_direct_price +
-				"&gumae_mem_idx=" + gumae_mem_idx + "&panmae_mem_idx=" + panmae_mem_idx;
+				"&gumae_mem_idx=" + gumae_mem_idx + "&panmae_mem_idx=" + panmae_mem_idx + "&mem_point=" + mem_point;
 		//location.href="../items/gumae_check" + a_direct_price;
 	}
 	
@@ -109,9 +110,11 @@
 
 <input type="hidden" id="a_direct_price" value="${ items.a_direct_price }">
 <!-- 구매자 idx 가져오기 -->
-<input type="hidden" id="gumae_mem_idx" value="${ sessionScope.mem_idx }">
+<input type="hidden" id="gumae_mem_idx" value="${ sessionScope.user.mem_idx }">
 <!-- 판매자 idx 가져오기 -->
 <input type="hidden" id="panmae_mem_idx" value="${ items.mem_idx }">
+<!-- 구매자가 가지고 있는 금액 가져오기 -->
+<input type="hidden" id="mem_point" value="${ user.mem_point }">
 
 
 

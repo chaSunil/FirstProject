@@ -20,7 +20,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 									'y',
 									#{ item_idx },
 									2,
-									'일길동'
+									#{ mem_name },
+									#{ mem_point }
 								   )	
 	</insert>
 	

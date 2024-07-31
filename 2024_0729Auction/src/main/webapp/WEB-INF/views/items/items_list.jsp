@@ -259,6 +259,9 @@ function downArrow2() {
 <jsp:include page="loading.jsp"/>
 
 
+<input type="hidden" id="mem_id" value="${ user.mem_id }">
+
+
 <!-- header 다희 코드 -->
     <div id="header">
     	<div id="header-img1">
@@ -400,7 +403,7 @@ function downArrow2() {
                     </ul>
                     </div>
                     <div class="sell-btn">
-                        <a href="sell_reg.do" id="sell-link">아이템 판매하기</a>
+                        <a href="sell_reg.do?mem_id=${ user.mem_id }" id="sell-link">아이템 판매하기</a>
                     </div>    
                 </div>    
             </div>

@@ -62,25 +62,17 @@ public class MemberDaoImpl implements MemberDao{
 
 	
 	// 상품 구매시 포인트 차감 dao
-	public int update_point_minus(int a_direct_price, int mem_idx) {
+	public int update_point_minus(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("a_direct_price", a_direct_price);
-		map.put("mem_idx", mem_idx);
 		
 		return sqlSession.update("member.member_update_point_minus", map);
 	}
 	
 	// 상품 구매시 포인트 충전 dao
-	public int update_point_plus(int a_direct_price, int mem_idx) {
+	public int update_point_plus(Map<String, Object> map2) {
 		// TODO Auto-generated method stub
 		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("a_direct_price", a_direct_price);
-		map.put("mem_idx", mem_idx);
-		
-		return sqlSession.update("member.member_update_point_plus", map);
+		return sqlSession.update("member.member_update_point_plus", map2);
 	}
 	
 

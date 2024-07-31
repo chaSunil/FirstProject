@@ -249,7 +249,14 @@ public class ItemsController {
 	 
 	// 판매 form
 	@RequestMapping("/items/sell_reg.do")
-	public String sell_form() {
+	public String sell_form(String mem_id) {
+		
+		//MemberVo user = member_dao.selectOne(mem_id);
+		
+		if(mem_id == "") {
+			
+			return "items/items_list";
+		}
 
 		return "sell/sell_reg"; // /WEB-INF/views/ + items/items_list + .jsp
 	}
@@ -293,6 +300,9 @@ public class ItemsController {
 		
 		return "sell/sell_reg";
 	}
+	
+	
+	
 	
 	
 	// 판매 등록하기
@@ -345,26 +355,34 @@ public class ItemsController {
 	
 	
 	@RequestMapping("items/gumae_check")
-	public String gumae_check(MemberVo vo, int item_idx,
+	public String gumae_check(int mem_point, int item_idx,
 			int panmae_mem_idx, int gumae_mem_idx, int a_direct_price) {
 		
-		int mem_point = vo.getMem_point();
 		
 		// 구매가능한 금액이 부족하다면
-		//if(mem_point < a_direct_price) {
+		if(mem_point < a_direct_price) {
 			
-		//}
+			return "/items/gumae";
+		}
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("a_direct_price", a_direct_price);
+		map.put("gumae_mem_idx", gumae_mem_idx);
+		
+		
+		Map<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("a_direct_price", a_direct_price);
+		map2.put("panmae_mem_idx", panmae_mem_idx);
 		
 		
 		// 구매를 성공했을때 a_sledding을 n으로 표시해줘서 구매완료했다고 표시
 		int res = auction_dao.updateGumae(item_idx);
 		
-		
 		// 구매 완료시 member_point 가격 그대로 차감하기
-		int res3 = member_dao.update_point_minus(a_direct_price, gumae_mem_idx);
+		int res3 = member_dao.update_point_minus(map);
 		
 		// 구매 완료시 member_point 가격 그대로 올려주기
-		int res4 = member_dao.update_point_minus(a_direct_price, panmae_mem_idx);
+		int res4 = member_dao.update_point_minus(map2);
 		
 		
 		return "redirect:list.do";

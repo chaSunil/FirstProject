@@ -51,6 +51,9 @@ alter table member
 	add constraint ck_member_rating check(mem_rating between 0 and 5);
 
 
+   		update member set mem_point= mem_point - 10
+   		where mem_idx = 1
+
 select * from member
 
 

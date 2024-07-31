@@ -116,6 +116,10 @@ public class MemberController {
 		return "member/member_login_form";
 	}
 	
+	
+	
+	
+	
 	// 로그인
 	@RequestMapping("login.do")						// redirect할 때 넘어가는 정보들을 DS에게 전달
 	public String login(String mem_id, String mem_pwd, RedirectAttributes ra) {
@@ -143,6 +147,10 @@ public class MemberController {
 		
 		return "redirect:../items/list.do";
 	}// end : login
+	
+	
+	
+	
 	
 	// 로그아웃
 	@RequestMapping("logout.do")
