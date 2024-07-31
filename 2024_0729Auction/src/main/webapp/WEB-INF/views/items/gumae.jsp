@@ -320,7 +320,7 @@ function showMessage() {
 
 <input type="text" id="a_direct_price" value="${ items.a_direct_price }">
 <!-- 구매자 idx 가져오기 -->
-<input type="text" id="gumae_mem_idx" value="${ sessionScope.user.mem_idx }">
+<input type="text" id="gumae_mem_idx" value="${ user.mem_idx }">
 <!-- 판매자 idx 가져오기 -->
 <input type="text" id="panmae_mem_idx" value="${ items.mem_idx }">
 <!-- 구매자가 가지고 있는 금액 가져오기 -->
