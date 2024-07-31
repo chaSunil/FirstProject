@@ -55,7 +55,7 @@ function showMessage() {
 		const a_idx = $("#a_idx").val();
 		
 		if(gumae_mem_idx == panmae_mem_idx) {
-			alert("구매자 계정이 판매자 계정과 동일하여, 구매가 불가S능합니다.");
+			alert("구매자 계정이 판매자 계정과 동일하여, 구매가 불가능합니다.");
 			return;
 		}
 		
@@ -489,6 +489,7 @@ function showMessage() {
                     <input type="button" class="btn" value="1000CP" onclick="bidding_button('1000');">
                     <input type="button" class="btn" value="500CP" onclick="bidding_button('500');">
 					<input type="button" class="btn" value="100CP" onclick="bidding_button('100');">
+					<input type="button" class="btn" value="초기화" onclick="reset();">
 				</div>
 			<script>
 				// 클릭된 버튼의 값을 입력 필드에 추가하는 함수
@@ -504,6 +505,13 @@ function showMessage() {
 					// 입력 필드에 새로운 값을 설정합니다.
 					inputField.value = newValue;
 				}
+				
+				function reset() {
+					var inputField = document.getElementById('additional-amount');
+					
+					inputField.value = 0;
+				}
+				
 			</script>
 		</div>	
 	</div>

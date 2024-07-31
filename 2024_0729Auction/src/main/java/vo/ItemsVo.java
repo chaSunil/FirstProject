@@ -447,7 +447,15 @@ public class ItemsVo {
 	int 	b_bid_price;
 	String	b_regtime;
 	String	b_sledding;
+	int gumae_mem_idx;
+	
 
+	public int getGumae_mem_idx() {
+		return gumae_mem_idx;
+	}
+	public void setGumae_mem_idx(int gumae_mem_idx) {
+		this.gumae_mem_idx = gumae_mem_idx;
+	}
 	public int getB_idx() {
 		return b_idx;
 	}

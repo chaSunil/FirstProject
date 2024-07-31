@@ -85,6 +85,18 @@
 			f.a_direct_price.focus();
 			return;
 		}
+		if(a_selltime==''){
+			alert("판매기간을 설정해주세요.")
+			f.a_selltime.value="";
+			f.a_selltime.focus();
+			return;
+		}
+		
+		
+		if(a_direct_price < a_initial_price) {
+			alert("즉시구매가가 최초입찰가보다 낮으면 등록할 수 없습니다.");
+			return;
+		}
 		
 		
 	    var checkbox = document.getElementById("switch");
