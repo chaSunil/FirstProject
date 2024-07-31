@@ -162,7 +162,7 @@
 		item_image varchar2(2000) not null,	-- 이미지경로
 		item_type varchar2(100) not null,	-- 아이템타입
 		item_grade varchar2(100) not null,	-- 아이템등급
-		item_rarity varchar2(100) not null,	-- 아이템레어도
+		item_rarity varchar2(100) not null,	-- 아이템레어도 
 		item_im varchar2(100) default '수리가능',	-- 무형
 		item_shot int default '0',			-- 솟개수
 		

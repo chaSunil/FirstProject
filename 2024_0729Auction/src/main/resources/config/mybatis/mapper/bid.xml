@@ -38,9 +38,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					#{ a_initial_price },
 					sysdate,
 					'y',
-					#{ item_idx }
+					#{ item_idx },
+					null
 					)
     </insert>
+    
+    
+    	
+	<!-- 직접입력 방식 bidding_point 업데이트 -->
+    <update id="update_auction_member" parameterType="Map">
+        update bid
+        set gumae_mem_idx = #{ gumae_mem_idx },
+        b_bid_price = #{ bidding_point }
+        where item_idx = #{ item_idx }
+    </update>
 	
 	
 

@@ -32,6 +32,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	
+	<update id="update_price" parameterType="Map">
+		update auction set a_initial_price = #{ a_initial_price }
+		where item_idx = #{ item_idx }
+	</update>
+	
+	
 
 </mapper>
 

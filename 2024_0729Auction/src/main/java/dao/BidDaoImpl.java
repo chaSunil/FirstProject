@@ -37,10 +37,19 @@ public class BidDaoImpl implements BidDao {
 	
 	
 	// 처음 판매 할 당시에 입찰 까지 추가 하는 기능
+	@Override
 	public int insert(Map<String, Object> map_insert) {
 		
 		return sqlSession.insert("bid.auction_insert", map_insert);
 		
+	}
+	
+	
+	// 처음 입찰자 정보를 넣는 기능
+	@Override
+	public int update_auction_member(Map<String, Object> map) {
+		
+		return sqlSession.update("bid.update_auction_member", map);
 	}
 
 }

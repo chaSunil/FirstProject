@@ -156,7 +156,7 @@ public class MemberController {
 	@RequestMapping("logout.do")
 	public String logout() {
 		session.removeAttribute("user");
-		return "redirect:../member/list.do";
+		return "redirect:../items/list.do";
 	}
 	
 	

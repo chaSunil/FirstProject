@@ -311,6 +311,7 @@ function downArrow2() {
 	                <a id="who" onclick="blink();" style="cursor:pointer;">
 	                <c:if test="${ user.mem_name != null }">
 	                	<img src="../resources/images/who.PNG">${ sessionScope.user.mem_name }
+	                	<a id="logout" href="../member/logout.do">로그아웃</a>
 	                </c:if>
 	                <c:if test="${ user.mem_name == null }">
 	                	<img src="../resources/images/who.PNG">비회원

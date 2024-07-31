@@ -14,4 +14,6 @@ public interface BidDao {
 	List<BidVo> updateIncBiddingPoint(int bidding_point);
 	
 	int insert(Map<String, Object> map_insert);
+	
+	int update_auction_member(Map<String, Object> map);
 }

@@ -96,14 +96,22 @@ function showMessage() {
 		const item_idx = $("#item_idx").val();
 		const mem_point = $("#mem_point").val();
 		const a_initial_price = $("#a_initial_price").val();
+		const gumae_mem_idx = $("#gumae_mem_idx").val();
+		const auction_mem_idx = $("#auction_mem_idx").val();
 		
 		if(confirm("정말 입찰하시겠습니까? 입찰시 가지고 있는 DP가 차감이 됩니다.") == false) {
 			alert("입찰이 취소되었습니다.");
 			return;
 		}
 		
+		if(bidding_point < a_initial_price) {
+			alert("기존 입찰가보다 낮은 입찰가로 입찰 할 수 없습니다.");
+			return;
+		}
+		
 		location.href = "../items/auction_check.do?bidding_point=" + bidding_point  + "&a_idx=" + a_idx +
-				"&item_idx=" + item_idx + "&mem_point=" + mem_point + "&a_initial_price=" + a_initial_price;
+				"&item_idx=" + item_idx + "&mem_point=" + mem_point + "&a_initial_price=" + a_initial_price +
+				"&gumae_mem_idx=" + gumae_mem_idx + "&auction_mem_idx=" + auction_mem_idx;
 		
 /* 		$.ajax({
 			url		:	"bid_reg_data.do",
@@ -319,6 +327,8 @@ function showMessage() {
 <input type="text" id="mem_point" value="${ user.mem_point }">
 <input type="text" id="a_idx" value="${ items.a_idx }">
 <input type="text" id="item_idx" value="${ items.item_idx }">
+
+<input type="text" id="auction_mem_idx" value="${ items.gumae_mem_idx }">
 
 
 <input type="text" id="a_initial_price" value="${ items.a_initial_price }">
