@@ -54,6 +54,11 @@ function showMessage() {
 		const mem_point = $("#mem_point").val();
 		const a_idx = $("#a_idx").val();
 		
+		if(gumae_mem_idx == panmae_mem_idx) {
+			alert("구매자 계정이 판매자 계정과 동일하여, 구매가 불가S능합니다.");
+			return;
+		}
+		
 		
 		if(confirm("정말 구매하시겠습니까? 구매시 가지고 있는 DP가 차감이 됩니다.") == false) {
 			alert("구매가 취소되었습니다.");
@@ -86,18 +91,19 @@ function showMessage() {
 	
 	function bid() {
 		
-	const bidding_point = $("#additional-amount").val();
-	const a_idx = $("#a_idx").val();
-	const item_idx = $("#item_idx").val();
-	const mem_point = $("#mem_point").val();
-	
-	if(confirm("정말 입찰하시겠습니까? 입찰시 가지고 있는 DP가 차감이 됩니다.") == false) {
-		alert("입찰이 취소되었습니다.");
-		return;
-	}
-	
-	location.href = "../items/auction_check.do?bidding_point=" + bidding_point  + "&a_idx=" + a_idx +
-			"&item_idx=" + item_idx + "&mem_point=" + mem_point;
+		const bidding_point = $("#additional-amount").val();
+		const a_idx = $("#a_idx").val();
+		const item_idx = $("#item_idx").val();
+		const mem_point = $("#mem_point").val();
+		const a_initial_price = $("#a_initial_price").val();
+		
+		if(confirm("정말 입찰하시겠습니까? 입찰시 가지고 있는 DP가 차감이 됩니다.") == false) {
+			alert("입찰이 취소되었습니다.");
+			return;
+		}
+		
+		location.href = "../items/auction_check.do?bidding_point=" + bidding_point  + "&a_idx=" + a_idx +
+				"&item_idx=" + item_idx + "&mem_point=" + mem_point + "&a_initial_price=" + a_initial_price;
 		
 /* 		$.ajax({
 			url		:	"bid_reg_data.do",
@@ -313,6 +319,9 @@ function showMessage() {
 <input type="text" id="mem_point" value="${ user.mem_point }">
 <input type="text" id="a_idx" value="${ items.a_idx }">
 <input type="text" id="item_idx" value="${ items.item_idx }">
+
+
+<input type="text" id="a_initial_price" value="${ items.a_initial_price }">
 
 
 

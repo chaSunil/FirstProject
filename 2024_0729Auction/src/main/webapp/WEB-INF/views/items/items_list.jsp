@@ -971,7 +971,7 @@ function downArrow2() {
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="item_clock2">${ fn:substring(items.a_regtime,0,19) }</span><br>
                     <span class="item_clock">종료예정</span>
-                    <span class="item_clock2">${ fn:substring(items.a_regtime,0,19) }span>
+                    <span class="item_clock2">${ fn:substring(items.a_regtime,0,19) }</span>
                 </div>
                 <hr>
                 <div id="usercard-text2">

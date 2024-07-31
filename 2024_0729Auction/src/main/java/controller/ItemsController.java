@@ -311,7 +311,7 @@ public class ItemsController {
 	
 	
 	
-	// 판매 등록하기
+	// 판매 등록하기(판매등록)
 	@RequestMapping("/items/sell_reg_data.do")
 	public String sell_reg_data(ItemsVo vo1, AuctionVo vo2,
 			int mem_idx, String mem_name, int mem_point) {
@@ -327,6 +327,17 @@ public class ItemsController {
 		vo2.setMem_point(mem_point);
 		  
 		int res2 = auction_dao.sell_insert(vo2);
+		
+		int a_initial_price = vo2.getA_initial_price();
+		
+		// 판매등록시 즉시구매와 더불어 입찰까지 새로 생성하기
+		Map<String, Object> map_insert = new HashMap<String, Object>();
+		map_insert.put("a_initial_price", a_initial_price);
+		map_insert.put("item_idx", item_idx);
+		
+		int res3 = bid_dao.insert(map_insert);
+		
+		
 		 	
 		return "redirect:list.do";
 	}
@@ -406,7 +417,8 @@ public class ItemsController {
 	
 	@RequestMapping("items/auction_check.do")
 	public String auction_check(int bidding_point, int a_idx, int item_idx,
-			int gumae_mem_idx, int mem_point, RedirectAttributes ra) {
+			int gumae_mem_idx, int mem_point, RedirectAttributes ra,
+			int a_initial_price) {
 		
 		if(mem_point < bidding_point) {
 				
@@ -417,15 +429,21 @@ public class ItemsController {
 			// return "redirect:gumae.do?reason=fail_auction
 		}
 		
+		
+
+		
+		
+		
+		
 		// 입찰금액 마이너스
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("a_direct_price", a_direct_price);
+		map.put("bidding_point", bidding_point);
 		map.put("gumae_mem_idx", gumae_mem_idx);
 		
 		// 입찰취소 금액 입금
 		Map<String, Object> map2 = new HashMap<String, Object>();
-		map2.put("a_direct_price", a_direct_price);
-		map2.put("panmae_mem_idx", panmae_mem_idx);
+		map2.put("a_initial_price", a_initial_price);
+		map2.put("panmae_mem_idx", gumae_mem_idx);
 		
 		
 		

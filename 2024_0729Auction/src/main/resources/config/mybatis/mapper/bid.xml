@@ -28,6 +28,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         set b_bid_price = b_bid_price + #{ bidding_point }
         <!-- where mem_id = #{ mem_id } -->
     </update>
+    
+    
+    
+    
+    <insert id="auction_insert" parameterType="Map">
+    	insert into bid values(
+					seq_bid_idx.nextVal,
+					#{ a_initial_price },
+					sysdate,
+					'y',
+					#{ item_idx }
+					)
+    </insert>
 	
 	
 

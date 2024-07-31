@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,14 @@ public class BidDaoImpl implements BidDao {
 	public List<BidVo> updateIncBiddingPoint(int bidding_point) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("bid.bidding_point", bidding_point);
+	}
+	
+	
+	// 처음 판매 할 당시에 입찰 까지 추가 하는 기능
+	public int insert(Map<String, Object> map_insert) {
+		
+		return sqlSession.insert("bid.auction_insert", map_insert);
+		
 	}
 
 }
