@@ -535,6 +535,7 @@ public class ItemsController {
 		
 		// 경매를 어떻게 끝내게 할 것인가??
 		// a_selltime이 0이 되면, 경매가 끝난다.
+		// sysdate == a_endtime -> a_sledding을 n으로 표시
 		
 		
 		
