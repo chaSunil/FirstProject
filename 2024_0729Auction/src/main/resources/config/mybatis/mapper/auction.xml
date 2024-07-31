@@ -25,6 +25,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	
+	<update id="update_gumae" parameterType="int">
+		update auction set a_sledding = 'n'
+		where item_idx = #{ item_idx }
+	</update>
+	
+	
 
 </mapper>
 

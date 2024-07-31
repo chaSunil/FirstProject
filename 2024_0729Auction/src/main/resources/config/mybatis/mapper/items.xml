@@ -344,9 +344,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from trade_order_by_view where rank = 1
 	</select>
 	
-	<select id="select_bid_one" parameterType="int" resultType="items">
-		select * from items where item_idx = #{ item_idx }
+	
+	
+	<select id="select_gumae" parameterType="int" resultType="items">
+		select * from auction_list_view where item_idx = #{ item_idx }
 	</select>
+	
+	
+	
+	<select id="select_gumae_info" parameterType="int" resultType="items">
+		select * from auction_list_view where item_idx = #{ a_idx }
+	</select>
+	
+
+	
 	
 </mapper>
 

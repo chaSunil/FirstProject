@@ -16,7 +16,7 @@
 	
 	
 	
-	
+	select * from trade_order_by_view where item_idx = 120
 	
 		
 	

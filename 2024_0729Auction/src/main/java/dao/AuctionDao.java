@@ -11,4 +11,6 @@ public interface AuctionDao {
 
 	int sell_insert(AuctionVo vo2);
 	
+	int updateGumae(int item_idx);
+	
 }

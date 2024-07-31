@@ -15,7 +15,17 @@ public class MemberVo {
 	String	mem_grade;
 	
 	String  mem_filename;
+	int mem_point;
 	
+	
+	public int getMem_point() {
+		return mem_point;
+	}
+
+	public void setMem_point(int mem_point) {
+		this.mem_point = mem_point;
+	}
+
 	// 기본생성자 만들기
 	public MemberVo() {
 		// TODO Auto-generated constructor stub

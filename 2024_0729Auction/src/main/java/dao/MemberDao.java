@@ -23,5 +23,8 @@ public interface MemberDao {
 
 	public int update(MemberVo vo);
 	
+	public int update_point_minus(int a_direct_price, int mem_idx);
+	
+	public int update_point_plus(int a_direct_price, int mem_idx);
 
 }

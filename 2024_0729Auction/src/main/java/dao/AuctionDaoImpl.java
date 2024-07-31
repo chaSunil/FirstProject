@@ -31,4 +31,11 @@ public class AuctionDaoImpl implements AuctionDao {
 		return sqlSession.insert("auction.auction_insert",vo2);
 	}
 
+
+	@Override
+	public int updateGumae(int item_idx) {
+		
+		return sqlSession.update("auction.update_gumae", item_idx);
+	}
+
 }

@@ -304,7 +304,7 @@ function downArrow2() {
 	                &nbsp;
 	                <a href="#">채팅</a>
 	                <a id="who" onclick="blink();" style="cursor:pointer;">
-	                	<img src="../resources/images/who.PNG">비회원
+	                	<img src="../resources/images/who.PNG">${ sessionScope.user.mem_name }
 	                </a>
 	               
 	            </div>
@@ -930,7 +930,22 @@ function downArrow2() {
                         <a class="btn-3">&ensp;즉시구매&ensp;</a>
                         <a class="btn-3">&ensp;경매&ensp;</a>
                     <!-- 판매진행 여부 -->
-                    <a class="btn-4">&ensp;판매중&ensp;</a>
+                    
+                    
+                    
+                    
+                    <c:if test="${ items.a_sledding == 'y' }">
+                    	<a class="btn-4">&ensp;판매중&ensp;</a>
+                    </c:if>
+                    <c:if test="${ items.a_sledding == 'n' }">
+                    	<a class="btn-4">&ensp;판매완료&ensp;</a>
+                    </c:if>
+                    
+                    
+                    
+                    
+                    
+                    
                 </div>
                 <hr>
                 <div id="item_sell2">
@@ -984,7 +999,7 @@ function downArrow2() {
                 
                 <div id="usercard-btn">
                     <input type="button" value="자세히보기 →" 
-                    onclick="location.href='bid_reg_form.do?item_idx=${ items.item_idx }'">
+                    onclick="location.href='gumae.do?item_idx=${ items.item_idx }&a_idx=${ items.a_idx }'">
                 </div>
             </div>
 </div>

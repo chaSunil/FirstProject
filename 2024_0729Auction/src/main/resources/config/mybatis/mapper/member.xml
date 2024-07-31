@@ -57,6 +57,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    					where mem_idx=#{mem_idx}
    </update>
    
+   <update id="member_update_point_minus" parameterType="Map">
+   		update member set mem_point= mem_point - #{ a_direct_price }
+   		where mem_idx = #{ mem_idx }
+   </update>
+   
+   <update id="member_update_point_minus" parameterType="Map">
+   		update member set mem_point= mem_point + #{ a_direct_price }
+   		where mem_idx = #{ mem_idx }
+   </update>
+   
 </mapper>
 
 

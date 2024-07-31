@@ -78,10 +78,19 @@ public class ItemsDao {
 	}
 
 
-	public ItemsVo select_bid_one(int item_idx) {
+	public ItemsVo selectOne_gumae(int item_idx) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("items.select_bid_one", item_idx);
+		return sqlSession.selectOne("items.select_gumae", item_idx);
 	}
-
+	
+	public ItemsVo selectOne_gumae_info(int a_idx) {
+		
+		return sqlSession.selectOne("items.select_gumae_info", a_idx);
+	}
+	
+	public int updateGumae(int item_idx) {
+		
+		return sqlSession.update("items.update_gumae", item_idx);
+	}
 
 }

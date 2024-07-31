@@ -1,6 +1,8 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +59,29 @@ public class MemberDaoImpl implements MemberDao{
 		return sqlSession.update("member.member_update", vo);
 
 	}//end:update()
+
+	
+	// 상품 구매시 포인트 차감 dao
+	public int update_point_minus(int a_direct_price, int mem_idx) {
+		// TODO Auto-generated method stub
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("a_direct_price", a_direct_price);
+		map.put("mem_idx", mem_idx);
+		
+		return sqlSession.update("member.member_update_point_minus", map);
+	}
+	
+	// 상품 구매시 포인트 충전 dao
+	public int update_point_plus(int a_direct_price, int mem_idx) {
+		// TODO Auto-generated method stub
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("a_direct_price", a_direct_price);
+		map.put("mem_idx", mem_idx);
+		
+		return sqlSession.update("member.member_update_point_plus", map);
+	}
 	
 
 }

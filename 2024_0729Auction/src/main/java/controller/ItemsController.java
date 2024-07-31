@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +17,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import dao.AuctionDao;
 import dao.BidDao;
 import dao.ItemsDao;
+import dao.MemberDao;
 import util.MyCommon;
 import util.Paging;
 import vo.AuctionVo;
 import vo.ItemsVo;
+import vo.MemberVo;
 
 @Controller
 public class ItemsController {
@@ -31,10 +34,16 @@ public class ItemsController {
 	ItemsDao items_dao;
 	
 	@Autowired
+	HttpSession sesion;
+	
+	@Autowired
 	AuctionDao auction_dao;
 	
 	@Autowired
 	BidDao bid_dao;
+	
+	@Autowired
+	MemberDao member_dao;
 	
 	public ItemsController(ItemsDao items_dao) {
 		super();
@@ -301,18 +310,6 @@ public class ItemsController {
 		 	
 		return "redirect:list.do";
 	}
-	
-	// 입찰,구매 form
-	@RequestMapping("/items/bid_reg_form.do")
-	public String bid_reg_form(int item_idx, Model model) {
-		
-		ItemsVo vo = items_dao.select_bid_one(item_idx); // 한건의 정보를 불러온다.
-		
-		model.addAttribute("vo", vo);
-		
-		return "bid/bid_reg_form"; // /WEB-INF/views/ + items/items_list + .jsp
-	}
-	
 
 	
 
@@ -332,5 +329,52 @@ public class ItemsController {
 		
 		return "/items/dpcoin";
 	}
+	
+	
+	// 구매 화면으로 들어가기
+	@RequestMapping("items/gumae.do")
+	public String gumae(int item_idx, int a_idx , Model model) {
+		
+		// 자세히보기 -> 해당 판매 번호로 넘어가게 하기
+		ItemsVo items = items_dao.selectOne_gumae(item_idx);
+		
+		model.addAttribute("items",items);
+		
+		return "/items/gumae";
+	}
+	
+	
+	@RequestMapping("items/gumae_check")
+	public String gumae_check(MemberVo vo, int item_idx,
+			int panmae_mem_idx, int gumae_mem_idx, int a_direct_price) {
+		
+		int mem_point = vo.getMem_point();
+		
+		// 구매가능한 금액이 부족하다면
+		//if(mem_point < a_direct_price) {
+			
+		//}
+		
+		
+		// 구매를 성공했을때 a_sledding을 n으로 표시해줘서 구매완료했다고 표시
+		int res = auction_dao.updateGumae(item_idx);
+		
+		
+		// 구매 완료시 member_point 가격 그대로 차감하기
+		int res3 = member_dao.update_point_minus(a_direct_price, gumae_mem_idx);
+		
+		// 구매 완료시 member_point 가격 그대로 올려주기
+		int res4 = member_dao.update_point_minus(a_direct_price, panmae_mem_idx);
+		
+		
+		return "redirect:list.do";
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 }
