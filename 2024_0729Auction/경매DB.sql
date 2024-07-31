@@ -14,12 +14,28 @@ create table auction
 	a_direct_price		int default 0,			-- 즉시구매가
 	a_regtime			date default sysdate,	-- 등록시간
 	a_selltime			varchar2(100) not null,	-- 판매시간
+	a_endtime			date,					-- 종료시간
 	a_sledding			varchar2(1) default 'y',-- 진행상태(진행중'y'-완료'n')
 	item_idx			int,					-- 아이템일련번호(거래번호)
 	mem_idx				int,					-- 판매자회원번호
 	mem_name			varchar2(100) not null,	-- 판매자명
 	mem_point			int						-- 판매자 보유 포인트
 )
+
+select * from auction
+
+UPDATE auction
+SET a_endtime = a_regtime + 
+    CASE
+        WHEN a_selltime = '3' THEN INTERVAL '3' MINUTE
+        WHEN a_selltime = '10' THEN INTERVAL '10' MINUTE
+        WHEN a_selltime = '30' THEN INTERVAL '30' MINUTE
+        WHEN a_selltime = '60' THEN INTERVAL '60' MINUTE
+        ELSE NULL -- 필요 시 다른 경우 처리
+    END;
+
+
+
 
 alter table auction
 	add constraint pk_auction_idx primary key(a_idX);
