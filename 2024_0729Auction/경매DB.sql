@@ -27,6 +27,9 @@ select * from auction_list_view where item_idx = 120
 
 select * from auction_list_view where item_idx = #{ item_idx }
 
+   select count(*) from auction
+    where a_endtime <= sysdate and a_sledding = 'y'
+
 
 UPDATE auction
 SET a_endtime = a_regtime + 

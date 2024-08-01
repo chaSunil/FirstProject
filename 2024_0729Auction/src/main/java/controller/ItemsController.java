@@ -106,6 +106,8 @@ public class ItemsController {
 	public String list2(@RequestParam(name="page",defaultValue = "1")int page,
 			Model model) {
 		
+		int res = items_dao.update_expired_auctions();
+		
 		int start = (page-1) * MyCommon.Items.BLOCK_LIST + 1;
 		int end = start + MyCommon.Items.BLOCK_LIST -1;
 		
@@ -114,6 +116,8 @@ public class ItemsController {
 		map.put("end", end);
 		
 		List<ItemsVo> list = items_dao.selectList(map);
+		
+		
 		
 		// 전체 게시물 수
 		int rowTotal = items_dao.selectRowTotal();
@@ -132,30 +136,6 @@ public class ItemsController {
 		
 		return "items/items_list";
 	}
-	
-	
-	 /* @RequestMapping(value="/items/getlist2.do",produces = "application/json;charset=utf-8")
-	 @ResponseBody 
-	 public String search_list() {
-		 
-	 List<ItemsVo> list = items_dao.selectListOption();
-	 
-	 StringBuilder sb = new StringBuilder("[");
-	 
-	 for(ItemsVo vo : list) {
-		 sb.append("\""); sb.append(vo.getOption_name1()); sb.append("\",");
-	 }
-	 
-	 int index = sb.lastIndexOf(",");
-	 
-	 String result = sb.toString().substring(0,index)+ "]";
-	 
-	 //{"result": "%s"}
-	 String json = String.format("{\"result\": %s }", result);
-	  
-	 return json;
-	 
-	 } */
 	
 	
 	 @RequestMapping(value="/items/getlist.do",produces = "application/json;charset=utf-8")
@@ -544,32 +524,38 @@ public class ItemsController {
 		// 경매를 어떻게 끝내게 할 것인가??
 		// a_selltime이 0이 되면, 경매가 끝난다.
 		// sysdate == a_endtime -> a_sledding을 n으로 표시
+		int res5 = items_dao.update_auction_end(a_idx);
+		
+		ItemsVo vo = items_dao.selectOne_auction_end(a_idx);
 		
 		
+		// 만약에 위의 과정으로 거래처리가 완료되어 있다면,
+		if(vo.getB_sledding() == "n"); {
+			
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("a_initial_price", a_initial_price);
+			map.put("gumae_mem_idx", gumae_mem_idx);
+			
+			
+			Map<String, Object> map2 = new HashMap<String, Object>();
+			map2.put("a_initial_price", a_initial_price);
+			map2.put("panmae_mem_idx", panmae_mem_idx);
+			
+			
+			// 구매를 성공했을때 a_sledding을 n으로 표시해줘서 구매완료했다고 표시
+			int res = auction_dao.updateGumae(item_idx);
+			
+			// 구매 완료시 member_point 가격 그대로 차감하기
+			int res3 = member_dao.update_point_minus_auction_final(map);
+			
+			// 구매 완료시 member_point 가격 그대로 올려주기
+			int res4 = member_dao.update_point_plus_auction_final(map2);
+			
+			
+			return "redirect:list.do";
+		}
 		
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("a_initial_price", a_initial_price);
-		map.put("gumae_mem_idx", gumae_mem_idx);
-		
-		
-		Map<String, Object> map2 = new HashMap<String, Object>();
-		map2.put("a_initial_price", a_initial_price);
-		map2.put("panmae_mem_idx", panmae_mem_idx);
-		
-		
-		// 구매를 성공했을때 a_sledding을 n으로 표시해줘서 구매완료했다고 표시
-		int res = auction_dao.updateGumae(item_idx);
-		
-		// 구매 완료시 member_point 가격 그대로 차감하기
-		int res3 = member_dao.update_point_minus_auction_final(map);
-		
-		// 구매 완료시 member_point 가격 그대로 올려주기
-		int res4 = member_dao.update_point_plus_auction_final(map2);
-		
-		
-		return "redirect:list.do";
-	
 	
 	}	
 		

@@ -361,8 +361,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectone_item_idx" parameterType="int" resultType="items">
 		select * from auction_list_view where item_idx = #{ item_idx }
 	</select>
-
 	
+
+<!-- 	<update id="update_auction_end" parameterType="int">
+		<if test="a_endtime <= sysdate and sysdate < a_endtime + (1/86400)">
+			update auction
+			set a_sledding = 'n'
+			where a_idx = #{ a_idx }
+		</if>
+	</update> -->
+	
+	<select id="selectOne_auction_end" parameterType="int">
+		select * from auction_list_view where a_idx = #{ a_idx }
+	</select>
+	
+	
+	<!-- 거래완료 되어있는지 체크 -->
+	<update id="update_expired_auctions">
+	    update auction
+	    set a_sledding = 'n'
+	    where a_endtime &lt;= sysdate and a_sledding = 'y'
+	</update>
+		
 	
 </mapper>
 

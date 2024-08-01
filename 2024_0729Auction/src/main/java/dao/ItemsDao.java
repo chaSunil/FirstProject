@@ -102,5 +102,23 @@ public class ItemsDao {
 		
 		return sqlSession.selectOne("items.selectone_item_idx", item_idx);
 	}
+	
+	public int update_auction_end(int a_idx) {
+		
+		return sqlSession.update("items.update_auction_end", a_idx);
+	}
 
+
+	public ItemsVo selectOne_auction_end(int a_idx) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("items.selectOne_auction_end", a_idx);
+	}
+	
+	
+	public int update_expired_auctions() {
+		
+		return sqlSession.update("items.update_expired_auctions");
+	}
+
+	
 }
