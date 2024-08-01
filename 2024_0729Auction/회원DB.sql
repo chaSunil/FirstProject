@@ -44,6 +44,7 @@ insert into member values(seq_member_idx.nextVal,
 insert into member values(seq_member_idx.nextVal,
 						 '이길동','two','1234','two길동','22222','서울시 동작구','localhost',default,default,'basic.jpg',1000000);
 
+update member set mem_point=300000 where mem_id = 'cha1'
 
 
 -- 평점(check) -> 평점 범위 0점~5점 => 평점테이블 만들기

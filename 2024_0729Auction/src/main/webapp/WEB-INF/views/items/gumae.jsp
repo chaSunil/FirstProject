@@ -6,6 +6,12 @@
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+    // 현재 시간을 가져오기
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String currentDateTime = sdf.format(new Date());
+%>
 
 
 <!DOCTYPE html>
@@ -120,48 +126,6 @@ function showMessage() {
 		}); */
 	}
 	
-</script>
-
-<script type="text/javascript">
-
-	function startTimer(duration, display) {
-		var timer = duration, minutes, seconds;
-
-	    // 저장된 타이머 값이 있는 경우 로드
-	    if (localStorage.getItem('remainingTime')) {
-	        timer = parseInt(localStorage.getItem('remainingTime'), 10);
-	    }
-
-	    var interval = setInterval(function () {
-	        minutes = parseInt(timer / 60, 10);
-	        seconds = parseInt(timer % 60, 10);
-
-	        minutes = minutes < 10 ? "0" + minutes : minutes;
-	        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-	        display.textContent = minutes + "분 " + seconds + "초";
-
-	        if (--timer < 0) {
-	            clearInterval(interval);
-	            timer = 0;
-	            localStorage.removeItem('remainingTime');
-	        } else {
-	            localStorage.setItem('remainingTime', timer);
-	        }
-	    }, 1000);
-	}
-	
-	window.onload = function () {
-	    var timerMinutes = 60 * "${ a_selltime }"/* 변수값 불러오기 */,
-	        display = document.querySelector('#time');
-	    // 초기 표시를 비워놓고 타이머를 설정하는 동안 잠시 동안 숨기기
-	    display.textContent = '로딩 중...';
-
-	    // 0.5초 후에 타이머를 시작
-	    setTimeout(function() {
-	        startTimer(timerMinutes, display);
-	    }, 500);
-	};
 </script>
 
 
@@ -331,7 +295,7 @@ function showMessage() {
             // 마감까지 남은 시간 출력
             document.getElementById("countdown").innerText = days + "일 " + hours + "시간 " + minutes + "분 " + seconds + "초";
         } else {
-            document.getElementById("countdown").innerText = "종료되었습니다.";
+            document.getElementById("countdown").innerText = "판매기간이 종료되었습니다.";
         }
     }
 
@@ -508,8 +472,14 @@ function showMessage() {
 						<span>CP</span>
 					</div>
 					<div id="usercard-cp7">
+					
+					
+					<!-- 입찰기간이 빠지면, 입찰 불가능 -->
+					<c:if test="${fn:substring(items.a_endtime, 0, 19) <= currentDateTime}">
 						<input type="button" class="btn btn-danger" value="입찰하기"
 							onclick="bid();">
+					</c:if>
+					
 					</div>
 				</div>
 				<div id="usercard-cp">
@@ -527,10 +497,6 @@ function showMessage() {
 					</div>
 					<div id="usercard-cp6">
 						<span>CP</span>
-					</div>
-					<div id="usercard-cp7">
-						<input type="button" class="btn btn-danger" value="입찰하기"
-							onclick="bid();">
 					</div>
 				</div>
 				<div id="bid-btn">
