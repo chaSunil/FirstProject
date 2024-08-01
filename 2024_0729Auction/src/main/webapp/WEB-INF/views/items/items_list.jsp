@@ -161,6 +161,18 @@
 		f.action = "../items/search.do";// 전송대상(PhotoInsertAction)
 		f.submit();
 	}
+	
+	
+	function information(itemIdx, aIdx) {
+		var memName = "${user.mem_name}"; // JSP 표현식으로 사용자 이름을 가져옴
+		
+		if(memName == "") {
+			alert("로그인 하신 뒤에 접속하실 수 있습니다.");
+			return;
+		}
+		
+		location.href='gumae.do?item_idx='+ itemIdx + '&a_idx=' + aIdx;
+	}
 		
 </script>
 
@@ -1017,7 +1029,7 @@ function downArrow2() {
                 <div id="usercard-btn">
                 	<c:if test="${ items.a_sledding == 'y' }">
                     <input type="button" value="자세히보기 →" 
-                    onclick="location.href='gumae.do?item_idx=${ items.item_idx }&a_idx=${ items.a_idx }'">
+                    onclick="information('${items.item_idx}', '${items.a_idx}');">
                     </c:if>
                 	<c:if test="${ items.a_sledding == 'n' }">
                     <input type="button" value="거래완료된 아이템 입니다." 
