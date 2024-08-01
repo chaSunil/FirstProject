@@ -106,7 +106,15 @@ public class ItemsController {
 	public String list2(@RequestParam(name="page",defaultValue = "1")int page,
 			Model model) {
 		
+		
+		// 거래 시간이 마감되면, 거래 자동 종료
 		int res = items_dao.update_expired_auctions();
+		
+		
+		
+		
+		
+		
 		
 		int start = (page-1) * MyCommon.Items.BLOCK_LIST + 1;
 		int end = start + MyCommon.Items.BLOCK_LIST -1;

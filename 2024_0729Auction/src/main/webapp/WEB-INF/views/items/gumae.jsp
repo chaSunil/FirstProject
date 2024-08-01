@@ -297,16 +297,48 @@ function showMessage() {
 			<div class="item-info">
 				<div id="selltime-info">
 					<div id="reg-start" class="reg">
-						판매시작 &nbsp;&nbsp;&nbsp;&nbsp; ${ items.a_regtime }			
+						판매시작 &nbsp;&nbsp;&nbsp;&nbsp; ${ fn:substring(items.a_regtime,0,19) }		
 					</div>
 					<hr>
 					<div id="reg-end" class="reg">
-						판매종료  &nbsp;&nbsp;&nbsp;&nbsp;  ${ items.a_selltime }	
-						<div id="time" style="display: inline-block;">0${ items.a_selltime }분00초</div>
-						남음
+						판매종료  &nbsp;&nbsp;&nbsp;&nbsp;  ${ fn:substring(items.a_endtime,0,19) }	
+						<span id="countdown"></span>
 					</div>
 				</div>
+				
+				
+<c:set var="endTime" value="${fn:substring(items.a_endtime, 0, 19)}" />                    
+				
+<!-- JavaScript를 사용하여 남은 시간 계산 -->
+<script>
+    // 종료 시간을 Date 객체로 변환 (UTC로 변환)
+    var endTime = new Date("${endTime}".replace(" ", "T") + "Z"); // UTC 시간으로 변환
 
+    // 한국 시간(KST)을 고려하여 9시간 추가
+    endTime.setHours(endTime.getHours() - 9);
+
+    function updateCountdown() {
+        var now = new Date();
+        var timeRemaining = endTime - now; // 남은 시간 (밀리초)
+
+        if (timeRemaining > 0) {
+            // 남은 시간 계산
+            var seconds = Math.floor((timeRemaining / 1000) % 60);
+            var minutes = Math.floor((timeRemaining / (1000 * 60)) % 60);
+            var hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
+            var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+
+            // 마감까지 남은 시간 출력
+            document.getElementById("countdown").innerText = days + "일 " + hours + "시간 " + minutes + "분 " + seconds + "초";
+        } else {
+            document.getElementById("countdown").innerText = "종료되었습니다.";
+        }
+    }
+
+    // 1초마다 카운트다운 업데이트
+    setInterval(updateCountdown, 1000);
+    updateCountdown(); // 초기 호출
+</script>
 
 
 
