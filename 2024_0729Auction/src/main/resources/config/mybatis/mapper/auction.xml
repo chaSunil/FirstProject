@@ -17,6 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 									#{ a_direct_price },
 									sysdate,
 									#{ a_selltime },
+									sysdate,
 									'y',
 									#{ item_idx },
 									#{ mem_idx },
@@ -35,6 +36,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="update_price" parameterType="Map">
 		update auction set a_initial_price = #{ a_initial_price }
 		where item_idx = #{ item_idx }
+	</update>
+	
+	
+	<!-- 판매 마감시간 결정하기 -->
+	<update id="update_endtime" parameterType="int">
+		UPDATE auction
+		SET a_endtime = a_regtime + 
+		    CASE
+		        WHEN a_selltime = '3' THEN INTERVAL '3' MINUTE
+		        WHEN a_selltime = '10' THEN INTERVAL '10' MINUTE
+		        WHEN a_selltime = '30' THEN INTERVAL '30' MINUTE
+		        WHEN a_selltime = '60' THEN INTERVAL '60' MINUTE
+		        ELSE NULL
+		    END
+		where a_idx = #{ a_idx }
 	</update>
 	
 	

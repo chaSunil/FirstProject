@@ -15,5 +15,7 @@ public interface AuctionDao {
 	int updateGumae(int item_idx);
 	
 	int updatePrice(Map<String, Object> map2);
+
+	int updateEndTime(int a_idx);
 	
 }

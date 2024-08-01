@@ -32,7 +32,8 @@ SET a_endtime = a_regtime +
         WHEN a_selltime = '30' THEN INTERVAL '30' MINUTE
         WHEN a_selltime = '60' THEN INTERVAL '60' MINUTE
         ELSE NULL -- 필요 시 다른 경우 처리
-    END;
+    END
+where a_idx = 1
 
 
 
