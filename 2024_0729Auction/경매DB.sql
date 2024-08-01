@@ -36,11 +36,12 @@ SET a_endtime = a_regtime +
     CASE
         WHEN TRIM(a_selltime) = '3' THEN INTERVAL '3' MINUTE
         WHEN TRIM(a_selltime) = '10' THEN INTERVAL '10' MINUTE
+        WHEN TRIM(a_selltime) = '15' THEN INTERVAL '15' MINUTE
         WHEN TRIM(a_selltime) = '30' THEN INTERVAL '30' MINUTE
         WHEN TRIM(a_selltime) = '60' THEN INTERVAL '60' MINUTE
         ELSE NULL
     END
-WHERE a_idx = 50;
+WHERE a_idx = 70;
 
 
 

@@ -47,6 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    CASE
 		        WHEN a_selltime = '3' THEN INTERVAL '3' MINUTE
 		        WHEN a_selltime = '10' THEN INTERVAL '10' MINUTE
+		        WHEN a_selltime = '15' THEN INTERVAL '15' MINUTE
 		        WHEN a_selltime = '30' THEN INTERVAL '30' MINUTE
 		        WHEN a_selltime = '60' THEN INTERVAL '60' MINUTE
 		        ELSE NULL
