@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 									#{ a_direct_price },
 									sysdate,
 									#{ a_selltime },
-									sysdate,
+									null,
 									'y',
 									#{ item_idx },
 									#{ mem_idx },
@@ -37,6 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update auction set a_initial_price = #{ a_initial_price }
 		where item_idx = #{ item_idx }
 	</update>
+	
 	
 	
 	<!-- 판매 마감시간 결정하기 -->

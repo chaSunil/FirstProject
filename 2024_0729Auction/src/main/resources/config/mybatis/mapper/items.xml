@@ -355,7 +355,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="select_gumae_info" parameterType="int" resultType="items">
 		select * from auction_list_view where item_idx = #{ a_idx }
 	</select>
+		
 	
+	
+	<select id="selectone_item_idx" parameterType="int" resultType="items">
+		select * from auction_list_view where item_idx = #{ item_idx }
+	</select>
 
 	
 	

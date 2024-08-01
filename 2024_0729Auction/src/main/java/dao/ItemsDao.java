@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import vo.AuctionVo;
 import vo.ItemsVo;
 
 public class ItemsDao {
@@ -94,6 +95,12 @@ public class ItemsDao {
 	public int updateGumae(int item_idx) {
 		
 		return sqlSession.update("items.update_gumae", item_idx);
+	}
+	
+	
+	public ItemsVo selectOne(int item_idx) {
+		
+		return sqlSession.selectOne("items.selectone_item_idx", item_idx);
 	}
 
 }

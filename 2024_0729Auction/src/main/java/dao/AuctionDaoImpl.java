@@ -50,5 +50,6 @@ public class AuctionDaoImpl implements AuctionDao {
 		return sqlSession.update("auction.update_endtime", a_idx);
 	}
 	
+	
 
 }

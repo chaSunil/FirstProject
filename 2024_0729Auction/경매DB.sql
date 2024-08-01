@@ -23,17 +23,32 @@ create table auction
 )
 
 select * from auction
+select * from auction_list_view where item_idx = 120
+
+select * from auction_list_view where item_idx = #{ item_idx }
+
 
 UPDATE auction
 SET a_endtime = a_regtime + 
     CASE
-        WHEN a_selltime = '3' THEN INTERVAL '3' MINUTE
-        WHEN a_selltime = '10' THEN INTERVAL '10' MINUTE
-        WHEN a_selltime = '30' THEN INTERVAL '30' MINUTE
-        WHEN a_selltime = '60' THEN INTERVAL '60' MINUTE
-        ELSE NULL -- 필요 시 다른 경우 처리
+        WHEN TRIM(a_selltime) = '3' THEN INTERVAL '3' MINUTE
+        WHEN TRIM(a_selltime) = '10' THEN INTERVAL '10' MINUTE
+        WHEN TRIM(a_selltime) = '30' THEN INTERVAL '30' MINUTE
+        WHEN TRIM(a_selltime) = '60' THEN INTERVAL '60' MINUTE
+        ELSE NULL
     END
-where a_idx = 1
+WHERE a_idx = 50;
+
+
+
+SELECT 
+    TO_CHAR(a_regtime, 'YYYY-MM-DD HH24:MI:SS') AS formatted_regtime,
+    TO_CHAR(a_endtime, 'YYYY-MM-DD HH24:MI:SS') AS formatted_endtime,
+    a_selltime,
+    a_regtime,
+    a_endtime
+FROM 
+    auction;
 
 
 
@@ -63,7 +78,7 @@ drop view list_view
 create or replace view auction_list_view
     as
     select
-        t.*,a.a_idx,a.a_initial_price,a.a_direct_price,a_regtime,a_selltime,a_sledding,mem_idx,mem_name,a.item_idx as itemno,
+        t.*,a.a_idx,a.a_initial_price,a.a_direct_price,a_regtime,a_selltime,a_sledding,mem_idx,mem_name,a.item_idx as itemno,a.a_endtime,
         b.b_idx,b.b_bid_price,b.b_regtime,b.b_sledding,b.gumae_mem_idx
     from trade_order_by_view t inner join auction a on t.item_idx = a.item_idx
     inner join bid b on t.item_idx = b.item_idx								         								         							         								         

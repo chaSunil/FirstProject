@@ -17,5 +17,5 @@ public interface AuctionDao {
 	int updatePrice(Map<String, Object> map2);
 
 	int updateEndTime(int a_idx);
-	
+
 }

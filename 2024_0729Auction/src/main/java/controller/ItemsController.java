@@ -333,9 +333,6 @@ public class ItemsController {
 		
 		int a_initial_price = vo2.getA_initial_price();
 		
-		// 기준 시간에 따라서 endtime 시간 정해놓기(거래 마감 시간)
-		int a_idx = vo2.getA_idx();
-		int res4 = auction_dao.updateEndTime(a_idx);
 		
 		
 		// 판매등록시 즉시구매와 더불어 입찰까지 새로 생성하기
@@ -344,6 +341,14 @@ public class ItemsController {
 		map_insert.put("item_idx", item_idx);
 		
 		int res3 = bid_dao.insert(map_insert);
+		
+		
+		// 기준 시간에 따라서 endtime 시간 정해놓기(거래 마감 시간)
+		ItemsVo vo4 = items_dao.selectOne(item_idx);
+		
+		int a_idx = vo4.getA_idx();
+		int res4 = auction_dao.updateEndTime(a_idx);
+		
 		 	
 		return "redirect:list.do";
 	}

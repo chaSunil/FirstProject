@@ -389,10 +389,18 @@ public class ItemsVo {
 	int 	a_direct_price;
 	String  a_regtime;
 	String  a_selltime;
+	String	a_endtime;
 	String	a_sledding;
 	int 	mem_idx; 
 	String  mem_name;
+	
 
+	public String getA_endtime() {
+		return a_endtime;
+	}
+	public void setA_endtime(String a_endtime) {
+		this.a_endtime = a_endtime;
+	}
 	public int getA_idx() {
 		return a_idx;
 	}
