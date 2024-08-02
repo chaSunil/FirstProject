@@ -173,6 +173,33 @@
 		
 		location.href='gumae.do?item_idx='+ itemIdx + '&a_idx=' + aIdx;
 	}
+	
+	
+	
+	// 알림 권한 요청
+	function requestNotificationPermission() {
+		
+		if(Notification.permission != "granted") {
+			Notification.requestPermission();
+		}
+		
+	}
+	
+	// 경매 종료 알림 보내기
+	function sendAuctionEndNotification(auctionId) {
+		if(Notification.permission == "granted") {
+			const notification = new Notification("경매 종료 알림", {
+				body: "경매 ID:" + auctionId + "의 경매가 종료되었습니다",
+				icon : "../resources/images/디션.png"
+			});
+		}
+		
+	}
+	
+	// 페이지 로드 시 알림 권한 요청
+	window.onload = function() {
+		requestNotificationPermission();
+	};
 		
 </script>
 

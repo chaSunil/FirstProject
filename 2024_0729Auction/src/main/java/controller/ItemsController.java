@@ -518,8 +518,8 @@ public class ItemsController {
 	
 	
 	
-	// 경매 낙찰 완료
-	@RequestMapping("items/auction_check")
+	// 경매 낙찰 완료 / 실행될 Mapping 루트 없지만, 이렇게 사용하기에 기록
+	@RequestMapping("items/auction_check_check")
 	public String gumae_check(int mem_point, int item_idx,
 			int panmae_mem_idx, int gumae_mem_idx, int a_direct_price, int a_idx,
 			RedirectAttributes ra, int a_initial_price) {
@@ -536,11 +536,13 @@ public class ItemsController {
 		if(vo.getB_sledding() == "n"); {
 			
 			
+			// 구매자한테 구매금액 차감
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("a_initial_price", a_initial_price);
 			map.put("gumae_mem_idx", gumae_mem_idx);
 			
 			
+			// 판매자한테 낙찰금액 입금
 			Map<String, Object> map2 = new HashMap<String, Object>();
 			map2.put("a_initial_price", a_initial_price);
 			map2.put("panmae_mem_idx", panmae_mem_idx);

@@ -7,11 +7,6 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%
-    // 현재 시간을 가져오기
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    String currentDateTime = sdf.format(new Date());
-%>
 
 
 <!DOCTYPE html>
@@ -132,7 +127,12 @@ function showMessage() {
 </head>
 <body>
 
+<%
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String currentDateTimeString = dateFormat.format(new Date()); // 현재 시간을 문자열로 변환
+%>
 
+<c:set var="currentDateTimeString" value="<%= currentDateTimeString %>" />
 
 
 
@@ -474,10 +474,14 @@ function showMessage() {
 					<div id="usercard-cp7">
 					
 					
+					
 					<!-- 입찰기간이 빠지면, 입찰 불가능 -->
-					<c:if test="${fn:substring(items.a_endtime, 0, 19) <= currentDateTime}">
+					<c:if test="${fn:substring(items.a_endtime, 0, 19) > currentDateTimeString}">
 						<input type="button" class="btn btn-danger" value="입찰하기"
 							onclick="bid();">
+					</c:if>
+					<c:if test="${fn:substring(items.a_endtime, 0, 19) <= currentDateTimeString}">
+						<input type="button" class="btn btn-danger" value="입찰마감">
 					</c:if>
 					
 					</div>

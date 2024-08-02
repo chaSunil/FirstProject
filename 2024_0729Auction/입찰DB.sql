@@ -36,7 +36,7 @@ insert into bid values(
 					
 select * from bid
 
-				
+select * from auction_list_view				
     
     
 -- 이거 추가해서 넣으면 된다.

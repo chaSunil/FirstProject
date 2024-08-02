@@ -83,7 +83,7 @@ create or replace view auction_list_view
     as
     select
         t.*,a.a_idx,a.a_initial_price,a.a_direct_price,a_regtime,a_selltime,a_sledding,mem_idx,mem_name,a.item_idx as itemno,a.a_endtime,
-        b.b_idx,b.b_bid_price,b.b_regtime,b.b_sledding,b.gumae_mem_idx
+        b.b_idx,b.b_bid_price,b.b_regtime,b.b_sledding,b.gumae_mem_idx,b.gumae_mem_name
     from trade_order_by_view t inner join auction a on t.item_idx = a.item_idx
     inner join bid b on t.item_idx = b.item_idx								         								         							         								         
     							         								         							         								         							         								         
