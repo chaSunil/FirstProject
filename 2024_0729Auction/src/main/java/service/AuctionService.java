@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import dao.AuctionDao;
 import dao.ItemsDao;
 import dao.MemberDao;
 import vo.ItemsVo;
@@ -22,6 +23,9 @@ public class AuctionService {
 	
 	@Autowired
 	private MemberDao member_dao;
+	
+	@Autowired
+	private AuctionDao auction_dao;
 	
 	@Scheduled(fixedRate = 20000) // 5초마다 이 스케츌 Method를 실행시킨다
 	public void checkAuctionStatus() {
@@ -62,7 +66,7 @@ public class AuctionService {
 					map2.put("panmae_mem_idx", a_idx);
 					
 					// 구매 완료시 member_point 가격 그대로 올려주기
-					int res4 = items_dao.update_point_plus_auction_final(map2);
+					int res4 = auction_dao.update_point_plus_auction_final(map2);
 					
 					
 					

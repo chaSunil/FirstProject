@@ -55,7 +55,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    END
 		where a_idx = #{ a_idx }
 	</update>
-	
+   
+   
+   
+   	<!-- 낙찰시에 경매 금액 입금 -->
+	<update id="update_point_plus_auction_final" parameterType="Map">
+	   		update auction set mem_point= mem_point + #{ a_initial_price }
+	   		where a_idx = #{ a_idx }
+	</update>	
 	
 
 </mapper>

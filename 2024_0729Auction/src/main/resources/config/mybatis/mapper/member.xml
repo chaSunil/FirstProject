@@ -91,9 +91,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    		update member set mem_point= mem_point - #{ a_direct_price }
    		where mem_idx = #{ gumae_mem_idx }
    </update>
-   
-   
 
+   
    
    
    

@@ -17,7 +17,7 @@ create table member
     mem_regdate         date default sysdate,       	  -- 가입일자
     mem_grade           varchar2(100) default '일반', 	  -- 회원등급
     mem_filename		varchar2(100) default 'basic.jpg',-- 파일명
-    mem_point			int								  -- 회원보유 포인트
+    mem_point			int							  	  -- 회원보유 포인트
 )
 -- 기본키 -> mem_idx
 alter table member
