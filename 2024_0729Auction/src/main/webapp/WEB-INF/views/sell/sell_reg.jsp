@@ -2031,9 +2031,9 @@ var $112 = $.noConflict(true);
 				
 				
 			    <!-- user 정보 넘기기 -->
-				<input type="text" id="mem_idx" name="mem_idx" value="${ user.mem_idx }">
-				<input type="text" id="mem_name" name="mem_name" value="${ user.mem_name }">
-				<input type="text" id="mem_point" name="mem_point" value="${ user.mem_point }">
+				<input type="hidden" id="mem_idx" name="mem_idx" value="${ user.mem_idx }">
+				<input type="hidden" id="mem_name" name="mem_name" value="${ user.mem_name }">
+				<input type="hidden" id="mem_point" name="mem_point" value="${ user.mem_point }">
 
 				
 				<!-- ★이미지 이름 넘겨주기★ -->
