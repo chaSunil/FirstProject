@@ -56,10 +56,15 @@ FROM
 
 
 
-
+-- 이거넣고
 alter table auction
-	add constraint pk_auction_idx primary key(a_idX);
-	
+	add constraint pk_auction_idx primary key(a_idx);
+
+-- 이거넣고2
+alter table auction
+	add constraint fk_auction_item_idx foreign key(a_idx)
+								       references auction(a_idx);	
+
 alter table auction
 	add constraint fk_auction_item_idx foreign key(item_idx)
 								       references items(item_idx);	
@@ -100,8 +105,12 @@ create or replace view auction_list_view
 		where no between 1 and 5
 		
 		
-select * from auction
-		
+select * from auction where a_idx = 97
+select * from member
+select * from auction_list_view
+
+update auction set mem_point= mem_point + 100000
+where a_idx = 97
 
 
 */

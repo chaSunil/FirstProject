@@ -393,8 +393,14 @@ public class ItemsVo {
 	String	a_sledding;
 	int 	mem_idx; 
 	String  mem_name;
+	int		mem_point;
 	
-
+	public int getMem_point() {
+		return mem_point;
+	}
+	public void setMem_point(int mem_point) {
+		this.mem_point = mem_point;
+	}
 	public String getA_endtime() {
 		return a_endtime;
 	}

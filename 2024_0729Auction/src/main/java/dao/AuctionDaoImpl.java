@@ -52,9 +52,9 @@ public class AuctionDaoImpl implements AuctionDao {
 	
 	
 	// 경매 최종 정산(plus)
-	public int update_point_plus_auction_final(Map<String, Object> map2) {
+	public int update_point_plus_auction_final(Map<String, Object> map4) {
 		
-		return sqlSession.update("auction.update_point_plus_auction_final", map2);
+		return sqlSession.update("auction.update_point_plus_auction_final", map4);
 	}
 	
 

@@ -31,5 +31,7 @@ public interface MemberDao {
 	public int update_point_plus_auction(Map<String, Object> map3);
 	
 	public int update_point_minus_auction_final(Map<String, Object> map);
+
+	int update_point_plus_final(Map<String, Object> map5);
 	
 }

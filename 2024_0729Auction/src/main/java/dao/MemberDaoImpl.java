@@ -94,6 +94,12 @@ public class MemberDaoImpl implements MemberDao{
 	}
 	
 	
+	// 올려준 금액 적용해주기
+	public int update_point_plus_final(Map<String, Object> map5) {
+		
+		return sqlSession.update("member.update_point_plus_final", map5);
+	}
+	
 
 
 	

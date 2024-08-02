@@ -61,13 +61,21 @@ public class AuctionService {
 					// 판매자한테 낙찰금액 입금
 					int a_initial_price = item.getA_initial_price(); // 입금액
 					
-					Map<String, Object> map2 = new HashMap<String, Object>();
-					map2.put("a_initial_price", a_initial_price);
-					map2.put("panmae_mem_idx", a_idx);
+					Map<String, Object> map4 = new HashMap<String, Object>();
+					map4.put("a_initial_price", a_initial_price);
+					map4.put("a_idx", a_idx);
 					
 					// 구매 완료시 member_point 가격 그대로 올려주기
-					int res4 = auction_dao.update_point_plus_auction_final(map2);
+					int res4 = auction_dao.update_point_plus_auction_final(map4);
+					int mem_idx = item.getMem_idx();
+					int mem_point = item.getMem_point();
 					
+					Map<String, Object> map5 = new HashMap<String, Object>();
+					map5.put("mem_idx", mem_idx);
+					map5.put("mem_point", mem_point);
+					
+					// memberdao에 +해준 가격 적용해주기
+					int res5 = member_dao.update_point_plus_final(map5);
 					
 					
 				}

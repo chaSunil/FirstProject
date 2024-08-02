@@ -91,6 +91,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    		update member set mem_point= mem_point - #{ a_direct_price }
    		where mem_idx = #{ gumae_mem_idx }
    </update>
+   
+   
+   <!-- 낙찰된 경매 금액 추가해주기 -->
+   <update id="update_point_plus_final" parameterType="Map">
+   		update member set mem_point= #{ mem_point }
+   		where mem_idx = #{ mem_idx }
+   </update>
 
    
    
