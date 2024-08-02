@@ -58,11 +58,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    					where mem_idx=#{mem_idx}
    </update>
    
+   
+   <!-- 즉시 구매 금액 차감  -->
    <update id="member_update_point_minus" parameterType="Map">
    		update member set mem_point= mem_point - #{ a_direct_price }
    		where mem_idx = #{ gumae_mem_idx }
    </update>
    
+   <!-- 즉시 구매 금액 판매자에게 추가  -->
    <update id="member_update_point_plus" parameterType="Map">
    		update member set mem_point= mem_point + #{ a_direct_price }
    		where mem_idx = #{ panmae_mem_idx }
@@ -90,10 +93,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </update>
    
    
-   <update id="update_point_plus_auction_final" parameterType="Map">
-   		update member set mem_point= mem_point + #{ a_direct_price }
-   		where mem_idx = #{ panmae_mem_idx }
-   </update>
+
    
    
    

@@ -136,6 +136,13 @@ public class ItemsDao {
 	}
 	
 	
+	// 경매 최종 정산
+	public int update_point_plus_auction_final(Map<String, Object> map2) {
+		
+		return sqlSession.update("member.update_point_plus_auction_final", map2);
+	}
+	
+	
 	
 	
 

@@ -56,14 +56,13 @@ public class AuctionService {
 					
 					// 판매자한테 낙찰금액 입금
 					int a_initial_price = item.getA_initial_price(); // 입금액
-					int panmae_mem_idx = item.getMem_idx(); 		 // 판매자 정보
 					
 					Map<String, Object> map2 = new HashMap<String, Object>();
 					map2.put("a_initial_price", a_initial_price);
-					map2.put("panmae_mem_idx", panmae_mem_idx);
+					map2.put("panmae_mem_idx", a_idx);
 					
 					// 구매 완료시 member_point 가격 그대로 올려주기
-					int res4 = member_dao.update_point_plus_auction_final(map2);
+					int res4 = items_dao.update_point_plus_auction_final(map2);
 					
 					
 					

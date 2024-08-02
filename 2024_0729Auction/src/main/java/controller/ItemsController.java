@@ -555,7 +555,7 @@ public class ItemsController {
 			int res3 = member_dao.update_point_minus_auction_final(map);
 			
 			// 구매 완료시 member_point 가격 그대로 올려주기
-			int res4 = member_dao.update_point_plus_auction_final(map2);
+			int res4 = items_dao.update_point_plus_auction_final(map2);
 			
 			
 			return "redirect:list.do";
