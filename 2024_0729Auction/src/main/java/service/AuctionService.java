@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -26,6 +29,13 @@ public class AuctionService {
 	
 	@Autowired
 	private AuctionDao auction_dao;
+	
+	@Autowired
+	private HttpSession session;
+	
+	@Autowired
+	private HttpServletRequest request;
+	
 	
 	@Scheduled(fixedRate = 20000) // 5초마다 이 스케츌 Method를 실행시킨다
 	public void checkAuctionStatus() {
@@ -59,7 +69,7 @@ public class AuctionService {
 					// 경매 마감시간이 넘어간 요소의 진행 여부를 종료 시켜준다.
 					int res = items_dao.update_auction_service_end(a_idx);
 					
-					// 해당 판매글에 대한 구매자 확정시키기
+					// 해당 판매글에 대한 구매자 확정시키기(구매확정 알람 보내기)
 					
 					
 					// 판매자한테 낙찰금액 입금

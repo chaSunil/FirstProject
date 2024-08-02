@@ -176,30 +176,29 @@
 	
 	
 	
-	// 알림 권한 요청
-	function requestNotificationPermission() {
-		
-		if(Notification.permission != "granted") {
-			Notification.requestPermission();
-		}
-		
+	
+	
+	
+/* 	if ('serviceWorker' in navigator) {
+	    navigator.serviceWorker.register('../resources/js/service-worker.js')
+	        .then(function(registration) {
+	            console.log('Service Worker registered with scope:', registration.scope);
+	        })
+	        .catch(function(error) {
+	            console.error('Service Worker registration failed:', error);
+	        });
 	}
 	
-	// 경매 종료 알림 보내기
-	function sendAuctionEndNotification(auctionId) {
-		if(Notification.permission == "granted") {
-			const notification = new Notification("경매 종료 알림", {
-				body: "경매 ID:" + auctionId + "의 경매가 종료되었습니다",
-				icon : "../resources/images/디션.png"
-			});
-		}
-		
-	}
 	
-	// 페이지 로드 시 알림 권한 요청
-	window.onload = function() {
-		requestNotificationPermission();
-	};
+	Notification.requestPermission().then(function(permission) {
+	    if (permission === 'granted') {
+	        console.log('Notification permission granted.');
+	    } else {
+	        console.log('Unable to get permission to notify.');
+	    }
+	}); */
+	
+	
 		
 </script>
 
@@ -301,7 +300,9 @@ function downArrow2() {
 <jsp:include page="loading.jsp"/>
 
 
+
 <input type="hidden" id="mem_id" value="${ user.mem_id }">
+
 
 
 <!-- header 다희 코드 -->
