@@ -18,6 +18,4 @@ public interface AuctionDao {
 
 	int updateEndTime(int a_idx);
 	
-	int update_point_plus_auction_final(Map<String, Object> map4);
-
 }

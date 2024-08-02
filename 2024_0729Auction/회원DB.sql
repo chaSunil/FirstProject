@@ -58,7 +58,7 @@ alter table member
 select * from member
 
 
-
+update member set mem_point = 1000000 where mem_name = 'cha1'
 
 
 

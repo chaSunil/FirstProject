@@ -44,6 +44,9 @@ public class AuctionService {
 				// 필요한 추가 작업 (예: 알림발송, 정산작업 등등) -- 추가질문요소
 				// 경매 정산을 여기서 진행하면 되겠다.
 				
+				
+				
+				
 				// 만약 구매자가 아무도 없다면 처리하는 로직
 				if(item.getGumae_mem_name() == null) {
 					// 구매 member가 없으면 그냥 종료 시켜주고 끝
@@ -58,21 +61,23 @@ public class AuctionService {
 					
 					// 해당 판매글에 대한 구매자 확정시키기
 					
+					
 					// 판매자한테 낙찰금액 입금
 					int a_initial_price = item.getA_initial_price(); // 입금액
+					int mem_idx = item.getMem_idx(); 
 					
+					/*
 					Map<String, Object> map4 = new HashMap<String, Object>();
 					map4.put("a_initial_price", a_initial_price);
 					map4.put("a_idx", a_idx);
 					
 					// 구매 완료시 member_point 가격 그대로 올려주기
 					int res4 = auction_dao.update_point_plus_auction_final(map4);
-					int mem_idx = item.getMem_idx();
-					int mem_point = item.getMem_point();
+					 */
 					
 					Map<String, Object> map5 = new HashMap<String, Object>();
 					map5.put("mem_idx", mem_idx);
-					map5.put("mem_point", mem_point);
+					map5.put("a_initial_price", a_initial_price);
 					
 					// memberdao에 +해준 가격 적용해주기
 					int res5 = member_dao.update_point_plus_final(map5);
@@ -89,27 +94,37 @@ public class AuctionService {
 	// 경매 종료 여부를 판단하는 로직
 	private boolean isAuctionEnded(ItemsVo item) {
 		
-		// 경매 종료 시간을 String에서 Date Type으로 변환 시키기
-		String endTimeString = item.getA_endtime();
+		String a_sledding = item.getA_sledding();
 		
-	    // endTimeString이 null인지 확인
-	    if (endTimeString == null) {
-	        // 로그를 남기거나 예외 처리
-	        System.err.println("End time is null for item: " + item.getA_idx());
-	        return false; // 또는 true로 설정하여 종료된 것으로 간주할 수 있습니다.
-	    }
-		
-		// 날짜 형식을 yyyy-MM-dd HH:mm:ss으로 출력한다.
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		
-		try {
-			Date endTime = dateFormat.parse(endTimeString);
-			// Date Type으로 바꾼 현재 시간(new Date)를 비교한 참거짓값을 반환한다.
-			return endTime.before(new Date());
-		} catch (Exception e) {
-			e.printStackTrace();
+		// 만약에 a_sledding이 n일 경우에는 그냥 false를 보내준다.
+		if("n".equals(a_sledding)) {
+			
 			return false;
-			// TODO: handle exception
+		} else {
+			
+			// 경매 종료 시간을 String에서 Date Type으로 변환 시키기
+			String endTimeString = item.getA_endtime();
+			
+		    // endTimeString이 null인지 확인
+		    if (endTimeString == null) {
+		        // 로그를 남기거나 예외 처리
+		        System.err.println("End time is null for item: " + item.getA_idx());
+		        return false; // 또는 true로 설정하여 종료된 것으로 간주할 수 있습니다.
+		    }
+			
+			// 날짜 형식을 yyyy-MM-dd HH:mm:ss으로 출력한다.
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			
+			
+			try {
+				Date endTime = dateFormat.parse(endTimeString);
+				// Date Type으로 바꾼 현재 시간(new Date)를 비교한 참거짓값을 반환한다.
+				return endTime.before(new Date());
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+				// TODO: handle exception
+			}
 		}
 	}
 	

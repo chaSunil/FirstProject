@@ -399,6 +399,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	
+		
+	<!-- 5초동안 List에서 경매조건이 끝나거나 끝나있지 않은 항목들 검색해서 가져오기 -->
+	<select id="check_sledding" resultType="items">
+		select a_sledding from auction_list_view 
+			where a_idx = #{ a_idx } and a_sledding = 'n'
+	</select>
+	
+	
 	
 	
 	
