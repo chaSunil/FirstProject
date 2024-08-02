@@ -7,13 +7,20 @@ public class AuctionVo {
 	int 	a_direct_price;		// 즉시 거래가
 	String  a_regtime;			// 경매 등록시간
 	String  a_selltime;			// 판매 시간
+	String	a_endtime;			// 완료 시간
 	String	a_sledding;			// 경매 진행상태
 	int		item_idx;			// 아이템 일련번호(거래번호)
 	int 	mem_idx; 			// 판매자 회원번호
 	String  mem_name;			// 판매자 이름
 	int mem_point;				// 판매자 포인트
 	
-	 
+	
+	public String getA_endtime() {
+		return a_endtime;
+	}
+	public void setA_endtime(String a_endtime) {
+		this.a_endtime = a_endtime;
+	}
 	public int getMem_point() {
 		return mem_point;
 	}

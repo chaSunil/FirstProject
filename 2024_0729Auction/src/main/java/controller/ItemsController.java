@@ -108,12 +108,8 @@ public class ItemsController {
 		
 		
 		// 거래 시간이 마감되면, 거래 자동 종료
-		int res = items_dao.update_expired_auctions();
-		
-		
-		
-		
-		
+		// AuctionService에서 항상 경매가 종료되었는지 check해주는 로직
+		//int res = items_dao.update_expired_auctions();
 		
 		
 		int start = (page-1) * MyCommon.Items.BLOCK_LIST + 1;

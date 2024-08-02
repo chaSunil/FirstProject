@@ -45,6 +45,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE auction
 		SET a_endtime = a_regtime + 
 		    CASE
+		        WHEN a_selltime = '1' THEN INTERVAL '1' MINUTE
 		        WHEN a_selltime = '3' THEN INTERVAL '3' MINUTE
 		        WHEN a_selltime = '10' THEN INTERVAL '10' MINUTE
 		        WHEN a_selltime = '15' THEN INTERVAL '15' MINUTE

@@ -119,6 +119,25 @@ public class ItemsDao {
 		
 		return sqlSession.update("items.update_expired_auctions");
 	}
+	
+	
+	
+	
+	// AuctionService 객체 매순간 5초씩 경매 시간이 종료되었는지 확인해주는 로직
+	public List<ItemsVo> findActiveAuction() {
+		
+		return sqlSession.selectList("items.findActiveAuction");
+	}
+	
+	// 현재시간이 마감시간을 넘어선 객체를 거래종료 시켜준다.
+	public int update_auction_service_end(int a_idx) {
+		
+		return sqlSession.update("items.update_auction_service_end", a_idx);
+	}
+	
+	
+	
+	
 
 	
 }

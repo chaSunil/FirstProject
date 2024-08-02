@@ -1920,6 +1920,7 @@ var $112 = $.noConflict(true);
 						<input id="hadan_dropdown" class="btn dropdown-toggle" type="button"
 										data-toggle="dropdown" value="아이템 판매 기간을 선택하세요.">
 						<ul class="dropdown-menu" id="sell-time">
+							<li><a>1</a></li>
 							<li><a>3</a></li>
 							<li><a>10</a></li>
 							<li><a>15</a></li>
