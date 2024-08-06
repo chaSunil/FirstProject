@@ -10,10 +10,13 @@
 	
 	<typeAliases>
 		<!-- <typeAlias type="vo.BoardVo" alias="board"/> -->
+		<typeAlias type="vo.ProductVo" alias="product"/>
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="config/mybatis/mapper/dept.xml" />
+		<mapper resource="config/mybatis/mapper/product_in.xml" />
+		<mapper resource="config/mybatis/mapper/product_out.xml" />
+		<mapper resource="config/mybatis/mapper/product_remain.xml" />
 	</mappers>
 	
 </configuration>
