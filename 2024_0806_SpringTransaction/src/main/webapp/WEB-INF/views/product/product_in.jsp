@@ -25,6 +25,7 @@
 		</td>
 	</c:if>
 	
+	<!-- for(ProductVo vo : map.in_list) -->
 	<c:forEach var="vo" items="${ map.in_list }">
 		<tr>
 			<td>${ vo.name }</td>

@@ -18,7 +18,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	</bean>
 	
 	<!-- 재고 -->
-	<bean id="product_remain_dao" class="dao.Product_Remian_DaoImpl">
+	<bean id="product_remain_dao" class="dao.Product_Remain_DaoImpl">
 		<property name="sqlSession" ref="sqlSession"/>
 	</bean>
 	
