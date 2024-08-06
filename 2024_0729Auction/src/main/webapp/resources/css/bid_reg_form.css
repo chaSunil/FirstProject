@@ -27,7 +27,7 @@ a:hover{
 }
 
 body {
-	background-color: #1F2128;
+	background-color: #1b1c22;
 }
 
 /* 다희 header */
@@ -784,13 +784,6 @@ body {
 	background: #15171E;  
 }
 
-input[type='button'] {
-	background: #8d795c;
-	height: 30px;
-	color: white;
-	border-radius: .25rem;
-	border: 0px;
-}
 
 #bid-btn{
 	margin-top: 5px;
@@ -832,7 +825,11 @@ input[type='button'] {
 	margin-top: 20px;
 }
 
+
 #price-box1 {
+	display: flex;
+	align-items: center; /* 수직 중앙 정렬 */
+	
 	width: 340px;
 	height: 60px;
 	border-bottom: 1px solid gray;
@@ -842,7 +839,15 @@ input[type='button'] {
 	color: gray;
 }
 
+#price-box1 > span {
+	display: inline-block;
+	vertical-align: middle;
+}
+
 #price-box2 {
+	display: flex;
+	align-items: center; /* 수직 중앙 정렬 */	
+	
 	width: 340px;
 	height: 60px;
 	border-bottom: 1px solid gray;
@@ -851,6 +856,73 @@ input[type='button'] {
 	color: #ae906a;
 }
 
+
+#price-box2 > span {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+
+#price-btn1 {
+	width: 340px;
+	height: 50px;
+	
+	margin-top: 30px;
+	
+	background: #8d795c;
+	color: white;
+	font-size: 16px;
+	
+	border-radius: 5px;
+	border: 0px;
+}
+
+#price-btn2 {
+	width: 340px;
+	height: 50px;
+	
+	margin-top: 15px;
+	
+	background: #8d795c;
+	color: white;
+	font-size: 16px;
+	
+	border-radius: 5px;
+	border: 0px;
+}
+
+#price-box1-span1 {
+	margin-right: 150px;
+	margin-left: 10px;
+	font-size: 15px;
+}
+
+#price-box2-span1 {
+	margin-right: 190px;
+	margin-left: 10px;
+	font-size: 15px;
+}
+
+#price-box1-span3, #price-box2-span3 {
+	margin-left: 10px;
+}
+
+@keyframes blink {
+	0% {
+	  opacity: 1;
+	}
+	50% {
+	  opacity: 0.8;
+	}
+	100% {
+	  opacity: 1;
+	}
+}
+
+
+#price-btn1, #price-btn2 {
+  animation: blink 1.5s infinite; /* 1초 간격으로 무한 반복 */
+}
 
 
 

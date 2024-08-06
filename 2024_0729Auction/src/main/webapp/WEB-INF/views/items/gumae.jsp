@@ -549,15 +549,29 @@ function showMessage() {
 				
 				<div id="price-box1">
 				<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
-				<span>즉시 구매가</span>
+				<span id="price-box1-span1">즉시 구매가</span>
 				<span><fmt:formatNumber type="currency" value="${ items.a_direct_price }" currencySymbol=""/></span>
+				<span id="price-box1-span3">CP</span>
 				</div>
 				
 				<div id="price-box2">
 				<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
-				<span>입찰가</span>
+				<span id="price-box2-span1">입찰가</span>
 				<span><fmt:formatNumber type="currency" value="${ items.a_initial_price }" currencySymbol=""/></span>
+				<span id="price-box2-span3">CP</span>
 				</div>
+				
+				
+				<!-- 입찰기간이 빠지면, 입찰 불가능 -->
+				<c:if test="${fn:substring(items.a_endtime, 0, 19) > currentDateTimeString}">
+					<input type="button" class="btn btn-danger" id="price-btn1" value="입찰하기"
+						onclick="bid();">
+				</c:if>
+				<c:if test="${fn:substring(items.a_endtime, 0, 19) <= currentDateTimeString}">
+					<input type="button" class="btn btn-danger" id="price-btn1" value="입찰마감">
+				</c:if>
+				
+				<input type="button" class="btn btn-warning" id="price-btn2" value="즉시구매" onclick="buy('${ items.item_idx }');">
 				
 			
 				<div id="usercard-cp">
@@ -601,14 +615,7 @@ function showMessage() {
 					
 					
 					
-					<!-- 입찰기간이 빠지면, 입찰 불가능 -->
-					<c:if test="${fn:substring(items.a_endtime, 0, 19) > currentDateTimeString}">
-						<input type="button" class="btn btn-danger" value="입찰하기"
-							onclick="bid();">
-					</c:if>
-					<c:if test="${fn:substring(items.a_endtime, 0, 19) <= currentDateTimeString}">
-						<input type="button" class="btn btn-danger" value="입찰마감">
-					</c:if>
+
 					
 					</div>
 				</div>
