@@ -250,22 +250,115 @@ function showMessage() {
         </div>
         
     </div><!-- end - header -->
+    
+    
+	<div id="item-search">
+	<div id="search-title">
+	    <img src="../resources/images/bullet_1.png" style="width: 40px;">
+	    <p>아이템 거래소</p>
+	    <img src="../resources/images/piperline.PNG">
+	    <span>옵션별 검색, 별칭, 시세 확인</span> 
+	</div>
+	
+	<div>
+	    <div class="tab-box">
+	        <div class="tabs">
+	        <ul id="search-tab-list">
+	            <!-- 페이지 별로 active를 따로 줘야함 -->
+	            <li class="cate-box cate1 active"><a href="#" >아이템 찾기</a></li>
+	            <li class="cate-box" onclick="buy_list();"><a>나의 구매 현황</a></li>
+	            <li class="cate-box" onclick="sell_list();"><a>나의 판매 현황</a></li>
+	            <li class="cate-box cate4">
+	                <a  href="#">찜</a>
+	            </li>
+	        </ul>
+	        </div>
+	        <div class="sell-btn">
+	            <a href="sell_reg.do?mem_id=${ user.mem_id }" id="sell-link">아이템 판매하기</a>
+	        </div>    
+	    </div>    
+	</div>
+
+
+    
+    
+    
+    
+	<!-- item head -->
+	<div id="item-box-head">
+	      
+	      <div id="item-box-head-text">
+	      	<div id="item-box-head-text-sub">
+	      	<img alt="" src="https://i.ibb.co/0YqhDTP/bullet-1.png">
+	      	<span><b>아이템 등록</b></span>
+	      	<span id="item-box-head-text-sub-font"><b>ㅣ</b></span>
+	      	<span id="item-box-head-text2">일반판매, 경매</span>
+	      	</div>
+	      	<img id="item-box-head-text-img" alt="" src="https://i.ibb.co/7bBf5zC/cc-category-titlepin.png">
+	      	<img id="item-box-head-text-img2" alt="" src="https://i.ibb.co/9hhcwxf/titleline.png">
+	      	<img id="item-box-head-text-img3" alt="" src="https://i.ibb.co/7bBf5zC/cc-category-titlepin.png">
+	      </div>
+	      
+	      
+		<div class="item-box-head2">
+		<span class="item-box-head2-font">Game</span><br>
+		<span class="item-box-head2-font2">레저렉션 (D2R)</span>
+		</div>
+		<div class="item-box-head3">
+		<span class="item-box-head3-font">→</span><br>
+		</div>
+		<div class="item-box-head2">
+		<span class="item-box-head2-font">Platform</span><br>
+		<span class="item-box-head2-font2">PC</span>
+		</div>
+		<div class="item-box-head3">
+		<span class="item-box-head3-font">→</span><br>
+		</div>
+		<div class="item-box-head2">
+		<span class="item-box-head2-font">Server(TimeZone)</span><br>
+		<span class="item-box-head2-font2">아시아(Asia)</span>
+		</div>
+		<div class="item-box-head3">
+		<span class="item-box-head3-font">→</span><br>
+		</div>
+		<div class="item-box-head2">
+		<span class="item-box-head2-font">Game Type(TimeZone)</span><br>
+		<span class="item-box-head2-font2">레더</span>
+		</div>
+		<div class="item-box-head3">
+		<span class="item-box-head3-font">→</span><br>
+		</div>
+		<div class="item-box-head2">
+		<span class="item-box-head2-font">Mode</span><br>
+		<span class="item-box-head2-font21">소프트코어</span>
+		</div>
+		<div class="item-box-head4">
+		<button type="button" class="btn btn-primary active">?&nbsp;&nbsp; 자주 찾는 질문</button>
+		</div>
+	</div>
+		
+		
+		
+    
+    
 
 	<div id="bid-box">
 		<div id="bid-title">
-			<span style="margin-right: 710px;">no.${ items.item_idx } ${ items.item_name }</span>
-			<span style="font-size: 15px;">${ items.mem_name }</span>
+			<span id="bid-title-span1">no.${ items.item_idx } ${ items.item_name }</span>
+			<span id="bid-title-span2">${ items.mem_name }</span>
 		</div>
 		<br>
+		
+		
 		<div id="bid-content">
 			<div class="item-info">
 				<div id="selltime-info">
 					<div id="reg-start" class="reg">
-						판매시작 &nbsp;&nbsp;&nbsp;&nbsp; ${ fn:substring(items.a_regtime,0,19) }		
+						<span>판매시작 &nbsp;&nbsp;&nbsp;&nbsp; ${ fn:substring(items.a_regtime,0,19) }</span>
 					</div>
 					<hr>
 					<div id="reg-end" class="reg">
-						판매종료  &nbsp;&nbsp;&nbsp;&nbsp;  ${ fn:substring(items.a_endtime,0,19) }	
+						<span>판매종료  &nbsp;&nbsp;&nbsp;&nbsp;  <%-- ${ fn:substring(items.a_endtime,0,19) } --%></span>
 						<span id="countdown"></span>
 					</div>
 				</div>
@@ -293,7 +386,12 @@ function showMessage() {
             var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
 
             // 마감까지 남은 시간 출력
-            document.getElementById("countdown").innerText = days + "일 " + hours + "시간 " + minutes + "분 " + seconds + "초";
+            //document.getElementById("countdown").innerText = days + "일 " + hours + "시간 " + minutes + "분 " + seconds + "초";
+            document.getElementById("countdown").innerHTML = 
+                days + "<span id='countdown2' style='margin: 0 10px;'>일</span> " + 
+                hours + "<span id='countdown2' style='margin: 0 10px;'>시간</span> " + 
+                minutes + "<span id='countdown2' style='margin: 0 10px;'>분</span> " + 
+                seconds + "<span id='countdown2' style='margin: 0 10px;'>초 후 판매종료</span>";
         } else {
             document.getElementById("countdown").innerText = "판매기간이 종료되었습니다.";
         }
@@ -309,24 +407,24 @@ function showMessage() {
 
 <div id="countdown"></div>
 
-즉시구매가<input type="text" id="a_direct_price" value="${ items.a_direct_price }">
+<!-- 즉시구매가 --><input type="hidden" id="a_direct_price" value="${ items.a_direct_price }">
 <!-- 구매자 idx 가져오기 -->
-현재 구매자 idx<input type="text" id="gumae_mem_idx" value="${ user.mem_idx }">
+<!-- 현재 구매자 idx --><input type="hidden" id="gumae_mem_idx" value="${ user.mem_idx }">
 
 <!-- 구매자 name 가져오기 -->
-현재 구매자 이름 idx<input type="text" id="gumae_mem_name" value="${ user.mem_name }">
+<!-- 현재 구매자 이름 idx --><input type="hidden" id="gumae_mem_name" value="${ user.mem_name }">
 
 <!-- 판매자 idx 가져오기 -->
-판매자 idx<input type="text" id="panmae_mem_idx" value="${ items.mem_idx }">
+<!-- 판매자 idx --><input type="hidden" id="panmae_mem_idx" value="${ items.mem_idx }">
 <!-- 구매자가 가지고 있는 금액 가져오기 -->
-가지고 있는 포인트<input type="text" id="mem_point" value="${ user.mem_point }">
-거래번호 <input type="text" id="a_idx" value="${ items.a_idx }">
-아이템 번호 <input type="text" id="item_idx" value="${ items.item_idx }">
+<!-- 가지고 있는 포인트 --><input type="hidden" id="mem_point" value="${ user.mem_point }">
+<!-- 거래번호 --> <input type="hidden" id="a_idx" value="${ items.a_idx }">
+<!-- 아이템 번호 --> <input type="hidden" id="item_idx" value="${ items.item_idx }">
 
-옥션 최근 입찰자<input type="text" id="auction_mem_idx" value="${ items.gumae_mem_idx }">
+<!-- 옥션 최근 입찰자 --><input type="hidden" id="auction_mem_idx" value="${ items.gumae_mem_idx }">
 
 
-옥션 입찰가<input type="text" id="a_initial_price" value="${ items.a_initial_price }">
+<!-- 옥션 입찰가 --><input type="hidden" id="a_initial_price" value="${ items.a_initial_price }">
 
 
 
@@ -434,6 +532,34 @@ function showMessage() {
 				
 			</div>
 
+		</div>
+		
+		
+		
+		
+		<div id="bid-content-right">
+				
+				<div id="reset-btn">
+				
+				</div>
+				
+				<div id="profile-box">
+				
+				</div>
+				
+				<div id="price-box1">
+				<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
+				<span>즉시 구매가</span>
+				<span><fmt:formatNumber type="currency" value="${ items.a_direct_price }" currencySymbol=""/></span>
+				</div>
+				
+				<div id="price-box2">
+				<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
+				<span>입찰가</span>
+				<span><fmt:formatNumber type="currency" value="${ items.a_initial_price }" currencySymbol=""/></span>
+				</div>
+				
+			
 				<div id="usercard-cp">
 					<div id="usercard-cp2">
 						<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
@@ -535,7 +661,8 @@ function showMessage() {
 				}
 				
 			</script>
-		</div>	
+		</div>
+		
 	</div>
 </body>
 </html>

@@ -19,6 +19,8 @@ create table member
     mem_filename		varchar2(100) default 'basic.jpg',-- 파일명
     mem_point			int							  	  -- 회원보유 포인트
 )
+
+
 -- 기본키 -> mem_idx
 alter table member
     add constraint pk_member_idx primary key(mem_idx);
@@ -35,8 +37,6 @@ alter table member
 alter table member
     add constraint ck_member_grade check(mem_grade in ('일반','관리자'));
     
-select * from member
-
 insert into member values(seq_member_idx.nextVal,
 						 '김관리','admin','admin','관리자','12345','서울시 관악구 남부순환로','localhost',default,'관리자',default,1000000);
 insert into member values(seq_member_idx.nextVal,

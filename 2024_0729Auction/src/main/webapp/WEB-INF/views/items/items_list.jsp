@@ -421,7 +421,8 @@ function downArrow2() {
         
     </div><!-- end - header -->
         
-    <!-- content 환박사와 서닐 -->
+
+	<!-- content 영역 -->
     <div id="main-content">
         
         <div id="commercial" style="text-align: center; margin-bottom: 20px;">
