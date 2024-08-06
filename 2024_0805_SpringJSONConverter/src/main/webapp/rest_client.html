@@ -98,7 +98,7 @@
 						        <div class="common content">${ visit.content }</div>
 						        <div class="common regdate">${ visit.regdate }</div>
 						        <div class="common">
-						        비밀번호:<input class="form-control"   type="password" name="c_pwd">
+						        비밀번호(${ visit.pwd }):<input class="form-control"   type="password" name="c_pwd">
 						                 <input class="btn btn-danger" type="button" value="삭제" onclick="visit_delete(this.form);">
 						                 <input class="btn btn-info"   type="button" value="수정" onclick="visit_modify(this.form);">
 						       </div>
@@ -282,7 +282,7 @@
 	   //Ajax로 비밀번호체크확인
 	   $.ajax({
 		   type		:	'GET',
-		   url		:	`rest/visit/idx/${idx}/c-pwd/${c_pwd}`,
+		   url		:	`rest/visit/checkpwd/${idx}/${c_pwd}`,
 		   dataType	:	"json",
 		   success	:	function(res_data){
 			   //res_data = {"result" : true }  or {"result" : false } 
@@ -317,9 +317,12 @@
 		   dataType	:	"json",
 		   success	:	function(res_data){
 			   //res_data = {"no":1,"idx":63,"name":"홍길동","content":"REST API POST전송한 데이터","pwd":"1234","ip":"0:0:0:0:0:0:0:1","regdate":"2024-08-05 13:48:08.0"}
+			   $("#update_idx").val(res_data.idx);
 			   $("#update_name").val(res_data.name);
-			   $("#update_content").val(res_data.content.replace("<br>","\n"));
+			   $("#update_content").val(res_data.content.replaceAll("<br>","\n"));
 			   $("#update_pwd").val(res_data.pwd);
+			   
+			   $("#update_idx").attr("readOnly",true);
 		   },
 		   error	:	function(err){
 			   alert(err.responseText);
@@ -330,6 +333,83 @@
 	   
 	      
    }//end: visit_modify_form()
+   
+   
+   
+   function modify(){
+	   
+	   
+	  
+	   
+	   let idx     = $("#update_idx").val(); 
+	   let name    = $("#update_name").val().trim();
+	   let content = $("#update_content").val().trim();
+	   let pwd     = $("#update_pwd").val().trim();
+	   
+	   if(name==''){
+		   alert("작성자명을 입력하세요!");
+		   $("#update_name").val("");
+		   $("#update_name").focus();
+		   return;
+	   }
+	   
+	   if(content==''){
+		   alert("내용을 입력하세요!");
+		   $("#update_content").val("");
+		   $("#update_content").focus();
+		   return;
+	   }
+	   
+	   if(pwd==''){
+		   alert("비밀번호를 입력하세요!");
+		   $("#update_pwd").val("");
+		   $("#update_pwd").focus();
+		   return;
+	   }
+	   
+	   
+	   if(confirm("정말수정하시겠습니까?")==false)return;
+	   
+	   
+	   let visit = {"idx":idx, "name":name,"content":content,"pwd":pwd };
+	   
+	   
+	   // JSON.stringify :  JSON -> Text Data변환시
+	   // JSON.parse     :  Text -> JSON Object변환시
+	   
+	   //Ajax insert
+	   $.ajax({
+		   type			:	"PUT",
+		   url			:	"rest/visit",
+		   contentType	:	"application/json;charset=utf-8",
+		   data			:	JSON.stringify(visit), 
+		   dataType		:	"json",
+		   success		:	function(res_data){
+			   //res_data = {"result" : true }  or {"result" : false } 
+			   
+			   if(res_data.result==false){
+				   alert("수정 실패!!");
+				   return;
+			   }
+			  
+			   $("#myModal").modal("hide");
+			   
+			   //목록가져오기
+			   visit_list();
+			   
+			   
+		   },
+		   error	:	function(err){
+			   alert(err.responseText);
+		   }
+	   });
+	   
+	   
+	   
+	   
+	   
+   }
+   
    
    
    
@@ -402,9 +482,12 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><h4>방명록 수정</h4></h4>
+          <h4 class="modal-title">방명록 수정</h4>
         </div>
         <div class="modal-body">
+          <div>
+              게시물번호:<input class="form-control" id="update_idx">
+          </div> 
           <div>
               작성자:<input class="form-control" id="update_name">
           </div>
@@ -417,7 +500,7 @@
           
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" >수정하기</button>
+          <button type="button" class="btn btn-info"  onclick="modify();">수정하기</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">취소하기</button>
         </div>
       </div>

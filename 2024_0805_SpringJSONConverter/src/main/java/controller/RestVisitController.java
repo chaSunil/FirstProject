@@ -110,7 +110,7 @@ public class RestVisitController {
 		    "pwd":"1234"
 		}
 	*/
-	@RequestMapping(value="/rest/visit", method=RequestMethod.PATCH)
+	@RequestMapping(value="/rest/visit", method=RequestMethod.PUT)
 	@ResponseBody
 	public Map<String, Object> update(@RequestBody VisitVo vo) {
 		
@@ -140,6 +140,29 @@ public class RestVisitController {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("result", vo.getPwd().equals(c_pwd));
+		return map;
+	}
+	
+	
+	// 비밀번호 체크 : /rest/visit/checkpwd/{idx}/{c_pwd}
+	//				   /rest/visit/checkpwd/10/1234
+	@RequestMapping(value="/rest/visit/checkpwd/{idx}/{c_pwd}", method=RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> check_pwd2(@PathVariable int idx, @PathVariable String c_pwd) {
+		
+		// 이 Method가 시작되는 시점
+		long start = System.currentTimeMillis();
+		
+		VisitVo vo = visit_dao.selectOne(idx);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("result", vo.getPwd().equals(c_pwd));
+		
+		// 이 Method가 끝나는 시점
+		long end = System.currentTimeMillis();
+		
+		// 이 Method가 수행되는 시간 (AOP를 적용하지 않고 구하는 방법)
+		System.out.printf("수행시간 :%d(ms)\n", end-start);
 		return map;
 	}
 	
