@@ -1,20 +1,28 @@
 package controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import dao.TestDao;
 import service.TestService;
 
 @Controller
 public class TestController {
 
 	@Autowired
-	TestDao test_dao;
-	
-	@Autowired
 	TestService test_service;
 	
-	
+	@RequestMapping("/")
+	public String sido_list(Model model) {
+		
+		List<String> list = test_service.sido_list();
+		
+		model.addAttribute("list",list);
+		
+		return "test";
+	}
 	
 }

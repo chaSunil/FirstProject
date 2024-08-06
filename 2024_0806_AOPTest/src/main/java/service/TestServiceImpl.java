@@ -17,6 +17,13 @@ public class TestServiceImpl implements TestService {
 	public List<String> sido_list() {
 		// TODO Auto-generated method stub
 		
+		try {
+			Thread.sleep(1234);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return test_dao.sido_list();
 	}
 
