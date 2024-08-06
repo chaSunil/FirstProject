@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 추가작업 -->
 	<insert id="product_in_insert" parameterType="product">
-		insert into product in values(seq_product_in_idx.nextVal,#{ name },#{ cnt },sysdate)
+		insert into product_in values(seq_product_in_idx.nextVal,#{ name },#{ cnt },sysdate)
 	</insert>
 	
 	<!-- 수정 -->

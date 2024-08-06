@@ -23,7 +23,7 @@ public class Product_Remain_DaoImpl implements ProductDao {
 	@Override
 	public ProductVo selectOne(String name) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("product_remain.product_remain_one",name);
+		return sqlSession.selectOne("product_remain.product_remain_one_name",name);
 	}
 
 	@Override
