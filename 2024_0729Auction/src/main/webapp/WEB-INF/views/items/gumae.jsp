@@ -540,7 +540,7 @@ function showMessage() {
 		<div id="bid-content-right">
 				
 				<div id="reset-btn">
-				
+					<span id="reset-btn-span1">일반판매, 경매</span>
 				</div>
 				
 				<div id="profile-box">
@@ -574,51 +574,7 @@ function showMessage() {
 				<input type="button" class="btn btn-warning" id="price-btn2" value="즉시구매" onclick="buy('${ items.item_idx }');">
 				
 			
-				<div id="usercard-cp">
-					<div id="usercard-cp2">
-						<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
-					</div>
-					<div id="usercard-cp3">
-						<span>즉시 구매가</span>
-					</div>
-					<div id="usercard-cp4">
-						<span></span>
-					</div>
-					<div id="usercard-cp5">
-						<span><fmt:formatNumber type="currency" value="${ items.a_direct_price }" currencySymbol=""/></span>
-					</div>
-					<div id="usercard-cp6">
-						<span>CP</span>
-					</div>
-					<div id="usercard-cp7">
-						<input type="button" class="btn btn-warning" value="즉시구매" onclick="buy('${ items.item_idx }');">
-					</div>
-					
-				</div>
-				<div id="usercard-cp">
-					<div id="usercard-cp2">
-						<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">
-					</div>
-					<div id="usercard-cp3">
-						<span>현재 입찰가</span>
-					</div>
-					<div id="usercard-cp4">
-						<span></span>
-					</div>
-					<div id="usercard-cp5">
-						<span><fmt:formatNumber type="currency" value="${ items.a_initial_price }" currencySymbol=""/></span>
-					</div>
-					<div id="usercard-cp6">
-						<span>CP</span>
-					</div>
-					<div id="usercard-cp7">
-					
-					
-					
 
-					
-					</div>
-				</div>
 				<div id="usercard-cp">
 					<div id="usercard-cp2">
 						<img src="https://i.ibb.co/85LjcPV/image.jpg" alt="image" border="0">

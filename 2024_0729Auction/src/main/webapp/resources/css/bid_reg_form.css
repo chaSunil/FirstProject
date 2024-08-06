@@ -808,12 +808,25 @@ body {
 }
 
 #reset-btn {
+	display: flex;
+	align-items: center; /* 수직 중앙 정렬 */	
+	
 	width: 340px;
 	height: 50px;
 	border-radius: 5px;
 	background-color: #191C20;
-	border: 1px solid #507CB5;
+	border: 0.1px solid #626262;
 	color: #507CB5 !important;
+}
+
+#reset-btn > span {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 20px;
+	
+	font-weight: bold;
+	font-size: 16px;
+	color: #b3b3b3;
 }
 
 #profile-box {
@@ -865,13 +878,13 @@ body {
 
 #price-btn1 {
 	width: 340px;
-	height: 50px;
+	height: 45px;
 	
 	margin-top: 30px;
 	
 	background: #8d795c;
 	color: white;
-	font-size: 16px;
+	font-size: 15px;
 	
 	border-radius: 5px;
 	border: 0px;
@@ -879,13 +892,13 @@ body {
 
 #price-btn2 {
 	width: 340px;
-	height: 50px;
+	height: 45px;
 	
 	margin-top: 15px;
 	
 	background: #8d795c;
 	color: white;
-	font-size: 16px;
+	font-size: 15px;
 	
 	border-radius: 5px;
 	border: 0px;
