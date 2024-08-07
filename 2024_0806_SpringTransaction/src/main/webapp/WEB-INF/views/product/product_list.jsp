@@ -13,7 +13,13 @@
 
 <script type="text/javascript">
  window.onload=function(){
-      
+    // 페이지가 onload되고 0.1초후에 페이지를 출력한다. 알람과 동시에 뒤에 페이지가 보임
+	setTimeout(showMessage,100);
+	     
+ };
+ 
+ function showMessage() {
+	 
 	 if("${ param.error eq 'remain_not' }"=='true')
 	 {
 		 alert('재고목록에 출고할\n상품이 없습니다');
@@ -23,8 +29,9 @@
 	 {
 		 alert('출고할 상품수량이 부족합니다');
 	 }
-	     
- };
+	 
+ }
+ 
 </script>
 
 

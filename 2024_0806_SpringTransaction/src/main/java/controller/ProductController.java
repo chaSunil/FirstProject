@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import service.ProductService;
 import vo.ProductVo;
@@ -37,6 +38,24 @@ public class ProductController {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			// e.printStackTrace();
+		}
+		
+		return "redirect:list.do";
+	}
+	
+	
+	// 출고처리
+	// /product/insert_out.do?name=TV&cnt=100
+	@RequestMapping("/product/insert_out.do")
+	public String insert_out(ProductVo vo,RedirectAttributes ra) {
+		
+		try {
+			product_service.insert_out(vo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			// e.printStackTrace();
+			String message = e.getMessage();
+			ra.addAttribute("error",message);
 		}
 		
 		return "redirect:list.do";

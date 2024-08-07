@@ -66,6 +66,32 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int insert_out(ProductVo vo) throws Exception {
 		// TODO Auto-generated method stub
+		int res = 0;
+		
+		// 1. 출고등록하기
+		res = product_out_dao.insert(vo);
+
+		// 2. 재고정보 얻어오기
+		ProductVo remainVo = product_remain_dao.selectOne(vo.getName());
+		// 현재 insert의 정보는 Service에서 추가한것이기에 트랜잭션 구역에 머물고 있는 상태이다.
+		if(remainVo==null) {
+			// 재고목록에 상품이 없을경우(insert된 Method를 Exception을 줘서 rollback 시킨다)
+			throw new Exception("remain_not");
+		}else {
+			// 재고수량 = 원래재고수량 - 출고수량
+			int cnt = remainVo.getCnt() - vo.getCnt();
+			
+			if(cnt < 0) {
+				// 재고수량이 부족한 경우
+				throw new Exception("remain_lack");
+			}
+			
+			// 재고수량 수정
+			remainVo.setCnt(cnt);
+			res = product_remain_dao.update(remainVo);
+			
+		}
+		
 		return 0;
 	}
 
