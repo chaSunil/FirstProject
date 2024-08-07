@@ -62,5 +62,42 @@ public class ProductController {
 	}
 	
 	
+	// 입고취소
+	// /product/delete_in.do?idx=5
+	@RequestMapping("/product/delete_in.do")
+	public String delete_in(int idx,RedirectAttributes ra) {
+		
+		try {
+			product_service.delete_in(idx);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			// e.printStackTrace();
+			String message = e.getMessage();
+			ra.addAttribute("error",message);
+		}
+		
+		return "redirect:list.do";
+	}
+	
+	
+	
+	// 출고취소
+	// /product/delete_out.do?idx=5
+	@RequestMapping("/product/delete_out.do")
+	public String delete_out(int idx,RedirectAttributes ra) {
+		
+		try {
+			product_service.delete_out(idx);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			// e.printStackTrace();
+			String message = e.getMessage();
+			ra.addAttribute("error",message);
+		}
+		
+		return "redirect:list.do";
+	}
+	
+	
 	
 }

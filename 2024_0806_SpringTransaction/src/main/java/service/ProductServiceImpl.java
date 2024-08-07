@@ -92,7 +92,75 @@ public class ProductServiceImpl implements ProductService {
 			
 		}
 		
-		return 0;
+		return res;
 	}
+
+	@Override
+	public int delete_in(int idx) throws Exception {
+		// TODO Auto-generated method stub
+		// 0. 취소할 입고상품 정보 얻어오기
+		ProductVo vo = product_in_dao.selectOne(idx);
+		
+		// 1. 입고상품삭제
+		int res = 0;
+		
+		res = product_in_dao.delete(idx);
+		
+		// 2. 재고상품수정
+		ProductVo remainVo = product_remain_dao.selectOne(vo.getName());
+		
+		if(remainVo==null) {
+			throw new Exception("remain_not");
+		} else {
+			int cnt = remainVo.getCnt() - vo.getCnt();
+			
+			if(cnt < 0) {
+				throw new Exception("remain_lack");
+			}
+			
+			// 재고수량 설정
+			remainVo.setCnt(cnt);
+			res = product_remain_dao.update(remainVo);
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int delete_out(int idx) throws Exception {
+		// TODO Auto-generated method stub
+		// 0. 취소할 출고상품 정보 얻어오기
+		ProductVo vo = product_out_dao.selectOne(idx);
+		
+		// 1. 출고상품삭제
+		int res = 0;
+		
+		res = product_out_dao.delete(idx);
+		
+		// 2. 재고상품수정
+		ProductVo remainVo = product_remain_dao.selectOne(vo.getName());
+		
+		if(remainVo==null) {
+			throw new Exception("remain_not");
+		} else {
+			int cnt = remainVo.getCnt() + vo.getCnt();
+			
+			if(cnt < 0) {
+				throw new Exception("remain_lack");
+			}
+			
+			// 재고수량 설정
+			remainVo.setCnt(cnt);
+			res = product_remain_dao.update(remainVo);
+		}
+		
+		
+		
+		return res;
+	}
+	
+	
+	
+	
 
 }

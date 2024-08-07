@@ -27,9 +27,13 @@
 	
 	<c:forEach var="vo" items="${ map.remain_list }">
 		<tr>
-			<td>${ vo.name }</td>
-			<td>${ vo.cnt }</td>
-			<td>${ fn:substring(vo.regdate,0,10) }</td>
+			<c:if test="${ vo.cnt == 0 }">
+			</c:if>
+			<c:if test="${ vo.cnt != 0 }">
+				<td>${ vo.name }</td>
+				<td>${ vo.cnt }</td>
+				<td>${ fn:substring(vo.regdate,0,10) }</td>
+			</c:if>
 		</tr>
 	</c:forEach>
 	

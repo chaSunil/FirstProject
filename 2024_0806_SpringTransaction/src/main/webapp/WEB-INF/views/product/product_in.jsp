@@ -8,6 +8,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function delete_in(idx) {
+		if(confirm("정말 취소하시겠습니까?")==false) {
+			return;
+		}
+		
+		location.href = "delete_in.do?idx=" + idx;
+	}
+</script>
 </head>
 <body>
 
@@ -15,8 +24,8 @@
 	<caption>::::입고목록::::</caption>
 	<tr>
 		<th width="40%">제품명</th>
-		<th width="20%">수량</th>
-		<th width="40%">입고일자</th>
+		<th width="15%">수량</th>
+		<th width="45%">입고일자</th>
 	</tr>
 	
 	<c:if test="${ empty map.in_list }">
@@ -28,9 +37,14 @@
 	<!-- for(ProductVo vo : map.in_list) -->
 	<c:forEach var="vo" items="${ map.in_list }">
 		<tr>
-			<td>${ vo.name }</td>
+			<td>
+				${ vo.name }
+			</td>
 			<td>${ vo.cnt }</td>
-			<td>${ fn:substring(vo.regdate,0,10) }</td>
+			<td>
+				${ fn:substring(vo.regdate,0,10) }
+				<input type="button" value="x" onclick="delete_in('${ vo.idx }');">
+			</td>
 		</tr>
 	</c:forEach>
 	
