@@ -408,7 +408,7 @@ function downArrow2() {
 				      </li>
 				      <img src="../resources/images/category.png">
 				      <li class="dropdown header-tab-menu">
-				        <a href="dpcoin.do">
+				        <a href="dpcoin.do?mem_id=${ user.mem_id }">
 				        	<span>DP충전</span>
 				        </a>
 				      </li>

@@ -351,9 +351,13 @@ public class ItemsController {
 	}
 	
 	@RequestMapping("/items/dpcoin.do")
-	public String dpcoin() {
+	public String dpcoin(String mem_id) {
 		
-		return "/items/dpcoin";
+		MemberVo user = member_dao.selectOne(mem_id);
+		
+		session.setAttribute("user", user);
+		
+		return "/charge_page/charge_page";
 	}
 	
 	
