@@ -408,7 +408,7 @@ function downArrow2() {
 				      </li>
 				      <img src="../resources/images/category.png">
 				      <li class="dropdown header-tab-menu">
-				        <a href="dpcoin.do">
+				        <a href="dpcoin.do?mem_id=${ user.mem_id }">
 				        	<span>DP충전</span>
 				        </a>
 				      </li>
@@ -421,7 +421,8 @@ function downArrow2() {
         
     </div><!-- end - header -->
         
-    <!-- content 환박사와 서닐 -->
+
+	<!-- content 영역 -->
     <div id="main-content">
         
         <div id="commercial" style="text-align: center; margin-bottom: 20px;">
