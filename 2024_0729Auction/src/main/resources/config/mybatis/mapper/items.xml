@@ -407,6 +407,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
+		
+	<!-- 멤버별 구매 리스트 가져오기 -->
+	<select id="my_buy_list" resultType="items" parameterType="String">
+		select * from auction_list_view
+		where gumae_mem_name = #{ mem_name }
+	</select>
+	
+	
 	
 	
 	

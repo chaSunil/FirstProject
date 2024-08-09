@@ -175,6 +175,12 @@
 	}
 	
 	
+	function my_buy_list() {
+		
+		
+	}
+	
+	
 	
 	
 	
@@ -199,8 +205,54 @@
 	}); */
 	
 	
+/* 	function my_buy_list() {
+		// ajax 요청
+		$.ajax({
+			url		:		"../items/my_buy_list.do",
+			data	:		{mem_name : "${user.mem_name}"},
+			dataType:   	"json",
+			success	:		function(res_data) {
+				
+				let buy_list = res_data.slice(0,10);
+				
+				
+				let html = `
+					<table class="table">
+						<tr class="success">
+							<th>거래번호</th>
+							<th>상품명</th>
+							<th>이미지</th>
+							<th>가격</th>
+							<th>판매자</th>
+						</tr>
+				`;
+				
+				for(let buy_list of res_data) {
+					html +=
+					`
+                        <tr>
+                            <td>거래번호가 무엇이다냐 ㅋㅋ</td>    
+                            <td>${ buy_list.item_name }</td>
+                            <td>${ buy_list.a_direct_price }</td>    
+                            <td>${ buy_list.mem_name }</td>    
+                        </tr>
+					`;
+				}
+			
+				html += `</table>`;
+				$("#goodgood").html(html);
+			},
+			error	:		function(err) {
+				alert(err.responseText);
+			}
+		});
+		
+	} */
+	
+	
 		
 </script>
+
 
 <!-- jquery -->
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -451,11 +503,16 @@ function downArrow2() {
                     <ul id="search-tab-list">
                         <!-- 페이지 별로 active를 따로 줘야함 -->
                         <li class="cate-box cate1 active"><a href="#" >아이템 찾기</a></li>
-                        <li class="cate-box" onclick="buy_list();"><a>나의 구매 현황</a></li>
-                        <li class="cate-box" onclick="sell_list();"><a>나의 판매 현황</a></li>
-                        <li class="cate-box cate4">
-                            <a  href="#">찜</a>
-                        </li>
+                        
+		                <li class="cate-box">
+							<a href="my_buy_list.do?mem_name=${ user.mem_name }">나의 구매 현황</a>
+						</li>
+		                <li class="cate-box" id="modal" data-toggle="modal" data-target="#myModal">
+							<a>나의 판매 현황</a>
+						</li>
+		                <li class="cate-box cate4">
+		                    <a  href="#">찜</a>
+		                </li>
                     </ul>
                     </div>
                     <div class="sell-btn">
@@ -463,6 +520,10 @@ function downArrow2() {
                     </div>    
                 </div>    
             </div>
+            
+            
+			
+            
             
             <div class="search-tab">
                 <div class="tab-label">
@@ -815,8 +876,6 @@ function downArrow2() {
         
         
         
-        
-        
         <!-- item head -->
 		<div id="item-box-head">
         
@@ -1069,6 +1128,25 @@ function downArrow2() {
 </div>
         </form>
         </c:forEach>
+        
+        
+		<table class="table">
+			<tr class="success">
+		        <th>아이템 이름</th>
+		        <th>아이템 이미지</th>
+		        <th>가격</th>
+		        <th>구매자 이름</th>
+		    </tr>
+		    <c:forEach var="buy" items="${ requestScope.buy_list }">
+		        <tr>
+		            <td>${buy.item_name}</td>
+		            <td><img src="../resources/images/${buy.item_image}" style="width: 150px;"></td>
+		            <td>${buy.a_direct_price}</td>
+		            <td>${buy.mem_name}</td>
+		        </tr>
+		    </c:forEach>
+		</table>
+		
 		
 		<div style="text-align:center; margin-top:20px;">
 			${ pageMenu }

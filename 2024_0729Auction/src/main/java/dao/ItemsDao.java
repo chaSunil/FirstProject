@@ -135,8 +135,11 @@ public class ItemsDao {
 		return sqlSession.update("items.update_auction_service_end", a_idx);
 	}
 	
-	
-	
+	// 구매현황 확인
+	public List<ItemsVo> my_buy_list(String mem_name) {
+		
+		return sqlSession.selectList("items.my_buy_list",mem_name);
+	}
 	
 	
 

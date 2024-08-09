@@ -37,7 +37,7 @@ public class AuctionService {
 	private HttpServletRequest request;
 	
 	
-	@Scheduled(fixedRate = 20000) // 5초마다 이 스케츌 Method를 실행시킨다
+	@Scheduled(fixedRate = 800000) // 5초마다 이 스케츌 Method를 실행시킨다
 	public void checkAuctionStatus() {
 		// 경매 종료를 확인하는 로직
 		// auction_list_view를 가져와서 a_sledding (진행 여부)를 확인할 수 있다.

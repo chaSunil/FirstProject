@@ -13,6 +13,13 @@
 body {
     background-color: #1F2128;
 }
+
+#modalBody {
+	
+	width: 1400px;
+	height: 1000px;
+}
+
 .search {
     margin-left: 300px;
     

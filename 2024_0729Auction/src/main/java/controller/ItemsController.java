@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import dao.AuctionDao;
@@ -566,7 +567,19 @@ public class ItemsController {
 		}
 		
 	
-	}	
+	}
+	
+	
+	// 구매리스트 넘겨주기
+	@RequestMapping("/items/my_buy_list.do")
+	public String my_buy_list(String mem_name,RedirectAttributes ra) {
+		
+		List<ItemsVo> buy_list = items_dao.my_buy_list(mem_name);
+		
+		ra.addFlashAttribute("buy_list",buy_list);
+		
+		return "redirect:list.do";
+	}
 		
 		
 		
