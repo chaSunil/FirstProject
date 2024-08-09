@@ -205,50 +205,6 @@
 	}); */
 	
 	
-/* 	function my_buy_list() {
-		// ajax 요청
-		$.ajax({
-			url		:		"../items/my_buy_list.do",
-			data	:		{mem_name : "${user.mem_name}"},
-			dataType:   	"json",
-			success	:		function(res_data) {
-				
-				let buy_list = res_data.slice(0,10);
-				
-				
-				let html = `
-					<table class="table">
-						<tr class="success">
-							<th>거래번호</th>
-							<th>상품명</th>
-							<th>이미지</th>
-							<th>가격</th>
-							<th>판매자</th>
-						</tr>
-				`;
-				
-				for(let buy_list of res_data) {
-					html +=
-					`
-                        <tr>
-                            <td>거래번호가 무엇이다냐 ㅋㅋ</td>    
-                            <td>${ buy_list.item_name }</td>
-                            <td>${ buy_list.a_direct_price }</td>    
-                            <td>${ buy_list.mem_name }</td>    
-                        </tr>
-					`;
-				}
-			
-				html += `</table>`;
-				$("#goodgood").html(html);
-			},
-			error	:		function(err) {
-				alert(err.responseText);
-			}
-		});
-		
-	} */
-	
 	
 		
 </script>
@@ -1140,7 +1096,7 @@ function downArrow2() {
 		    <c:forEach var="buy" items="${ requestScope.buy_list }">
 		        <tr>
 		            <td>${buy.item_name}</td>
-		            <td><img src="../resources/images/${buy.item_image}" style="width: 150px;"></td>
+		            <td><img src="../resources/images/${buy.item_image}" style="width: 50px;"></td>
 		            <td>${buy.a_direct_price}</td>
 		            <td>${buy.mem_name}</td>
 		        </tr>
