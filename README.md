@@ -70,22 +70,52 @@
 
 ![image](https://github.com/user-attachments/assets/503597b7-a3b1-44ce-a53d-1dcbc33dd6af)
 
+![image](https://github.com/user-attachments/assets/f4cf889c-f887-4e4e-8678-62854b920041)
+
 <br/><br/>
 
 > 로그인 화면에서는 아이디와 비밀번호에 대한 검증이 이루어집니다. 해당 유저 데이터베이스에서 정보를 매치시켜서, 올바른 정보값인지 판단합니다. 해당 데이터베이스는 Oracle을 활용했습니다.
 
 ![image](https://github.com/user-attachments/assets/a08a6398-87cb-45ed-b444-b1fea3f1970e)
 
+<br/><br/>
 
+## 관리자 페이지
 
+> 회원등급이 관리자인 경우에는 회원 관리 페이지에서 회원의 정보를 수정 및 삭제할 수 있습니다.
 
+![image](https://github.com/user-attachments/assets/e03ba3e8-9985-4e8b-bf7f-edd2e88f13e8)
 
 <br/><br/>
 
-## 메인 화면
-![image](https://github.com/user-attachments/assets/d485ebcd-0bb9-4f93-a831-6dcc7caeb2d5)
+> 회원수정
+
+![image](https://github.com/user-attachments/assets/6c20710a-5097-4f0d-a053-5cbb2301b964)
+
+> 개인회원도 자신의 정보를 수정할 수 있습니다.
+
+![image](https://github.com/user-attachments/assets/c548eb90-970d-4129-b113-9c553f764034)
 
 <br/><br/>
 
-## 메인 화면
-![image](https://github.com/user-attachments/assets/d485ebcd-0bb9-4f93-a831-6dcc7caeb2d5)
+## 검색 기능
+
+> 검색 기능을 활용하여, 해당 검색결과의 보드게임이 조회가 가능합니다.
+
+![image](https://github.com/user-attachments/assets/c49b91bf-ea47-4b6c-ba6f-74644d2f5798)
+
+<br/><br/>
+
+## 상세 페이지
+
+> 해당 보드게임의 상세 페이지 입니다.
+
+![image](https://github.com/user-attachments/assets/dedb2100-7941-4f1d-85e5-b019fb497224)
+
+<br/><br/>
+
+## 상세 페이지 내부
+
+> 보드게임 상세 페이지 내부에서는 해당 보드게임의 플레이 방법 관련 영상과 보드게임의 테마, 내용물등을 확인하실 수 있습니다.
+
+![image](https://github.com/user-attachments/assets/38b8c716-76a3-429d-825b-87a37496fd57)
