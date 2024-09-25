@@ -1,4 +1,4 @@
-## <p>$\huge{\rm{\color{#5ad7b7}첫번째\ 프로젝트}}$</p>
+## 첫번째 프로젝트
 
 첫번째 프로젝트에 대해 진행한 업무들과 제 생각들을 나름대로 정리해본 공간입니다.
 
@@ -58,8 +58,25 @@
 
 <br/><br/>
 
-## 회원가입 페이지
+## 회원가입 페이지 / 로그인 페이지
+
+> user와 관련된 회원가입과 로그인, 수정, 탈퇴등의 업무를 전담했습니다.
+
 ![image](https://github.com/user-attachments/assets/4775f3ff-84d7-48ff-9b86-c2da1643af35)
+
+<br/><br/>
+
+> 백그라운드에서 보드게임 관련 동영상이 재생이 됩니다.
+
+![image](https://github.com/user-attachments/assets/503597b7-a3b1-44ce-a53d-1dcbc33dd6af)
+
+<br/><br/>
+
+> 로그인 화면에서는 아이디와 비밀번호에 대한 검증이 이루어집니다. 해당 유저 데이터베이스에서 정보를 매치시켜서, 올바른 정보값인지 판단합니다. 해당 데이터베이스는 Oracle을 활용했습니다.
+
+![image](https://github.com/user-attachments/assets/a08a6398-87cb-45ed-b444-b1fea3f1970e)
+
+
 
 
 
